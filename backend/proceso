@@ -1,0 +1,5 @@
+npm install express express-async-errors awilix cors compression helmet bcryptjs jsonwebtoken swagger-ui-express
+npm install mysql
+
+
+npm i -D dotenv nodemon 
