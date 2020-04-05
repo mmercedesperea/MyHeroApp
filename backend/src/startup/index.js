@@ -1,7 +1,5 @@
 //arranque del servidor
-
 const express = require('express');
-
 
 let _express =null;
 let _config = null;
@@ -14,6 +12,7 @@ class Server{
         _express = express().use(router);
     }
 
+    // iniciamos el servidor
     start(){
         return new Promise(resolve=>{
             _express.listen(_config.PORT, ()=>{
