@@ -3,7 +3,7 @@ const cors = require('cors');
 require('express-async-errors');
 const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
 
-
+var bodyParser = require("body-parser")
 
 // module.exports = function ({ HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes, AuthRoutes }) {
     module.exports = function ({ UserRoutes}) {
@@ -14,6 +14,11 @@ const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
     apiRoutes
         // para pasar las peticiones a json
         .use(express.json())
+        .use(express.urlencoded({ extended: false }))
+        .use(bodyParser.json())
+        .use(
+            bodyParser.urlencoded({ extended: false })
+        )
         // para evitar problemas de cors
         .use(cors())
         // evitar problemas de seguridad

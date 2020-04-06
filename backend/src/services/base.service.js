@@ -14,7 +14,8 @@ class BaseService {
 
         // en caso de que exista la id vamos a buscar esa entidad
         const currentEntity = await this.repository.get(id);
-        console.log("llegooooooo" + currentEntity)
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
         if (!currentEntity) {
             const error = new Error();
             error.status = 400;

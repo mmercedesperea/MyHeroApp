@@ -8,9 +8,9 @@ class UserService extends BaseService{
     }
 
 
-    async getUserByUserAlias(alias){
-        return await _userRepository.getUserByUserAlias(alias);
-    }
+    // async getUserByUserAlias(alias){
+    //     return await _userRepository.getUserByUserAlias(alias);
+    // }
 }
 
 
