@@ -1,4 +1,5 @@
 const { compareSync, hashSync, genSaltSync } = require('bcryptjs')
+// var bcrypt = require('bcrypt-nodejs');
 
 class User {
     constructor() {
@@ -20,12 +21,12 @@ class User {
     }
 
     // para comparar contraseñas encriptadas
-    async comparePasswords(password,UserPas) {
+    async comparePasswords(UserPas,password) {
         console.log(UserPas);
         console.log(password);
-        
-        
-        return await compareSync(password,UserPas )
+        console.log(password,UserPas);
+        console.log(compareSync(password,UserPas ));
+        return await compareSync(password,UserPas)
     }
 
     // para antes de guardar el usuario que se codifique su contraseña
