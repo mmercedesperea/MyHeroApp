@@ -6,7 +6,7 @@ const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
 var bodyParser = require("body-parser")
 
 // module.exports = function ({ HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes, AuthRoutes }) {
-    module.exports = function ({ UserRoutes}) {
+    module.exports = function ({ UserRoutes,  AuthRouters}) {
 
     const router = express.Router();
     const apiRoutes = express.Router();
@@ -30,7 +30,7 @@ var bodyParser = require("body-parser")
     apiRoutes.use('/user', UserRoutes);
     // apiRoutes.use('/idea', IdeaRoutes);
     // apiRoutes.use('/comment', CommentRoutes);
-    // apiRoutes.use('/auth', AuthRoutes)
+    apiRoutes.use('/auth', AuthRouters)
 
     // todas nuestras rutas utilizaran de base la siguiente ruta
     router.use('/api', apiRoutes);

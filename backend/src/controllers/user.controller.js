@@ -10,10 +10,6 @@ class UserController {
         const { idUsu } = req.params;
         const user = await _userService.get(idUsu);
         //    JSON.stringify(user)
-        // console.log(user)
-        //    console.log("probando " +util.inspect(user, {showHidden: false, depth: null}))
-        //    console.log("probando a ver si sale algo" + user)
-          
         return res.send(user);
     }
 }

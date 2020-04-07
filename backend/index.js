@@ -3,17 +3,12 @@ const container = require('./src/startup/container');
 const server = container.resolve('server');
 const DB = container.resolve('DB');
 
-// const DB = container.resolve('DB');
-
-
-
-function conexion(){
+function conexion() {
     server.start()
-    .catch(console.log)
+        .catch(console.log)
     DB.conexion()
+        .catch(console.log)
 
-
-    
 }
 
 conexion();

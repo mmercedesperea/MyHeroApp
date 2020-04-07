@@ -8,8 +8,8 @@ class UserService extends BaseService{
     }
 
 
-    // async getUserByUserAlias(alias){
-    //     return await _userRepository.getUserByUserAlias(alias);
+    // async getUserByemail(email){
+    //     return await _userRepository.getUserBymail(email);
     // }
 }
 
