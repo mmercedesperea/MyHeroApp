@@ -55,6 +55,6 @@ container
     .register({
         UserRepository: asClass(UserRepository).singleton(),
     })
-    .register({ User: asValue(User) })
+    .register({ User: asClass(User) })
 
 module.exports = container;

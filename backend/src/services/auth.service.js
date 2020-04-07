@@ -3,31 +3,38 @@ let _userService = null;
 let _userOBJ = null;
 
 class AuthService {
-    constructor({ UserService }) {
+    constructor({ UserService, User }) {
         _userService = UserService;
-        // _userOBJ = User;
+        _userOBJ = User;
     }
 
     async signUp(user) {
-        // const { email } = user;
-        // const userExist = await _userService.getUserByemail(email);
-        // if (userExist) {
-        //     const error = new Error();
-        //     error.status = 400;
-        //     error.message = "User already exists";
-        //     throw error;
-        // }
+        const { email } = user;
+        const userExist = await _userService.getUserByemail(email);
+        console.log(userExist);
 
-        // if (!userExist) {
-            // _userOBJ.pre(user);
-        // }
+        if (userExist) {
+            const error = new Error();
+            error.status = 400;
+            error.message = "User already exists";
+            throw error;
+        }
+        if (!userExist) {
+           
+            const usuario = await _userOBJ.pre(user);
+ 
+            console.log("llego aqui usuario");
+            console.log(usuario)
+            return await _userService.create(usuario);
 
-        return await _userService.create(user);
+        }
+
 
 
     }
 
     async signIn(user) {
+        // cogemos el email y la contraseña
         const { email, password } = user;
         const userExist = await _userService.getUserByemail(email);
         if (!userExist) {
@@ -37,8 +44,12 @@ class AuthService {
             throw error;
         }
 
-
-        const validPassword = userExist.comparePasswords(password);
+       const UserPas= userExist[0].password;
+       console.log(UserPas);
+        // const usuario = await _userOBJ.pre(user);
+        const validPassword =  await _userOBJ.comparePasswords(UserPas,password);
+       console.log(validPassword);
+       
         if (!validPassword) {
             const error = new Error();
             error.status = 400;

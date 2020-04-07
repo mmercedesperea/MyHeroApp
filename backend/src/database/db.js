@@ -31,16 +31,18 @@ class DBConexion {
         // global.mysqlConnection = mysqlConnection;
     }
 
-    async consulta(table,id) {
+    async consulta(sql) {
         return new Promise((resolve, reject) => {
-            _db.query(`SELECT * from ${table} WHERE idUsu =${id}`,
+            _db.query(sql,
                 (err, rows, fields) => {
-                    if (err) console.log(err);
-                    // _row = rows
-                    // console.log(rows)
-                    resolve(rows);
-                })
-        })
+                    if (err) { console.log(err); }
+                    else if (rows.length > 0) {
+                        resolve(rows);
+                    }
+                    else { resolve(null) }
+
+                });
+        });
     }
 
     async create(sql) {
