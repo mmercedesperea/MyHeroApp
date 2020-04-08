@@ -11,7 +11,7 @@ class AuthService {
   async signUp (user) {
     const { email } = user
     const userExist = await _userService.getUserByemail(email)
-    console.log(userExist)
+    // console.log(userExist)
 
     if (userExist) {
       const error = new Error()
@@ -21,8 +21,8 @@ class AuthService {
     }
     if (!userExist) {
       const usuario = await _userOBJ.pre(user)
-      console.log('llego aqui usuario')
-      console.log(usuario)
+      // console.log('llego aqui usuario')
+      // console.log(usuario)
       return await _userService.create(usuario)
     }
   }
@@ -39,10 +39,10 @@ class AuthService {
     }
 
     const UserPas = userExist[0].password
-    console.log(UserPas)
+    // console.log(UserPas)
     // const usuario = await _userOBJ.pre(user);
     const validPassword = await _userOBJ.comparePasswords(UserPas, password)
-    console.log(validPassword)
+    // console.log(validPassword)
 
     if (!validPassword) {
       const error = new Error()

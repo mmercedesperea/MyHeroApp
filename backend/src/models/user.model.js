@@ -4,28 +4,26 @@ const { compareSync, hashSync, genSaltSync } = require('bcryptjs')
 class User {
     constructor() {
         this.idUsu = 0;
-        this.name = ""
-        this.password = ""
-        this.alias = ""
-        this.surname = ""
-        this.dateOfBirth = ""
-        this.photo = ""
-        this.admin = ""
+        this.email = "";
+        this.password = "";
+        this.name = "";
+        this.alias = "";
+        this.surname = "";
+        this.dateOfBirth = "";
+        this.photo = "";
+        this.admin = "";
     }
 
     //  para que cada vez que se vaya a leer un documento tipo user podamos eliminar el campo contraseña para evitar que se pudiera ver
-    toJSON() {
-        let user = this.toObject()
-        delete user.password
-        return user
-    }
+    // toJSON() {
+    //     let user = this.toObject()
+    //     delete user.password
+    //     return user
+    // }
 
     // para comparar contraseñas encriptadas
     async comparePasswords(UserPas,password) {
-        console.log(UserPas);
-        console.log(password);
-        console.log(password,UserPas);
-        console.log(compareSync(password,UserPas ));
+       
         return await compareSync(password,UserPas)
     }
 
@@ -42,12 +40,12 @@ class User {
         // pero si, si se esta modificando la contraseña...
         // se genera el salt
         const salt = genSaltSync(10)
-        console.log(user)
+        // console.log(user)
         // y generamos el hash de la contraseña
         const hashedPassword = hashSync(user.password, salt)
         // y la añadimos a nuestro user
         user.password = hashedPassword
-        console.log(user)
+        // console.log(user)
         return await user;
     }
 }
