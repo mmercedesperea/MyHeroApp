@@ -24,7 +24,7 @@ class UserRepository extends BaseRepository {
       async create(entity) {
         // console.log(entity)
         // console.log(entity.email)
-        return await _DB.create(`INSERT INTO ${table} ( email, password) VALUES ('${entity.email}', '${entity.password}')`);
+        return await _DB.create(`INSERT INTO ${table} ( email, password,name) VALUES ('${entity.email}', '${entity.password}','${entity.name}')`);
     }
 
 

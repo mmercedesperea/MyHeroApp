@@ -19,10 +19,21 @@ export class UserService {
 
   // routes
 
+  // Register User
   public RegisterUser(user) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.http.post(this.baseUrl + '/auth/signup', user,
+      { headers: headers });
+  }
+
+// login User
+  public LoginUser(user) {
+    // si toker es igual a null user lleva la propiedad token
+   
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http.post(this.baseUrl + '/auth/signin', user,
       { headers: headers });
   }
 }

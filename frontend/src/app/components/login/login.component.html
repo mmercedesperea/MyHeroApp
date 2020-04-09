@@ -1,1 +1,38 @@
-<p>login works!</p>
+<body>
+    <div id="form">
+      <h1>Únete a nosotros</h1>
+      <h3>es rápido y sencillo</h3>
+      <form [formGroup]="LoginForm" (ngSubmit)="signIn()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Email" [(ngModel)]="user.email" />
+          <mat-error *ngIf="!LoginForm.controls['email'].valid">{{
+              getErrorMessage("email")
+          }}</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Contraseña"
+            [(ngModel)]="user.password" />
+          <mat-error *ngIf="!LoginForm.controls['password'].valid">
+            {{getErrorMessage("password")}}</mat-error>
+        </mat-form-field>
+  
+        <div *ngIf="!datosCorrectos">
+          <p class="mensajeError">{{  this.message }}</p>
+        </div>
+  
+        <button type="submit" class="LoginButton i" [disabled]="!LoginForm.valid">
+          Logeate
+        </button>
+      </form>
+  
+      <p>o</p>
+  
+      <p>
+        ¿No esta registrado?
+        <b><a class="registrate" [routerLink]="['/register']">Registrate</a></b>
+      </p>
+    </div>
+  </body>
