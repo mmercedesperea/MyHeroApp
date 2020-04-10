@@ -45,7 +45,11 @@ export class LoginComponent implements OnInit {
         '',
         [Validators.required, Validators.minLength(6), Validators.maxLength(30)]
       ]
-    })
+    });
+
+    console.log(this._userService.getIdentity());
+    console.log(this._userService.getToken());
+
   }
 
   getErrorMessage(dato) {
@@ -69,18 +73,27 @@ export class LoginComponent implements OnInit {
   signIn() {
     this._userService.LoginUser(this.user).subscribe(
       response => {
-        this.UserLog = response;
-        console.log(this.UserLog.token);
-        console.log(this.UserLog.user);
+        this.UserLog = response['user'];
+        console.log(this.UserLog);
+
+        // almacenamos la informacion del usuario en el local storage, lo pasamos a string ya que el local storage solo deja guardar string o numeros
+        localStorage.setItem('User',JSON.stringify(this.UserLog));
+        // console.log(this.UserLog.token);
+        // console.log(this.UserLog.user);
         // console.log(this.user)
         console.log('Logeado correctamente')
         // this.message = 'Logeado correctamente '
         // // limpiamos el usuario
         // this.user = new User(0, '', '', '', '', '', new Date(0), '', 0)
         // this.LoginForm.reset()
-        // this.router.navigate(['/home'])
+        this.router.navigate(['/']);
         // this.datosCorrectos = true
 
+        this.token = response['token'];
+        // guardamos el token en el localStorage
+        localStorage.setItem('token',this.token);
+
+        console.log(this.token)
         //obtener el token
         // this._userService.LoginUser(this.user, 'true').subscribe(
         //   response => {
@@ -98,6 +111,10 @@ export class LoginComponent implements OnInit {
         this.datosCorrectos = false
         if (error.status === 400) {
           this.message = 'La contraseña no es correcta'
+          console.log(error.status)
+          console.log(this.message)
+        } else if (error.status === 402) {
+          this.message = 'El usuario no existe'
           console.log(error.status)
           console.log(this.message)
         } else {

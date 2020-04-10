@@ -41,6 +41,7 @@ class AuthService {
     const UserPas = userExist[0].password
     // console.log(UserPas)
     // const usuario = await _userOBJ.pre(user);
+    //comporbamos las contraseñas
     const validPassword = await _userOBJ.comparePasswords(UserPas, password)
     // console.log(validPassword)
 

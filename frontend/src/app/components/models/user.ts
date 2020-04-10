@@ -9,6 +9,7 @@ export class User{
         public dateOfBirth? : Date,
         public photo? : string,
         public admin? : number,
+        public exp?: number
     ){}
 }
 
