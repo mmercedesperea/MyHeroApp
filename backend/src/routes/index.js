@@ -3,10 +3,12 @@ const cors = require('cors');
 require('express-async-errors');
 const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
 
-var bodyParser = require("body-parser")
+var bodyParser = require("body-parser");
+
+
 
 // module.exports = function ({ HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes, AuthRoutes }) {
-    module.exports = function ({ UserRoutes,  AuthRouters}) {
+    module.exports = function ({ UserRoutes,  AuthRouters, ApiHeroRoute, HeroRoute}) {
 
     const router = express.Router();
     const apiRoutes = express.Router();
@@ -30,7 +32,9 @@ var bodyParser = require("body-parser")
     apiRoutes.use('/user', UserRoutes);
     // apiRoutes.use('/idea', IdeaRoutes);
     // apiRoutes.use('/comment', CommentRoutes);
-    apiRoutes.use('/auth', AuthRouters)
+    apiRoutes.use('/auth', AuthRouters);
+    apiRoutes.use('/apiHero', ApiHeroRoute);
+    apiRoutes.use('/hero', HeroRoute);
 
     // todas nuestras rutas utilizaran de base la siguiente ruta
     router.use('/api', apiRoutes);

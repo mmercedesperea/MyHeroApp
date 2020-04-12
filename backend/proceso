@@ -1,5 +1,8 @@
 npm install express express-async-errors awilix cors compression helmet bcryptjs jsonwebtoken swagger-ui-express
 npm install mysql
 
+//The simplified HTTP request client 'request' with Promise support. Powered by Bluebird.
+npm i request-promise
+
 
 npm i -D dotenv nodemon 

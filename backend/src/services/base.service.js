@@ -11,7 +11,6 @@ class BaseService {
             error.message = 'id must be sent';
             throw error;
         }
-
         // en caso de que exista la id vamos a buscar esa entidad
         const currentEntity = await this.repository.get(id);
         // JSON.stringify(currentEntity);
@@ -45,9 +44,7 @@ class BaseService {
             error.message = 'id must be sent';
             throw error;
         }
-
         return await this.repository.update(id, entity);
-
     }
 
     // borrar un elemento por su id

@@ -35,7 +35,10 @@ class DBConexion {
         return new Promise((resolve, reject) => {
             _db.query(sql,
                 (err, rows, fields) => {
-                    if (err) { console.log(err); }
+                    if (err) {
+                        console.log(err);
+                        reject("NO se ha podido obtener" + err);
+                    }
                     else if (rows.length > 0) {
                         resolve(rows);
                     }
@@ -47,13 +50,34 @@ class DBConexion {
 
     async create(sql) {
         return new Promise((resolve, reject) => {
+            console.log(sql)
             _db.query(sql,
                 (err) => {
-                    if (err) console.log(err);
+                    if (err) {
+                        console.log(err);
+                        reject("NO se ha podido crear" + err);
+                    } else {
+                        resolve("Elemento creado");
+                    }
+                })
+        })
+    }
+
+    async update(sql) {
+        return new Promise((resolve, reject) => {
+            console.log(sql)
+            _db.query(sql,
+                (err) => {
+                    if (err) {
+                        console.log(err);
+                        reject("NO se ha podido actualizar" + err);
+                    } else {
+                        resolve("Elemento actualizado");
+                    }
                     // _row = rows
                     // console.log(rows)
-                    resolve(console.log("usuario creado"));
                 })
+            // resolve(console.log("Elemento actualizado"));
         })
     }
 

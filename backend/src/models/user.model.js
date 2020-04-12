@@ -48,6 +48,19 @@ class User {
         // console.log(user)
         return await user;
     }
+
+
+    // hash Password
+    async hasPass(password){
+        const salt = genSaltSync(10)
+        // console.log(user)
+        // y generamos el hash de la contraseña
+        const hashedPassword = hashSync(password, salt)
+        
+        // console.log(user)
+        return await hashedPassword;
+
+    }
 }
 
 module.exports = User
