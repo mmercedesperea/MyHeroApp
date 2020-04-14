@@ -56,6 +56,40 @@ class UserService extends BaseService {
         return await _userRepository.updatePass(id, entity);
     }
 
+    async deleteUser(id, entity) {
+
+        if (!id) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'id must be sent';
+            throw error;
+        }
+        // comprobamos que el usuario existe
+        const userExist = await this.getUserByemail(entity.email);
+
+        if (!userExist) {
+            const error = new Error()
+            error.status = 402
+            error.message = 'User does not exists'
+            throw error
+        }
+        // guardamos la contraseña del usuario perteneciente a ese emal
+        const UserPas = userExist[0].password
+
+        //comporbamos las contraseñas
+        const validPassword = await _userOBJ.comparePasswords(UserPas, entity.password)
+
+        if (!validPassword) {
+            const error = new Error()
+            error.status = 400
+            error.message = 'Invalid Password'
+            throw error
+        }
+
+        return await _userRepository.deleteUser(id);
+    }
+
+
 }
 
 

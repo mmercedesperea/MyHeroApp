@@ -47,18 +47,18 @@ class BaseService {
         return await this.repository.update(id, entity);
     }
 
-    // borrar un elemento por su id
-    async delete(id) {
-        if (!id) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'id must be sent';
+    // // borrar un elemento por su id
+    // async delete(id) {
+    //     if (!id) {
+    //         const error = new Error();
+    //         error.status = 400;
+    //         error.message = 'id must be sent';
 
-            throw error;
-        }
+    //         throw error;
+    //     }
 
-        return await this.repository.delete(id);
-    }
+    //     return await this.repository.delete(id);
+    // }
 
 }
 

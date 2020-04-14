@@ -30,6 +30,13 @@ class UserRepository extends BaseRepository {
         return await _DB.update(`UPDATE ${table} SET password = '${entity.newPassword}' WHERE idUsu = ${idUsu}`);
     }
 
+   
+
+     // eliminar usuario
+     async  deleteUser(idUsu) {
+        return await _DB.delete(`DELETE FROM ${table} WHERE idUsu = ${idUsu}`);
+    }
+
 
 
 

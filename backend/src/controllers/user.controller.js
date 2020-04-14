@@ -29,6 +29,15 @@ class UserController {
         console.log( updatePass)
         return res.status(201).send({message: updatePass});
     }
+
+    async delete(req, res) {
+        const { idUsu } = req.params;
+        const { body } = req;
+        const  deleteUser = await _userService.deleteUser(idUsu, body);
+        console.log( deleteUser)
+        return res.status(201).send({message: deleteUser});
+
+    }
     
 
     // async uploadImage(req,res){

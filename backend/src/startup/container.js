@@ -7,7 +7,7 @@ const config = require('../config');
 const server = require('./index');
 
 // routes
-const { UserRoutes, AuthRouters, ApiHeroRoute,HeroRoute } = require('../routes/index.routes');
+const { UserRoutes, AuthRouters, ApiHeroRoute,HeroRoute, UserHeroRoute } = require('../routes/index.routes');
 const Routes = require('../routes');
 
 // DB
@@ -15,16 +15,16 @@ const DB = require('../database/db');
 
 
 // services
-const { UserService,  AuthService, ApiHeroService, HeroService} = require("../services");
+const { UserService,  AuthService, ApiHeroService, HeroService,UserHeroService} = require("../services");
 
 // repositories
-const { UserRepository, ApiHeroRepository,HeroRepository } = require('../repositories');
+const { UserRepository, ApiHeroRepository,HeroRepository,UserHeroRepository } = require('../repositories');
 
 // controllers
-const { UserController,AuthController, ApiHeroController,HeroController } = require('../controllers');
+const { UserController,AuthController, ApiHeroController,HeroController, UserHeroController } = require('../controllers');
 
 //models
-const { User, Hero } = require('../models');
+const { User, Hero, UserHero } = require('../models');
 
 // creamos nuestro contenedor donde definimos nuestros elementos
 const container = createContainer();
@@ -41,7 +41,8 @@ container
         UserService: asClass(UserService).singleton(),
         AuthService: asClass(AuthService).singleton(),
         ApiHeroService: asClass(ApiHeroService).singleton(),
-        HeroService:asClass(HeroService).singleton()
+        HeroService:asClass(HeroService).singleton(),
+        UserHeroService :asClass(UserHeroService ).singleton()
     })
     .register({
         // bind se utiliza para que express a la hora de llamar un controlador el scope se mantenga
@@ -49,18 +50,21 @@ container
         AuthController:  asClass(AuthController.bind(AuthController)).singleton(),
         ApiHeroController: asClass(ApiHeroController.bind(ApiHeroController)).singleton(),
         HeroController:asClass(HeroController.bind(HeroController)).singleton(),
+        UserHeroController: asClass(UserHeroController.bind(UserHeroController)).singleton(),
     })
     .register({
         UserRoutes: asFunction(UserRoutes).singleton(),
         AuthRouters: asFunction(AuthRouters).singleton(),
         ApiHeroRoute: asFunction(ApiHeroRoute).singleton(),
         HeroRoute: asFunction(HeroRoute).singleton(),
+        UserHeroRoute: asFunction(UserHeroRoute).singleton(),
     })
     .register({
         UserRepository: asClass(UserRepository).singleton(),
         ApiHeroRepository: asClass(ApiHeroRepository).singleton(),
         HeroRepository: asClass(HeroRepository).singleton(),
+        UserHeroRepository: asClass(UserHeroRepository).singleton()
     })
-    .register({ User: asClass(User), Hero: asClass(Hero) })
+    .register({ User: asClass(User), Hero: asClass(Hero),UserHero:asClass(UserHero) })
 
 module.exports = container;

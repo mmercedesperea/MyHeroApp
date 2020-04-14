@@ -4,23 +4,25 @@ const { Router } = require('express');
 const { AuthMiddleware, ParseIntMiddleware, CacheMiddleware } = require('../middlewares');
 
 module.exports = function ({ UserController }) {
-    const router = Router();
-//     // para la subida de archivos
-// var multipart = require('connect-multiparty');
-// var md_upload= multipart({ uploadDIr:'./uploads/users'});
+  const router = Router();
+  //     // para la subida de archivos
+  // var multipart = require('connect-multiparty');
+  // var md_upload= multipart({ uploadDIr:'./uploads/users'});
 
-    //obtener un usuario
-    router.get('/:idUsu', UserController.get);
+  //obtener un usuario
+  router.get('/:idUsu', UserController.get);
 
-     //actualizar un usuario
-    router.put('/:idUsu', UserController.update);
+  //actualizar un usuario
+  router.put('/:idUsu', UserController.update);
+
+  //actualizar contraseña
+  router.put('/newpass/:idUsu', UserController.updatePass);
+
+  // Eliminar informacion de usuario de la bd
+  router.delete('/:idUsu', UserController.delete);
+
+  // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
 
 
-      //actualizar contraseña
-      router.post('/newpass/:idUsu', UserController.updatePass);
-
-    // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
-
-
-    return router;
+  return router;
 };

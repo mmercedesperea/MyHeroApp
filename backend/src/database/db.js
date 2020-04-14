@@ -81,6 +81,35 @@ class DBConexion {
         })
     }
 
+    async create(sql) {
+        return new Promise((resolve, reject) => {
+            console.log(sql)
+            _db.query(sql,
+                (err) => {
+                    if (err) {
+                        console.log(err);
+                        reject("NO se ha podido crear" + err);
+                    } else {
+                        resolve("Elemento creado");
+                    }
+                })
+        })
+    }    
+    async delete(sql) {
+        return new Promise((resolve, reject) => {
+            console.log(sql)
+            _db.query(sql,
+                (err) => {
+                    if (err) {
+                        console.log(err);
+                        reject("NO se ha podido eliminar" + err);
+                    } else {
+                        resolve("Elemento eliminado");
+                    }
+                })
+        })
+    }
+
     // global.mysqlConnection = mysqlConnection;
     // async dbData(sql) {
 

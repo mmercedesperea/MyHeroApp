@@ -3,4 +3,5 @@ module.exports = {
     AuthRouters: require('./auth.routes'),
     ApiHeroRoute: require('./apiHero.route'),
     HeroRoute: require('./hero.route'),
+    UserHeroRoute: require('./userHero.routes'),
 }

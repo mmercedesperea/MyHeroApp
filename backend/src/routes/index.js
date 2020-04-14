@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 
 
 // module.exports = function ({ HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes, AuthRoutes }) {
-    module.exports = function ({ UserRoutes,  AuthRouters, ApiHeroRoute, HeroRoute}) {
+    module.exports = function ({ UserRoutes,  AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute}) {
 
     const router = express.Router();
     const apiRoutes = express.Router();
@@ -35,6 +35,7 @@ var bodyParser = require("body-parser");
     apiRoutes.use('/auth', AuthRouters);
     apiRoutes.use('/apiHero', ApiHeroRoute);
     apiRoutes.use('/hero', HeroRoute);
+    apiRoutes.use('/userHero', UserHeroRoute);
 
     // todas nuestras rutas utilizaran de base la siguiente ruta
     router.use('/api', apiRoutes);
