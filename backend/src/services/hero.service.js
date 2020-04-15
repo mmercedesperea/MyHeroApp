@@ -9,14 +9,6 @@ class HeroService extends BaseService{
         _heroOBJ = Hero;
     }
 
-    // //obtener una entidad por id
-    // async get(id) {
-    //     // console.log(this.table)
-    //     // console.log('LA ID ESSS' + id)
-    //     return await this.DB.consulta(`SELECT * from ${this.table} WHERE idUsu =${id}`)
-    //     // return await this.DB.consulta(this.table, id);
-
-    // }
 
 }
 

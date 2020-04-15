@@ -4,4 +4,5 @@ module.exports = {
     ApiHeroRoute: require('./apiHero.route'),
     HeroRoute: require('./hero.route'),
     UserHeroRoute: require('./userHero.routes'),
+    TeamRoute: require('./team.routes'),
 }

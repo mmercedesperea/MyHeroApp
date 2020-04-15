@@ -31,6 +31,7 @@ class DBConexion {
         // global.mysqlConnection = mysqlConnection;
     }
 
+    // obtener elemento
     async consulta(sql) {
         return new Promise((resolve, reject) => {
             _db.query(sql,
@@ -47,7 +48,7 @@ class DBConexion {
                 });
         });
     }
-
+    // crear
     async create(sql) {
         return new Promise((resolve, reject) => {
             console.log(sql)
@@ -94,7 +95,8 @@ class DBConexion {
                     }
                 })
         })
-    }    
+    }
+
     async delete(sql) {
         return new Promise((resolve, reject) => {
             console.log(sql)
@@ -109,6 +111,25 @@ class DBConexion {
                 })
         })
     }
+
+    //true false
+    // async match(sql) {
+    //     return new Promise((resolve, reject) => {
+    //         _db.query(sql,
+    //             (err, rows, fields) => {
+    //                 if (err) {
+    //                     console.log(err);
+    //                     reject("NO se ha podido obtener" + err);
+    //                 }
+    //                 else if (rows.length > 0) {
+    //                     resolve(true);
+    //                 }
+    //                 else { resolve(false) }
+
+    //             });
+    //     });
+
+    // }
 
     // global.mysqlConnection = mysqlConnection;
     // async dbData(sql) {
