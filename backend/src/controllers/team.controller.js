@@ -27,20 +27,35 @@ class TeamController{
         return res.send(team);
     }
 
-    async  addMenber(req, res) {
+    async  chageName(req, res) {
         const { idTeam } = req.params;
         const { body } = req;
-        const  addMenber = await _teamService.update(idTeam,body);
-        console.log(addMenber)
-        return res.status(201).send({message:addMenber});
+        const  chageName = await _teamService.update(idTeam,body);
+        console.log(chageName)
+        return res.status(201).send({message:chageName});
     }
 
-    async  deleteMenber(req, res) {
+    async  addMember(req, res) {
         const { idTeam } = req.params;
-        const { idMenber} = req.params;
-        const  deleteMenber = await _teamService.deleteMenber(idTeam,idMenber);
-        console.log(deleteMenber)
-        return res.status(201).send({message: deleteMenber});
+        const { body } = req;
+        const  addMember = await _teamService.addMember(idTeam,body);
+        console.log(addMember)
+        return res.status(201).send({message:addMember});
+    }
+
+    async  deleteMember(req, res) {
+        const { idTeam } = req.params;
+        const { body } = req;
+        const  deleteMember = await _teamService.deleteMember(idTeam,body);
+        console.log(deleteMember)
+        return res.status(201).send({message: deleteMember});
+    }
+
+    async  delete(req, res) {
+        const { idTeam } = req.params;
+        const  deleteTeam = await _teamService.delete(idTeam);
+        console.log(deleteTeam)
+        return res.status(201).send({message: deleteTeam});
     }
 
 }

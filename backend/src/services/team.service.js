@@ -2,41 +2,67 @@ const BaseService = require('./base.service');
 let _teamRepository = null;
 // let _userOBJ = null;
 class TeamService extends BaseService {
-    constructor(TeamRepository){
+    constructor({ TeamRepository }) {
         super(TeamRepository);
         _teamRepository = TeamRepository;
     }
 
     // traer el numero de miembros
-async checkTeam(idTeam){
+    async checkTeam(idTeam) {
+        if (!idTeam) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'idTeam must be sent';
+            throw error;
+        }
 
-    if (!idTeam) {
-        const error = new Error();
-        error.status = 400;
-        error.message = 'idTeam must be sent';
-        throw error;
-    }
-    return await _teamRepository.checkTeam(idTeam);
-}
+        const numMembers = await _teamRepository.checkTeam(idTeam);
 
-async deleteMenber(idTeam,idMenber){
-    if (!idTeam) {
-        const error = new Error();
-        error.status = 400;
-        error.message = 'idTeam must be sent';
-        throw error;
-    }
-
-    if (!idMenber) {
-        const error = new Error();
-        error.status = 400;
-        error.message = 'idMenber must be sent';
-        throw error;
+        // devuelve true si  se tienen todos los miembros del equipo
+        if (numMembers) {
+            return true;
+        }
+        // devuelve false si no se tienen todos los miembros del equipo
+        return false;
     }
 
-    return await _teamRepository.deleteMenber(idTeam,idMenber);
+   
 
-}
+    async addMember(idTeam, entity) {
+        if (!idTeam) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'idTeam must be sent';
+            throw error;
+        }
+        if (!entity) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'entity must be sent';
+            throw error;
+        }
+
+        return await _teamRepository.addMember(idTeam,entity);
+
+    }
+
+    async deleteMember(idTeam, entity) {
+        if (!idTeam) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'idTeam must be sent';
+            throw error;
+        }
+        if (!entity) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'entity must be sent';
+            throw error;
+        }
+
+        return await _teamRepository.deleteMember(idTeam,entity);
+
+    }
 
 
 

@@ -18,7 +18,7 @@ const DB = require('../database/db');
 const { UserService,  AuthService, ApiHeroService, HeroService,UserHeroService,TeamService} = require("../services");
 
 // repositories
-const { UserRepository, ApiHeroRepository,HeroRepository,UserHeroRepository } = require('../repositories');
+const { UserRepository, ApiHeroRepository,HeroRepository,UserHeroRepository, TeamRepository } = require('../repositories');
 
 // controllers
 const { UserController,AuthController, ApiHeroController,HeroController, UserHeroController, TeamController } = require('../controllers');
@@ -66,7 +66,8 @@ container
         UserRepository: asClass(UserRepository).singleton(),
         ApiHeroRepository: asClass(ApiHeroRepository).singleton(),
         HeroRepository: asClass(HeroRepository).singleton(),
-        UserHeroRepository: asClass(UserHeroRepository).singleton()
+        UserHeroRepository: asClass(UserHeroRepository).singleton(),
+        TeamRepository:asClass(TeamRepository).singleton()
     })
     .register({ User: asClass(User), Hero: asClass(Hero),UserHero:asClass(UserHero) })
 

@@ -4,17 +4,17 @@ let _userHeroRepository = null
 let _userHeroOBJ = null
 
 class UserHeroService extends BaseService {
-  constructor ({ UserHeroRepository, UserHero }) {
+  constructor({ UserHeroRepository, UserHero }) {
     super(UserHeroRepository)
     _userHeroRepository = UserHeroRepository
     _userHeroOBJ = UserHero
   }
 
-  async match (body) {
+  async match(body) {
     return await _userHeroRepository.match(body)
   }
 
-  async followHero (body) {
+  async followHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -51,7 +51,7 @@ class UserHeroService extends BaseService {
   }
 
 
-  async unfollowHero (body) {
+  async unfollowHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -66,13 +66,13 @@ class UserHeroService extends BaseService {
       throw error
     }
 
-      // actualizamos el campo de follow a false
-      return await _userHeroRepository.unfollowUH(body)
-    
+    // actualizamos el campo de follow a false
+    return await _userHeroRepository.unfollowUH(body)
+
   }
 
 
-  async favorite (body) {
+  async favorite(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -109,7 +109,7 @@ class UserHeroService extends BaseService {
   }
 
 
-  async unfavorite (body) {
+  async unfavorite(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -124,12 +124,12 @@ class UserHeroService extends BaseService {
       throw error
     }
 
-      // actualizamos el campo de follow a false
-      return await _userHeroRepository.unfavorite(body)
-    
+    // actualizamos el campo de follow a false
+    return await _userHeroRepository.unfavorite(body)
+
   }
 
-  async voteHero (body) {
+  async voteHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -166,7 +166,7 @@ class UserHeroService extends BaseService {
   }
 
 
-  async commentHero (body) {
+  async commentHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -202,7 +202,7 @@ class UserHeroService extends BaseService {
     }
   }
 
-  async deleteCHero (body) {
+  async deleteCHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -217,13 +217,87 @@ class UserHeroService extends BaseService {
       throw error
     }
 
-    
-      return await _userHeroRepository.deleteCHero(body);
-    
+
+    return await _userHeroRepository.deleteCHero(body);
+
+  }
+
+  async getFav(id) {
+    if (!id) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'id must be sent';
+      throw error;
+    }
+    // en caso de que exista la id vamos a buscar esa entidad
+    const currentEntity = await _userHeroRepository.getFav(id);
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'There is no relationship';
+      throw error;
+    }
+    return currentEntity;
+  }
+
+  async getCommentHero(idUser, idHero) {
+    if (!idUser) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idUser must be sent';
+      throw error;
+    }
+
+    if (!idHero) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idHero must be sent';
+      throw error;
+    }
+    // en caso de que exista la id vamos a buscar esa entidad
+    const currentEntity = await _userHeroRepository.getCommentHero(idUser, idHero);
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'There is no relationship';
+      throw error;
+    }
+    return currentEntity;
   }
 
 
-  
+  async getVoteHero(idUser, idHero) {
+    if (!idUser) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idUser must be sent';
+      throw error;
+    }
+
+    if (!idHero) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idHero must be sent';
+      throw error;
+    }
+    // en caso de que exista la id vamos a buscar esa entidad
+    const currentEntity = await _userHeroRepository.getVoteHero(idUser, idHero);
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'There is no relationship';
+      throw error;
+    }
+    return currentEntity;
+  }
+
+
 }
 
 module.exports = UserHeroService

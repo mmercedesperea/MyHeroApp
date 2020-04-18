@@ -22,7 +22,7 @@ class UserRepository extends BaseRepository {
 
     // actualiza a un usuario
     async update(idUsu, entity) {
-        return await _DB.update(`UPDATE ${table}  SET email = '${entity.email}',SET name = '${entity.name}', alias = '${entity.alias}',surname ='${entity.surname}' ,dateOfBirth ='${entity.dateOfBirth}' WHERE idUsu = ${idUsu}`);
+        return await _DB.update(`UPDATE ${table}  SET email = '${entity.email}', name = '${entity.name}', alias = '${entity.alias}',surname ='${entity.surname}' ,dateOfBirth ='${entity.dateOfBirth}' WHERE idUsu = ${idUsu}`);
     }
 
     // actualiza la contraseña
@@ -30,18 +30,10 @@ class UserRepository extends BaseRepository {
         return await _DB.update(`UPDATE ${table} SET password = '${entity.newPassword}' WHERE idUsu = ${idUsu}`);
     }
 
-   
-
-     // eliminar usuario
-     async  deleteUser(idUsu) {
+    // eliminar usuario
+    async  deleteUser(idUsu) {
         return await _DB.delete(`DELETE FROM ${table} WHERE idUsu = ${idUsu}`);
     }
-
-
-
-
-
-
 
 }
 

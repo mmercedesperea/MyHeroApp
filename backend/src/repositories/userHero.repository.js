@@ -1,13 +1,13 @@
-const BaseRepository = require('./base.repository');
+// const BaseRepository = require('./base.repository');
 // let _user = null;
 let table = null;
 let _DB = null
 
-class UserHeroRepository extends BaseRepository {
+class UserHeroRepository  {
     constructor({ DB }) {
         table = "usu_hero"
         _DB = DB
-        super(DB, table)
+        // super(DB, table)
     }
 
     async match(body) {
@@ -49,6 +49,22 @@ class UserHeroRepository extends BaseRepository {
         return await _DB.update(`UPDATE ${table}  SET comment =  NULL WHERE idUsu = ${body.idUsu} AND idHero = ${body.idHero}`);
     }
 
+    async get(id) {
+        return await _DB.consulta(`SELECT * from ${table} WHERE follow = 1 AND idUsu =${id}`)
+    }
+
+    async getFav(id) {
+        return await _DB.consulta(`SELECT * from ${table} WHERE favorite = 1 AND idUsu =${id}`)
+    }
+    
+    
+    async getCommentHero(idUser,idHero) {
+        return await _DB.consulta(`SELECT comment from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
+    }
+
+    async getVoteHero(idUser,idHero) {
+        return await _DB.consulta(`SELECT score from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
+    }
 }
 
 module.exports = UserHeroRepository;

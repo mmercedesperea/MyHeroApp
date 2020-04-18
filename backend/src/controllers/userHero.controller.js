@@ -56,6 +56,44 @@ class UserHeroController{
         return res.status(201).send({message: deleteCHero});
     }
 
+    //obtener todos los heroes favoritos
+    async allHerosFav(req, res) {
+        const { idUsu } = req.params;
+        const allHeros = await _userHeroService.getFav(idUsu);
+        //    JSON.stringify(user)
+        return res.send(allHeros);
+    }
+
+    //obtener todos los heroes siguiendo
+    async allHerosFoll(req, res) {
+        const { idUsu } = req.params;
+        const allHeros = await _userHeroService.get(idUsu);
+        //    JSON.stringify(user)
+        return res.send(allHeros);
+    }
+
+    
+     //obtener tel comentario de un usuario sobre un hero
+     async getCommentHero(req, res) {
+        const { idUsu } = req.params;
+        const { idHero } = req.params;
+        const allHeros = await _userHeroService.getCommentHero(idUsu,idHero);
+        //    JSON.stringify(user)
+        return res.send(allHeros);
+    }
+
+    
+
+    //obtener el voto de un usuario sobre un hero
+    async getVoteHero(req, res) {
+        const { idUsu } = req.params;
+        const { idHero } = req.params;
+        const allHeros = await _userHeroService.getVoteHero(idUsu,idHero);
+        //    JSON.stringify(user)
+        return res.send(allHeros);
+    }
+
+
 }
 
 module.exports = UserHeroController;
