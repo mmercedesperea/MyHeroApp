@@ -5,9 +5,8 @@ module.exports = function({HeroController}){
       //obtener un hero
       router.get('/:idHero', HeroController.get);
 
-
-      //obtener un hero winner
-      router.get('/:idHero/:idHero2', HeroController.getWinner);
+      //obtener un hero
+      router.get('/:idHero', HeroController.get);
 
       return router;
 };

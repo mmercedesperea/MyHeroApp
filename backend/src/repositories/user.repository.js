@@ -17,7 +17,7 @@ class UserRepository extends BaseRepository {
 
     // crear unna nueva entidad usuario
     async create(entity) {
-        return await _DB.create(`INSERT INTO ${table} ( email, password,name) VALUES ('${entity.email}', '${entity.password}','${entity.name}')`);
+        return await _DB.create(`INSERT INTO ${table} ( email, password,alias) VALUES ('${entity.email}', '${entity.password}','${entity.alias}')`);
     }
 
     // actualiza a un usuario

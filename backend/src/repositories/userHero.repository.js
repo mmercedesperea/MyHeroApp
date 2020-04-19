@@ -65,6 +65,16 @@ class UserHeroRepository  {
     async getVoteHero(idUser,idHero) {
         return await _DB.consulta(`SELECT score from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
     }
+
+
+    // async bestMarverHero() {
+    //     return await _DB.consulta(`select a.idHero, a.name, a.image, sum(b.score) as score FROM heroes a, usu_hero b  WHERE a.publisher = 'Marvel Comics' AND a.idHero = b.idHero GROUP by idHero`)
+    // }
+
+    // async bestDCHero() {
+    //     return await _DB.consulta(`SELECT score from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
+    // }
+
 }
 
 module.exports = UserHeroRepository;

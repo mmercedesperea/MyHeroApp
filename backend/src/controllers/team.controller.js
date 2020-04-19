@@ -58,6 +58,13 @@ class TeamController{
         return res.status(201).send({message: deleteTeam});
     }
 
+
+    async bestTeam(req, res) {
+        const team = await _teamService.bestTeam();
+        //    JSON.stringify(team)
+        return res.send(team);
+    }
+
 }
 
 

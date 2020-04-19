@@ -298,6 +298,35 @@ class UserHeroService extends BaseService {
   }
 
 
+
+
+  async bestMarverHero() {
+    const currentEntity = await _userHeroRepository.bestMarverHero();
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'There is hero from marvel';
+      throw error;
+    }
+    return currentEntity;
+  }
+
+  async bestDCHero() {
+    const currentEntity = await _userHeroRepository.bestDCHero();
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'There is hero from DC';
+      throw error;
+    }
+    return currentEntity;
+  }
+
+
 }
 
 module.exports = UserHeroService

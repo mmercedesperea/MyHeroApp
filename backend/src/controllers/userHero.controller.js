@@ -93,6 +93,20 @@ class UserHeroController{
         return res.send(allHeros);
     }
 
+    
+    async bestMarverHero(req, res) {
+        const bestM = await _userHeroService.bestMarverHero();
+        //    JSON.stringify(user)
+        return res.send(bestM);
+    }
+
+    async bestDCHero(req, res) {
+        const bestDC = await _userHeroService.bestDCHero();
+        //    JSON.stringify(user)
+        return res.send(bestDC);
+    }
+
+
 
 }
 

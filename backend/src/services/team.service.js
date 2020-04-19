@@ -64,6 +64,22 @@ class TeamService extends BaseService {
 
     }
 
+    // bestTeam
+
+    async bestTeam() {
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _teamRepository.bestTeam();
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'Entity must be sent';
+            throw error;
+        }
+        return currentEntity;
+    }
+
 
 
 }

@@ -20,10 +20,13 @@ module.exports = function ({ TeamController }) {
     router.get('/checkTeam/:idTeam', TeamController.checkTeam);
 
     // obtener equipo
-    router.get('/:idTeam', TeamController.getTeam);
+    router.get('/getTeam/:idTeam', TeamController.getTeam);
 
     // borrar un equipo
     router.delete('/:idTeam', TeamController.delete);
+
+    // obtener equipo con mayor stats
+    router.get('/bestTeam', TeamController.bestTeam);
 
     return router;
 }
