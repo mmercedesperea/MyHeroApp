@@ -22,10 +22,8 @@ module.exports = function ({ TeamController }) {
     // obtener equipo
     router.get('/:idTeam', TeamController.getTeam);
 
-
     // borrar un equipo
     router.delete('/:idTeam', TeamController.delete);
-
 
     return router;
 }

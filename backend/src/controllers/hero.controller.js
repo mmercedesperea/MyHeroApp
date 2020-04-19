@@ -14,6 +14,16 @@ class HeroController{
         //    JSON.stringify(user)
         return res.send(hero);
     }
+
+
+  
+    async getWinner(req, res) {
+        const { idHero } = req.params;
+        const { idHero2 } = req.params;
+        const heroWin = await _heroService.getWinner(idHero,idHero2);
+        //    JSON.stringify(user)
+        return res.send(heroWin);
+    }
 }
 
 module.exports = HeroController;

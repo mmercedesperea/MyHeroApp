@@ -20,8 +20,8 @@ module.exports = function ({ UserHeroController }) {
     // vote
     router.put('/voteHero', UserHeroController.voteHero);
 
-     //obtener el voto de un heroe de un usuario
-     router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
+    //obtener el voto de un heroe de un usuario
+    router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
 
     // comment
     router.put('/commentHero', UserHeroController.commentHero);

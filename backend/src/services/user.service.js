@@ -10,7 +10,6 @@ class UserService extends BaseService {
 
     // obtener el usuario por su email
     async getUserByemail(email) {
-
         if (!email) {
             const error = new Error();
             error.status = 400;
@@ -21,7 +20,6 @@ class UserService extends BaseService {
     }
 
     async updatePass(id, entity) {
-
         if (!id) {
             const error = new Error();
             error.status = 400;
@@ -88,6 +86,49 @@ class UserService extends BaseService {
 
         return await _userRepository.deleteUser(id);
     }
+
+
+    async  followUser(body) {
+        if (!body.idUsu) {
+          const error = new Error()
+          error.status = 400
+          error.message = 'id must be sent'
+          throw error
+        }
+    
+        if (!body.idUsuFollow) {
+          const error = new Error()
+          error.status = 400
+          error.message = 'id must be sent'
+          throw error
+        }
+    
+        // insertamos la relacion
+        return await _userRepository.followUser(body)
+    
+      }
+
+      async  unFollowUser(body) {
+        if (!body.idUsu) {
+          const error = new Error()
+          error.status = 400
+          error.message = 'id must be sent'
+          throw error
+        }
+    
+        if (!body.idUsuFollow) {
+          const error = new Error()
+          error.status = 400
+          error.message = 'id must be sent'
+          throw error
+        }
+    
+        // eliminamos la row
+        return await _userRepository.unFollowUser(body)
+    
+      }
+
+
 
 
 }

@@ -38,6 +38,20 @@ class UserController {
         return res.status(201).send({message: deleteUser});
 
     }
+
+    async followUser(req, res) {
+        const { body } = req;
+        const  followUser = await _userService.followUser(body);
+        console.log(followUser)
+        return res.status(201).send({message:followUser});
+    }
+
+    async unFollowUser(req, res) {
+        const { body } = req;
+        const  unFollowUser = await _userService.unFollowUser(body);
+        console.log(unFollowUser)
+        return res.status(201).send({message:unFollowUser});
+    }
     
 
     // async uploadImage(req,res){

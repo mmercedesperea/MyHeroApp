@@ -19,10 +19,16 @@ module.exports = function ({ UserController }) {
   router.put('/newpass/:idUsu', UserController.updatePass);
 
   // Eliminar informacion de usuario de la bd
-  router.delete('/:idUsu', UserController.delete);
+  router.delete('/deleteUser/:idUsu', UserController.delete);
+
+  // Follow a user
+  router.post('/followUser', UserController.followUser);
+
+  // unfollow a user
+  router.delete('/unFollowUser', UserController.unFollowUser);
+
 
   // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
-
 
   return router;
 };
