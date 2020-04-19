@@ -43,6 +43,8 @@ class HeroRepository {
 
         // se busca el heroe2 en la bd
         var Hero2 = await _DB.consulta(`SELECT SUM (intelligence + strength + speed +durability +power +combat) as totalPoints,idHero,name,image from ${table} WHERE idHero =${idHero2}`)
+        console.log(Hero1[0].totalPoints)
+        console.log(Hero2[0].totalPoints)
 
         // si los puntos totales del hero1 son mayores que el de hero2 devuelve ese
         if (Hero1[0].totalPoints > Hero2[0].totalPoints) {
