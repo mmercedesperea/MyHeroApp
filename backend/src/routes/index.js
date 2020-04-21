@@ -5,10 +5,7 @@ const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
 
 var bodyParser = require("body-parser");
 
-
-
-// module.exports = function ({ HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes, AuthRoutes }) {
-    module.exports = function ({ UserRoutes,  AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute, TeamRoute}) {
+module.exports = function ({ UserRoutes, AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute, TeamRoute }) {
 
     const router = express.Router();
     const apiRoutes = express.Router();
@@ -23,15 +20,11 @@ var bodyParser = require("body-parser");
         // )
         // para evitar problemas de cors
         .use(cors())
-        // evitar problemas de seguridad
-        // .use(helmet())
-        // 
-        // .use(compression());
-
-    // apiRoutes.use('/home', HomeRoutes);
+    // evitar problemas de seguridad
+    // .use(helmet())
+    // 
+    // .use(compression());
     apiRoutes.use('/user', UserRoutes);
-    // apiRoutes.use('/idea', IdeaRoutes);
-    // apiRoutes.use('/comment', CommentRoutes);
     apiRoutes.use('/auth', AuthRouters);
     apiRoutes.use('/apiHero', ApiHeroRoute);
     apiRoutes.use('/hero', HeroRoute);

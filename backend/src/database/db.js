@@ -4,7 +4,7 @@ const mysql = require('mysql');
 
 class DBConexion {
     constructor() {
-        pruebabd: ""
+        // pruebabd: ""
 
     }
 
