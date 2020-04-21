@@ -54,7 +54,8 @@ class AuthService {
     // poner los elementos que queremos que contenta el token
     const usertToEncode = {
       email: userExist[0].email,
-      id: userExist[0].idUsu
+      id: userExist[0].idUsu,
+      alias: userExist[0].alias
     }
     // generamos el token
     const token = generateToken(usertToEncode)

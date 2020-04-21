@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit () {
     this.datosCorrectos = true;
     this.registerForm = this.formBuilder.group({
-      name: [
+      alias: [
         '',
         [Validators.required, Validators.minLength(3), Validators.maxLength(30)]
       ],
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.controls[dato].hasError('required')) {
       return (result = 'Esta información es necesaria');
     } else if (this.registerForm.controls[dato].hasError('minlength')) {
-      if (dato === 'name') {
+      if (dato === 'alias') {
         return (result = 'Debe introducir al menos 3 caracteres');
       } else {
         return (result = 'Debe introducir al menos 6 caracteres');

@@ -39,7 +39,7 @@ export class UserService {
       { headers: headers });
   }
 
-//obtener usuario del localstorage
+  //obtener usuario del localstorage
   public getIdentity() {
     let identity = JSON.parse(localStorage.getItem('User'));
 
@@ -68,27 +68,27 @@ export class UserService {
   public getTokenInfo() {
     let token = (localStorage.getItem('token'));
     let payload;
-    if(token){
+    if (token) {
       //cortamos el token desde el punto que nos interesa
-      payload =token.split('.')[1];
-    //  utilizamos window.atob que descodifica una cadena de datos que ha sido codificada utilizando la codificación en base-64
-      payload =window.atob(payload);
-      
-     return JSON.parse(payload);
+      payload = token.split('.')[1];
+      //  utilizamos window.atob que descodifica una cadena de datos que ha sido codificada utilizando la codificación en base-64
+      payload = window.atob(payload);
+      // console.log(payload.split(`"exp":`)[1])
+      return JSON.parse(payload);
       //  // JSON.parse(payload);
       //  payload.split(`"exp":`)[1];
-      
+
       //  payload.split("}")[0];
       //  console.log(payload)
       // console.log(payload.split(`"exp":`)[1])
-    }else{
+    } else {
       return null;
     }
   }
 
 
-   //comprobar tiempo de expiracion del token
-   public isLoggedIn(): boolean {
+  //comprobar tiempo de expiracion del token
+  public isLoggedIn(): boolean {
     const user = this.getTokenInfo();
     console.log(user.exp)
     if (user) {

@@ -13,9 +13,16 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto   ">
       <li class="nav-item active" routerLinkActived="active">
         <a class="nav-link" [routerLink]="['home']">Home</a>
+      </li>
+      
+      <li class="nav-item active" routerLinkActived="active">
+        <a class="nav-link" [routerLink]="['fight']">Fight</a>
+      </li>
+      <li class="nav-item " routerLinkActived="active">
+        <a class="nav-link" [routerLink]="['myHeros']">My heroes</a>
       </li>
 
       <li class="nav-item" routerLinkActived="active" *ngIf="!identity">
@@ -24,37 +31,21 @@
       <li class="nav-item" routerLinkActived="active" *ngIf="!identity">
         <a class="nav-link" [routerLink]="['register']">Register</a>
       </li>
-
-      <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="nav-link" [routerLink]="['home']">Home</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li> -->
-      <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li> -->
     </ul>
 
-    <ul class="nav navbar-nav navbar-right" *ngIf="identity">
+    <ul class="nav navbar-nav navbar-right mr-4" *ngIf="identity">
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          {{ identity.email }} <span class="caret"></span>
+          {{ identity.alias }} <span class="caret"></span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Perfil</a>
-          <a  (click)="logout()" class="dropdown-item" href="#">salir</a>
-         
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">Admin</a>
+          <a (click)="logout()" class="dropdown-item" href="#">Exist</a>
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0  mr-4">
       <input
         class="form-control mr-sm-2"
         type="search"
@@ -62,7 +53,7 @@
         aria-label="Search"
       />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
+        Search hero
       </button>
     </form>
   </div>

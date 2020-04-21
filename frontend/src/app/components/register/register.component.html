@@ -4,10 +4,10 @@
     <h3>es rápido y sencillo</h3>
     <form [formGroup]="registerForm" (ngSubmit)="signUp()">
       <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" formControlName="name" placeholder="Nombre" [(ngModel)]="user.name" />
-        <mat-error *ngIf="!registerForm.controls['name'].valid">{{
-          getErrorMessage("name")
+        <mat-label>Alias</mat-label>
+        <input matInput type="text" formControlName="alias" placeholder="Alias" [(ngModel)]="user.alias" />
+        <mat-error *ngIf="!registerForm.controls['alias'].valid">{{
+          getErrorMessage("alias")
         }}</mat-error>
       </mat-form-field>
 
