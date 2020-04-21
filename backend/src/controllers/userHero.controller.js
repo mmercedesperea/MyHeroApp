@@ -105,6 +105,12 @@ class UserHeroController{
         //    JSON.stringify(user)
         return res.send(bestDC);
     }
+    
+    async  mostFollowHeros(req, res) {
+        const mostF = await _userHeroService.mostFollowHeros();
+        //    JSON.stringify(user)
+        return res.send(mostF);
+    }
 
 
 

@@ -44,5 +44,9 @@ module.exports = function ({ UserHeroController }) {
      //obtener hero de Dc mas votado
      router.get('/bestDCHero', UserHeroController.bestDCHero);
 
+     // obtener los heroes más seguidos
+    router.get('/mostFollowHeros', UserHeroController.mostFollowHeros);
+
+
     return router;
 }

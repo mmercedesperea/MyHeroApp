@@ -54,6 +54,35 @@ class HeroRepository {
         }
 
     }
+
+    async mostIntelligence() {
+        return await _DB.consulta(`select idHero, name, image,  intelligence from heroes ORDER by intelligence DESC LIMIT 1`)
+    }
+
+    async mostStrength() {
+        return await _DB.consulta(`select idHero, name, image, strength from heroes ORDER by strength DESC LIMIT 1`)
+    }
+
+    async mostSpeed() {
+        return await _DB.consulta(`select idHero, name, image, speed from heroes ORDER by speed DESC LIMIT 1`)
+    }
+
+    async mostDurability() {
+        return await _DB.consulta(`select idHero, name, image, durability from heroes ORDER by durability DESC LIMIT 1`)
+    }
+
+    async mostPower() {
+        return await _DB.consulta(`select idHero, name, image, power from heroes ORDER by power DESC LIMIT 1`)
+    }
+
+    async mostCombat() {
+        return await _DB.consulta(`select idHero, name, image, combat from heroes ORDER by combat DESC LIMIT 1`)
+    }
+
+    async newHeros() {
+        return await _DB.consulta(`select idHero, name, image, createDate  FROM heroes ORDER by createDate DESC limit 10`)
+    }
+
 }
 
 module.exports = HeroRepository;

@@ -50,7 +50,6 @@ class UserHeroService extends BaseService {
     }
   }
 
-
   async unfollowHero(body) {
     if (!body.idUsu) {
       const error = new Error()
@@ -65,12 +64,9 @@ class UserHeroService extends BaseService {
       error.message = 'id hero must be sent'
       throw error
     }
-
     // actualizamos el campo de follow a false
     return await _userHeroRepository.unfollowUH(body)
-
   }
-
 
   async favorite(body) {
     if (!body.idUsu) {
@@ -165,7 +161,6 @@ class UserHeroService extends BaseService {
     }
   }
 
-
   async commentHero(body) {
     if (!body.idUsu) {
       const error = new Error()
@@ -216,10 +211,7 @@ class UserHeroService extends BaseService {
       error.message = 'id hero must be sent'
       throw error
     }
-
-
     return await _userHeroRepository.deleteCHero(body);
-
   }
 
   async getFav(id) {
@@ -269,7 +261,6 @@ class UserHeroService extends BaseService {
     return currentEntity;
   }
 
-
   async getVoteHero(idUser, idHero) {
     if (!idUser) {
       const error = new Error();
@@ -297,9 +288,6 @@ class UserHeroService extends BaseService {
     return currentEntity;
   }
 
-
-
-
   async bestMarverHero() {
     const currentEntity = await _userHeroRepository.bestMarverHero();
     // JSON.stringify(currentEntity);
@@ -307,7 +295,7 @@ class UserHeroService extends BaseService {
     if (!currentEntity) {
       const error = new Error();
       error.status = 400;
-      error.message = 'There is hero from marvel';
+      error.message = 'There is no hero from marvel';
       throw error;
     }
     return currentEntity;
@@ -320,12 +308,24 @@ class UserHeroService extends BaseService {
     if (!currentEntity) {
       const error = new Error();
       error.status = 400;
-      error.message = 'There is hero from DC';
+      error.message = 'There is no hero from DC';
       throw error;
     }
     return currentEntity;
   }
 
+  async  mostFollowHeros() {
+    const currentEntity = await _userHeroRepository.mostFollowHeros();
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'There is no heros';
+      throw error;
+    }
+    return currentEntity;
+  }
 
 }
 

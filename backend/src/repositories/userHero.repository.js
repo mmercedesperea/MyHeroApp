@@ -66,14 +66,17 @@ class UserHeroRepository  {
         return await _DB.consulta(`SELECT score from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
     }
 
+    async bestMarverHero() {
+        return await _DB.consulta(`select a.idHero, a.name, a.image, ROUND(sum(b.score) / count(a.idHero),1) as score FROM heroes a, usu_hero b  WHERE a.publisher = 'Marvel Comics' AND a.idHero = b.idHero GROUP by idHero ORDER by score DESC`)
+    }
 
-    // async bestMarverHero() {
-    //     return await _DB.consulta(`select a.idHero, a.name, a.image, sum(b.score) as score FROM heroes a, usu_hero b  WHERE a.publisher = 'Marvel Comics' AND a.idHero = b.idHero GROUP by idHero`)
-    // }
+    async bestDCHero() {
+        return await _DB.consulta(`select a.idHero, a.name, a.image, ROUND(sum(b.score) / count(a.idHero),1) as score FROM heroes a, usu_hero b  WHERE a.publisher = 'DC Comics' AND a.idHero = b.idHero GROUP by idHero ORDER by score DESC`)
+    }
 
-    // async bestDCHero() {
-    //     return await _DB.consulta(`SELECT score from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
-    // }
+    async mostFollowHeros() {
+        return await _DB.consulta(`select a.idHero, a.name, a.image, count(a.idHero) as followers FROM heroes a, usu_hero b WHERE a.idHero = b.idHero AND b.follow = 1 GROUP by idHero ORDER by followers DESC`)
+    }
 
 }
 

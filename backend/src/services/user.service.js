@@ -90,43 +90,43 @@ class UserService extends BaseService {
 
     async  followUser(body) {
         if (!body.idUsu) {
-          const error = new Error()
-          error.status = 400
-          error.message = 'id must be sent'
-          throw error
+            const error = new Error()
+            error.status = 400
+            error.message = 'id must be sent'
+            throw error
         }
-    
+
         if (!body.idUsuFollow) {
-          const error = new Error()
-          error.status = 400
-          error.message = 'id must be sent'
-          throw error
+            const error = new Error()
+            error.status = 400
+            error.message = 'id must be sent'
+            throw error
         }
-    
+
         // insertamos la relacion
         return await _userRepository.followUser(body)
-    
-      }
 
-      async  unFollowUser(body) {
+    }
+
+    async  unFollowUser(body) {
         if (!body.idUsu) {
-          const error = new Error()
-          error.status = 400
-          error.message = 'id must be sent'
-          throw error
+            const error = new Error()
+            error.status = 400
+            error.message = 'id must be sent'
+            throw error
         }
-    
+
         if (!body.idUsuFollow) {
-          const error = new Error()
-          error.status = 400
-          error.message = 'id must be sent'
-          throw error
+            const error = new Error()
+            error.status = 400
+            error.message = 'id must be sent'
+            throw error
         }
-    
+
         // eliminamos la row
         return await _userRepository.unFollowUser(body)
-    
-      }
+
+    }
 
 
 
