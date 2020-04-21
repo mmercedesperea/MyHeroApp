@@ -14,30 +14,13 @@ class User {
         this.admin = "";
     }
 
-    //  para que cada vez que se vaya a leer un documento tipo user podamos eliminar el campo contraseña para evitar que se pudiera ver
-    // toJSON() {
-    //     let user = this.toObject()
-    //     delete user.password
-    //     return user
-    // }
-
     // para comparar contraseñas encriptadas
-    async comparePasswords(UserPas,password) {
-       
-        return await compareSync(password,UserPas)
+    async comparePasswords(UserPas, password) {
+        return await compareSync(password, UserPas)
     }
 
     // para antes de guardar el usuario que se codifique su contraseña
     async pre(user) {
-        // const user = this;
-        // const user = user
-        // console.log("llego aqui?");
-
-        // // si el usaurio no esta modificando su contraseña entonces se para a nextpara continuar el flujo
-        // if (!user.isModified('password')) {
-        //     return next()
-        // }
-        // pero si, si se esta modificando la contraseña...
         // se genera el salt
         const salt = genSaltSync(10)
         // console.log(user)
@@ -51,12 +34,12 @@ class User {
 
 
     // hash Password
-    async hasPass(password){
+    async hasPass(password) {
         const salt = genSaltSync(10)
         // console.log(user)
         // y generamos el hash de la contraseña
         const hashedPassword = hashSync(password, salt)
-        
+
         // console.log(user)
         return await hashedPassword;
 
