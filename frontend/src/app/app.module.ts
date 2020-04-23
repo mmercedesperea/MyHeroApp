@@ -16,7 +16,12 @@ import { HttpClientModule} from "@angular/common/http";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule, MatNativeDateModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-
+import {MatSelectModule} from '@angular/material';
+import { FightComponent } from './components/fight/fight.component';
+import { MyHeroesComponent } from './components/my-heroes/my-heroes.component';
+import { HerosSearchComponent } from './components/heroes-search/heroes-search.component';
+import { HeroesDetailComponent } from './components/heroes-detail/heroes-detail.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    FightComponent,
+    MyHeroesComponent,
+    HerosSearchComponent,
+    HeroesDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +45,8 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
     MatInputModule,
     MatNativeDateModule,
     FormsModule, 
-    ReactiveFormsModule 
+    ReactiveFormsModule ,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

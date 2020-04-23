@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,25 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit, DoCheck {
   public title: string;
   public identity;
+  public searchForm: FormGroup;
+  public selectedValue2: string = 'Hero Name'
+  isAnonymous :boolean=true;
 
-  constructor(private _userService: UserService, private _router: Router) {
-    this.title = 'Heroes';
+  constructor(private formBuilder: FormBuilder, private _userService: UserService, private _router: Router) {
+    this.searchForm = this.formBuilder.group({
+      search: [
+        '',
+        [Validators.required, Validators.minLength(3), Validators.maxLength(30)]
+      ],
+      selectedValue: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(30)
+        ]
+      ]
+      });
   }
 
   ngOnInit(): void {
@@ -23,6 +40,15 @@ export class NavbarComponent implements OnInit, DoCheck {
     // this.isLog();
 
   }
+
+  searchValue = [
+    {value: 'Hero Name', viewValue: 'HeroName'},
+    {value: 'All Marvel Heroes', viewValue: 'All Marvel Heroes'},
+    {value: 'All DC Heroes', viewValue: 'All DC Heroes'}
+  ];
+
+  // selectedValue2: string = "HeroName"
+  
 
   // para que cuando se produzca cualquier cambio en la app se compruebe esto esta continuamente comprobando esto
   ngDoCheck(): void {
@@ -46,6 +72,14 @@ export class NavbarComponent implements OnInit, DoCheck {
     localStorage.clear();
     this.identity = null;
     this._router.navigate(['/']);
+  }
+
+
+  searchHP(){
+    console.log(this.searchForm.value.search)
+    console.log(this.searchForm.value.selectedValue)
+    
+    // this._router.navigate(['/heroesSearch']);
   }
 
 }

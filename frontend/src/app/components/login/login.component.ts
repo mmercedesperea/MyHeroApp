@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
 import { Validators } from '@angular/forms'
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms'
-import { User } from '../../components/models/user'
+import { User } from '../../models/user'
 import { UserService } from 'src/app/services/user.service'
 import { Router } from '@angular/router'
 
