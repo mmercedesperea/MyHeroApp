@@ -1,10 +1,10 @@
-_ApiHeroRepository = null;
+_HeroObj = null;
 
 // var hero = new Hero();
 
 class ApiHeroService{
-    constructor({ApiHeroRepository}){
-        _ApiHeroRepository= ApiHeroRepository;
+    constructor({Hero}){
+        _HeroObj= Hero;
     }
 
 async get(name){
@@ -18,7 +18,7 @@ async get(name){
     // console.log('LLego al servicio'+ name);
     
 
-    return await _ApiHeroRepository.getHeroByName(name);
+    return await _HeroObj.getHeroByName(name);
 
 
 }
@@ -35,7 +35,7 @@ async getHeroByid(id){
     // console.log('LLego al servicio'+ name);
     
 
-    return await _ApiHeroRepository.getHeroByid(id);
+    return await _HeroObj.getHeroByid(id);
 
 
 }

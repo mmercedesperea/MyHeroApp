@@ -1,10 +1,10 @@
 const BaseService = require('./base.service');
-let _teamRepository = null;
+let _teamObj = null;
 // let _userOBJ = null;
 class TeamService extends BaseService {
-    constructor({ TeamRepository }) {
-        super(TeamRepository);
-        _teamRepository = TeamRepository;
+    constructor({ Team }) {
+        super(Team);
+        _teamObj = Team;
     }
 
     // traer el numero de miembros
@@ -16,7 +16,7 @@ class TeamService extends BaseService {
             throw error;
         }
 
-        const numMembers = await _teamRepository.checkTeam(idTeam);
+        const numMembers = await _teamObj.checkTeam(idTeam);
 
         // devuelve true si  se tienen todos los miembros del equipo
         if (numMembers) {
@@ -42,7 +42,7 @@ class TeamService extends BaseService {
             throw error;
         }
 
-        return await _teamRepository.addMember(idTeam,entity);
+        return await _teamObj.addMember(idTeam,entity);
 
     }
 
@@ -60,7 +60,7 @@ class TeamService extends BaseService {
             throw error;
         }
 
-        return await _teamRepository.deleteMember(idTeam,entity);
+        return await _teamObj.deleteMember(idTeam,entity);
 
     }
 
@@ -68,7 +68,7 @@ class TeamService extends BaseService {
 
     async bestTeam() {
         // en caso de que exista la id vamos a buscar esa entidad
-        const currentEntity = await _teamRepository.bestTeam();
+        const currentEntity = await _teamObj.bestTeam();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {

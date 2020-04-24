@@ -1,7 +1,7 @@
 // Clase que contiene un conjunto de metodos utiles para el resto de clases del proyecto
 class BaseService {
-    constructor(repository) {
-        this.repository = repository;
+    constructor(obj) {
+        this.obj = obj;
     }
 
     async get(id) {
@@ -12,9 +12,10 @@ class BaseService {
             throw error;
         }
         // en caso de que exista la id vamos a buscar esa entidad
-        const currentEntity = await this.repository.get(id);
+        const currentEntity = await this.obj.get(id);
+        
         // JSON.stringify(currentEntity);
-        // console.log(currentEntity)
+        console.log(currentEntity)
         if (!currentEntity) {
             const error = new Error();
             error.status = 400;
@@ -28,13 +29,13 @@ class BaseService {
 
     // obtener todos las entidades 
     async getAll() {
-        return await this.repository.getAll();
+        return await this.obj.getAll();
     }
 
     // crear una entidad nueva
     async create(entity) {
         
-        return await this.repository.create(entity);
+        return await this.obj.create(entity);
     }
 
     // actualizar una entidad por id
@@ -45,7 +46,7 @@ class BaseService {
             error.message = 'id must be sent';
             throw error;
         }
-        return await this.repository.update(id, entity);
+        return await this.obj.update(id, entity);
     }
 
     // borrar un elemento por su id
@@ -58,7 +59,7 @@ class BaseService {
             throw error;
         }
 
-        return await this.repository.delete(id);
+        return await this.obj.delete(id);
     }
 
 }

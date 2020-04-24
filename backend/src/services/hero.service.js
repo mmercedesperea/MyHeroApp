@@ -1,11 +1,9 @@
 const BaseService = require('./base.service');
-let _heroRepository = null;
 let _heroOBJ = null;
 
 class HeroService extends BaseService {
-    constructor({ HeroRepository, Hero }) {
-        super(HeroRepository);
-        _heroRepository = HeroRepository;
+    constructor({  Hero }) {
+        super(Hero);
         _heroOBJ = Hero;
     }
 
@@ -25,11 +23,11 @@ class HeroService extends BaseService {
             error.message = 'idHero2 must be sent';
             throw error;
         }
-        return await _heroRepository.getWinner(idHero, idHero2);
+        return await _heroOBJ.getWinner(idHero, idHero2);
     }
 
     async   mostIntelligence() {
-        const currentEntity = await _heroRepository.mostIntelligence();
+        const currentEntity = await _heroOBJ.mostIntelligence();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {
@@ -42,7 +40,7 @@ class HeroService extends BaseService {
     }
 
     async  mostStrength() {
-        const currentEntity = await _heroRepository.mostStrength();
+        const currentEntity = await _heroOBJ.mostStrength();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {
@@ -55,7 +53,7 @@ class HeroService extends BaseService {
     }
 
     async  mostSpeed() {
-        const currentEntity = await _heroRepository.mostSpeed();
+        const currentEntity = await _heroOBJ.mostSpeed();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {
@@ -68,7 +66,7 @@ class HeroService extends BaseService {
     }
 
     async  mostDurability() {
-        const currentEntity = await _heroRepository.mostDurability();
+        const currentEntity = await _heroOBJ.mostDurability();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {
@@ -81,7 +79,7 @@ class HeroService extends BaseService {
     }
 
     async  mostPower() {
-        const currentEntity = await _heroRepository.mostPower();
+        const currentEntity = await _heroOBJ.mostPower();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {
@@ -94,7 +92,7 @@ class HeroService extends BaseService {
     }
 
     async  mostCombat() {
-        const currentEntity = await _heroRepository.mostCombat();
+        const currentEntity = await _heroOBJ.mostCombat();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {
@@ -107,7 +105,7 @@ class HeroService extends BaseService {
     }
 
     async  newHeros() {
-        const currentEntity = await _heroRepository.newHeros();
+        const currentEntity = await _heroOBJ.newHeros();
         // JSON.stringify(currentEntity);
         // console.log(currentEntity)
         if (!currentEntity) {

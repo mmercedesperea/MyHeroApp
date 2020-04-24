@@ -1,10 +1,9 @@
 const BaseService = require('./base.service');
-let _userRepository = null;
+
 let _userOBJ = null;
 class UserService extends BaseService {
-    constructor({ UserRepository, User }) {
-        super(UserRepository);
-        _userRepository = UserRepository;
+    constructor({  User }) {
+        super(User);
         _userOBJ = User
     }
 
@@ -16,7 +15,7 @@ class UserService extends BaseService {
             error.message = 'Email must be sent';
             throw error;
         }
-        return await _userRepository.getUserByemail(email);
+        return await _userOBJ.getUserByemail(email);
     }
 
     async updatePass(id, entity) {
@@ -51,7 +50,7 @@ class UserService extends BaseService {
         // ciframos la nueva contraseña
         entity.newPassword = await _userOBJ.hasPass(entity.newPassword);
 
-        return await _userRepository.updatePass(id, entity);
+        return await _userOBJ.updatePass(id, entity);
     }
 
     async deleteUser(id, entity) {
@@ -84,7 +83,7 @@ class UserService extends BaseService {
             throw error
         }
 
-        return await _userRepository.deleteUser(id);
+        return await _userOBJ.deleteUser(id);
     }
 
 
@@ -104,7 +103,7 @@ class UserService extends BaseService {
         }
 
         // insertamos la relacion
-        return await _userRepository.followUser(body)
+        return await _userOBJ.followUser(body)
 
     }
 
@@ -124,7 +123,7 @@ class UserService extends BaseService {
         }
 
         // eliminamos la row
-        return await _userRepository.unFollowUser(body)
+        return await _userOBJ.unFollowUser(body)
 
     }
 
