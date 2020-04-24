@@ -1,12 +1,14 @@
 let table = null;
 let _DB = null;
 let _ApiHeroRepository = null;
+let _Hero = null;
 
 class HeroRepository {
-    constructor({ DB, ApiHeroRepository }) {
+    constructor({ DB, ApiHeroRepository,Hero }) {
         table = "heroes";
         _ApiHeroRepository = ApiHeroRepository;
         _DB = DB;
+        _Hero = Hero;
         // super(DB, table)
     }
 
@@ -15,22 +17,22 @@ class HeroRepository {
         // console.log(this.table)
         console.log('LA ID ESSS' + idHero)
         // se busca el heroe en la bd
-        var Hero = await _DB.consulta(`SELECT * from ${table} WHERE idHero =${idHero}`)
+        _Hero= await _DB.consulta(`SELECT * from ${table} WHERE idHero =${idHero}`)
 
-        console.log(Hero);
+        console.log(_Hero);
         // si heroe no es nul
-        if (Hero != null) {
+        if (_Hero != null) {
             // se devuelve ese heroe
-            return Hero[0];
+            return _Hero[0];
             // si el heroe es null, por lo tanto no esta en nuestra bd
         } else {
 
             // buscamos en la api y lo guardamos
-            var ApiHero = await _ApiHeroRepository.getHeroByid(idHero);
+            _Hero = await _ApiHeroRepository.getHeroByid(idHero);
 
             // devolvemos el heroe
 
-            return ApiHero;
+            return _Hero;
         }
 
     }
