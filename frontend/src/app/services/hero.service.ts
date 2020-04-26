@@ -1,79 +1,73 @@
 import { Injectable } from '@angular/core';
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import {Hero}  from '../models/hero';
-
-
+import { Hero } from '../models/hero';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
-    //variable almacenamos la url de nuestra api node
-    private baseUrl: string = environment.BASE_API_URL;
+  //variable almacenamos la url de nuestra api node
+  private baseUrl: string = environment.BASE_API_URL;
 
   constructor(private http: HttpClient) { }
-
 
   // routes
 
   // //obtener un heroe por el nombre
-  public getHeroByName(name:string){
+  public getHeroByName(name: string) {
     return this.http.get<Hero[]>(`${this.baseUrl}/apiHero/search/${name}`);
   }
 
   // //obtener un heroe por el id
-  public getHeroById(id:number){
-    // return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+  public getHeroById(id: number) {
     return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
   }
 
   // //obtener todos los heroes de marvel
-  public allMarvelHeroes(){
-    // return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+  public allMarvelHeroes() {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/MarvelHeroes`);
   }
 
-   //obtener todos los heroes de DC
-   public allDCHeroes(){
-    // return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+  //obtener todos los heroes de DC
+  public allDCHeroes() {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/DCHeroes`);
   }
 
- 
+  // obtener el heroe con mayor puntos 
+  public getWinner(idHero: number, idHero2: number) {
+    return this.http.get<Hero>(`${this.baseUrl}/hero/getWinner/${idHero}/${idHero2}`);
+  }
+
+  public mostIntelligence() {
+    return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostIntelligence`);
+  }
+
+  public mostStrength() {
+    return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostStrength`);
+  }
+
+  public mostSpeed() {
+    return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostSpeed`);
+  }
+
+  public mostDurability() {
+    return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostDurability`);
+  }
+
+  public mostPower() {
+    return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostPower`);
+  }
+
+  public mostCombat() {
+    return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostCombat`);
+  }
+  // //obtener ultimos heroes añadidos
+  public newHeros() {
+    return this.http.get<Hero[]>(`${this.baseUrl}/hero/new/heros`);
+  }
 
 
 }
 
 
-
-    // //obtener un heroe por el nombre
-    // router.get('/search/:name', ApiHeroController.get);
-
-    // // obtener un heroe por id
-    // router.get('/searchByid/:id', ApiHeroController.getHeroByid);
-
-
-// //obtener un heroe ganador
-// router.get('/getWinner/:idHero/:idHero2', HeroController.getWinner);
-
-// //obtener el heroe mas inteligente
-// router.get('/stats/mostIntelligence', HeroController.mostIntelligence);
-
-// //obtener el heroe mas fuerte
-// router.get('/stats/mostStrength', HeroController.mostStrength);
-
-// //obtener el heroe mas rapido
-// router.get('/stats/mostSpeed', HeroController.mostSpeed);
-
-// //obtener el heroe mas durability
-// router.get('/stats/mostDurability', HeroController.mostDurability);
-
-// //obtener el heroe mas poder
-// router.get('/stats/mostPower', HeroController.mostPower);
-
-// //obtener el heroe mas combate
-// router.get('/stats/mostCombat', HeroController.mostCombat);
-
-// //obtener ultimos heroes añadidos
-// router.get('/new/heros', HeroController.newHeros);
