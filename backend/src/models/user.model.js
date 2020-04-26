@@ -3,9 +3,8 @@ const { compareSync, hashSync, genSaltSync } = require('bcryptjs')
 let table = null;
 let _DB = null;
 
-
 class User {
-    constructor({DB}) {
+    constructor({ DB }) {
         this.idUsu = 0;
         this.email = "";
         this.password = "";
@@ -18,6 +17,8 @@ class User {
         _DB = DB;
         table = "users"
     }
+
+    //
 
     // para comparar contraseñas encriptadas
     async comparePasswords(UserPas, password) {
@@ -50,6 +51,7 @@ class User {
 
     }
 
+    // news
     async get(id) {
         return await this.DB.consulta(`SELECT * from ${table} WHERE idUsu =${id}`)
     }
@@ -87,7 +89,7 @@ class User {
         return await _DB.delete(`DELETE FROM follows WHERE followingIdUsu = ${entity.idUsu} AND followedIdUsu = ${entity.idUsuFollow}`);
     }
 
-    
+
 }
 
 module.exports = User

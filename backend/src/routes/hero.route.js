@@ -9,7 +9,7 @@ module.exports = function ({ HeroController }) {
   // router.get('/:idHero', HeroController.get);
   
   //obtener un heroe ganador
-  router.get('/getWinner/:idHero/idHero2', HeroController.getWinner);
+  router.get('/getWinner/:idHero/:idHero2', HeroController.getWinner);
 
   //obtener el heroe mas inteligente
   router.get('/stats/mostIntelligence', HeroController.mostIntelligence);

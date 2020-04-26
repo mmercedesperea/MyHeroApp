@@ -10,7 +10,7 @@ constructor({ApiHeroService}){
         const { name } = req.params;
         const hero = await _apiHeroService.get(name);
         //    JSON.stringify(user)
-        console.log('llego aqui'+ name)
+        // console.log('llego aqui'+ name)
         return res.send(hero);
     }
 

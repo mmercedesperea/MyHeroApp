@@ -1,6 +1,5 @@
 let _teamService = null;
 
-
 class TeamController{
     constructor({TeamService}){
         _teamService= TeamService;
@@ -57,7 +56,6 @@ class TeamController{
         console.log(deleteTeam)
         return res.status(201).send({message: deleteTeam});
     }
-
 
     async bestTeam(req, res) {
         const team = await _teamService.bestTeam();

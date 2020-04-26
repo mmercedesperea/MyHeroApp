@@ -1,5 +1,4 @@
 let _userService = null;
-// const util = require('util')
 
 class UserController {
     constructor({ UserService }) {

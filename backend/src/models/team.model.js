@@ -1,17 +1,16 @@
 let table = null;
 let _DB = null;
 
-
-class Team{
-    constructor({DB}){
-        this.idTeam =0;
-        this.idUsu=0;
+class Team {
+    constructor({ DB }) {
+        this.idTeam = 0;
+        this.idUsu = 0;
         this.teamName = "";
         this.member_1 = "";
-        this.member_2 ="";
-        this.member_3 ="";
-        this.member_4="";
-        this.member_5= "";
+        this.member_2 = "";
+        this.member_3 = "";
+        this.member_4 = "";
+        this.member_5 = "";
         table = 'team';
         _DB = DB;
     }
@@ -48,10 +47,9 @@ class Team{
     }
 
     // bestTeam
-
     async bestTeam() {
         return await _DB.consulta(`SELECT c.alias,a.idTeam,a.idUsu,a.teamName,a.member_1,a.member_2,a.member_3,a.member_4,a.member_5, SUM(b.intelligence + b.strength + b.speed + b.durability +b.power +b.combat) as totalPoint FROM team a, heroes b, users c WHERE a.idUsu = c.idUsu AND b.idHero IN (a.member_1, a.member_2, a.member_3,a.member_4,a.member_5) GROUP BY a.teamName ORDER by totalPoint DESC LIMIT 1`);
-   
+
     }
 }
 
