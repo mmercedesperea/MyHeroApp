@@ -14,11 +14,6 @@ export class HeroService {
 
   constructor(private http: HttpClient) { }
 
-  // Model
-  // public getTechnologies() {
-  //   // esto nos va a devolver una coleccion de tecnologias
-  //   return this._http.get<Technology[]>(this.baseUrl + "/technologies");
-  // }
 
   // routes
 
