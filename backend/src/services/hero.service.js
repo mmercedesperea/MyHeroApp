@@ -117,6 +117,34 @@ class HeroService extends BaseService {
         return currentEntity;
     }
 
+    async  allMarvelHeroes() {
+        const currentEntity = await _heroOBJ.allMarvelHeroes();
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'There is no heros';
+            throw error;
+        }
+        return currentEntity;
+    }
+
+    async  allDCHeroes() {
+        const currentEntity = await _heroOBJ.allDCHeroes();
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'There is no heros';
+            throw error;
+        }
+        return currentEntity;
+    }
+
+
+
 
 
 }

@@ -28,7 +28,7 @@ const routes: Routes = [
   }, {
     path: 'heroesDetail/:id', component: HeroesDetailComponent
   }, {
-    path: 'heroesSearch/:id', component: HerosSearchComponent
+    path: 'heroesSearch/:data', component: HerosSearchComponent
   }, {
     path: 'myHeroes', component: MyHeroesComponent, canActivate:[AuthGuard]
   },

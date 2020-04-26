@@ -111,21 +111,41 @@ class Hero {
         );
     }
 
+    async allMarvelHeroes() {
+        return await _DB.consulta(
+            `select idHero, heroName, image FROM heroes WHERE publisher ='Marvel Comics'`
+        );
+    }
+
+
+    async allDCHeroes() {
+        return await _DB.consulta(
+            `select idHero, heroName, image FROM heroes WHERE publisher ='DC Comics'`
+        );
+    }
+
     //api
     async getHeroByName(name) {
         const url = `${host}search/${name}`;
         const heroes = new Array();
         return await rp(url, { json: true })
             .then(function (res) {
-                res.results.forEach((her) => {
-                    var hero3 = {};
-                    hero3.heroName = her.name;
-                    hero3.idHero = her.id;
-                    hero3.image = her.image.url;
-                    heroes.push(hero3);
-                });
-                // devolvemos el array de elementos
-                return heroes;
+                if (res.error) {
+                    console.log(res.error)
+                    return res.error
+                } else {
+                    res.results.forEach((her) => {
+                        var hero3 = {};
+                        hero3.heroName = her.name;
+                        hero3.idHero = her.id;
+                        hero3.image = her.image.url;
+                        heroes.push(hero3);
+                    });
+                    // devolvemos el array de elementos
+                    return heroes;
+                }
+
+
             })
             .catch(function (err) {
                 console.log(err);
@@ -149,22 +169,22 @@ class Hero {
                 NewHeroCreate.idHero = res.id;
                 NewHeroCreate.heroName = res.name;
                 NewHeroCreate.image = res.image.url;
-                NewHeroCreate.intelligence = res.powerstats.intelligence;
-                NewHeroCreate.strength = res.powerstats.strength;
-                NewHeroCreate.speed = res.powerstats.speed;
-                NewHeroCreate.durability = res.powerstats.durability;
-                NewHeroCreate.power = res.powerstats.power;
-                NewHeroCreate.combat = res.powerstats.combat;
-                NewHeroCreate.fullName = res.biography["full-name"];
-                NewHeroCreate.placeOfBirth = res.biography["place-of-birth"];
+                NewHeroCreate.intelligence = res.powerstats.intelligence === 'null' ? 40 : res.powerstats.intelligence;
+                NewHeroCreate.strength = res.powerstats.strength === 'null' ? 40 : res.powerstats.strength;
+                NewHeroCreate.speed = res.powerstats.speed === 'null' ? 40 : res.powerstats.speed;
+                NewHeroCreate.durability = res.powerstats.durability === 'null' ? 40 : res.powerstats.durability;
+                NewHeroCreate.power = res.powerstats.power === 'null' ? 40 : res.powerstats.power;
+                NewHeroCreate.combat = res.powerstats.combat === 'null' ? 40 : res.powerstats.combat;
+                NewHeroCreate.fullName = res.biography["full-name"] === '' ? 'unknown' : res.biography["full-name"];
+                NewHeroCreate.placeOfBirth = res.biography["place-of-birth"] === '-' ? 'unknown' : res.biography["place-of-birth"];
                 NewHeroCreate.publisher = res.biography.publisher;
                 NewHeroCreate.alignment = res.biography.alignment;
-                NewHeroCreate.firstApperance = res.biography["first-appearance"];
+                NewHeroCreate.firstApperance = res.biography["first-appearance"] === '-' ? 'unknown' : res.biography["first-appearance"];
                 NewHeroCreate.gender = res.appearance.gender;
                 NewHeroCreate.race = res.appearance.race;
                 NewHeroCreate.height = res.appearance.height[1];
                 NewHeroCreate.weight = res.appearance.weight[1];
-                NewHeroCreate.work = res.work.occupation;
+                NewHeroCreate.work = res.work.occupation === '-' ? 'unknown' : res.work.occupation;
                 return NewHeroCreate;
             })
             .catch(function (err) {

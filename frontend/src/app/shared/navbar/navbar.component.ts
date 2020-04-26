@@ -19,15 +19,15 @@ export class NavbarComponent implements OnInit, DoCheck {
     this.searchForm = this.formBuilder.group({
       search: [
         '',
-        [Validators.required, Validators.minLength(3), Validators.maxLength(30)]
+        // [Validators.required, Validators.minLength(3), Validators.maxLength(30)]
       ],
       selectedValue: [
         '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(30)
-        ]
+        // [
+        //   Validators.required,
+        //   Validators.minLength(6),
+        //   Validators.maxLength(30)
+        // ]
       ]
       });
   }
@@ -42,9 +42,9 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
 
   searchValue = [
-    {value: 'Hero Name', viewValue: 'HeroName'},
-    {value: 'All Marvel Heroes', viewValue: 'All Marvel Heroes'},
-    {value: 'All DC Heroes', viewValue: 'All DC Heroes'}
+    {value: 'Hero Name', viewValue: 'Hero'},
+    {value: 'Marvel', viewValue: 'All Marvel Heroes'},
+    {value: 'DC', viewValue: 'All DC Heroes'}
   ];
 
   // selectedValue2: string = "HeroName"
@@ -77,6 +77,11 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   searchHP(){
     console.log(this.searchForm.value.search)
+    if(this.searchForm.value.search){
+      this._router.navigate([`/heroesSearch/${this.searchForm.value.search}`]);
+    }else{
+      this._router.navigate([`/heroesSearch/${this.searchForm.value.selectedValue}`]);
+    }
     console.log(this.searchForm.value.selectedValue)
     
     // this._router.navigate(['/heroesSearch']);

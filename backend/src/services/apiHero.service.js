@@ -34,7 +34,7 @@ async getHeroByid(id){
     }
     // console.log('LLego al servicio'+ name);
     
-
+    // return await { hero": _HeroObj.getHeroByid(id)}
     return await _HeroObj.getHeroByid(id);
 
 

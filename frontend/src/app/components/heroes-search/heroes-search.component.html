@@ -1,1 +1,14 @@
-<p>heros-search works!</p>
+<div *ngIf="hero">
+  <div *ngFor="let hero of hero">
+    <!-- <h1>{{ hero.idHero }}</h1> -->
+    <h3>{{ hero.heroName }}</h3>
+    <br>
+    <a [routerLink]="[ '/heroesDetail', hero.idHero ]" >{{ hero.idHero }}</a>
+    <br>
+    <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+  </div>
+</div>
+
+<div *ngIf="!hero">
+  <h1>character with given name not found</h1>
+</div>

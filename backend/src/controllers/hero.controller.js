@@ -64,6 +64,19 @@ class HeroController{
         //    JSON.stringify(user)
         return res.send(mostC);
     }
+
+    async allMarvelHeroes(req, res) {
+        const allMarvel = await _heroService.allMarvelHeroes();
+        //    JSON.stringify(user)
+        return res.send(allMarvel);
+    }
+
+    async allDCHeroes(req, res) {
+        const allDC = await _heroService.allDCHeroes();
+        //    JSON.stringify(user)
+        return res.send(allDC);
+    }
+
 }
 
 module.exports = HeroController;

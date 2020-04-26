@@ -1,19 +1,3 @@
-// export interface User{
-   
-//          idUsu? : number,
-//          email? : string,
-//          password? : string,
-//          name? : string,
-//          alias? : string,
-//         surname? : string,
-//         dateOfBirth? : Date,
-//         photo? : string,
-//         admin? : number,
-//         exp?: number
-
-// }
-
-
 export class User{
     constructor(
         public idUsu? : number,
@@ -28,7 +12,20 @@ export class User{
         public exp?: number
     ){}
 }
+// export interface User{
+   
+//          idUsu? : number,
+//          email? : string,
+//          password? : string,
+//          name? : string,
+//          alias? : string,
+//         surname? : string,
+//         dateOfBirth? : Date,
+//         photo? : string,
+//         admin? : number,
+//         exp?: number
 
+// }
 
 
 

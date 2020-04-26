@@ -33,6 +33,20 @@ export class HeroService {
     return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
   }
 
+  // //obtener todos los heroes de marvel
+  public allMarvelHeroes(){
+    // return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+    return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/MarvelHeroes`);
+  }
+
+   //obtener todos los heroes de DC
+   public allDCHeroes(){
+    // return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+    return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/DCHeroes`);
+  }
+
+ 
+
 
 }
 
