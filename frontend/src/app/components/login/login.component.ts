@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
   signIn() {
     this._userService.LoginUser(this.user).subscribe(
       response => {
+        // se coge el elemento user que nos trae la response
         this.UserLog = response['user'];
         console.log(this.UserLog);
 
