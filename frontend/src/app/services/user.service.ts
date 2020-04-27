@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: "root",
@@ -12,12 +13,7 @@ export class UserService {
   public token;
 
   // inyectamos en nuestro constructtor nuestro servicio http
-
   constructor(private http: HttpClient) { }
-
-  // Model
-
-
 
   // routes
 
@@ -32,9 +28,7 @@ export class UserService {
   // login User
   public LoginUser(user) {
     // si toker es igual a null user lleva la propiedad token
-
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
     return this.http.post(this.baseUrl + '/auth/signin', user,
       { headers: headers });
   }
@@ -42,7 +36,6 @@ export class UserService {
   //obtener usuario del localstorage
   public getIdentity() {
     let identity = JSON.parse(localStorage.getItem('User'));
-
     if (identity != 'undefined') {
       this.identity = identity;
     } else {
@@ -54,13 +47,11 @@ export class UserService {
   // obtener token del localstorage
   public getToken() {
     let token = localStorage.getItem('token');
-
     if (token != 'undefined') {
       this.token = token;
     } else {
       this.token = null;
     }
-
     return this.token;
   }
 
@@ -77,7 +68,6 @@ export class UserService {
       return JSON.parse(payload);
       //  // JSON.parse(payload);
       //  payload.split(`"exp":`)[1];
-
       //  payload.split("}")[0];
       //  console.log(payload)
       // console.log(payload.split(`"exp":`)[1])
@@ -85,7 +75,6 @@ export class UserService {
       return null;
     }
   }
-
 
   //comprobar tiempo de expiracion del token
   public isLoggedIn(): boolean {
@@ -98,4 +87,54 @@ export class UserService {
       return false;
     }
   }
+
+
+  // //obtener un usuario
+  // router.get('/:idUsu', UserController.get);
+  public getUser(idUsu: number) {
+    return this.http.get<User>(`${this.baseUrl}/user/${idUsu}`);
+  }
+
+  // //actualizar un usuario
+  // router.put('/:idUsu', UserController.update);
+  public updateUser(idUsu: number, user) {
+    // para convertir el objeto en un string
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(`${this.baseUrl}/user/chageName/${idUsu}`, params, { headers: headers });
+  }
+
+  // //actualizar contraseña(email,password,newpassword)
+  // router.put('/newpass/:idUsu', UserController.updatePass);
+  public updatePass(idUsu: number, data) {
+    // para convertir el objeto en un string
+    let params = JSON.stringify(data);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(`${this.baseUrl}/user/newpass/${idUsu}`, params, { headers: headers });
+  }
+
+  // // Eliminar informacion de usuario de la bd (email,password)
+  public deleteUser(idUsu: number, data) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let params = JSON.stringify(data);
+    return this.http.post(`${this.baseUrl}/user/deleteUser/${idUsu}`, params,
+      { headers: headers });
+  }
+
+
+  // // Follow a user(idUsu,idUsuFollow)
+  // router.post('/followUser', UserController.followUser);
+  public followUser(ides) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(`${this.baseUrl}/user/followUser`, ides,
+      { headers: headers });
+  }
+
+  // // unfollow a user
+  // router.delete('/unFollowUser/:idUsu/:idUnfollow', UserController.unFollowUser);
+  public unFollowUser(idUsu: number, idUnfollow: number) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.delete(`${this.baseUrl}/user/${idUsu}/${idUnfollow}`, { headers: headers });
+  }
+
 }

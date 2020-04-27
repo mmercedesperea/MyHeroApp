@@ -85,8 +85,8 @@ class User {
         return await _DB.create(`INSERT INTO follows ( followingIdUsu, followedIdUsu) VALUES (${entity.idUsu},${entity.idUsuFollow})`);
     }
 
-    async  unFollowUser(entity) {
-        return await _DB.delete(`DELETE FROM follows WHERE followingIdUsu = ${entity.idUsu} AND followedIdUsu = ${entity.idUsuFollow}`);
+    async  unFollowUser(idUsu,idUnfollow) {
+        return await _DB.delete(`DELETE FROM follows WHERE followingIdUsu = ${idUsu} AND followedIdUsu = ${idUnfollow}`);
     }
 
 

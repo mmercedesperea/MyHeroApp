@@ -107,15 +107,15 @@ class UserService extends BaseService {
 
     }
 
-    async  unFollowUser(body) {
-        if (!body.idUsu) {
+    async  unFollowUser(idUsu,idUnfollow) {
+        if (!idUsu) {
             const error = new Error()
             error.status = 400
             error.message = 'id must be sent'
             throw error
         }
 
-        if (!body.idUsuFollow) {
+        if (!idUnfollow) {
             const error = new Error()
             error.status = 400
             error.message = 'id must be sent'
@@ -123,7 +123,7 @@ class UserService extends BaseService {
         }
 
         // eliminamos la row
-        return await _userOBJ.unFollowUser(body)
+        return await _userOBJ.unFollowUser(idUsu,idUnfollow)
 
     }
 

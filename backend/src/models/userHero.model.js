@@ -79,7 +79,7 @@ class UserHero {
     }
 
     async mostFollowHeros() {
-        return await _DB.consulta(`select a.idHero, a.heroName, a.image, count(a.idHero) as followers FROM heroes a, usu_hero b WHERE a.idHero = b.idHero AND b.follow = 1 GROUP by idHero ORDER by followers DESC`)
+        return await _DB.consulta(`select a.idHero, a.heroName, a.image, count(a.idHero) as followers FROM heroes a, usu_hero b WHERE a.idHero = b.idHero AND b.follow = 1 GROUP by idHero ORDER by followers DESC LIMIT 10`)
     }
 
 }

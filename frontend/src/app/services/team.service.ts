@@ -41,22 +41,29 @@ export class TeamService {
     let params = JSON.stringify(team);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/team/chageName/${idTeam}`, params, { headers: headers });
-
   }
 
-
-  // //change name
-  // router.put('/chageName/:idTeam', TeamController.chageName);
-
   // //añadir nuevo miembro (hay que mandarle el campo de la bd "member_1, member_2, etc" y el codigo del hero)
-  // router.put('/addMember/:idTeam', TeamController.addMember);
+  public addMember(idTeam: number, team) {
+    // para convertir el objeto en un string
+    let params = JSON.stringify(team);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(`${this.baseUrl}/team/addMember/${idTeam}`, params, { headers: headers });
+  }
 
-  // //delete member
-  // router.put('/deleteMember/:idTeam', TeamController.deleteMember);
+  //delete member
+  public deleteMember(idTeam: number, team) {
+    // para convertir el objeto en un string
+    let params = JSON.stringify(team);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(`${this.baseUrl}/team/deleteMember/${idTeam}`, params, { headers: headers });
+  }
 
-  // // borrar un equipo
-  // router.delete('/:idTeam', TeamController.delete);
-
+  // borrar un equipo
+  public delete(idTeam: number) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.delete(`${this.baseUrl}/team/${idTeam}`, { headers: headers });
+  }
 
 
 

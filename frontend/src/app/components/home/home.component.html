@@ -1,1 +1,39 @@
 <p>home works!</p>
+
+<div *ngIf="bestM">
+  <h1>MARVEL</h1>
+  <h3>{{ bestM.heroName }}</h3>
+  <p>SCORE:{{ bestM.score }}</p>
+  <br />
+  <a [routerLink]="['/heroesDetail', bestM.idHero]">{{ bestM.idHero }}</a>
+  <br />
+  <img [src]="bestM.image" [alt]="bestM.heroName" class="img-fluid" />
+</div>
+
+<div *ngIf="bestD">
+  <h1>DC</h1>
+  <h3>{{ bestD.heroName }}</h3>
+  <p>SCORE:{{ bestD.score }}</p>
+  <br />
+  <a [routerLink]="['/heroesDetail', bestD.idHero]">{{ bestD.idHero }}</a>
+  <br />
+  <img [src]="bestD.image" [alt]="bestD.heroName" class="img-fluid" />
+</div>
+
+<h1>MOST FOLLOW</h1>
+<div *ngFor="let hero of mostF">
+  <h3>{{ hero.heroName }}</h3>
+  <p>Followers:{{ hero.followers }}</p>
+  <br />
+  <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
+  <br />
+  <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+</div>
+
+<div *ngFor="let hero of bestTeamHeroes">
+  <h3>{{ hero.heroName }}</h3>
+  <br />
+  <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
+  <br />
+  <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+</div>

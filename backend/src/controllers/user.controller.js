@@ -44,10 +44,11 @@ class UserController {
         console.log(followUser)
         return res.status(201).send({message:followUser});
     }
-
+    
     async unFollowUser(req, res) {
-        const { body } = req;
-        const  unFollowUser = await _userService.unFollowUser(body);
+        const { idUsu } = req.params;
+        const { idUnfollow } = req.params;
+        const  unFollowUser = await _userService.unFollowUser( idUsu,idUnfollow);
         console.log(unFollowUser)
         return res.status(201).send({message:unFollowUser});
     }
