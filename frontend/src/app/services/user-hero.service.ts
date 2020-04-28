@@ -88,13 +88,13 @@ public getcommentHero(idUsu: number,idHero:number) {
 //  // obtener todos los heroes favoritos
 //  router.get('/allHerosFav/:idUsu', UserHeroController.allHerosFav);
 public allHerosFav(idUsu: number) {
-  return this.http.get(`${this.baseUrl}/userHero/allHerosFav/${idUsu}`);
+  return this.http.get<any>(`${this.baseUrl}/userHero/allHerosFav/${idUsu}`);
 }
 
 //  //obtener todos los heroes follow
 //  router.get('/allHerosFoll/:idUsu', UserHeroController.allHerosFoll);
 public allHerosFoll(idUsu: number) {
-  return this.http.get(`${this.baseUrl}/userHero/allHerosFoll/${idUsu}`);
+  return this.http.get<any>(`${this.baseUrl}/userHero/allHerosFoll/${idUsu}`);
 }
 //   //obtener hero de marvel mas votado
 //   router.get('/bestMarverHero', UserHeroController.bestMarverHero);

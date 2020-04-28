@@ -52,13 +52,12 @@ class UserHero {
     async deleteCHero(body) {
         return await _DB.update(`UPDATE ${table}  SET comment =  NULL WHERE idUsu = ${body.idUsu} AND idHero = ${body.idHero}`);
     }
-
     async get(id) {
-        return await _DB.consulta(`SELECT * from ${table} WHERE follow = 1 AND idUsu =${id}`)
+        return await _DB.consulta(`SELECT h.*,u.score FROM heroes h,usu_hero U where h.idHero = U.idHero and U.follow= 1 AND U.favorite=0 and U.idUsu=${id}`)
     }
 
     async getFav(id) {
-        return await _DB.consulta(`SELECT * from ${table} WHERE favorite = 1 AND idUsu =${id}`)
+        return await _DB.consulta(`SELECT h.*,u.score FROM heroes h,usu_hero U where h.idHero = U.idHero and U.favorite= 1 and U.idUsu=${id}`)
     }
     
     

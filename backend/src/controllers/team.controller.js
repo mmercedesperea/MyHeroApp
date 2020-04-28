@@ -26,6 +26,13 @@ class TeamController{
         return res.send(team);
     }
 
+    async getTeamUsu(req, res) {
+        const { idUsu } = req.params;
+        const team = await _teamService.getTeamUsu(idUsu);
+        //    JSON.stringify(team)
+        return res.send(team);
+    }
+
     async  chageName(req, res) {
         const { idTeam } = req.params;
         const { body } = req;

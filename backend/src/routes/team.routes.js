@@ -19,8 +19,11 @@ module.exports = function ({ TeamController }) {
     // check the numbers of menbers
     router.get('/checkTeam/:idTeam', TeamController.checkTeam);
 
-    // obtener equipo
+    // obtener equipo por id
     router.get('/getTeam/:idTeam', TeamController.getTeam);
+
+    // obtener equipo de usuario
+    router.get('/getTeam/usu/:idUsu', TeamController.getTeamUsu);
 
     // borrar un equipo
     router.delete('/:idTeam', TeamController.delete);

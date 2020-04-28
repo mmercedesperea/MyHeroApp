@@ -15,11 +15,14 @@ export class HomeComponent implements OnInit {
   public bestD: any = "";
   public mostF: [];
   public bestT: Team;
-  public bestTeamHeroes:Hero[] =[];
+  public bestTeamHeroes: Hero[] = [];
+  public mostStatsHero: Hero[] = [];
+  public newHeros: Hero[] = [];
+  public stats: string[] = ['mostIntelligence', 'mostStrength', 'mostSpeed', 'mostDurability', 'mostPower', 'mostCombat'];
 
-  constructor(private _heroService: HeroService, private _UserHero: UserHeroService, private _Team: TeamService) {
-    this.bestT = new Team(0, 0,'','','','','','')
-
+  constructor(private _hero: HeroService, private _UserHero: UserHeroService, private _Team: TeamService) {
+    this.bestT = new Team(0, 0, '', '', '', '', '', '')
+    
   }
 
   ngOnInit() {
@@ -27,8 +30,9 @@ export class HomeComponent implements OnInit {
     this.bestDc();
     this.mostFollwed();
     this.bestTeam();
+    this.herosMost();
+    this.newHeroesAdd();
   }
-
 
   bestMarvel() {
     this._UserHero.bestMarverHero().subscribe(res => {
@@ -60,9 +64,8 @@ export class HomeComponent implements OnInit {
   bestTeam() {
     this._Team.bestTeam().subscribe(res => {
       this.bestT = res[0];
-      console.log(this.bestT)
       for (var i = 1; i < 6; i++) {
-        this._heroService.getHeroById(this.bestT[`member_${i}`]).subscribe(res => {
+        this._hero.getHeroById(this.bestT[`member_${i}`]).subscribe(res => {
           console.log(res)
           this.bestTeamHeroes.push(res)
         })
@@ -70,6 +73,27 @@ export class HomeComponent implements OnInit {
     }, error => {
       console.log(error)
     })
-
   }
+
+  herosMost() {
+    this.stats.forEach(stats => {
+      this._hero[stats]().subscribe(res => {
+        this.mostStatsHero.push(res);
+        console.log(res);
+      }, error => {
+        console.log(error)
+      })
+    });
+  }
+
+  newHeroesAdd() {
+    this._hero.newHeros().subscribe(res => {
+      this.newHeros = res;
+      console.log(this.newHeros)
+    }, error => {
+      console.log(error)
+    })
+  }
+
+
 }

@@ -26,7 +26,7 @@ class TeamService extends BaseService {
         return false;
     }
 
-   
+
 
     async addMember(idTeam, entity) {
         if (!idTeam) {
@@ -42,7 +42,7 @@ class TeamService extends BaseService {
             throw error;
         }
 
-        return await _teamObj.addMember(idTeam,entity);
+        return await _teamObj.addMember(idTeam, entity);
 
     }
 
@@ -60,7 +60,7 @@ class TeamService extends BaseService {
             throw error;
         }
 
-        return await _teamObj.deleteMember(idTeam,entity);
+        return await _teamObj.deleteMember(idTeam, entity);
 
     }
 
@@ -76,6 +76,23 @@ class TeamService extends BaseService {
             error.status = 400;
             error.message = 'Entity must be sent';
             throw error;
+        }
+        return currentEntity;
+    }
+
+    async getTeamUsu(id) {
+        if (!id) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'id must be sent';
+            throw error;
+        }
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _teamObj.getTeamUsu(id);
+        // console.log(currentEntity[0].idTeam)
+        // JSON.stringify(currentEntity);
+        if (!currentEntity[0].idTeam) {
+            return null;
         }
         return currentEntity;
     }

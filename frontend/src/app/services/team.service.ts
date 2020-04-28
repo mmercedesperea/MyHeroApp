@@ -21,13 +21,19 @@ export class TeamService {
 
   // check the numbers of menbers
   public checkTeam(idTeam: number) {
-    return this.http.get(`${this.baseUrl}/team/checkTeam/${idTeam}`);
+    return this.http.get<any>(`${this.baseUrl}/team/checkTeam/${idTeam}`);
   }
 
   // obtener equipo por su id
   public getTeam(idTeam: number) {
     return this.http.get<Team>(`${this.baseUrl}/team/getTeam/${idTeam}`);
   }
+
+  // obtener equipo de usuario
+  public getTeamUsu(idUsu: number) {
+    return this.http.get<any>(`${this.baseUrl}/team/getTeam/usu/${idUsu}`);
+  }
+
 
   // obtener equipo con mayor stats
   public bestTeam() {
@@ -44,19 +50,20 @@ export class TeamService {
   }
 
   // //añadir nuevo miembro (hay que mandarle el campo de la bd "member_1, member_2, etc" y el codigo del hero)
-  public addMember(idTeam: number, team) {
+  public addMember(idTeam: number, data) {
     // para convertir el objeto en un string
-    let params = JSON.stringify(team);
+    // let params = JSON.stringify(data);
+    console.log(data)
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(`${this.baseUrl}/team/addMember/${idTeam}`, params, { headers: headers });
+    return this.http.put(`${this.baseUrl}/team/addMember/${idTeam}`, data, { headers: headers });
   }
 
   //delete member
-  public deleteMember(idTeam: number, team) {
+  public deleteMember(idTeam: number, member) {
     // para convertir el objeto en un string
-    let params = JSON.stringify(team);
+    // let params = JSON.stringify(member);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(`${this.baseUrl}/team/deleteMember/${idTeam}`, params, { headers: headers });
+    return this.http.put(`${this.baseUrl}/team/deleteMember/${idTeam}`, member, { headers: headers });
   }
 
   // borrar un equipo

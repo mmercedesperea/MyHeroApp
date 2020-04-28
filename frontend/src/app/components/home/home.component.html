@@ -30,7 +30,36 @@
   <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
 </div>
 
+<h1>BEST TEAM</h1>
+<h3>{{bestT.teamName}}</h3>
+<h4>{{bestT.alias}}</h4>
+<h4>{{bestT.totalPoint}}</h4>
+
 <div *ngFor="let hero of bestTeamHeroes">
+  <h3>{{ hero.heroName }}</h3>
+  <br />
+  <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
+  <br />
+  <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+</div>
+
+<div *ngFor="let hero of mostStatsHero">
+  <h3>{{ hero.heroName }}</h3>
+  <p *ngIf=" hero.intelligence"> MOST INTELLIGENT {{hero.intelligence}}</p>
+  <p *ngIf=" hero.strength">MOST STRENGTH {{hero.strength}}</p>
+  <p *ngIf=" hero.speed">MOST SPEED {{hero.speed}}</p>
+  <p *ngIf=" hero.durability">MOST DURABILITY {{hero.durability}}</p>
+  <p *ngIf=" hero.power">MOST POWER {{hero.power}}</p>
+  <p *ngIf=" hero.combat">MOST COMBATS {{hero.combat}}</p>
+  <br />
+  <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
+  <br />
+  <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+</div>
+
+
+<h1>LAST HEROES ADD</h1>
+<div *ngFor="let hero of newHeros">
   <h3>{{ hero.heroName }}</h3>
   <br />
   <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>

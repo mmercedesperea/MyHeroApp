@@ -79,7 +79,7 @@ export class UserService {
   //comprobar tiempo de expiracion del token
   public isLoggedIn(): boolean {
     const user = this.getTokenInfo();
-    console.log(user.exp)
+    // console.log(user.exp)
     if (user) {
       // return user.exp > (Date.now() / 1000) + (60 * 60);  // Token de una hora de duración
       return user.exp > Date.now() / 1000;

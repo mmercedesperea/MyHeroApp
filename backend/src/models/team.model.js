@@ -27,6 +27,10 @@ class Team {
         return await _DB.consulta(`SELECT a.idTeam,a.idUsu,a.teamName,a.member_1,a.member_2,a.member_3,a.member_4,a.member_5,  SUM(b.intelligence + b.strength + b.speed + b.durability +b.power +b.combat) as totalPoint FROM team a, heroes b WHERE a.idTeam =${idTeam} AND  b.idHero IN (a.member_1, a.member_2, a.member_3,a.member_4,a.member_5)`);
     }
 
+    async getTeamUsu(idUsu) {
+        return await _DB.consulta(`SELECT h.idHero, h.heroName, h.image,T.* FROM heroes h JOIN team t ON ( h.idHero = t.member_1 or h.idHero = t.member_2 or h.idHero = t.member_3 or h.idHero = t.member_4 or h.idHero = t.member_5) WHERE t.idUsu= ${idUsu}`);
+    }
+
     // update name
     async update(idTeam, entity) {
         return await _DB.update(`UPDATE ${table}  SET teamName = '${entity.teamName}' WHERE idTeam = ${idTeam}`);
