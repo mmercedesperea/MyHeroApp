@@ -53,6 +53,9 @@ class Hero {
     }
 
     async getWinner(idHero, idHero2) {
+        console.log(idHero)
+        console.log(idHero2)
+
         // se busca el heroe en la bd
         var Hero1 = await _DB.consulta(
             `SELECT SUM (intelligence + strength + speed +durability +power +combat) as totalPoints,idHero,heroName,image from ${table} WHERE idHero =${idHero}`
@@ -64,6 +67,7 @@ class Hero {
         // si los puntos totales del hero1 son mayores que el de hero2 devuelve ese
         if (Hero1[0].totalPoints > Hero2[0].totalPoints) {
             return Hero1[0];
+            
         } else {
             return Hero2[0];
         }
@@ -154,10 +158,16 @@ class Hero {
     }
 
     // crear unna nueva entidad heroe
-    async insertHero(entity) {
-        return await _DB.create(
-            `INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,work) VALUES ('${entity.idHero}','${entity.heroName}','${entity.image}',${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},'${entity.fullName}','${entity.placeOfBirth}','${entity.publisher}','${entity.alignment}','${entity.firstApperance}','${entity.gender}','${entity.race}','${entity.height}','${entity.weight}','${entity.work}')`
-        );
+    // async insertHero(entity) {
+    //     return await _DB.create(
+    //         `INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,work) VALUES ('${entity.idHero}',"${entity.heroName}","${entity.image}",${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},"${entity.fullName}","${entity.placeOfBirth}","${entity.publisher}","${entity.alignment}","${entity.firstApperance}","${entity.gender}","${entity.race}",'${entity.height}','${entity.weight}',"${entity.work}")`
+    //     );
+    // }
+
+    //   // crear unna nueva entidad heroe
+      async insertHero(entity) {
+        return await _DB.createNewHero(
+            "INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,work) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", entity);
     }
 
     async getHeroByid(id) {

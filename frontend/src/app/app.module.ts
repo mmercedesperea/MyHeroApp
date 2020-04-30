@@ -22,7 +22,8 @@ import { MyHeroesComponent } from './components/my-heroes/my-heroes.component';
 import { HerosSearchComponent } from './components/heroes-search/heroes-search.component';
 import { HeroesDetailComponent } from './components/heroes-detail/heroes-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MyHeroesComponent,
     HerosSearchComponent,
     HeroesDetailComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatNativeDateModule,
     FormsModule, 
     ReactiveFormsModule ,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,7 +20,7 @@ class HeroController{
         const { idHero2 } = req.params;
         const heroWin = await _heroService.getWinner(idHero,idHero2);
         //    JSON.stringify(user)
-        return res.send(heroWin[0]);
+        return res.send(heroWin);
     }
 
     async  mostIntelligence(req, res) {

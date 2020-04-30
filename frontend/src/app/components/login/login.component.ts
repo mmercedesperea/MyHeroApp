@@ -72,9 +72,9 @@ export class LoginComponent implements OnInit {
 
   signIn() {
     this._userService.LoginUser(this.user).subscribe(
-      response => {
+      res => {
         // se coge el elemento user que nos trae la response
-        this.UserLog = response['user'];
+        this.UserLog = res['user'];
         console.log(this.UserLog);
 
         // almacenamos la informacion del usuario en el local storage, lo pasamos a string ya que el local storage solo deja guardar string o numeros
@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
         // this.datosCorrectos = true
 
-        this.token = response['token'];
+        this.token = res['token'];
         // guardamos el token en el localStorage
         localStorage.setItem('token',this.token);
 

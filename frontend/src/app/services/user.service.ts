@@ -99,9 +99,9 @@ export class UserService {
   // router.put('/:idUsu', UserController.update);
   public updateUser(idUsu: number, user) {
     // para convertir el objeto en un string
-    let params = JSON.stringify(user);
+    // let params = JSON.stringify(user);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(`${this.baseUrl}/user/chageName/${idUsu}`, params, { headers: headers });
+    return this.http.put(`${this.baseUrl}/user/${idUsu}`, user, { headers: headers });
   }
 
   // //actualizar contraseña(email,password,newpassword)

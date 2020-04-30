@@ -36,7 +36,7 @@ export class HeroService {
 
   // obtener el heroe con mayor puntos 
   public getWinner(idHero: number, idHero2: number) {
-    return this.http.get<Hero>(`${this.baseUrl}/hero/getWinner/${idHero}/${idHero2}`);
+    return this.http.get<any>(`${this.baseUrl}/hero/getWinner/${idHero}/${idHero2}`);
   }
 
   public mostIntelligence() {

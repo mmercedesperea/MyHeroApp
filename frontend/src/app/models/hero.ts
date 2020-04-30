@@ -20,6 +20,7 @@ export class Hero {
         public weight?: string,
         public work?: string,
         public createDate?: Date,
+        public totalPoints?:number
     ) { }
 }
 

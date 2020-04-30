@@ -8,9 +8,14 @@ class UserController {
     //obtener usuario por id
     async get(req, res) {
         const { idUsu } = req.params;
+
         const user = await _userService.get(idUsu);
+        console.log(user.password)
+
+        user[0].password="0";
         //    JSON.stringify(user)
-        return res.send(user);
+        console.log(user[0])
+        return res.send(user[0]);
     }
 
     async update(req, res) {
@@ -22,9 +27,9 @@ class UserController {
     }
     
     async updatePass(req, res) {
-        const { idUsu } = req.params;
+        // const { idUsu } = req.params;
         const { body } = req;
-        const  updatePass = await _userService.updatePass(idUsu, body);
+        const  updatePass = await _userService.updatePass(body);
         console.log( updatePass)
         return res.status(201).send({message: updatePass});
     }

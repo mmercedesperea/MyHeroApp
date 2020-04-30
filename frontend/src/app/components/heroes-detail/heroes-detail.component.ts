@@ -20,19 +20,23 @@ export class HeroesDetailComponent implements OnInit {
     this._activatedRoute.params.subscribe(params => {
       // const id: 0 = params["id"];
       const id = params["id"];
-      this._heroService.getHeroById(id).subscribe(res => {
-        // this.hero = res;
-        // console.log(res.idHero)
-        this.hero = res;
-        console.log(JSON.stringify(this.hero, null, 2));
-        // console.log(this.hero);
-      },
-        error => {
-          console.log(error)
-        }
-
-      )
+      this.getHero(id)
     });
+  }
+
+  getHero(id) {
+    this._heroService.getHeroById(id).subscribe(res => {
+      // this.hero = res;
+      // console.log(res.idHero)
+      this.hero = res;
+      console.log(JSON.stringify(this.hero, null, 2));
+      // console.log(this.hero);
+    },
+      error => {
+        console.log(error)
+      }
+
+    )
   }
 
 }

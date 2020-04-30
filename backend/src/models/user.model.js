@@ -53,7 +53,7 @@ class User {
 
     // news
     async get(id) {
-        return await this.DB.consulta(`SELECT * from ${table} WHERE idUsu =${id}`)
+        return await _DB.consulta(`SELECT * from ${table} WHERE idUsu =${id}`)
     }
 
     // decimos que busque a un usuario mediante su email

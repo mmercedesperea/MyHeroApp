@@ -19,10 +19,12 @@ export class MyHeroesComponent implements OnInit {
   public maxMembers: boolean = false;
   public idTeam: number = 0;
   public memberNUll: string = '';
+  public teamName: string='';
+  public totalPoint:number=0;
+
   constructor(private _userService: UserService, _hero: HeroService, private _UserHero: UserHeroService, private _Team: TeamService) {
     // this.myTeam = new Team(0, 0, '', '', '', '', '', '')
     // this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', null)
-
   }
 
   ngOnInit() {
@@ -39,11 +41,12 @@ export class MyHeroesComponent implements OnInit {
     this.identity = this._userService.getIdentity();
   }
 
-
   getTeamUsu() {
     this._Team.getTeamUsu(this.identity.id).subscribe(res => {
       this.myTeam = res;
-      // console.log(this.myTeam)
+      console.log(this.myTeam)
+      this.teamName= this.myTeam[0].teamName;
+      this.totalPoint=this.myTeam[0].totalPoint;
       this.idTeam = this.myTeam[0].idTeam;
       this.checkTeamNumber(this.idTeam);
       // console.log(res)
@@ -52,8 +55,14 @@ export class MyHeroesComponent implements OnInit {
     })
   }
 
-  //idUsu teanName
-  createTeam() {
+  //idUsu teanName (idUsu, teamName)
+  createTeam(teamName) {
+    var data = { idUsu: this.identity.id, teamName: teamName };
+    this._Team.createTeam(data).subscribe(res => {
+      console.log(res)
+    }, error => {
+      console.log(error)
+    })
 
   }
 
@@ -62,9 +71,7 @@ export class MyHeroesComponent implements OnInit {
     // comprobamos el hueco de member que esta vacio y lo almacenamos
     var member = this.getMemberNull();
     // // console.log('la ideaaaa'+this.memberNUll)
-
     var data = { member: member, codHero: idHero };
-
     this._Team.addMember(this.idTeam, data).subscribe(res => {
       console.log(res)
     }, error => {
@@ -81,7 +88,6 @@ export class MyHeroesComponent implements OnInit {
     }
   }
 
-
   // entity.member para el body
   deleteMember(member) {
     var data = { member: member };
@@ -93,11 +99,14 @@ export class MyHeroesComponent implements OnInit {
 
   }
 
-  deleteTeam(idTeam) {
+  deleteTeam() {
+    this._Team.delete(this.idTeam).subscribe(res => {
+      console.log(res)
+    }, error => {
+      console.log(error)
+    })
 
   }
-
-
 
   // comprueba si ya estan todos los miembros 
   checkTeamNumber(idTeam) {
