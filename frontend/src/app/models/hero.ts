@@ -18,7 +18,10 @@ export class Hero {
         public race?: string,
         public height?: string,
         public weight?: string,
+        public eyeColor?: string,
+        public hairColor?: string,
         public work?: string,
+        public biography?: string,
         public createDate?: Date,
         public totalPoints?:number
     ) { }

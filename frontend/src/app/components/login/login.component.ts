@@ -55,16 +55,16 @@ export class LoginComponent implements OnInit {
   getErrorMessage(dato) {
     var result: string
     if (this.LoginForm.controls[dato].hasError('required')) {
-      return (result = 'Esta información es necesaria')
+      return (result = 'This information is required');
     } else if (this.LoginForm.controls[dato].hasError('minlength')) {
-      return (result = 'Debe introducir al menos 6 caracteres')
+      return (result = 'You must enter at least 6 characters');
     } else if (this.LoginForm.controls[dato].hasError('maxlength')) {
-      return (result = 'El máximo de caracteres es 30')
+      return (result = 'The maximum of characters is 30');
     } else if (
       this.LoginForm.controls[dato].hasError('email') &&
       dato === 'email'
     ) {
-      return (result = 'Tiene que introducir un email valido')
+      return (result = 'You have to enter a valid email')
     } else {
       return (result = '');
     }
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
         // console.log(this.UserLog.token);
         // console.log(this.UserLog.user);
         // console.log(this.user)
-        console.log('Logeado correctamente')
+        console.log('Successfully logged')
         // this.message = 'Logeado correctamente '
         // // limpiamos el usuario
         // this.user = new User(0, '', '', '', '', '', new Date(0), '', 0)
@@ -111,16 +111,16 @@ export class LoginComponent implements OnInit {
       error => {
         this.datosCorrectos = false
         if (error.status === 400) {
-          this.message = 'La contraseña no es correcta'
+          this.message = 'The password is not correct'
           console.log(error.status)
           console.log(this.message)
         } else if (error.status === 402) {
-          this.message = 'El usuario no existe'
+          this.message = 'Username does not exist'
           console.log(error.status)
           console.log(this.message)
         } else {
         console.log(error.status)
-        this.message = 'Error al logearse'
+        this.message = 'Login failed'
         console.log(this.message)
         }
       }

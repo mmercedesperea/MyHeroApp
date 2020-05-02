@@ -25,7 +25,10 @@ class Hero {
         this.race = "";
         this.height = "";
         this.weight = "";
+        this.eyeColor="";
+        this.hairColor=";"
         this.work = "";
+        this.biography="";
         this.createDate = Date;
         table = "heroes";
         _DB = DB;
@@ -167,7 +170,7 @@ class Hero {
     //   // crear unna nueva entidad heroe
       async insertHero(entity) {
         return await _DB.createNewHero(
-            "INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,work) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", entity);
+            "INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,eyeColor,hairColor,work) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", entity);
     }
 
     async getHeroByid(id) {
@@ -176,6 +179,7 @@ class Hero {
         var newHeroGet = await rp(url, { json: true })
             .then(function (res) {
                 let NewHeroCreate = Hero;
+                console.log( res.appearance["hair-color"])
                 NewHeroCreate.idHero = res.id;
                 NewHeroCreate.heroName = res.name;
                 NewHeroCreate.image = res.image.url;
@@ -194,6 +198,8 @@ class Hero {
                 NewHeroCreate.race = res.appearance.race;
                 NewHeroCreate.height = res.appearance.height[1];
                 NewHeroCreate.weight = res.appearance.weight[1];
+                NewHeroCreate.eyeColor = res.appearance["eye-color"];
+                NewHeroCreate.hairColor = res.appearance["hair-color"];
                 NewHeroCreate.work = res.work.occupation === '-' ? 'unknown' : res.work.occupation;
                 return NewHeroCreate;
             })

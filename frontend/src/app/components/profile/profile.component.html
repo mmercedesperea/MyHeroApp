@@ -1,86 +1,101 @@
 <p>User-detail works!</p>
-<h1>{{ user.idUsu}}</h1>
-<h3>{{ user.alias}}</h3>
-<p>{{user.email}}</p>
-<p>{{user.name}}</p>
-<p>{{user.dateOfBirth | date}}</p>
-<p>{{user.surname}}</p>
-<p>{{user.admin.data}}</p>
+<h1>{{ user.idUsu }}</h1>
+<h3>{{ user.alias }}</h3>
+<p>{{ user.email }}</p>
+<p>{{ user.name }}</p>
+<p>{{ user.dateOfBirth | date }}</p>
+<p>{{ user.surname }}</p>
+<p>{{ user.admin.data }}</p>
 <!-- <img [src]="user.photo" [alt]="user.alias" class="img-fluid"/> -->
 
-<body>
-    <div id="form">
-      <h1>Cambiar informacion</h1>
-      <form [formGroup]="profileForm" (ngSubmit)="submit()">
-        <mat-form-field appearance="outline">
-          <mat-label>Alias</mat-label>
-          <input matInput type="text" formControlName="alias" placeholder="Alias" [(ngModel)]="user.alias" />
-          <!-- <mat-error *ngIf="!profileForm.controls['alias'].valid">{{
-            getErrorMessage("alias")
-          }}</mat-error> -->
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email" placeholder="Email" [(ngModel)]="user.email" />
-          <!-- <mat-error *ngIf="!profileForm.controls['email'].valid">{{
-              getErrorMessage("email")
-          }}</mat-error> -->
-        </mat-form-field>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput type="text" formControlName="name" placeholder="Name" [(ngModel)]="user.name" />
-            <!-- <mat-error *ngIf="!profileForm.controls['alias'].valid">{{
-              getErrorMessage("alias")
-            }}</mat-error> -->
-          </mat-form-field>
+  <div id="form">
+    <h1>Change information</h1>
+    <form [formGroup]="profileForm" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Alias</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="alias"
+          placeholder="Alias"
+          [(ngModel)]="user.alias"
+        />
+        <mat-error *ngIf="!profileForm.controls['alias'].valid">{{
+          getErrorMessage("alias")
+        }}</mat-error>
+      </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Surname</mat-label>
-            <input matInput type="text" formControlName="surname" placeholder="Surname" [(ngModel)]="user.surname" />
-            <!-- <mat-error *ngIf="!profileForm.controls['alias'].valid">{{
-              getErrorMessage("alias")
-            }}</mat-error> -->
-          </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          [(ngModel)]="user.email"
+        />
+        <mat-error *ngIf="!profileForm.controls['email'].valid">{{
+          getErrorMessage("email")
+        }}</mat-error>
+      </mat-form-field>
 
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker1" placeholder="Date Of Birth" [(ngModel)]="user.dateOfBirth"
-              formControlName="dateOfBirth">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </mat-form-field>
-  
-        <!-- <mat-form-field appearance="outline">
-          <mat-label>Contraseña</mat-label>
-          <input matInput type="password" formControlName="password" placeholder="Contraseña"
-            [(ngModel)]="user.password" />
-          <mat-error *ngIf="!profileForm.controls['password'].valid">
-            {{getErrorMessage("password")}}</mat-error>
-        </mat-form-field> -->
-  
-        <!-- <mat-form-field appearance="outline">
-          <mat-label>Confirmar contraseña</mat-label>
-          <input matInput type="password" formControlName="confirmPass" placeholder="Contraseña" />
-          <mat-error *ngIf="
-              profileForm.get('confirmPass').invalid &&
-              profileForm.get('confirmPass').touched &&
-              profileForm.get('password').touched
-            ">
-            {{getErrorMessage("confirmPass") }}</mat-error>
-        </mat-form-field> -->
-  
-        <!-- <div *ngIf="!datosCorrectos">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="name"
+          placeholder="Name"
+          [(ngModel)]="user.name"
+        />
+        <mat-error *ngIf="!profileForm.controls['name'].valid">{{
+          getErrorMessage("name")
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="surname"
+          placeholder="Surname"
+          [(ngModel)]="user.surname"
+        />
+        <mat-error *ngIf="!profileForm.controls['surname'].valid">{{
+          getErrorMessage("surname")
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          placeholder="Date Of Birth"
+          [(ngModel)]="user.dateOfBirth"
+          formControlName="dateOfBirth"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <!-- <div *ngIf="!datosCorrectos">
           <p class="mensajeError">{{  this.message }}</p>
         </div> -->
-  
-        <button type="submit" class="LoginButton i" >
-            <!-- <button type="submit" class="LoginButton i" [disabled]="!profileForm.valid"> -->
 
-          Regístrate
-        </button>
-      </form>
-  
-      
-    </div>
-  </body>
+      <button
+        type="submit"
+        class="LoginButton i"
+        [disabled]="!profileForm.valid"
+      >
+      Update profile
+      </button>
+    </form>
+  </div>
+  <button type="button" mat-raised-button (click)="changePassDialog()">Change Password</button>
+  <button type="button" mat-raised-button (click)=" deleteUserDialog()">Delete Acount</button>
+

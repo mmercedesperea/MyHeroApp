@@ -19,7 +19,8 @@ class UserService extends BaseService {
     }
 
     async updatePass(id, entity) {
-        if (!id) {
+
+        if (!id) {screen
             const error = new Error();
             error.status = 400;
             error.message = 'id must be sent';

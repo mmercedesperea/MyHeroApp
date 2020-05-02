@@ -53,22 +53,22 @@ export class RegisterComponent implements OnInit {
   getErrorMessage(dato) {
     var result: string;
     if (this.registerForm.controls[dato].hasError('required')) {
-      return (result = 'Esta información es necesaria');
+      return (result = 'This information is required');
     } else if (this.registerForm.controls[dato].hasError('minlength')) {
       if (dato === 'alias') {
-        return (result = 'Debe introducir al menos 3 caracteres');
+        return (result = 'You must enter at least 3 characters');
       } else {
-        return (result = 'Debe introducir al menos 6 caracteres');
+        return (result = 'You must enter at least 6 characters');
       }
     } else if (this.registerForm.controls[dato].hasError('maxlength')) {
-      return (result = 'El máximo de caracteres es 30');
+      return (result = 'The maximum of characters is 30');
     } else if (
       this.registerForm.controls[dato].hasError('email') &&
       dato === 'email'
     ) {
-      return (result = 'Tiene que introducir un email valido');
+      return (result = 'You have to enter a valid email');
     } else if (dato === 'confirmPass') {
-      return (result = 'Las contraseñas no coinciden');
+      return (result = 'Passwords do not match');
     } else {
       return (result = '');
     }
@@ -95,8 +95,8 @@ export class RegisterComponent implements OnInit {
     this._userService.RegisterUser(this.user).subscribe(
       response => {
         console.log(this.user);
-        console.log('Registro correctamente');
-        this.message = 'Registro correctamente ';
+        console.log('Register correctly');
+        this.message = 'Register correctly';
         // limpiamos el usuario
         this.user = new User(0, '', '', '', '', '', new Date(0), '', 0);
         this.registerForm.reset();
@@ -106,12 +106,12 @@ export class RegisterComponent implements OnInit {
       error => {
         this.datosCorrectos = false;
         if (error.status === 400) {
-          this.message = 'EL usuario ya existe';
+          this.message = 'User already exists';
           console.log(error.status);
           console.log(this.message);
         } else {
           console.log(error.status);
-          this.message = 'Error al registrarse';
+          this.message = 'Registration failed';
           console.log(this.message);
         }
       }

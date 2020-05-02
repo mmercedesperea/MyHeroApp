@@ -67,7 +67,7 @@ class DBConexion {
     async createNewHero(sql,entity) {
         return new Promise((resolve, reject) => {
             console.log(sql)
-            _db.query(sql,[entity.idHero,entity.heroName,entity.image,entity.intelligence,entity.strength,entity.speed,entity.durability,entity.power,entity.combat,entity.fullName,entity.placeOfBirth,entity.publisher,entity.alignment,entity.firstApperance,entity.gender,entity.race,entity.height,entity.weight,entity.work],
+            _db.query(sql,[entity.idHero,entity.heroName,entity.image,entity.intelligence,entity.strength,entity.speed,entity.durability,entity.power,entity.combat,entity.fullName,entity.placeOfBirth,entity.publisher,entity.alignment,entity.firstApperance,entity.gender,entity.race,entity.height,entity.weight,entity.eyeColor,entity.hairColor,entity.work],
                 (err) => {
                     if (err) {
                         console.log(err);

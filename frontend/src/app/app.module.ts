@@ -8,22 +8,26 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChangePassDialogComponent } from './components/modals/change-pass-dialog/change-pass-dialog.component'
+import { DeleteUserDialogComponent } from './components/modals/delete-user-dialog/delete-user-dialog.component';
 
 //new imports
-import { HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
 // angular material module
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule, MatNativeDateModule} from '@angular/material';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import {MatSelectModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatNativeDateModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material';
 import { FightComponent } from './components/fight/fight.component';
 import { MyHeroesComponent } from './components/my-heroes/my-heroes.component';
 import { HerosSearchComponent } from './components/heroes-search/heroes-search.component';
 import { HeroesDetailComponent } from './components/heroes-detail/heroes-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatSnackBarModule} from '@angular/material/snack-bar'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +40,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     HerosSearchComponent,
     HeroesDetailComponent,
     ProfileComponent,
+    ChangePassDialogComponent,
+    DeleteUserDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,12 +51,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    FormsModule, 
-    ReactiveFormsModule ,
+    FormsModule,
+    ReactiveFormsModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
+  entryComponents:[ChangePassDialogComponent,DeleteUserDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

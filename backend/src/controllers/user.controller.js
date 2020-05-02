@@ -27,9 +27,9 @@ class UserController {
     }
     
     async updatePass(req, res) {
-        // const { idUsu } = req.params;
+        const { idUsu } = req.params;
         const { body } = req;
-        const  updatePass = await _userService.updatePass(body);
+        const  updatePass = await _userService.updatePass(idUsu,body);
         console.log( updatePass)
         return res.status(201).send({message: updatePass});
     }

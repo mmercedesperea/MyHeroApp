@@ -13,7 +13,7 @@ export class HeroesDetailComponent implements OnInit {
 
   constructor(private _heroService: HeroService,
     private _activatedRoute: ActivatedRoute) {
-    this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', null)
+    this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '','','', null)
   }
 
   ngOnInit() {

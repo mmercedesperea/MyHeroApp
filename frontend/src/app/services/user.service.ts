@@ -108,16 +108,16 @@ export class UserService {
   // router.put('/newpass/:idUsu', UserController.updatePass);
   public updatePass(idUsu: number, data) {
     // para convertir el objeto en un string
-    let params = JSON.stringify(data);
+    // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(`${this.baseUrl}/user/newpass/${idUsu}`, params, { headers: headers });
+    return this.http.put(`${this.baseUrl}/user/newpass/${idUsu}`,data, { headers: headers });
   }
 
   // // Eliminar informacion de usuario de la bd (email,password)
   public deleteUser(idUsu: number, data) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    let params = JSON.stringify(data);
-    return this.http.post(`${this.baseUrl}/user/deleteUser/${idUsu}`, params,
+    // let params = JSON.stringify(data);
+    return this.http.post(`${this.baseUrl}/user/deleteUser/${idUsu}`, data,
       { headers: headers });
   }
 

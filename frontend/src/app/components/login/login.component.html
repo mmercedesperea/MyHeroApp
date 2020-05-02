@@ -1,7 +1,6 @@
 <body>
     <div id="form">
-      <h1>Únete a nosotros</h1>
-      <h3>es rápido y sencillo</h3>
+      <h1>log in</h1>
       <form [formGroup]="LoginForm" (ngSubmit)="signIn()">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
@@ -12,7 +11,7 @@
         </mat-form-field>
   
         <mat-form-field appearance="outline">
-          <mat-label>Contraseña</mat-label>
+          <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password" placeholder="Contraseña"
             [(ngModel)]="user.password" />
           <mat-error *ngIf="!LoginForm.controls['password'].valid">
@@ -31,8 +30,9 @@
       <p>o</p>
   
       <p>
-        ¿No esta registrado?
-        <b><a class="registrate" [routerLink]="['/register']">Registrate</a></b>
+        It's not registered?
+        <b><a class="registrate" [routerLink]="['/register']">
+          Sign up</a></b>
       </p>
     </div>
   </body>
