@@ -21,3 +21,11 @@
 <p>{{ hero.work}}</p>
 <p>{{ hero.biography}}</p>
 <p>{{ hero.createDate}}</p>
+
+<div *ngIf="identity">
+<button type="button" mat-raised-button (click)="followHero()">Follow</button>
+<button type="button" mat-raised-button (click)="unfollowHero()">Unfollow</button>
+<button type="button" mat-raised-button (click)="favorite()">favorite</button>
+<button type="button" mat-raised-button (click)="unfavorite()">unfavorite</button>
+</div>
+

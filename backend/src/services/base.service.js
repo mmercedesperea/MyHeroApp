@@ -13,14 +13,11 @@ class BaseService {
         }
         // en caso de que exista la id vamos a buscar esa entidad
         const currentEntity = await this.obj.get(id);
-        
+
         // JSON.stringify(currentEntity);
         console.log(currentEntity)
         if (!currentEntity) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'Entity must be sent';
-            throw error;
+            return null;
         }
         return currentEntity;
     }
@@ -34,7 +31,7 @@ class BaseService {
 
     // crear una entidad nueva
     async create(entity) {
-        
+
         return await this.obj.create(entity);
     }
 

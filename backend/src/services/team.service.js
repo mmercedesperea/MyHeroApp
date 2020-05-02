@@ -91,7 +91,7 @@ class TeamService extends BaseService {
         const currentEntity = await _teamObj.getTeamUsu(id);
         // console.log(currentEntity[0].idTeam)
         // JSON.stringify(currentEntity);
-        if (!currentEntity[0].idTeam) {
+        if (!currentEntity) {
             return null;
         }
         return currentEntity;

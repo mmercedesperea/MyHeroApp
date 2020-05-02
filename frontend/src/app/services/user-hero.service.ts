@@ -18,18 +18,18 @@ export class UserHeroService {
 //  router.put('/followHero', UserHeroController.followHero);
 public followHero( ids) {
   // para convertir el objeto en un string
-  let params = JSON.stringify(ids);
+  // let params = JSON.stringify(ids);
   let headers = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.put(`${this.baseUrl}/userHero/followHero`, params, { headers: headers });
+  return this.http.put(`${this.baseUrl}/userHero/followHero`, ids, { headers: headers });
 }
 
 //  // Unfollow a hero(idUsu,idHero)
 //  router.put('/unfollowHero', UserHeroController.unfollowHero);
 public unfollowHero( ids) {
   // para convertir el objeto en un string
-  let params = JSON.stringify(ids);
+  // let params = JSON.stringify(ids);
   let headers = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.put(`${this.baseUrl}/userHero/unfollowHero`, params, { headers: headers });
+  return this.http.put(`${this.baseUrl}/userHero/unfollowHero`, ids, { headers: headers });
 }
 //  // favorite a hero(idUsu,idHero)
 //  router.put('/favorite', UserHeroController.favorite);

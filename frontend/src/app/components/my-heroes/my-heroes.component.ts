@@ -43,12 +43,15 @@ export class MyHeroesComponent implements OnInit {
 
   getTeamUsu() {
     this._Team.getTeamUsu(this.identity.id).subscribe(res => {
-      this.myTeam = res;
-      console.log(this.myTeam)
-      this.teamName= this.myTeam[0].teamName;
-      this.totalPoint=this.myTeam[0].totalPoint;
-      this.idTeam = this.myTeam[0].idTeam;
-      this.checkTeamNumber(this.idTeam);
+      if(res !=null){
+        this.myTeam = res;
+        console.log(this.myTeam)
+        this.teamName= this.myTeam[0].teamName;
+        this.totalPoint=this.myTeam[0].totalPoint;
+        this.idTeam = this.myTeam[0].idTeam;
+        this.checkTeamNumber(this.idTeam);
+
+      }
       // console.log(res)
     }, error => {
       console.log(error)

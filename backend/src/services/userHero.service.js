@@ -10,7 +10,7 @@ class UserHeroService extends BaseService {
   }
 
   async match(body) {
-    return await  _userHeroOBJ.match(body)
+    return await _userHeroOBJ.match(body)
   }
 
   async followHero(body) {
@@ -35,17 +35,17 @@ class UserHeroService extends BaseService {
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
-      const insertUserHero = await  _userHeroOBJ.InsertUH(body)
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
       console.log(insertUserHero)
       if (insertUserHero) {
-        return await  _userHeroOBJ.followUH(body)
+        return await _userHeroOBJ.followUH(body)
       }
     }
 
     if (matchUserHero) {
       // actualizamos el campo de follow a true
-      return await  _userHeroOBJ.followUH(body)
+      return await _userHeroOBJ.followUH(body)
     }
   }
 
@@ -64,7 +64,7 @@ class UserHeroService extends BaseService {
       throw error
     }
     // actualizamos el campo de follow a false
-    return await  _userHeroOBJ.unfollowUH(body)
+    return await _userHeroOBJ.unfollowUH(body)
   }
 
   async favorite(body) {
@@ -89,17 +89,17 @@ class UserHeroService extends BaseService {
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
-      const insertUserHero = await  _userHeroOBJ.InsertUH(body)
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
       console.log(insertUserHero)
       if (insertUserHero) {
-        return await  _userHeroOBJ.favorite(body)
+        return await _userHeroOBJ.favoriteUH(body)
       }
     }
-
+    console.log(matchUserHero)
     if (matchUserHero) {
       // actualizamos el campo de favorite a true
-      return await  _userHeroOBJ.favorite(body)
+      return await _userHeroOBJ.favoriteUH(body)
     }
   }
 
@@ -120,7 +120,7 @@ class UserHeroService extends BaseService {
     }
 
     // actualizamos el campo de follow a false
-    return await  _userHeroOBJ.unfavorite(body)
+    return await _userHeroOBJ.unfavorite(body)
 
   }
 
@@ -146,17 +146,17 @@ class UserHeroService extends BaseService {
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
-      const insertUserHero = await  _userHeroOBJ.InsertUH(body)
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
       console.log(insertUserHero)
       if (insertUserHero) {
-        return await  _userHeroOBJ.voteHero(body)
+        return await _userHeroOBJ.voteHero(body)
       }
     }
 
     if (matchUserHero) {
       // actualizamos el campo de favorite a true
-      return await  _userHeroOBJ.voteHero(body)
+      return await _userHeroOBJ.voteHero(body)
     }
   }
 
@@ -182,17 +182,17 @@ class UserHeroService extends BaseService {
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
-      const insertUserHero = await  _userHeroOBJ.InsertUH(body)
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
       console.log(insertUserHero)
       if (insertUserHero) {
-        return await  _userHeroOBJ.commentHero(body)
+        return await _userHeroOBJ.commentHero(body)
       }
     }
 
     if (matchUserHero) {
       // actualizamos el campo de favorite a true
-      return await  _userHeroOBJ.commentHero(body)
+      return await _userHeroOBJ.commentHero(body)
     }
   }
 
@@ -210,7 +210,7 @@ class UserHeroService extends BaseService {
       error.message = 'id hero must be sent'
       throw error
     }
-    return await  _userHeroOBJ.deleteCHero(body);
+    return await _userHeroOBJ.deleteCHero(body);
   }
 
   async getFav(id) {
@@ -221,7 +221,7 @@ class UserHeroService extends BaseService {
       throw error;
     }
     // en caso de que exista la id vamos a buscar esa entidad
-    const currentEntity = await  _userHeroOBJ.getFav(id);
+    const currentEntity = await _userHeroOBJ.getFav(id);
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {
@@ -249,7 +249,7 @@ class UserHeroService extends BaseService {
       throw error;
     }
     // en caso de que exista la id vamos a buscar esa entidad
-    const currentEntity = await  _userHeroOBJ.getCommentHero(idUser, idHero);
+    const currentEntity = await _userHeroOBJ.getCommentHero(idUser, idHero);
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {
@@ -276,7 +276,7 @@ class UserHeroService extends BaseService {
       throw error;
     }
     // en caso de que exista la id vamos a buscar esa entidad
-    const currentEntity = await  _userHeroOBJ.getVoteHero(idUser, idHero);
+    const currentEntity = await _userHeroOBJ.getVoteHero(idUser, idHero);
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {
@@ -289,7 +289,7 @@ class UserHeroService extends BaseService {
   }
 
   async bestMarverHero() {
-    const currentEntity = await  _userHeroOBJ.bestMarverHero();
+    const currentEntity = await _userHeroOBJ.bestMarverHero();
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {
@@ -302,7 +302,7 @@ class UserHeroService extends BaseService {
   }
 
   async bestDCHero() {
-    const currentEntity = await  _userHeroOBJ.bestDCHero();
+    const currentEntity = await _userHeroOBJ.bestDCHero();
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {
@@ -315,7 +315,7 @@ class UserHeroService extends BaseService {
   }
 
   async  mostFollowHeros() {
-    const currentEntity = await  _userHeroOBJ.mostFollowHeros();
+    const currentEntity = await _userHeroOBJ.mostFollowHeros();
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {

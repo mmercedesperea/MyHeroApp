@@ -32,8 +32,7 @@ class UserHero {
         return await _DB.update(`UPDATE ${table}  SET follow = 0 WHERE idUsu = ${body.idUsu} AND idHero = ${body.idHero}`);
     }
 
-
-    async favorite(body) {
+    async favoriteUH(body) {
         return await _DB.update(`UPDATE ${table}  SET favorite = 1 WHERE idUsu = ${body.idUsu} AND idHero = ${body.idHero}`);
     }
 
