@@ -1,7 +1,7 @@
 <p>heroes-detail works!</p>
 <h1>{{ hero.idHero}}</h1>
 <h3>{{ hero.heroName}}</h3>
-<img [src]="hero.image" [alt]="hero.heroName" class="img-fluid"/>
+<img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
 <p>{{ hero.intelligence}}</p>
 <p>{{ hero.strength}}</p>
 <p>{{ hero.speed}}</p>
@@ -23,9 +23,29 @@
 <p>{{ hero.createDate}}</p>
 
 <div *ngIf="identity">
-<button type="button" mat-raised-button (click)="followHero()">Follow</button>
-<button type="button" mat-raised-button (click)="unfollowHero()">Unfollow</button>
-<button type="button" mat-raised-button (click)="favorite()">favorite</button>
-<button type="button" mat-raised-button (click)="unfavorite()">unfavorite</button>
+    <button *ngIf="!followtHero " type="button" mat-raised-button (click)="followHero()">Follow</button>
+    <button *ngIf="followtHero " type="button" mat-raised-button (click)="unfollowHero()">Unfollow</button>
+    <button *ngIf=" followtHero && !favoriteHero" type="button" mat-raised-button (click)="favorite()">favorite</button>
+    <button *ngIf=" followtHero &&favoriteHero" type="button" mat-raised-button
+        (click)="unfavorite()">unfavorite</button>
 </div>
 
+
+<!-- <ngb-rating class="star" [(rate)]="followtHero.puntuacion" (hover)="hovered=$event" (leave)="hovered=0"
+                            [readonly]="readonly" (click)="puntuarClub(hovered, club.codClub)" max="10">
+                        </ngb-rating> -->
+<div *ngIf="identity">
+    <ng-template #t let-fill="fill">
+        <span class="star" [class.full]="fill === 100">
+            <span class="half" [style.width.%]="fill">&#10029;</span>&#10029;
+        </span>
+    </ng-template>
+
+    <ngb-rating [(rate)]="score" [starTemplate]="t" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
+        [max]="10" (click)="voteHero(hovered)"></ngb-rating>
+
+    <button *ngIf="!comment " type="button" mat-raised-button (click)="commentHeroDialog()">Comment</button>
+
+    <h1>{{ comment}}</h1>
+    <button *ngIf="comment " type="button" mat-raised-button (click)="commentHeroDialog()">Edit comment</button>
+</div>

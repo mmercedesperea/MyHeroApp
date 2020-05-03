@@ -50,18 +50,18 @@ public unfavorite( ids) {
 //  // vote (score,idUsu,idHero)
 public voteHero( data) {
   // para convertir el objeto en un string
-  let params = JSON.stringify(data);
+  // let params = JSON.stringify(data);
   let headers = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.put(`${this.baseUrl}/userHero/voteHero`, params, { headers: headers });
+  return this.http.put(`${this.baseUrl}/userHero/voteHero`,data, { headers: headers });
 }
 
 //  // comment(comment,idUsu,idHero)
 //  router.put('/commentHero', UserHeroController.commentHero);
 public commentHero( data) {
   // para convertir el objeto en un string
-  let params = JSON.stringify(data);
+  // let params = JSON.stringify(data);
   let headers = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.put(`${this.baseUrl}/userHero/commentHero`, params, { headers: headers });
+  return this.http.put(`${this.baseUrl}/userHero/commentHero`, data, { headers: headers });
 }
 
 //  // delete comment  (idUsu,idHero)
@@ -76,13 +76,13 @@ public deleteCHero( ids) {
 //  //obtener el voto de un heroe de un usuario
 //  router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
 public getVoteHero(idUsu: number,idHero:number) {
-  return this.http.get(`${this.baseUrl}/userHero/voteHero/${idUsu}/${idHero}`);
+  return this.http.get<UserHero>(`${this.baseUrl}/userHero/voteHero/${idUsu}/${idHero}`);
 }
 
 //  //obtener el comentario de un heroe de un usuario
 //  router.get('/commentHero/:idUsu/:idHero', UserHeroController.getCommentHero);
 public getcommentHero(idUsu: number,idHero:number) {
-  return this.http.get(`${this.baseUrl}/userHero/commentHero/${idUsu}/${idHero}`);
+  return this.http.get<UserHero>(`${this.baseUrl}/userHero/commentHero/${idUsu}/${idHero}`);
 }
 
 //  // obtener todos los heroes favoritos

@@ -27,6 +27,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material';
+import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import { ComentHeroDialogComponent } from './components/modals/coment-hero-dialog/coment-hero-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {MatDialogModule} from '@angular/material';
     ProfileComponent,
     ChangePassDialogComponent,
     DeleteUserDialogComponent,
+    ComentHeroDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,9 +59,10 @@ import {MatDialogModule} from '@angular/material';
     MatSelectModule,
     MatDatepickerModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbRatingModule
   ],
-  entryComponents:[ChangePassDialogComponent,DeleteUserDialogComponent],
+  entryComponents:[ChangePassDialogComponent,DeleteUserDialogComponent, ComentHeroDialogComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

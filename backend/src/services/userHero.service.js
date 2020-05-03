@@ -253,12 +253,9 @@ class UserHeroService extends BaseService {
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {
-      const error = new Error();
-      error.status = 400;
-      error.message = 'There is no relationship';
-      throw error;
+      return null;
     }
-    return currentEntity;
+    return currentEntity[0];
   }
 
   async getVoteHero(idUser, idHero) {
@@ -280,12 +277,9 @@ class UserHeroService extends BaseService {
     // JSON.stringify(currentEntity);
     // console.log(currentEntity)
     if (!currentEntity) {
-      const error = new Error();
-      error.status = 400;
-      error.message = 'There is no relationship';
-      throw error;
+      return null;
     }
-    return currentEntity;
+    return currentEntity[0];
   }
 
   async bestMarverHero() {

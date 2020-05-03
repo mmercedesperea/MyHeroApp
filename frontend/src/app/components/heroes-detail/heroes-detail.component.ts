@@ -4,6 +4,9 @@ import { Hero } from '../../models/hero';
 import { ActivatedRoute } from '@angular/router';
 import { UserHeroService } from 'src/app/services/user-hero.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatDialog } from "@angular/material/dialog";
+import { ComentHeroDialogComponent } from '../modals/coment-hero-dialog/coment-hero-dialog.component';
+
 
 @Component({
   selector: 'app-heroes-detail',
@@ -13,10 +16,18 @@ import { UserService } from 'src/app/services/user.service';
 export class HeroesDetailComponent implements OnInit {
   public hero: Hero;
   public identity;
+  public favoriteHero: boolean = false;
+  public followtHero: boolean = false;
+  public hovered: any;
+  public readonly: any;
+  public score: number = 0;
+  public comment:string ="";
+  public idParams: number = 0;
 
   constructor(private _heroService: HeroService,
     private _UserHeroService: UserHeroService,
     private _UserService: UserService,
+    public dialog: MatDialog,
     private _activatedRoute: ActivatedRoute) {
     this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', null)
   }
@@ -24,14 +35,25 @@ export class HeroesDetailComponent implements OnInit {
   ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       // const id: 0 = params["id"];
-      const id = params["id"];
-      this.getHero(id)
+      this.idParams = params["id"];
+      this.getHero(this.idParams);
+      this.getIdentity();
     });
-    this.identity = this._UserService.getIdentity()
-    this.following();
-    this.favorites();
+
+    // this.getIdentity();
+
+
   }
 
+  getIdentity() {
+    this.identity = this._UserService.getIdentity();
+    if (this.identity) {
+      this.following();
+      this.favorites();
+      this.getVoteHero();
+      this.getcommentHero();
+    }
+  }
 
   getHero(id) {
     this._heroService.getHeroById(id).subscribe(res => {
@@ -54,6 +76,7 @@ export class HeroesDetailComponent implements OnInit {
     this._UserHeroService.followHero(ids).subscribe(res => {
       // this.hero = res;
       // console.log(res.idHero)
+      this.followtHero = true;
       console.log(res);
       // console.log(this.hero);
     },
@@ -70,6 +93,8 @@ export class HeroesDetailComponent implements OnInit {
       // this.hero = res;
       // console.log(res.idHero)
       console.log(res);
+      this.followtHero = false;
+      this.favoriteHero = false;
       // console.log(this.hero);
     },
       error => {
@@ -84,6 +109,7 @@ export class HeroesDetailComponent implements OnInit {
     this._UserHeroService.favorite(ids).subscribe(res => {
       // this.hero = res;
       // console.log(res.idHero)
+      this.favoriteHero = true;
       console.log(res);
       // console.log(this.hero);
     },
@@ -99,6 +125,7 @@ export class HeroesDetailComponent implements OnInit {
     this._UserHeroService.unfavorite(ids).subscribe(res => {
       // this.hero = res;
       // console.log(res.idHero)
+      this.favoriteHero = false;
       console.log(res);
       // console.log(this.hero);
     },
@@ -111,46 +138,101 @@ export class HeroesDetailComponent implements OnInit {
 
 
   following() {
-    if(this.identity){
-      this._UserHeroService.allHerosFoll(this.identity.id).subscribe(res => {
-    
-     
-        if(res){
-          res.forEach(heroeeee => {
-            if (this.hero.idHero === heroeeee.idHero) {
-              console.log("following")
-            }
-    
-          })
-        }
-        
-        // console.log(this.heroesFol)
-      }), error => {
-        console.log(error)
-      }
-    }
-   
-  }
-
-  favorites() {
-    if(this.identity){
-    this._UserHeroService.allHerosFav(this.identity.id).subscribe(res => {
-     
-      if(res){
+    this._UserHeroService.allHerosFoll(this.identity.id).subscribe(res => {
+      if (res) {
         res.forEach(heroeeee => {
           if (this.hero.idHero === heroeeee.idHero) {
-            console.log("favorite")
+            console.log("following")
+            this.followtHero = true;
           }
-  
         })
       }
-      
-     
-      // console.log(this.heroesFav)
+      // console.log(this.heroesFol)
     }), error => {
       console.log(error)
     }
   }
-}
+
+  favorites() {
+    this._UserHeroService.allHerosFav(this.identity.id).subscribe(res => {
+      if (res) {
+        res.forEach(heroeeee => {
+          if (this.hero.idHero === heroeeee.idHero) {
+            console.log("favorite")
+            this.favoriteHero = true;
+            this.followtHero = true;
+          }
+
+        })
+      }
+
+    }), error => {
+      console.log(error)
+    }
+
+  }
+
+  getVoteHero() {
+    this._UserHeroService.getVoteHero(this.identity.id, this.idParams).subscribe(res => {
+      if (res) {
+        this.score = res.score;
+      }
+      // console.log(this.hero);
+    },
+      error => {
+        console.log(error)
+      }
+
+    )
+  }
+
+  voteHero(hovered) {
+    var ids = { score: hovered ,idUsu: this.identity.id, idHero: this.hero.idHero }
+    this._UserHeroService.voteHero(ids).subscribe(res => {
+      // this.hero = res;
+      // console.log(res.idHero)
+      // this.favoriteHero = false;
+      console.log(res);
+      // console.log(this.hero);
+    },
+      error => {
+        console.log(error)
+      }
+
+    )
+  }
+
+
+  getcommentHero() {
+    this._UserHeroService.getcommentHero(this.identity.id, this.idParams).subscribe(res => {
+      if (res) {
+        console.log(res)
+        this.comment = res.comment;
+        console.log(this.comment)
+      }
+      // console.log(this.hero);
+    },
+      error => {
+        console.log(error)
+      }
+
+    )
+  }
+
+
+  commentHeroDialog(): void {
+    const dialogRef = this.dialog.open(ComentHeroDialogComponent, {
+      // Le pasamos los datos que queremos
+      data: {
+        idUsu: this.identity.id,
+        idHero:this.idParams
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+      this.getcommentHero();
+    });
+  }
+
 
 }
