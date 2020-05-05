@@ -38,7 +38,14 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" *ngIf="selectedValue2 === 'Hero Name'">
+        <mat-form-field appearance="fill" *ngIf="selectedValue2 === 'HeroName'">
+          <!-- <mat-label>Search</mat-label> -->
+          <!-- <fieldset [disabled]="selectedValue2 != 'HeroName'"> -->
+          <input matInput #input maxlength="20" placeholder="{{ selectedValue2 }}" formControlName="search" />
+          <!-- </fieldset> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="selectedValue2 === 'User'">
           <!-- <mat-label>Search</mat-label> -->
           <!-- <fieldset [disabled]="selectedValue2 != 'HeroName'"> -->
           <input matInput #input maxlength="20" placeholder="{{ selectedValue2 }}" formControlName="search" />

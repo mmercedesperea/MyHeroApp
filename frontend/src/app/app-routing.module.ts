@@ -11,6 +11,7 @@ import { HeroesDetailComponent } from './components/heroes-detail/heroes-detail.
 import { HerosSearchComponent } from './components/heroes-search/heroes-search.component';
 import { MyHeroesComponent } from './components/my-heroes/my-heroes.component';
 import { AuthGuard } from './services/auth.guard';
+import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 
 // // canActivate:[AuthGuardService]
 const routes: Routes = [
@@ -28,9 +29,11 @@ const routes: Routes = [
   }, {
     path: 'heroesDetail/:id', component: HeroesDetailComponent
   }, {
-    path: 'heroesSearch/:data', component: HerosSearchComponent
+    path: 'heroesSearch/:data/:term', component: HerosSearchComponent
   }, {
     path: 'myHeroes', component: MyHeroesComponent, canActivate:[AuthGuard]
+  },{
+    path: 'publicProfile/:user', component: PublicProfileComponent, canActivate:[AuthGuard]
   },
   {
     path: '**', pathMatch: 'full', redirectTo: 'home'

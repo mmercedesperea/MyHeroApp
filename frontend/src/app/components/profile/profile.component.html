@@ -2,7 +2,7 @@
 <h1>{{ user.idUsu }}</h1>
 <h3>{{ user.alias }}</h3>
 <p>{{ user.email }}</p>
-<p>{{ user.name }}</p>
+<p>{{ user.userName }}</p>
 <p>{{ user.dateOfBirth | date }}</p>
 <p>{{ user.surname }}</p>
 <p>{{ user.admin.data }}</p>
@@ -47,7 +47,7 @@
           type="text"
           formControlName="name"
           placeholder="Name"
-          [(ngModel)]="user.name"
+          [(ngModel)]="userName"
         />
         <mat-error *ngIf="!profileForm.controls['name'].valid">{{
           getErrorMessage("name")

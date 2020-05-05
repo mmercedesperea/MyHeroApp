@@ -27,8 +27,14 @@ module.exports = function ({ UserController }) {
   // unfollow a user
   router.delete('/unFollowUser/:idUsu/:idUnfollow', UserController.unFollowUser);
 
+  //Buscar un usuario por nombre
+  router.get('/getUserByName/:userName', UserController.getUserByName);
 
   // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
+
+
+  router.get('/checkFollow/:idUsu/:idUnfollow', UserController.checkFollow);
+
 
   return router;
 };

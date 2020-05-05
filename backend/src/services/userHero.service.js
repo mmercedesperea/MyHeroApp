@@ -321,6 +321,31 @@ class UserHeroService extends BaseService {
     return currentEntity;
   }
 
+
+  async getHeroUsu(idUser, idHero) {
+    if (!idUser) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idUser must be sent';
+      throw error;
+    }
+
+    if (!idHero) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idHero must be sent';
+      throw error;
+    }
+    // en caso de que exista la id vamos a buscar esa entidad
+    const currentEntity = await _userHeroOBJ.getHeroUsu(idUser, idHero);
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      return null;
+    }
+    return currentEntity[0];
+  }
+
 }
 
 module.exports = UserHeroService

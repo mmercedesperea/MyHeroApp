@@ -41,11 +41,11 @@
         </span>
     </ng-template>
 
-    <ngb-rating [(rate)]="score" [starTemplate]="t" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
+    <ngb-rating [(rate)]="heroUsu.score" [starTemplate]="t" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
         [max]="10" (click)="voteHero(hovered)"></ngb-rating>
 
-    <button *ngIf="!comment " type="button" mat-raised-button (click)="commentHeroDialog()">Comment</button>
+    <button *ngIf="!heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog(new)">Comment</button>
 
-    <h1>{{ comment}}</h1>
-    <button *ngIf="comment " type="button" mat-raised-button (click)="commentHeroDialog()">Edit comment</button>
+    <h1>{{ heroUsu.comment}}</h1>
+    <button *ngIf="heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog(edit)">Edit comment</button>
 </div>

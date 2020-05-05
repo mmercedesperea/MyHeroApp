@@ -128,6 +128,47 @@ class UserService extends BaseService {
 
     }
 
+    async  getUserByName(userName) {
+        if (!userName) {
+          const error = new Error();
+          error.status = 400;
+          error.message = 'userName must be sent';
+          throw error;
+        }
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _userOBJ.getUserByName(userName);
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+          return null;
+        }
+        return currentEntity;
+      }
+
+      async checkFollow(idUsu, idUnfollow) {
+        if (!idUsu) {
+          const error = new Error();
+          error.status = 400;
+          error.message = 'idUsu must be sent';
+          throw error;
+        }
+    
+        if (!idUnfollow) {
+          const error = new Error();
+          error.status = 400;
+          error.message = 'idUnfollow must be sent';
+          throw error;
+        }
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _userOBJ.checkFollow(idUsu, idUnfollow);
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+          return null;
+        }
+        return currentEntity[0];
+      }
+
 
 
 

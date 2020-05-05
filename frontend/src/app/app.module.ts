@@ -29,6 +29,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import { ComentHeroDialogComponent } from './components/modals/coment-hero-dialog/coment-hero-dialog.component';
+import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ComentHeroDialogComponent } from './components/modals/coment-hero-dialo
     ChangePassDialogComponent,
     DeleteUserDialogComponent,
     ComentHeroDialogComponent,
+    PublicProfileComponent,
   ],
   imports: [
     BrowserModule,

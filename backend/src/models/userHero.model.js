@@ -80,6 +80,10 @@ class UserHero {
         return await _DB.consulta(`select a.idHero, a.heroName, a.image, count(a.idHero) as followers FROM heroes a, usu_hero b WHERE a.idHero = b.idHero AND b.follow = 1 GROUP by idHero ORDER by followers DESC LIMIT 10`)
     }
 
+    async getHeroUsu(idUser,idHero) {
+        return await _DB.consulta(`SELECT * from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
+    }
+
 }
 
 module.exports = UserHero;

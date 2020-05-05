@@ -8,7 +8,7 @@ class User {
         this.idUsu = 0;
         this.email = "";
         this.password = "";
-        this.name = "";
+        this.userName = "";
         this.alias = "";
         this.surname = "";
         this.dateOfBirth = "";
@@ -68,7 +68,7 @@ class User {
 
     // actualiza a un usuario
     async update(idUsu, entity) {
-        return await _DB.update(`UPDATE ${table}  SET email = '${entity.email}', name = '${entity.name}', alias = '${entity.alias}',surname ='${entity.surname}' ,dateOfBirth ='${entity.dateOfBirth}' WHERE idUsu = ${idUsu}`);
+        return await _DB.update(`UPDATE ${table}  SET email = '${entity.email}', userName = '${entity.userName}', alias = '${entity.alias}',surname ='${entity.surname}' ,dateOfBirth ='${entity.dateOfBirth}' WHERE idUsu = ${idUsu}`);
     }
 
     // actualiza la contraseña
@@ -87,6 +87,15 @@ class User {
 
     async  unFollowUser(idUsu,idUnfollow) {
         return await _DB.delete(`DELETE FROM follows WHERE followingIdUsu = ${idUsu} AND followedIdUsu = ${idUnfollow}`);
+    }
+
+    async getUserByName(userName) {
+        console.log('llego aqui'+userName)
+        return await _DB.consulta(`SELECT idUsu,alias,userName,surname,dateOfBirth,photo from ${table} WHERE alias LIKE '${userName}%'`)
+    }
+
+    async checkFollow(idUsu, idUnfollow) {
+        return await _DB.consulta(`SELECT * from follows WHERE followingIdUsu = ${idUsu} AND  followedIdUsu = ${idUnfollow}`)
     }
 
 

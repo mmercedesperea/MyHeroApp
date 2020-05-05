@@ -82,6 +82,15 @@ class UserHeroController{
         return res.send(allHeros);
     }
 
+  //obtener la relacion del heroe y el usuario
+    async getHeroUsu(req, res) {
+        const { idUsu } = req.params;
+        const { idHero } = req.params;
+        const allHeros = await _userHeroService.getHeroUsu(idUsu,idHero);
+        //    JSON.stringify(user)
+        return res.send(allHeros);
+    }
+
     
 
     //obtener el voto de un usuario sobre un hero

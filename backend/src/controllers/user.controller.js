@@ -57,8 +57,23 @@ class UserController {
         console.log(unFollowUser)
         return res.status(201).send({message:unFollowUser});
     }
-    
 
+    //Buscar un usuario por nombre
+    async getUserByName(req, res) {
+        const { userName} = req.params;
+
+        const user = await _userService.getUserByName(userName);
+       console.log(user)
+        return res.send(user);
+    }
+    
+    async checkFollow(req, res) {
+        const { idUsu } = req.params;
+        const { idUnfollow } = req.params;
+        const  checkFollow = await _userService.checkFollow( idUsu,idUnfollow);
+       
+        return res.send( checkFollow);
+    }
     // async uploadImage(req,res){
     //     const { idUsu } = req.params;
     //     const file_name = "no subido...";

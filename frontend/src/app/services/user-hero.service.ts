@@ -73,17 +73,17 @@ public deleteCHero( ids) {
   return this.http.put(`${this.baseUrl}/userHero/deleteCHero`, params, { headers: headers });
 }
 
-//  //obtener el voto de un heroe de un usuario
+//obtener la relacion del heroe y el usuario
 //  router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
-public getVoteHero(idUsu: number,idHero:number) {
-  return this.http.get<UserHero>(`${this.baseUrl}/userHero/voteHero/${idUsu}/${idHero}`);
+public getHeroUsu(idUsu: number,idHero:number) {
+  return this.http.get<UserHero>(`${this.baseUrl}/userHero/getHeroUsu/${idUsu}/${idHero}`);
 }
 
-//  //obtener el comentario de un heroe de un usuario
-//  router.get('/commentHero/:idUsu/:idHero', UserHeroController.getCommentHero);
-public getcommentHero(idUsu: number,idHero:number) {
-  return this.http.get<UserHero>(`${this.baseUrl}/userHero/commentHero/${idUsu}/${idHero}`);
-}
+// //  //obtener el comentario de un heroe de un usuario
+// //  router.get('/commentHero/:idUsu/:idHero', UserHeroController.getCommentHero);
+// public getcommentHero(idUsu: number,idHero:number) {
+//   return this.http.get<UserHero>(`${this.baseUrl}/userHero/commentHero/${idUsu}/${idHero}`);
+// }
 
 //  // obtener todos los heroes favoritos
 //  router.get('/allHerosFav/:idUsu', UserHeroController.allHerosFav);

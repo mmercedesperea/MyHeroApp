@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   public title: string;
   public identity;
   public searchForm: FormGroup;
-  public selectedValue2: string = 'Hero Name'
+  public selectedValue2: string = 'HeroName'
   isAnonymous :boolean=true;
 
   constructor(private formBuilder: FormBuilder, private _userService: UserService, private _router: Router) {
@@ -42,9 +42,11 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
 
   searchValue = [
-    {value: 'Hero Name', viewValue: 'Hero'},
+    {value: 'HeroName', viewValue: 'Hero'},
     {value: 'Marvel', viewValue: 'All Marvel Heroes'},
-    {value: 'DC', viewValue: 'All DC Heroes'}
+    {value: 'DC', viewValue: 'All DC Heroes'},
+    {value: 'User', viewValue: 'User'}
+
   ];
 
   // selectedValue2: string = "HeroName"
@@ -76,11 +78,12 @@ export class NavbarComponent implements OnInit, DoCheck {
 
 
   searchHP(){
-    console.log(this.searchForm.value.search)
+    console.log('valuesear'+this.searchForm.value.search)
+
     if(this.searchForm.value.search){
-      this._router.navigate([`/heroesSearch/${this.searchForm.value.search}`]);
+      this._router.navigate([`/heroesSearch/${this.searchForm.value.selectedValue}/${this.searchForm.value.search}`]);
     }else{
-      this._router.navigate([`/heroesSearch/${this.searchForm.value.selectedValue}`]);
+      this._router.navigate([`/heroesSearch/${this.searchForm.value.selectedValue}/publisher`]);
     }
     console.log(this.searchForm.value.selectedValue)
     

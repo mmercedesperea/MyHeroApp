@@ -20,14 +20,14 @@ module.exports = function ({ UserHeroController }) {
     // vote
     router.put('/voteHero', UserHeroController.voteHero);
 
-    //obtener el voto de un heroe de un usuario
-    router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
+    // //obtener el voto de un heroe de un usuario
+    // router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
 
     // comment
     router.put('/commentHero', UserHeroController.commentHero);
 
-    //obtener el comentario de un heroe de un usuario
-    router.get('/commentHero/:idUsu/:idHero', UserHeroController.getCommentHero);
+    // //obtener el comentario de un heroe de un usuario
+    // router.get('/commentHero/:idUsu/:idHero', UserHeroController.getCommentHero);
 
     // delete comment
     router.put('/deleteCHero', UserHeroController.deleteCHero);
@@ -47,6 +47,8 @@ module.exports = function ({ UserHeroController }) {
      // obtener los heroes más seguidos
     router.get('/mostFollowHeros', UserHeroController.mostFollowHeros);
 
+     //obtener la relacion del heroe y el usuario
+    router.get('/getHeroUsu/:idUsu/:idHero', UserHeroController.getHeroUsu);
 
     return router;
 }

@@ -134,7 +134,16 @@ export class UserService {
   // router.delete('/unFollowUser/:idUsu/:idUnfollow', UserController.unFollowUser);
   public unFollowUser(idUsu: number, idUnfollow: number) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.delete(`${this.baseUrl}/user/${idUsu}/${idUnfollow}`, { headers: headers });
+    return this.http.delete(`${this.baseUrl}/user/unFollowUser/${idUsu}/${idUnfollow}`, { headers: headers });
+  }
+
+  public getUserByName(alias: string) {
+    console.log('llego aqui')
+    return this.http.get<User[]>(`${this.baseUrl}/user/getUserByName/${alias}`);
+  }
+
+  public checkFollow(idUsu: number, idUnfollow: number) {
+    return this.http.get<any>(`${this.baseUrl}/user/checkFollow/${idUsu}/${idUnfollow}`);
   }
 
 }
