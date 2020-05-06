@@ -12,7 +12,7 @@ import { UserHero } from 'src/app/models/userHero';
 @Component({
   selector: 'app-heroes-detail',
   templateUrl: './heroes-detail.component.html',
-  styleUrls: ['./heroes-detail.component.css']
+  styleUrls: ['./heroes-detail.component.scss']
 })
 export class HeroesDetailComponent implements OnInit {
   public hero: Hero;
@@ -227,3 +227,4 @@ export class HeroesDetailComponent implements OnInit {
 
 
 }
+

@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-my-heroes',
   templateUrl: './my-heroes.component.html',
-  styleUrls: ['./my-heroes.component.css']
+  styleUrls: ['./my-heroes.component.scss']
 })
 export class MyHeroesComponent implements OnInit {
   public identity;

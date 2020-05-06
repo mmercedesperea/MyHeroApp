@@ -13,7 +13,7 @@ import { DeleteUserDialogComponent } from '../modals/delete-user-dialog/delete-u
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
   public identity
@@ -130,3 +130,4 @@ export class ProfileComponent implements OnInit {
     });
   }
 }
+

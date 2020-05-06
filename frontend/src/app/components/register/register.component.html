@@ -1,87 +1,88 @@
 <body>
-  <div id="form">
-    <h1>Join us</h1>
-    <form [formGroup]="registerForm" (ngSubmit)="signUp()">
-      <mat-form-field appearance="outline">
-        <mat-label>Alias</mat-label>
-        <input
-          matInput
-          type="text"
-          formControlName="alias"
-          placeholder="Alias"
-          [(ngModel)]="user.alias"
-        />
-        <mat-error *ngIf="!registerForm.controls['alias'].valid">{{
-          getErrorMessage("alias")
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          type="email"
-          formControlName="email"
-          placeholder="Email"
-          [(ngModel)]="user.email"
-        />
-        <mat-error *ngIf="!registerForm.controls['email'].valid">{{
-          getErrorMessage("email")
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          type="password"
-          formControlName="password"
-          placeholder="Password"
-          [(ngModel)]="user.password"
-        />
-        <mat-error *ngIf="!registerForm.controls['password'].valid">
-          {{ getErrorMessage("password") }}</mat-error
+    <div id="form">
+      <h1>Join us</h1>
+      <form [formGroup]="registerForm" (ngSubmit)="signUp()">
+        <mat-form-field appearance="outline">
+          <mat-label>Alias</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="alias"
+            placeholder="Alias"
+            [(ngModel)]="user.alias"
+          />
+          <mat-error *ngIf="!registerForm.controls['alias'].valid">{{
+            getErrorMessage("alias")
+          }}</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+            [(ngModel)]="user.email"
+          />
+          <mat-error *ngIf="!registerForm.controls['email'].valid">{{
+            getErrorMessage("email")
+          }}</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+            [(ngModel)]="user.password"
+          />
+          <mat-error *ngIf="!registerForm.controls['password'].valid">
+            {{ getErrorMessage("password") }}</mat-error
+          >
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm Password
+          </mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="confirmPass"
+            placeholder="Confirm Password          "
+          />
+          <mat-error
+            *ngIf="
+              registerForm.get('confirmPass').invalid &&
+              registerForm.get('confirmPass').touched &&
+              registerForm.get('password').touched
+            "
+          >
+            {{ getErrorMessage("confirmPass") }}</mat-error
+          >
+        </mat-form-field>
+  
+        <div *ngIf="!datosCorrectos">
+          <p class="mensajeError">{{ this.message }}</p>
+        </div>
+  
+        <button
+          type="submit"
+          class="LoginButton i"
+          [disabled]="!registerForm.valid"
         >
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Confirm Password
-        </mat-label>
-        <input
-          matInput
-          type="password"
-          formControlName="confirmPass"
-          placeholder="Confirm Password          "
-        />
-        <mat-error
-          *ngIf="
-            registerForm.get('confirmPass').invalid &&
-            registerForm.get('confirmPass').touched &&
-            registerForm.get('password').touched
-          "
-        >
-          {{ getErrorMessage("confirmPass") }}</mat-error
-        >
-      </mat-form-field>
-
-      <div *ngIf="!datosCorrectos">
-        <p class="mensajeError">{{ this.message }}</p>
-      </div>
-
-      <button
-        type="submit"
-        class="LoginButton i"
-        [disabled]="!registerForm.valid"
-      >
-        Sign up
-      </button>
-    </form>
-
-    <p>o</p>
-
-    <p>
-      Are you already registered?
-      <b><a class="registrate" [routerLink]="['/login']">Log in</a></b>
-    </p>
-  </div>
-</body>
+          Sign up
+        </button>
+      </form>
+  
+      <p>o</p>
+  
+      <p>
+        Are you already registered?
+        <b><a class="registrate" [routerLink]="['/login']">Log in</a></b>
+      </p>
+    </div>
+  </body>
+  

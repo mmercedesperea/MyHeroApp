@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-delete-user-dialog',
   templateUrl: './delete-user-dialog.component.html',
-  styleUrls: ['./delete-user-dialog.component.css']
+  styleUrls: ['./delete-user-dialog.component.scss']
 })
 export class DeleteUserDialogComponent implements OnInit {
   public passForm: FormGroup;
@@ -88,3 +88,4 @@ export class DeleteUserDialogComponent implements OnInit {
   }
 
 }
+

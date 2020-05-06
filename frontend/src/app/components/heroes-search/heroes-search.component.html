@@ -1,29 +1,30 @@
 <div *ngIf="hero && data != 'User'">
-  <div *ngFor="let hero of hero">
-    <!-- <h1>{{ hero.idHero }}</h1> -->
-    <h3>{{ hero.heroName }}</h3>
-    <br />
-    <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
-    <br />
-    <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+    <div *ngFor="let hero of hero">
+      <!-- <h1>{{ hero.idHero }}</h1> -->
+      <h3>{{ hero.heroName }}</h3>
+      <br />
+      <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
+      <br />
+      <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+    </div>
   </div>
-</div>
-
-<div *ngIf="!hero && data != 'User'">
-  <h1>character with given name not found</h1>
-</div>
-
-<div *ngIf="user && data === 'User'">
-  <div *ngFor="let usu of user">
-    <!-- <h1>{{ hero.idHero }}</h1> -->
-    <h3>{{ usu.alias }}</h3>
-    <br />
-    <a [routerLink]="[ '/publicProfile', usu.idUsu ]" >{{ usu.idUsu }}</a>
-    <br />
-    <img [src]="usu.photo" [alt]="usu.alias" class="img-fluid" />
+  
+  <div *ngIf="!hero && data != 'User'">
+    <h1>character with given name not found</h1>
   </div>
-</div>
-
-<div *ngIf="!user && data === 'User'">
-  <h1>User with given alias not found</h1>
-</div>
+  
+  <div *ngIf="user && data === 'User'">
+    <div *ngFor="let usu of user">
+      <!-- <h1>{{ hero.idHero }}</h1> -->
+      <h3>{{ usu.alias }}</h3>
+      <br />
+      <a [routerLink]="[ '/publicProfile', usu.idUsu ]" >{{ usu.idUsu }}</a>
+      <br />
+      <img [src]="usu.photo" [alt]="usu.alias" class="img-fluid" />
+    </div>
+  </div>
+  
+  <div *ngIf="!user && data === 'User'">
+    <h1>User with given alias not found</h1>
+  </div>
+  

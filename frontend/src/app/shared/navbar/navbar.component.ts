@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, DoCheck {
   public title: string;
@@ -91,3 +91,4 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
 
 }
+

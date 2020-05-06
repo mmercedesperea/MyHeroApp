@@ -8,9 +8,9 @@ import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-heroes-search',
   templateUrl: './heroes-search.component.html',
-  styleUrls: ['./heroes-search.component.css']
+  styleUrls: ['./heroes-search.component.scss']
 })
-export class HerosSearchComponent implements OnInit {
+export class HeroesSearchComponent implements OnInit {
   public hero: Hero[];
   public user: User[];
   public data: string = "";

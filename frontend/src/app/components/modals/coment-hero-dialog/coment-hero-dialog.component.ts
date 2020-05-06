@@ -10,7 +10,7 @@ import { UserHeroService } from 'src/app/services/user-hero.service';
 @Component({
   selector: 'app-coment-hero-dialog',
   templateUrl: './coment-hero-dialog.component.html',
-  styleUrls: ['./coment-hero-dialog.component.css']
+  styleUrls: ['./coment-hero-dialog.component.scss']
 })
 
 export class ComentHeroDialogComponent implements OnInit {

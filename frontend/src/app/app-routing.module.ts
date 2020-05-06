@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FightComponent } from './components/fight/fight.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HeroesDetailComponent } from './components/heroes-detail/heroes-detail.component';
-import { HerosSearchComponent } from './components/heroes-search/heroes-search.component';
+import { HeroesSearchComponent } from './components/heroes-search/heroes-search.component';
 import { MyHeroesComponent } from './components/my-heroes/my-heroes.component';
 import { AuthGuard } from './services/auth.guard';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
   }, {
     path: 'heroesDetail/:id', component: HeroesDetailComponent
   }, {
-    path: 'heroesSearch/:data/:term', component: HerosSearchComponent
+    path: 'heroesSearch/:data/:term', component: HeroesSearchComponent
   }, {
     path: 'myHeroes', component: MyHeroesComponent, canActivate:[AuthGuard]
   },{

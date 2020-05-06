@@ -3,7 +3,5 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.blue-snackbar {
-    background: rgb(63, 66, 61);
-    color: rgb(207, 205, 48);
-  }
+
+@import "node_modules/bootstrap/scss/bootstrap";

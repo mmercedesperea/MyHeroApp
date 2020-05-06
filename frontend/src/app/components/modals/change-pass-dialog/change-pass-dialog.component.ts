@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-change-pass-dialog',
   templateUrl: './change-pass-dialog.component.html',
-  styleUrls: ['./change-pass-dialog.component.css']
+  styleUrls: ['./change-pass-dialog.component.scss']
 })
 export class ChangePassDialogComponent implements OnInit {
   public passForm: FormGroup;
@@ -108,3 +108,4 @@ export class ChangePassDialogComponent implements OnInit {
   }
 
 }
+

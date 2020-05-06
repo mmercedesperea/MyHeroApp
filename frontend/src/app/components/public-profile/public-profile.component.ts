@@ -9,7 +9,7 @@ import { TeamService } from 'src/app/services/team.service';
 @Component({
   selector: 'app-public-profile',
   templateUrl: './public-profile.component.html',
-  styleUrls: ['./public-profile.component.css']
+  styleUrls: ['./public-profile.component.scss']
 })
 export class PublicProfileComponent implements OnInit {
   public idParams: number = 0;
@@ -112,3 +112,4 @@ export class PublicProfileComponent implements OnInit {
   
 
 }
+

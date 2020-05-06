@@ -5,7 +5,7 @@ import { HeroService } from 'src/app/services/hero.service';
 @Component({
   selector: 'app-fight',
   templateUrl: './fight.component.html',
-  styleUrls: ['./fight.component.css']
+  styleUrls: ['./fight.component.scss']
 })
 export class FightComponent implements OnInit {
   public hero: Hero;
@@ -43,3 +43,5 @@ export class FightComponent implements OnInit {
     })
   }
 }
+
+
