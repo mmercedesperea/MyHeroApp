@@ -31,7 +31,7 @@ class UserHeroService extends BaseService {
     // comprobamos si ya existe una relacion entre el usuario y el hero
     const matchUserHero = await this.match(body)
 
-    console.log(matchUserHero)
+    
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
@@ -85,18 +85,18 @@ class UserHeroService extends BaseService {
     // comprobamos si ya existe una relacion entre el usuario y el hero
     const matchUserHero = await this.match(body)
 
-    console.log(matchUserHero)
+    // console.log(matchUserHero)
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
       const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
-      console.log(insertUserHero)
+      // console.log(insertUserHero)
       if (insertUserHero) {
         return await _userHeroOBJ.favoriteUH(body)
       }
     }
-    console.log(matchUserHero)
+    // console.log(matchUserHero)
     if (matchUserHero) {
       // actualizamos el campo de favorite a true
       return await _userHeroOBJ.favoriteUH(body)
@@ -142,13 +142,13 @@ class UserHeroService extends BaseService {
     // comprobamos si ya existe una relacion entre el usuario y el hero
     const matchUserHero = await this.match(body)
 
-    console.log(matchUserHero)
+    // console.log(matchUserHero)
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
       const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
-      console.log(insertUserHero)
+      // console.log(insertUserHero)
       if (insertUserHero) {
         return await _userHeroOBJ.voteHero(body)
       }
@@ -178,13 +178,13 @@ class UserHeroService extends BaseService {
     // comprobamos si ya existe una relacion entre el usuario y el hero
     const matchUserHero = await this.match(body)
 
-    console.log(matchUserHero)
+    // console.log(matchUserHero)
 
     if (!matchUserHero) {
       // insertamos al usuario con el hero
       const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
-      console.log(insertUserHero)
+      // console.log(insertUserHero)
       if (insertUserHero) {
         return await _userHeroOBJ.commentHero(body)
       }

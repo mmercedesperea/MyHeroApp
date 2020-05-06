@@ -72,6 +72,9 @@ export class TeamService {
     return this.http.delete(`${this.baseUrl}/team/${idTeam}`, { headers: headers });
   }
 
-
+ // obtener equipo de usuario
+ public getTeamInfo(idUsu: number) {
+  return this.http.get<any>(`${this.baseUrl}/team/getTeamInfo/${idUsu}`);
+}
 
 }

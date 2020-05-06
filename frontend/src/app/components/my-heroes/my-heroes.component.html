@@ -1,6 +1,6 @@
 <h1>MY TEAM</h1>
 
-<h3>{{teamName}}</h3>
+<h3>{{myTeamInfo.teamName}}</h3>
 <h3>{{totalPoint}}</h3>
 <div *ngFor="let hero of myTeam">
   <h3>{{ hero.heroName }}</h3>
@@ -30,4 +30,8 @@
   <br />
   <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
 </div>
+
+
+<button  type="button" mat-raised-button (click)="createTeam()">Create Team</button>
+
 

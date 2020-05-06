@@ -53,7 +53,7 @@ class DBConexion {
     // crear
     async create(sql) {
         return new Promise((resolve, reject) => {
-            console.log(sql)
+            // console.log(sql)
             _db.query(sql,
                 (err) => {
                     if (err) {

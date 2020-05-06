@@ -90,11 +90,31 @@ class TeamService extends BaseService {
         // en caso de que exista la id vamos a buscar esa entidad
         const currentEntity = await _teamObj.getTeamUsu(id);
         // console.log(currentEntity[0].idTeam)
+        console.log('LA ENTIDAD A VER ESSS' +currentEntity)
+        console.log('LA ENTIDAD A VER ESSS' +id)
         // JSON.stringify(currentEntity);
         if (!currentEntity) {
             return null;
         }
         return currentEntity;
+    }
+
+    async getTeamInfo(idUsu) {
+        if (!idUsu) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'idusu must be sent';
+            throw error;
+        }
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _teamObj.getTeamInfo(idUsu);
+        console.log(currentEntity)
+        // console.log(currentEntity[0].idTeam)
+        // JSON.stringify(currentEntity);
+        if (!currentEntity) {
+            return null;
+        }
+        return currentEntity[0];
     }
 
 

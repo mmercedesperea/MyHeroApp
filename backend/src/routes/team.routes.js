@@ -31,6 +31,9 @@ module.exports = function ({ TeamController }) {
     // obtener equipo con mayor stats
     router.get('/bestTeam', TeamController.bestTeam);
 
+    // obtener info basica equipo de usuario 
+    router.get('/getTeamInfo/:idUsu', TeamController.getTeamInfo);
+
     return router;
 }
 

@@ -1,7 +1,6 @@
-<p>public-profile works!</p>
-<p>public-profile works!</p>
-{{idParams}}
 
+{{idParams}}
+{{user.alias}}
 <button  *ngIf ="!followActive"  type="button" mat-raised-button (click)="followUser()">Follow User</button>
 
 <button   *ngIf ="followActive" type="button" mat-raised-button (click)="unFollowUser()">Unfollow User</button>

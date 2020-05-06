@@ -32,6 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateTeamDialogComponent } from './components/modals/create-team-dialog/create-team-dialog.component';
 
 
 
@@ -52,7 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ComentHeroDialogComponent,
     DeleteUserDialogComponent,
     ChangePassDialogComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateTeamDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     NgbRatingModule
   ],
-  entryComponents:[ChangePassDialogComponent,DeleteUserDialogComponent, ComentHeroDialogComponent ],
+  entryComponents:[CreateTeamDialogComponent,ChangePassDialogComponent,DeleteUserDialogComponent, ComentHeroDialogComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

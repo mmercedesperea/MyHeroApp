@@ -70,6 +70,14 @@ class TeamController{
         return res.send(team);
     }
 
+    async getTeamInfo(req, res) {
+        const { idUsu } = req.params;
+        console.log(idUsu)
+        const team = await _teamService.getTeamInfo(idUsu);
+        //    JSON.stringify(team)
+        return res.send(team);
+    }
+
 }
 
 

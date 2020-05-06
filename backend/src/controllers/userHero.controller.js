@@ -31,28 +31,28 @@ class UserHeroController{
     async unfavorite(req, res) {
         const { body } = req;
         const  unfavorite = await _userHeroService.unfavorite(body);
-        console.log( unfavorite)
+        // console.log( unfavorite)
         return res.status(201).send({message: unfavorite});
     }
 
     async voteHero(req, res) {
         const { body } = req;
         const  voteHero = await _userHeroService.voteHero(body);
-        console.log( voteHero)
+        // console.log( voteHero)
         return res.status(201).send({message: voteHero});
     }
 
     async commentHero(req, res) {
         const { body } = req;
         const  commentHero = await _userHeroService.commentHero(body);
-        console.log( commentHero)
+        // console.log( commentHero)
         return res.status(201).send({message: commentHero});
     }
 
     async deleteCHero(req, res) {
         const { body } = req;
         const  deleteCHero = await _userHeroService.deleteCHero(body);
-        console.log(deleteCHero)
+        // console.log(deleteCHero)
         return res.status(201).send({message: deleteCHero});
     }
 

@@ -55,6 +55,10 @@ class Team {
         return await _DB.consulta(`SELECT c.alias,a.idTeam,a.idUsu,a.teamName,a.member_1,a.member_2,a.member_3,a.member_4,a.member_5, SUM(b.intelligence + b.strength + b.speed + b.durability +b.power +b.combat) as totalPoint FROM team a, heroes b, users c WHERE a.idUsu = c.idUsu AND b.idHero IN (a.member_1, a.member_2, a.member_3,a.member_4,a.member_5) GROUP BY a.teamName ORDER by totalPoint DESC LIMIT 1`);
 
     }
+
+    async getTeamInfo(idUsu) {
+        return await _DB.consulta(`SELECT * FROM team  WHERE idUsu =${idUsu}`);
+    }
 }
 
 module.exports = Team
