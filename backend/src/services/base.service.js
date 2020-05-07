@@ -11,8 +11,13 @@ class BaseService {
             error.message = 'id must be sent';
             throw error;
         }
+        else if (id == 'null') {
+            return null
+        }
+        
         // en caso de que exista la id vamos a buscar esa entidad
         const currentEntity = await this.obj.get(id);
+        console.log(currentEntity)
 
         // JSON.stringify(currentEntity);
         console.log(currentEntity)

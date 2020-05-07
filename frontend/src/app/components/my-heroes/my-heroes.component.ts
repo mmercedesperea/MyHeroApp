@@ -26,6 +26,7 @@ export class MyHeroesComponent implements OnInit {
   public totalPoint: number = 0
   public TeamHeroes: Hero[] = [];
   public heroLoad: Hero;
+  public i: number = 1;
   constructor(
     public dialog: MatDialog,
     private _userService: UserService,
@@ -35,6 +36,7 @@ export class MyHeroesComponent implements OnInit {
   ) {
     this.myTeamInfo = new Team(0, 0, '', '', '', '', '', '')
     this.heroLoad = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', null)
+    // this.TeamHeroes = [];
 
   }
 
@@ -43,6 +45,7 @@ export class MyHeroesComponent implements OnInit {
     this.getTeamUsu()
     this.following()
     this.favorites()
+    // this.TeamHeroes = [];
     // this.addMember(622)
     // this.addMember();
     // this.deleteMember('member_3');
@@ -67,33 +70,53 @@ export class MyHeroesComponent implements OnInit {
   //   })
   // }
 
-  getTeamUsu() {
+  async getTeamUsu() {
+    this.TeamHeroes = [];
+    console.log(this.TeamHeroes)
     //obtenemos la informacion basica del team basico del usuario
-    var heroLoad = Hero;
     this._Team.getTeamInfo(this.identity.id).subscribe(
-      res => {
+     res => {
         this.myTeamInfo = res
-        console.log(this.TeamHeroes.length)
-        console.log(this.TeamHeroes)
-        this.TeamHeroes = []
+
+        this.checkTeamNumber(this.myTeamInfo.idTeam)
 
         if (this.myTeamInfo) {
-          for (var i = 1; i < 6; i++) {
-            if (this.myTeamInfo[`member_${i}`] != null) {
-              this._heroService.getHeroById(this.myTeamInfo[`member_${i}`]).subscribe(res => {
-                // console.log(res)
-                this.heroLoad = res;
-                this.TeamHeroes.push(  this.heroLoad )
-              })
-            } 
-            else {
-              // console.log(JSON.stringify(this.TeamHeroes, null, 2));
-              console.log(i)
-              this.heroLoad = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', null)
-              this.TeamHeroes.push(this.heroLoad)
-            }
-          }
-          // // console.log(this.TeamHeroes)
+          this.TeamHeroes = [];
+
+          this._heroService.getHeroById(this.myTeamInfo.member_1).subscribe(res => {
+            this.TeamHeroes[0]=(res)
+          })
+          this._heroService.getHeroById(this.myTeamInfo.member_2).subscribe(res => {
+            this.TeamHeroes[1]=(res)
+          })
+          this._heroService.getHeroById(this.myTeamInfo.member_3).subscribe(res => {
+            this.TeamHeroes[2]=(res)
+          })
+          this._heroService.getHeroById(this.myTeamInfo.member_4).subscribe(res => {
+            this.TeamHeroes[3]=(res)
+          })
+          this._heroService.getHeroById(this.myTeamInfo.member_5).subscribe(res => {
+            this.TeamHeroes[4]=(res)
+          })
+          // if (this.myTeamInfo) {
+          //   for (var i = 1; i < 6; i++) {
+          //     if (this.myTeamInfo[`member_${i}`] != null) {
+          //       this._heroService.getHeroById(this.myTeamInfo[`member_${i}`]).subscribe(res => {
+          //         // console.log(res)
+          //         this.heroLoad = res;
+          //         this.TeamHeroes.push(  this.heroLoad )
+          //       })
+          //     } 
+          //     else {
+          //       // console.log(JSON.stringify(this.TeamHeroes, null, 2));
+          //       console.log(i)
+          //       this.heroLoad = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', null)
+          //       this.TeamHeroes.push(this.heroLoad)
+          //     }
+          //   }
+          //   // // console.log(this.TeamHeroes)
+          // }
+          console.log(this.TeamHeroes)
         }
       },
       error => {
@@ -163,6 +186,8 @@ export class MyHeroesComponent implements OnInit {
     this._Team.deleteMember(this.myTeamInfo.idTeam, data).subscribe(
       res => {
         this.checkTeamNumber(this.myTeamInfo.idTeam)
+        this.TeamHeroes = [];
+        this.getTeamUsu()
         // console.log(res)
       },
       error => {

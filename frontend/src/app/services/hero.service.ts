@@ -16,11 +16,11 @@ export class HeroService {
 
   // //obtener un heroe por el nombre
   public getHeroByName(name: string) {
-    return this.http.get<Hero[]>(`${this.baseUrl}/apiHero/search/${name}`);
+     return this.http.get<Hero[]>(`${this.baseUrl}/apiHero/search/${name}`);
   }
 
   // //obtener un heroe por el id
-  public getHeroById(id: number) {
+  public getHeroById(id: any) {
     return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
   }
 
