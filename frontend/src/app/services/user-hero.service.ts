@@ -111,4 +111,9 @@ public bestDCHero() {
 public mostFollowHeros() {
   return this.http.get<any>(`${this.baseUrl}/userHero/mostFollowHeros`);
 }
+
+   // //obtener todos los comentarios de un hero
+   public  getHeroComments(id: number){
+    return  this.http.get<any>(`${this.baseUrl}/userHero/getHeroComments/${id}`);
+   }
 }

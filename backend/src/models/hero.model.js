@@ -38,6 +38,9 @@ class Hero {
     async get(idHero) {
         // console.log(this.table)
         console.log("LA ID ESSS" + idHero);
+        if(idHero== 'null'){
+            return await null
+        }
         // se busca el heroe en la bd
         var _Hero = await _DB.consulta(
             `SELECT * from ${table} WHERE idHero =${idHero}`

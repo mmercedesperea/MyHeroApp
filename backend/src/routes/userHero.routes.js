@@ -38,17 +38,20 @@ module.exports = function ({ UserHeroController }) {
     //obtener todos los heroes follow
     router.get('/allHerosFoll/:idUsu', UserHeroController.allHerosFoll);
 
-     //obtener hero de marvel mas votado
-     router.get('/bestMarverHero', UserHeroController.bestMarverHero);
+    //obtener hero de marvel mas votado
+    router.get('/bestMarverHero', UserHeroController.bestMarverHero);
 
-     //obtener hero de Dc mas votado
-     router.get('/bestDCHero', UserHeroController.bestDCHero);
+    //obtener hero de Dc mas votado
+    router.get('/bestDCHero', UserHeroController.bestDCHero);
 
-     // obtener los heroes más seguidos
+    // obtener los heroes más seguidos
     router.get('/mostFollowHeros', UserHeroController.mostFollowHeros);
 
-     //obtener la relacion del heroe y el usuario
+    //obtener la relacion del heroe y el usuario
     router.get('/getHeroUsu/:idUsu/:idHero', UserHeroController.getHeroUsu);
+
+    // obtener todos los comentarios de un heroe
+    router.get('/getHeroComments/:idHero', UserHeroController.getHeroComments);
 
     return router;
 }

@@ -6,8 +6,8 @@ import { Team } from 'src/app/models/team'
 import { Hero } from 'src/app/models/hero'
 import { UserService } from 'src/app/services/user.service'
 import { MatDialog } from '@angular/material'
-import { CreateTeamDialogComponent } from '../modals/create-team-dialog/create-team-dialog.component'
-
+import { TeamDialogComponent } from '../modals/team-dialog/team-dialog.component'
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-my-heroes',
   templateUrl: './my-heroes.component.html',
@@ -24,9 +24,10 @@ export class MyHeroesComponent implements OnInit {
   public memberNUll: string = ''
   public teamName: string = ''
   public totalPoint: number = 0
-  public TeamHeroes: Hero[] = [];
+  public TeamHeroes: Hero[] = []
   public heroLoad: Hero;
-  public i: number = 1;
+
+  public retultado: any;
   constructor(
     public dialog: MatDialog,
     private _userService: UserService,
@@ -36,7 +37,7 @@ export class MyHeroesComponent implements OnInit {
   ) {
     this.myTeamInfo = new Team(0, 0, '', '', '', '', '', '')
     this.heroLoad = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', null)
-    // this.TeamHeroes = [];
+    this.TeamHeroes = [];
 
   }
 
@@ -45,109 +46,38 @@ export class MyHeroesComponent implements OnInit {
     this.getTeamUsu()
     this.following()
     this.favorites()
-    // this.TeamHeroes = [];
-    // this.addMember(622)
-    // this.addMember();
-    // this.deleteMember('member_3');
   }
 
   getUsu() {
     this.identity = this._userService.getIdentity()
+
   }
 
-  // bestTeam() {
-  //   this._Team.bestTeam().subscribe(res => {
-  //     this.bestT = res[0];
-
-  //     for (var i = 1; i < 6; i++) {
-  //       this._hero.getHeroById(this.myTeamInfo[`member_${i}`]).subscribe(res => {
-  //         console.log(res)
-  //         this.TeamHeroes.push(res)
-  //       })
-  //     }
-  //   }, error => {
-  //     console.log(error)
-  //   })
-  // }
-
-  async getTeamUsu() {
-    this.TeamHeroes = [];
-    console.log(this.TeamHeroes)
+  getTeamUsu() {
     //obtenemos la informacion basica del team basico del usuario
     this._Team.getTeamInfo(this.identity.id).subscribe(
-     res => {
+      res => {
+        console.log(res)
         this.myTeamInfo = res
-
-        this.checkTeamNumber(this.myTeamInfo.idTeam)
-
         if (this.myTeamInfo) {
-          this.TeamHeroes = [];
-
-          this._heroService.getHeroById(this.myTeamInfo.member_1).subscribe(res => {
-            this.TeamHeroes[0]=(res)
-          })
-          this._heroService.getHeroById(this.myTeamInfo.member_2).subscribe(res => {
-            this.TeamHeroes[1]=(res)
-          })
-          this._heroService.getHeroById(this.myTeamInfo.member_3).subscribe(res => {
-            this.TeamHeroes[2]=(res)
-          })
-          this._heroService.getHeroById(this.myTeamInfo.member_4).subscribe(res => {
-            this.TeamHeroes[3]=(res)
-          })
-          this._heroService.getHeroById(this.myTeamInfo.member_5).subscribe(res => {
-            this.TeamHeroes[4]=(res)
-          })
-          // if (this.myTeamInfo) {
-          //   for (var i = 1; i < 6; i++) {
-          //     if (this.myTeamInfo[`member_${i}`] != null) {
-          //       this._heroService.getHeroById(this.myTeamInfo[`member_${i}`]).subscribe(res => {
-          //         // console.log(res)
-          //         this.heroLoad = res;
-          //         this.TeamHeroes.push(  this.heroLoad )
-          //       })
-          //     } 
-          //     else {
-          //       // console.log(JSON.stringify(this.TeamHeroes, null, 2));
-          //       console.log(i)
-          //       this.heroLoad = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', null)
-          //       this.TeamHeroes.push(this.heroLoad)
-          //     }
-          //   }
-          //   // // console.log(this.TeamHeroes)
-          // }
-          console.log(this.TeamHeroes)
+          this.checkTeamNumber(this.myTeamInfo.idTeam)
+          this.teamUsugetHeroes(this.myTeamInfo.member_1, 0)
+          this.teamUsugetHeroes(this.myTeamInfo.member_2, 1)
+          this.teamUsugetHeroes(this.myTeamInfo.member_3, 2)
+          this.teamUsugetHeroes(this.myTeamInfo.member_4, 3)
+          this.teamUsugetHeroes(this.myTeamInfo.member_5, 4)
         }
       },
       error => {
         console.log(error)
       }
     )
-    // si ya tiene un team traemos sus miembros
-    // if (this.myTeamInfo) {
-    // this._Team.getTeamUsu(this.identity.id).subscribe(
-    //   res => {
-    //     if (res != null) {
-    //       this.myTeam = res
-    //       console.log(this.myTeam)
-    //       this.totalPoint = this.myTeam[0].totalPoint
-    //       this.checkTeamNumber(this.myTeamInfo.idTeam)
-    //     }
-    //     // console.log(res)
-    //   },
-    //   error => {
-    //     console.log(error)
-    //   }
-    // )
-    //   console.log(this.myTeamInfo)
-    //   for (var i = 1; i < 6; i++) {
-    //     console.log(this.myTeamInfo[`member_${i}`])
-    //     this._heroService.getHeroById(this.myTeamInfo[`member_${i}`]).subscribe(res => {
-    //       console.log(res)
-    //       this.TeamHeroes.push(res)
-    //     })
-    //   }
-    // }
+  }
+//obtenemos los heroes y los metemos en el array de equipo
+  teamUsugetHeroes(member, position) {
+    this._heroService.getHeroById(member).subscribe(res => {
+      this.TeamHeroes[position] = (res)
+    })
   }
 
   // entity.member entity.codHero para eñ body
@@ -170,7 +100,7 @@ export class MyHeroesComponent implements OnInit {
 
   getMemberNull() {
     // comprobamos el hueco de member que esta vacio y lo almacenamos
-    for (var i = 5; i > 0; i--) {
+    for (var i = 1; i < 6; i++) {
       // console.log('valor del array'+this.myTeam[`member_${5}`] )
       if (this.myTeamInfo[`member_${i}`] == null) {
         return `member_${i}`
@@ -186,7 +116,7 @@ export class MyHeroesComponent implements OnInit {
     this._Team.deleteMember(this.myTeamInfo.idTeam, data).subscribe(
       res => {
         this.checkTeamNumber(this.myTeamInfo.idTeam)
-        this.TeamHeroes = [];
+        // this.TeamHeroes = [];
         this.getTeamUsu()
         // console.log(res)
       },
@@ -196,16 +126,7 @@ export class MyHeroesComponent implements OnInit {
     )
   }
 
-  deleteTeam() {
-    this._Team.delete(this.idTeam).subscribe(
-      res => {
-        console.log(res)
-      },
-      error => {
-        console.log(error)
-      }
-    )
-  }
+  
 
   // comprueba si ya estan todos los miembros
   checkTeamNumber(idTeam) {
@@ -241,11 +162,13 @@ export class MyHeroesComponent implements OnInit {
       }
   }
 
-  createTeam(): void {
-    const dialogRef = this.dialog.open(CreateTeamDialogComponent, {
+  createTeam(statusF): void {
+    const dialogRef = this.dialog.open(TeamDialogComponent, {
       // Le pasamos los datos que queremos
       data: {
-        idUsu: this.identity.id
+        idUsu: this.identity.id,
+        status:statusF,
+        teamInfo: this.myTeamInfo,
       }
     })
     dialogRef.afterClosed().subscribe(result => {

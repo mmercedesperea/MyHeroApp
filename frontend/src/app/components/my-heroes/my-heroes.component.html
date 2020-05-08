@@ -4,13 +4,13 @@
 <h3>{{totalPoint}}</h3>
 <!-- {{TeamHeroes.length}} -->
 <div *ngFor="let hero of TeamHeroes, index as i">
-  <h4>MI HEROE {{i}}</h4>
+  <h4>MI HEROE {{i+1}}</h4>
   <h3 *ngIf="hero" >{{ hero.heroName }}</h3>
   <br />
   <a *ngIf=" hero" [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
   <br />
   <img  *ngIf="hero" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
-  <button  type="button" mat-raised-button (click)="deleteMember(i+1)">Delete Member</button>
+  <button *ngIf="hero" type="button" mat-raised-button (click)="deleteMember(i+1)">Delete Member</button>
 
 </div>
 
@@ -37,7 +37,9 @@
   <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
 </div>
 
+<button  *ngIf="myTeamInfo" type="button" mat-raised-button (click)="createTeam('modify')">Modify Team Name</button>
 
-<button  type="button" mat-raised-button (click)="createTeam()">Create Team</button>
+<button  *ngIf="!myTeamInfo" type="button" mat-raised-button (click)="createTeam('new')">Create Team</button>
 
+<button  *ngIf="myTeamInfo" type="button" mat-raised-button (click)="createTeam('delete')">Delete Team</button>
 

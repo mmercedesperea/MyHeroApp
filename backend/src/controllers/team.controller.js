@@ -8,7 +8,7 @@ class TeamController{
     async  createTeam(req, res) {
         const { body } = req;
         const  createTeam = await _teamService.create(body);
-        console.log(createTeam)
+        // console.log(createTeam)
         return res.status(201).send({message: createTeam});
     }
 
@@ -45,7 +45,7 @@ class TeamController{
         const { idTeam } = req.params;
         const { body } = req;
         const  addMember = await _teamService.addMember(idTeam,body);
-        console.log(addMember)
+        // console.log(addMember)
         return res.status(201).send({message:addMember});
     }
 
@@ -53,14 +53,14 @@ class TeamController{
         const { idTeam } = req.params;
         const { body } = req;
         const  deleteMember = await _teamService.deleteMember(idTeam,body);
-        console.log(deleteMember)
+        // console.log(deleteMember)
         return res.status(201).send({message: deleteMember});
     }
 
     async  delete(req, res) {
         const { idTeam } = req.params;
         const  deleteTeam = await _teamService.delete(idTeam);
-        console.log(deleteTeam)
+        // console.log(deleteTeam)
         return res.status(201).send({message: deleteTeam});
     }
 
@@ -72,7 +72,7 @@ class TeamController{
 
     async getTeamInfo(req, res) {
         const { idUsu } = req.params;
-        console.log(idUsu)
+        // console.log(idUsu)
         const team = await _teamService.getTeamInfo(idUsu);
         //    JSON.stringify(team)
         return res.send(team);

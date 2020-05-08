@@ -49,3 +49,14 @@
     <h1>{{ heroUsu.comment}}</h1>
     <button *ngIf="heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog(edit)">Edit comment</button>
 </div>
+
+
+<h4>ALL COMMENTS</h4>
+<div *ngFor="let comment of allComments">
+    <!-- <h1>{{ hero.idHero }}</h1> -->
+    <h3>{{ comment.comment }}</h3>
+    <p >{{ comment.alias}}</p>
+    <p >{{ comment.idUsu}}</p>
+    <p>{{ comment.photo}}</p>
+   
+  </div>

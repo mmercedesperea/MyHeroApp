@@ -84,6 +84,10 @@ class UserHero {
         return await _DB.consulta(`SELECT * from ${table} WHERE idUsu =${idUser} AND idHero =${idHero}`)
     }
 
+    async getHeroComments(idHero) {
+        return await _DB.consulta(`SELECT UH.comment,U.alias,U.idUsu,U.photo from usu_hero UH JOIN users U ON(U.idUsu = UH.idUsu) where idHero = ${idHero}`)
+    }
+
 }
 
 module.exports = UserHero;

@@ -36,14 +36,14 @@ class DBConexion {
         return new Promise((resolve, reject) => {
             _db.query(sql,
                 (err, rows, fields) => {
-                    console.log(sql)
+                    // console.log(sql)
                     if (err) {
                         console.log(err);
                         reject("NO se ha podido obtener" + err);
                     }
                     else if (rows.length > 0) {
                         resolve(rows);
-                        console.log(rows)
+                        // console.log(rows)
                     }
                     else { resolve(null) }
 

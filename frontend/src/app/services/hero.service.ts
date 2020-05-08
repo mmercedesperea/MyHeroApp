@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Hero } from '../models/hero';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,10 @@ export class HeroService {
   }
 
   // //obtener un heroe por el id
-  public getHeroById(id: any) {
-    return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+   public  getHeroById(id: any){
+    
+   return  this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+
   }
 
   // //obtener todos los heroes de marvel
@@ -66,6 +69,7 @@ export class HeroService {
   public newHeros() {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/new/heros`);
   }
+
 
 
 }

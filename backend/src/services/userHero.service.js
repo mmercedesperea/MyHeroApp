@@ -346,6 +346,25 @@ class UserHeroService extends BaseService {
     return currentEntity[0];
   }
 
+
+  async  getHeroComments(idHero ) {
+    if (!idHero ) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idHero must be sent';
+      throw error;
+    }
+
+    // en caso de que exista la id vamos a buscar esa entidad
+    const currentEntity = await _userHeroOBJ.getHeroComments(idHero);
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      return null;
+    }
+    return currentEntity;
+  }
+
 }
 
 module.exports = UserHeroService

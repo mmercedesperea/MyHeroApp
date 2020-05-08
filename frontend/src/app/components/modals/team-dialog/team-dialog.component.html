@@ -1,0 +1,47 @@
+<div *ngIf="data.status === 'new' || data.status === 'modify'"   id="form">
+  <h1 *ngIf="data.status === 'new' ">Create Team</h1>
+  <h1 *ngIf="data.status === 'modify'">Modify Team Name</h1>
+  <form [formGroup]="teamForm" (ngSubmit)="submit(teamForm)">
+    <mat-form-field appearance="outline">
+      <mat-label>Name of your team</mat-label>
+      <input
+        *ngIf="!data.teamInfo"
+        matInput
+        type="text"
+        formControlName="teamName"
+        placeholder="teamName"
+      />
+
+      <input
+        *ngIf="data.teamInfo"
+        matInput
+        type="text"
+        formControlName="teamName"
+        placeholder="{{ data.teamInfo.teamName }}"
+      />
+      <mat-error *ngIf="!teamForm.controls['teamName'].valid">{{
+        getErrorMessage("teamName")
+      }}</mat-error>
+    </mat-form-field>
+
+    <div *ngIf="!correctdata">
+      <p class="mensajeError">{{ this.message }}</p>
+    </div>
+
+    <button type="submit" class="LoginButton i" [disabled]="!teamForm.valid">
+      Send teamName
+    </button>
+  </form>
+</div>
+
+
+<div *ngIf="data.status === 'delete'" >
+  <h1>Delete Team</h1>
+  <h4>Are you sure about deleting your team {{ data.teamInfo.teamName }}</h4>
+  
+  <div *ngIf="!correctdata">
+    <p class="mensajeError">{{ this.message }}</p>
+  </div>
+  <button type="button" mat-raised-button (click)="deleteTeam()">Delete Team</button>
+
+</div>

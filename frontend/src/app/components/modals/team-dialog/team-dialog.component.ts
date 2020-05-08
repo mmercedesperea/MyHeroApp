@@ -8,15 +8,15 @@ import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-create-team-dialog',
-  templateUrl: './create-team-dialog.component.html',
-  styleUrls: ['./create-team-dialog.component.scss']
+  templateUrl: './team-dialog.component.html',
+  styleUrls: ['./team-dialog.component.scss']
 })
-export class CreateTeamDialogComponent implements OnInit {
-  public teamForm : FormGroup;
+export class TeamDialogComponent implements OnInit {
+  public teamForm: FormGroup;
   public message: string;
   public correctdata: boolean;
 
-  constructor( public dialogRef: MatDialogRef<CreateTeamDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<TeamDialogComponent>,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private _TeamService: TeamService,
@@ -30,7 +30,6 @@ export class CreateTeamDialogComponent implements OnInit {
       ]
     });
   }
-
 
   getErrorMessage(dato) {
     var result: string;
@@ -46,21 +45,57 @@ export class CreateTeamDialogComponent implements OnInit {
   }
 
   submit(teamForm) {
-    var data = { idUsu: this.data.idUsu, teamName: teamForm.value.teamName}; 
-    console.log(data)
-    this._TeamService.createTeam(data).subscribe(
+    if (this.data.status === 'new') {
+      var data = { idUsu: this.data.idUsu, teamName: teamForm.value.teamName };
+      console.log(data)
+      this._TeamService.createTeam(data).subscribe(
+        res => {
+          console.log(res)
+          this.openSnackBar('YOUR TEAM HAS BEEN CREATE', 'Close')
+          this.correctdata = true;
+          this.dialogRef.close("Close modal!");
+        },
+        err => {
+          this.correctdata = false;
+          console.log(err.status);
+          this.message = 'Error creating your Team';
+          console.log(this.message);
+        }
+      )
+    } else {
+      var team = { teamName: teamForm.value.teamName };
+      console.log(this.data.teamInfo.idTeam)
+      this._TeamService.changeName(this.data.teamInfo.idTeam, team).subscribe(
+        res => {
+          console.log(res)
+          this.openSnackBar('YOUR TEAM HAS BEEN UPDATE', 'Close')
+          this.correctdata = true;
+          this.dialogRef.close("Close modal!");
+        },
+        err => {
+          this.correctdata = false;
+          console.log(err.status);
+          this.message = 'Error modifying your Team';
+          console.log(this.message);
+
+        }
+      )
+    }
+  }
+
+  deleteTeam() {
+    this._TeamService.delete(this.data.teamInfo.idTeam).subscribe(
       res => {
         console.log(res)
-        this.openSnackBar('YOUR TEAM HAS BEEN CREATE', 'Close')
+        this.openSnackBar('YOUR TEAM HAS BEEN DELETE', 'Close')
         this.correctdata = true;
         this.dialogRef.close("Close modal!");
       },
       err => {
         this.correctdata = false;
         console.log(err.status);
-        this.message = 'Error creating your Team';
+        this.message = 'Error deleting your Team';
         console.log(this.message);
-
       }
     )
   }
@@ -72,6 +107,6 @@ export class CreateTeamDialogComponent implements OnInit {
     })
   }
 
-  
+
 
 }

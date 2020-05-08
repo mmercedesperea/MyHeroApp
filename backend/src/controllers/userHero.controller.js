@@ -8,7 +8,7 @@ class UserHeroController{
     async  followHero(req, res) {
         const { body } = req;
         const  followHero = await _userHeroService.followHero(body);
-        console.log( followHero)
+        // console.log( followHero)
         return res.status(201).send({message: followHero});
     }
 
@@ -16,14 +16,14 @@ class UserHeroController{
     async unfollowHero(req, res) {
         const { body } = req;
         const  unfollowHero = await _userHeroService.unfollowHero(body);
-        console.log( unfollowHero)
+        // console.log( unfollowHero)
         return res.status(201).send({message: unfollowHero});
     }
 
     async  favorite(req, res) {
         const { body } = req;
         const  favorite = await _userHeroService.favorite(body);
-        console.log( favorite)
+        // console.log( favorite)
         return res.status(201).send({message: favorite});
     }
 
@@ -121,7 +121,14 @@ class UserHeroController{
         return res.send(mostF);
     }
 
-
+   
+    // obtener todos los comentarios de un heroe
+    async getHeroComments(req, res) {
+        const { idHero } = req.params;
+        const allComments= await _userHeroService.getHeroComments(idHero);
+        //    JSON.stringify(user)
+        return res.send(allComments);
+    }
 
 }
 

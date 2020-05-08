@@ -25,6 +25,7 @@ export class HeroesDetailComponent implements OnInit {
   public score: number = 0;
   public comment: string = "";
   public idParams: number = 0;
+  public allComments: []=[];
 
   constructor(private _heroService: HeroService,
     private _UserHeroService: UserHeroService,
@@ -41,6 +42,7 @@ export class HeroesDetailComponent implements OnInit {
       this.idParams = params["id"];
       this.getHero(this.idParams);
       this.getIdentity();
+      this.getHeroComment();
     });
 
   }
@@ -207,7 +209,15 @@ export class HeroesDetailComponent implements OnInit {
 
     )
   }
-
+  getHeroComment(){
+    this._UserHeroService.getHeroComments(this.idParams).subscribe(res=>{
+this.allComments=res;
+console.log(this.allComments)
+    },
+    error => {
+      console.log(error)
+    })
+  }
 
   commentHeroDialog(status): void {
     const dialogRef = this.dialog.open(ComentHeroDialogComponent, {
