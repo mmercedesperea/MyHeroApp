@@ -32,9 +32,14 @@ module.exports = function ({ UserController }) {
 
   // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
 
-
+// comprobar si se sigue
   router.get('/checkFollow/:idUsu/:idUnfollow', UserController.checkFollow);
 
+// obtener todos los usuarios que sigues
+  router.get('/getFollowUsers/:idUsu', UserController.getFollowUsers);
+
+  // obtener todos los usuarios que te siguen
+  router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers);
 
   return router;
 };

@@ -11,6 +11,10 @@ module.exports = function ({ ApiHeroController }) {
     router.get('/searchByid/:id', ApiHeroController.getHeroByid);
 
 
+     // obtener todos los heroes de la api
+    router.get('/searchAllHeroes', ApiHeroController.searchAllHeroes);
+
+
 
     return router;
 };

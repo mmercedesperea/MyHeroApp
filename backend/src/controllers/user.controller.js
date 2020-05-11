@@ -83,5 +83,17 @@ class UserController {
     //     }
 
     // }
+
+    async getFollowUsers(req, res) {
+        const { idUsu } = req.params;
+        const  FollowUsers= await _userService.getFollowUsers( idUsu);
+        return res.send( FollowUsers);
+    }
+
+    async getFollowersUsers(req, res) {
+        const { idUsu } = req.params;
+        const  FollowUsers= await _userService.getFollowersUsers( idUsu);
+        return res.send( FollowUsers);
+    }
 }
 module.exports = UserController;

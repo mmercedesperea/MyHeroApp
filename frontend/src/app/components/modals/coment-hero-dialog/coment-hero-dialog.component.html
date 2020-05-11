@@ -1,45 +1,56 @@
-<p>coment-hero-dialog works!</p>
-<div id="form">
-    <h1>Add comment</h1>
+<div *ngIf="data.status === 'new' || data.status === 'edit'" id="form">
+  <div id="form">
+    <h1 *ngIf="data.status === 'new'">Add comment</h1>
+    <h1 *ngIf="data.status === 'edit'">Modify commet</h1>
     <form [formGroup]="commentForm" (ngSubmit)="submit(commentForm)">
       <mat-form-field appearance="outline">
         <mat-label>comment</mat-label>
         <input
+          *ngIf="!data.comment"
           matInput
           type="text"
           formControlName="comment"
           placeholder="comment"
-         
         />
+        <input
+          *ngIf="data.comment"
+          matInput
+          type="text"
+          formControlName="comment"
+          placeholder="comment"
+          placeholder="{{ data.comment }}"
+        />
+
         <mat-error *ngIf="!commentForm.controls['comment'].valid">{{
           getErrorMessage("comment")
         }}</mat-error>
       </mat-form-field>
-<!-- 
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          type="email"
-          formControlName="email"
-          placeholder="Email"
-          [(ngModel)]="user.email"
-        />
-        <mat-error *ngIf="!commentForm.controls['email'].valid">{{
-          getErrorMessage("email")
-        }}</mat-error>
-      </mat-form-field> -->
-
 
       <div *ngIf="!correctdata">
-          <p class="mensajeError">{{  this.message }}</p>
-        </div>
+        <p class="mensajeError">{{ this.message }}</p>
+      </div>
 
       <button
         type="submit"
         class="LoginButton i"
         [disabled]="!commentForm.valid"
       >
-      Send comment
+        Send comment
       </button>
     </form>
+
+   
+  </div>
+</div>
+
+<div *ngIf="data.status === 'delete'">
+  <h1>Delete Comment</h1>
+  <h4>Are you sure about deleting your comment</h4>
+
+  <div *ngIf="!correctdata">
+    <p class="mensajeError">{{ this.message }}</p>
+  </div>
+  <button type="button" mat-raised-button (click)="deleteComment()">
+    Delete comment
+  </button>
+</div>

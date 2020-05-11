@@ -34,6 +34,7 @@ export class ComentHeroDialogComponent implements OnInit {
         [Validators.required, Validators.minLength(6), Validators.maxLength(300)]
       ]
     });
+    console.log(this.data)
   }
 
   getErrorMessage(dato) {
@@ -51,6 +52,7 @@ export class ComentHeroDialogComponent implements OnInit {
 
 
   submit(commentForm) {
+    if (this.data.status === 'new') {
     var commentObj = { comment: commentForm.value.comment, idUsu: this.data.idUsu, idHero: this.data.idHero };
 
     console.log(commentObj)
@@ -64,12 +66,52 @@ export class ComentHeroDialogComponent implements OnInit {
       err => {
         this.correctdata = false;
         console.log(err.status);
-        this.message = 'Error saving ypur comment';
+        this.message = 'Error saving your comment';
         console.log(this.message);
 
       }
     )
+    }else{
+      var commentObj = { comment: commentForm.value.comment, idUsu: this.data.idUsu, idHero: this.data.idHero };
+
+      console.log(commentObj)
+      this._UserHeroService.modifyCHero(commentObj).subscribe(
+        res => {
+          console.log(res)
+          this.openSnackBar('YOUR COMMENT HAS BEEN MODIFY', 'Close')
+          this.correctdata = true;
+          this.dialogRef.close("Close modal!");
+        },
+        err => {
+          this.correctdata = false;
+          console.log(err.status);
+          this.message = 'Error modifin your comment';
+          console.log(this.message);
+  
+        }
+      )
+    }
   }
+
+
+  deleteComment() {
+    var commentObj = {idUsu: this.data.idUsu, idHero: this.data.idHero };
+
+      this._UserHeroService.deleteCHero(commentObj).subscribe(
+        res => {
+          console.log(res)
+          this.openSnackBar('YOUR COMMENT HAS BEEN DELETE', 'Close')
+          this.correctdata = true;
+          this.dialogRef.close("Close modal!");
+        },
+        err => {
+          this.correctdata = false;
+          console.log(err.status);
+          this.message = 'Error deleting your commet';
+          console.log(this.message);
+        }
+      )
+    }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

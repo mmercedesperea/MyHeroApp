@@ -88,6 +88,10 @@ class UserHero {
         return await _DB.consulta(`SELECT UH.comment,U.alias,U.idUsu,U.photo from usu_hero UH JOIN users U ON(U.idUsu = UH.idUsu) where idHero = ${idHero}`)
     }
 
+
+    async modifyCHero(body) {
+        return await _DB.update(`UPDATE ${table}  SET comment =  '${body.comment}' WHERE idUsu = ${body.idUsu} AND idHero = ${body.idHero}`);
+    }
 }
 
 module.exports = UserHero;

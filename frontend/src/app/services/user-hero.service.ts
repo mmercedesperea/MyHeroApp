@@ -116,4 +116,12 @@ public mostFollowHeros() {
    public  getHeroComments(id: number){
     return  this.http.get<any>(`${this.baseUrl}/userHero/getHeroComments/${id}`);
    }
+
+
+   public modifyCHero( data) {
+    // para convertir el objeto en un string
+    // let params = JSON.stringify(data);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(`${this.baseUrl}/userHero/modifyCHero`, data, { headers: headers });
+  }
 }

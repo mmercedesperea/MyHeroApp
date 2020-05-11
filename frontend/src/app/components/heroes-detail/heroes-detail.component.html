@@ -44,10 +44,12 @@
     <ngb-rating [(rate)]="heroUsu.score" [starTemplate]="t" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
         [max]="10" (click)="voteHero(hovered)"></ngb-rating>
 
-    <button *ngIf="!heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog(new)">Comment</button>
+    <button *ngIf="!heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog('new')">Comment</button>
 
     <h1>{{ heroUsu.comment}}</h1>
-    <button *ngIf="heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog(edit)">Edit comment</button>
+    <button *ngIf="heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog('edit')">Edit comment</button>
+    <button *ngIf="heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog('delete')">Delete comment</button>
+
 </div>
 
 

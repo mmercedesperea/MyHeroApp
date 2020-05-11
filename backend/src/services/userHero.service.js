@@ -365,6 +365,24 @@ class UserHeroService extends BaseService {
     return currentEntity;
   }
 
+
+  async modifyCHero(body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+    return await _userHeroOBJ.modifyCHero(body);
+  }
+
 }
 
 module.exports = UserHeroService

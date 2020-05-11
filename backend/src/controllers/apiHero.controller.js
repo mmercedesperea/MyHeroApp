@@ -24,6 +24,13 @@ constructor({ApiHeroService}){
         return res.send(hero);
     }
 
+    async searchAllHeroes(req, res) {
+        const hero = await _apiHeroService.searchAllHeroes();
+        //    JSON.stringify(user)
+        // console.log('llego aqui'+ name)
+        return res.send(hero);
+    }
+
 
 }
 

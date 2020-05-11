@@ -25,10 +25,10 @@ class Hero {
         this.race = "";
         this.height = "";
         this.weight = "";
-        this.eyeColor="";
-        this.hairColor=";"
+        this.eyeColor = "";
+        this.hairColor = ";"
         this.work = "";
-        this.biography="";
+        this.biography = "";
         this.createDate = Date;
         table = "heroes";
         _DB = DB;
@@ -38,7 +38,7 @@ class Hero {
     async get(idHero) {
         // console.log(this.table)
         console.log("LA ID ESSS" + idHero);
-        if(idHero== 'null'){
+        if (idHero == 'null') {
             return await null
         }
         // se busca el heroe en la bd
@@ -73,7 +73,7 @@ class Hero {
         // si los puntos totales del hero1 son mayores que el de hero2 devuelve ese
         if (Hero1[0].totalPoints > Hero2[0].totalPoints) {
             return Hero1[0];
-            
+
         } else {
             return Hero2[0];
         }
@@ -171,7 +171,7 @@ class Hero {
     // }
 
     //   // crear unna nueva entidad heroe
-      async insertHero(entity) {
+    async insertHero(entity) {
         return await _DB.createNewHero(
             "INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,eyeColor,hairColor,work) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", entity);
     }
@@ -182,7 +182,7 @@ class Hero {
         var newHeroGet = await rp(url, { json: true })
             .then(function (res) {
                 let NewHeroCreate = Hero;
-                console.log( res.appearance["hair-color"])
+                console.log(res.appearance["hair-color"])
                 NewHeroCreate.idHero = res.id;
                 NewHeroCreate.heroName = res.name;
                 NewHeroCreate.image = res.image.url;
@@ -202,7 +202,7 @@ class Hero {
                 NewHeroCreate.height = res.appearance.height[1];
                 NewHeroCreate.weight = res.appearance.weight[1];
                 NewHeroCreate.eyeColor = res.appearance["eye-color"];
-                NewHeroCreate.hairColor = res.appearance["hair-color"];
+                NewHeroCreate.hairColor = res.appearance === 'null' ? 'unknown' : res.appearance["hair-color"];
                 NewHeroCreate.work = res.work.occupation === '-' ? 'unknown' : res.work.occupation;
                 return NewHeroCreate;
             })
@@ -215,6 +215,13 @@ class Hero {
         //devolvemos el elemento
         return this.get(newHeroGet.idHero);
     }
+
+    async searchAllHeroes() {
+        for (var i = 201; i < 300; i++) {
+            this.getHeroByid(i)
+        }
+    }
+
 }
 
 module.exports = Hero;

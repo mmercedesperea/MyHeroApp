@@ -169,6 +169,42 @@ class UserService extends BaseService {
         return currentEntity[0];
       }
 
+      async getFollowUsers(idUsu) {
+        if (!idUsu) {
+          const error = new Error();
+          error.status = 400;
+          error.message = 'idUsu must be sent';
+          throw error;
+        }
+    
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _userOBJ.getFollowUsers(idUsu);
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+          return null;
+        }
+        return currentEntity;
+      }
+
+      async getFollowersUsers(idUsu) {
+        if (!idUsu) {
+          const error = new Error();
+          error.status = 400;
+          error.message = 'idUsu must be sent';
+          throw error;
+        }
+    
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _userOBJ.getFollowersUsers(idUsu);
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+          return null;
+        }
+        return currentEntity;
+      }
+
 
 
 

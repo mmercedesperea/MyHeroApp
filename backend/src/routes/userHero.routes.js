@@ -53,5 +53,8 @@ module.exports = function ({ UserHeroController }) {
     // obtener todos los comentarios de un heroe
     router.get('/getHeroComments/:idHero', UserHeroController.getHeroComments);
 
+    // modifyCHerocomment
+    router.put('/modifyCHero', UserHeroController.modifyCHero);
+
     return router;
 }
