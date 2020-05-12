@@ -2,7 +2,6 @@
 
 <h3 *ngIf="myTeamInfo">{{myTeamInfo.teamName}}</h3>
 <h3>{{totalPoint}}</h3>
-<!-- {{TeamHeroes.length}} -->
 <div *ngFor="let hero of TeamHeroes, index as i">
   <h4>MI HEROE {{i+1}}</h4>
   <h3 *ngIf="hero" >{{ hero.heroName }}</h3>
@@ -13,6 +12,9 @@
   <button *ngIf="hero" type="button" mat-raised-button (click)="deleteMember(i+1)">Delete Member</button>
 
 </div>
+
+<!-- <app-team [idUsu]="idUser"></app-team> -->
+
 
 
 <h1>My favorites</h1>

@@ -33,6 +33,7 @@ import {MatDialogModule} from '@angular/material';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog.component';
+import { TeamComponent } from './components/team/team.component';
 
 
 
@@ -54,7 +55,8 @@ import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog
     DeleteUserDialogComponent,
     ChangePassDialogComponent,
     NavbarComponent,
-    TeamDialogComponent
+    TeamDialogComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,

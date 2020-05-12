@@ -146,4 +146,16 @@ export class UserService {
     return this.http.get<any>(`${this.baseUrl}/user/checkFollow/${idUsu}/${idUnfollow}`);
   }
 
+
+  // // obtener todos los usuarios que sigues
+  // router.get('/getFollowUsers/:idUsu', UserController.getFollowUsers);
+  public getFollowUsers(idUsu: number) {
+    return this.http.get<User[]>(`${this.baseUrl}/user/getFollowUsers/${idUsu}`);
+  }
+  // // obtener todos los usuarios que te siguen
+  // router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers);
+  public getFollowersUsers(idUsu: number) {
+    return this.http.get<User[]>(`${this.baseUrl}/user/getFollowersUsers/${idUsu}`);
+  }
+
 }

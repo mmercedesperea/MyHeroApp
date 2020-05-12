@@ -97,7 +97,16 @@ class User {
     async checkFollow(idUsu, idUnfollow) {
         return await _DB.consulta(`SELECT * from follows WHERE followingIdUsu = ${idUsu} AND  followedIdUsu = ${idUnfollow}`)
     }
+//obtener usuarios que te siguen
+    async getFollowersUsers(idUsu) {
+        return await _DB.consulta(`SELECT U.alias,U.idUsu,U.photo from follows F JOIN users U ON(U.idUsu = F.followingIdUsu) where followedIdUsu = ${idUsu}`)
+    }
+//obtengo a la gente que sigo
+    async getFollowUsers(idUsu) {
+        return await _DB.consulta(`SELECT U.alias,U.idUsu,U.photo from follows F JOIN users U ON(U.idUsu = F.followedIdUsu) where followingIdUsu = ${idUsu} `)
+    }
 
+   
 
 }
 

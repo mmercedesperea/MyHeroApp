@@ -19,9 +19,11 @@ export class ProfileComponent implements OnInit {
   public identity
   public user: User
   public profileForm: FormGroup
-  textError: any
+  public textError: any
+  public FollowedUsers: User[] = []
+  public FollowersUsers: User[] = []
 
-  constructor (
+  constructor(
     private _snackBar: MatSnackBar,
     private _adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
@@ -31,9 +33,12 @@ export class ProfileComponent implements OnInit {
     this.user = new User(0, '', '', '', '', '', new Date(0), '', 0)
   }
 
-  ngOnInit () {
+  ngOnInit() {
     this.identity = this._UserService.getIdentity()
     this.getInfoUser()
+    this.getFollowersUsers()
+    this.getFollowedUsers()
+
     this.profileForm = this.formBuilder.group({
       alias: ['', [Validators.minLength(3), Validators.maxLength(30)]],
       name: ['', [Validators.minLength(3), Validators.maxLength(30)]],
@@ -48,7 +53,7 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  getInfoUser () {
+  getInfoUser() {
     this._UserService.getUser(this.identity.id).subscribe(
       res => {
         console.log(res)
@@ -60,9 +65,33 @@ export class ProfileComponent implements OnInit {
     )
   }
 
+  getFollowedUsers() {
+    this._UserService.getFollowUsers(this.identity.id).subscribe(
+      res => {
+        console.log(res)
+        this.FollowedUsers = res
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
+  getFollowersUsers() {
+    this._UserService.getFollowersUsers(this.identity.id).subscribe(
+      res => {
+        console.log(res)
+        this.FollowersUsers = res
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
   getErrorMessage(dato) {
     var result: string;
-     if (this.profileForm.controls[dato].hasError('minlength')) {
+    if (this.profileForm.controls[dato].hasError('minlength')) {
       if (dato === 'email') {
         return (result = 'You must enter at least 6 characters');
       } else {
@@ -80,7 +109,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  submit () {
+  submit() {
     this._UserService.updateUser(this.identity.id, this.user).subscribe(
       res => {
         console.log(res)
@@ -94,7 +123,7 @@ export class ProfileComponent implements OnInit {
     // this.dialogRef.close(`${form.value.name}`);
   }
 
-  openSnackBar (message: string, action: string) {
+  openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 8000,
       panelClass: ['blue-snackbar']
