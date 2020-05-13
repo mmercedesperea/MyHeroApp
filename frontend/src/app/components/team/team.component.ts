@@ -11,12 +11,10 @@ import { GlobalVariableService } from 'src/app/services/global-variable.service'
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent implements OnInit {
-  public myTeam: any = ''
   public myTeamInfo: Team
   public TeamHeroes: Hero[] = []
   public maxMembers: boolean = false
-  public contado: boolean = false;
-  public countM: number = 0;
+  public countM: boolean = false;
   // decorador que va a recibir la id, con el input definimos que aucnaod se llame a este componento se le tiene que mandar una id
   @Input() idUsu: number = 0;
   @Input() newM;
@@ -28,32 +26,9 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
     this.getTeamUsu()
-    // this.countMembers()
-
   }
 
-  //   ngDoCheck(): void {
-  //     console.log("do check")
-  //     // console.log(this. GlobalV.countTeamMembers)
-  // // this.reloadTeam()
-  //   // Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
-  //   // Add 'implements DoCheck' to the class.
-  //   // this. idUsu;
-  //   // this.GlobalV.countTeamMembers
-  //   // this.getTeamUsu()
-  //   // this.getTeamUsu()
-  //   // this.reloadTeam(this.newM.currentValue)
-  //   }
-
-  // ngOnChanges(changes: SimpleChanges) {
   ngOnChanges() {
-
-    //   //   // this.countMembers()
-    //   //   console.log(changes.idUsu.currentValue)
-    //     this.reloadTeam(changes.newM.currentValue)
-
-    //   //   // this.getTeamUsu()
-    //   console.log(changes.newM.currentValue)
     console.log("ngonchange")
     this.getTeamUsu()
   }
@@ -62,15 +37,12 @@ export class TeamComponent implements OnInit {
   getTeamUsu() {
     this._TeamService.getTeamInfo(this.idUsu).subscribe(
       res => {
-        // console.log(res)
         this.myTeamInfo = res
-        // console.log(this.myTeamInfo)
-        // si hay equipo buscamos los miembros y los añadimos
-        if (this.contado === false) {
+        // para saber si ya se han countM los miembros del equipo
+        if (this.countM === false) {
           this.countMembers()
         }
-        this.contado = true
-
+        this.countM = true
         if (this.myTeamInfo) {
           this.GlobalV.memberTeamNUll = this.getMemberNull()
           this.teamUsugetHeroes(this.myTeamInfo.member_1, 0)
@@ -93,69 +65,38 @@ export class TeamComponent implements OnInit {
     })
   }
 
-  // entity.member para el body
   deleteMember(number) {
     var memberSelect = `member_${number}`;
     // console.log(memberSelect)
     var data = { member: memberSelect };
     this._TeamService.deleteMember(this.myTeamInfo.idTeam, data).subscribe(
       res => {
-        // this.checkTeamNumber(this.myTeamInfo.idTeam)
-        // this.TeamHeroes = [];
         this.getTeamUsu()
         this.GlobalV.countTeamMembers--;
-        this.GlobalV.memberTeamNUll = this.getMemberNull()
-        // console.log(  this.GlobalV.countTeamMembers)
+        // this.GlobalV.memberTeamNUll = this.getMemberNull()
       },
       error => {
         console.log(error)
       }
     )
   }
-
+  // contamos los miembros que hay en el club 
   countMembers() {
     for (var i = 1; i < 6; i++) {
-      // console.log("teaminfo")
-      // console.log(this.myTeamInfo)
       if (this.myTeamInfo[`member_${i}`] != null) {
         this.GlobalV.countTeamMembers++;
         console.log(this.GlobalV.countTeamMembers)
       }
     }
-
   }
-
-  reloadTeam() {
-    // this.countM = members
-    this.getTeamUsu()
-  }
-
 
   getMemberNull() {
     // comprobamos el hueco de member que esta vacio y lo almacenamos
     for (var i = 1; i < 6; i++) {
-      // console.log('valor del array'+this.myTeam[`member_${5}`] )
       if (this.myTeamInfo[`member_${i}`] == null) {
         return `member_${i}`
       }
     }
   }
-  // countTeamMembers:number=0;
-
-  //  // comprueba si ya estan todos los miembros
-  //  checkTeamNumber(idTeam) {
-  //   this. _TeamService.checkTeam(idTeam).subscribe(
-  //     res => {
-  //       // si devuelve true es que el maximo de miembros en el equipo esta completo
-  //       this.maxMembers = res
-  //       // console.log(this.maxMembers)
-  //     },
-  //     error => {
-  //       console.log(error)
-  //     }
-  //   )
-  // }
-
-
 
 }
