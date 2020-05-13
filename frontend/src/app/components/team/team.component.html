@@ -9,6 +9,6 @@
   <a *ngIf=" hero" [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
   <br />
   <img  *ngIf="hero" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
-  <!-- <button *ngIf="hero" type="button" mat-raised-button (click)="deleteMember(i+1)">Delete Member</button> -->
+  <button *ngIf="hero && type" type="button" mat-raised-button (click)="deleteMember(i+1)">Delete Member</button>
 
 </div>

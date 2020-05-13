@@ -1,4 +1,4 @@
-<h1>MY TEAM</h1>
+<!-- <h1>MY TEAM</h1>
 
 <h3 *ngIf="myTeamInfo">{{myTeamInfo.teamName}}</h3>
 <h3>{{totalPoint}}</h3>
@@ -11,9 +11,10 @@
   <img  *ngIf="hero" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
   <button *ngIf="hero" type="button" mat-raised-button (click)="deleteMember(i+1)">Delete Member</button>
 
-</div>
+</div> -->
+<!-- <app-team [idUsu]="idUser"  [ newM]="newM"></app-team> -->
 
-<!-- <app-team [idUsu]="idUser"></app-team> -->
+<app-team  [idUsu]="idUser"  [newM]="newM"   [type]="type"></app-team>
 
 
 
@@ -25,7 +26,7 @@
   <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
   <br />
   <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
-  <button *ngIf="!maxMembers && myTeamInfo" type="button" mat-raised-button (click)="addMember(hero.idHero)">AddMember</button>
+  <button *ngIf="GlobalV.countTeamMembers <5 && myTeamInfo" type="button" mat-raised-button (click)="addMember(hero.idHero)">AddMember</button>
 
 </div>
 
