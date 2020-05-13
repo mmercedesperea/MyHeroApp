@@ -95,5 +95,15 @@ class UserController {
         const  FollowUsers= await _userService.getFollowersUsers( idUsu);
         return res.send( FollowUsers);
     }
+
+
+     //actualizar img
+//   router.put('/newImg/:idUsu/:img', UserController.newImg);
+async newImg(req, res) {
+    const { body } = req;
+    const  updateImg = await _userService.newImg(body);
+    return res.status(201).send({message: updateImg});
+}
+
 }
 module.exports = UserController;

@@ -38,6 +38,8 @@ module.exports = function ({ HeroController }) {
   //obtener todos los heroes de DC
   router.get('/all/DCHeroes', HeroController.allDCHeroes);
 
+  //obtener imagenes de heroes para perfil
+  router.get('/img/profileImgHeroes', HeroController.profileImgHeroes);
 
   return router;
 };

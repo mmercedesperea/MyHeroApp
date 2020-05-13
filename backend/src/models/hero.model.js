@@ -134,6 +134,12 @@ class Hero {
         );
     }
 
+    async profileImgHeroes() {
+        return await _DB.consulta(
+            `select image from heroes where idHero IN( 30,63,70,107,149,165,201,213,275,280,370,530,620)`
+        );
+    }
+
     //api
     async getHeroByName(name) {
         const url = `${host}search/${name}`;

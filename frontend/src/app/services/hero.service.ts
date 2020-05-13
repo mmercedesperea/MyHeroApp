@@ -70,6 +70,11 @@ export class HeroService {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/new/heros`);
   }
 
+  //obtener imagenes de heroes para perfil
+  // router.get('/profileImgHeroes', HeroController.profileImgHeroes);
+  public profileImgHeroes() {
+    return this.http.get<any[]>(`${this.baseUrl}/hero/img/profileImgHeroes`);
+  }
 
 
 }

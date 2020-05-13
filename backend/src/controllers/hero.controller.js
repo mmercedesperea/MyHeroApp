@@ -77,6 +77,14 @@ class HeroController{
         return res.send(allDC);
     }
 
+      //obtener imagenes de heroes para perfil
+//   router.get('/profileImgHeroes', HeroController.profileImgHeroes);
+
+  async profileImgHeroes(req, res) {
+    const profileImg = await _heroService.profileImgHeroes();
+    //    JSON.stringify(user)
+    return res.send(profileImg);
+}
 }
 
 module.exports = HeroController;

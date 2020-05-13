@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material'
 import { MatDialog } from "@angular/material/dialog";
 import { ChangePassDialogComponent } from '../modals/change-pass-dialog/change-pass-dialog.component'
 import { DeleteUserDialogComponent } from '../modals/delete-user-dialog/delete-user-dialog.component'
+import { AvatarDialogComponent } from '../modals/avatar-dialog/avatar-dialog.component'
 
 @Component({
   selector: 'app-profile',
@@ -156,6 +157,20 @@ export class ProfileComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
+    });
+  }
+
+  avatarDialog(): void {
+    const dialogRef = this.dialog.open(AvatarDialogComponent, {
+      // Le pasamos los datos que queremos
+      data: {
+        userId: this.identity.id,
+        userPhoto: this.user.photo
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+      this.getInfoUser()
     });
   }
 }

@@ -6,7 +6,8 @@
 <p>{{ user.dateOfBirth | date }}</p>
 <p>{{ user.surname }}</p>
 <p>{{ user.admin.data }}</p>
-<!-- <img [src]="user.photo" [alt]="user.alias" class="img-fluid"/> -->
+<img [src]="user.photo" [alt]="user.alias" class="img-fluid"/>
+<button type="button" mat-raised-button (click)="avatarDialog()">Avatar</button>
 
 
   <div id="form">

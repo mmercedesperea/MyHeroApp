@@ -158,4 +158,20 @@ export class UserService {
     return this.http.get<User[]>(`${this.baseUrl}/user/getFollowersUsers/${idUsu}`);
   }
 
+  
+  //actualizar img
+  // router.put('/newImg/:idUsu/:img', UserController.newImg);
+
+
+  // public newImg(idUsu: number, img:string) {
+  //   let headers = new HttpHeaders().set('Content-Type', 'application/json');
+  //   return this.http.put(`${this.baseUrl}/user/newImg/${idUsu}/${img}`,{ headers: headers });
+  // }
+
+  public newImg( data) {
+    // para convertir el objeto en un string
+    // let params = JSON.stringify(data);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(`${this.baseUrl}/user/newImg/user`, data, { headers: headers });
+  }
 }

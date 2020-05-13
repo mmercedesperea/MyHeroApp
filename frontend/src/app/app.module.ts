@@ -29,11 +29,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatDialogModule} from '@angular/material';
-import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule } from '@angular/material';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog.component';
 import { TeamComponent } from './components/team/team.component';
+import { AvatarDialogComponent } from './components/modals/avatar-dialog/avatar-dialog.component';
+import { FightDialogComponent } from './components/modals/fight-dialog/fight-dialog.component';
 
 
 
@@ -56,7 +58,9 @@ import { TeamComponent } from './components/team/team.component';
     ChangePassDialogComponent,
     NavbarComponent,
     TeamDialogComponent,
-    TeamComponent
+    TeamComponent,
+    AvatarDialogComponent,
+    FightDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,7 @@ import { TeamComponent } from './components/team/team.component';
     MatDialogModule,
     NgbRatingModule
   ],
-  entryComponents:[TeamDialogComponent,ChangePassDialogComponent,DeleteUserDialogComponent, ComentHeroDialogComponent ],
+  entryComponents: [FightDialogComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

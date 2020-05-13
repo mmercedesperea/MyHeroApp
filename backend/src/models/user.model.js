@@ -106,6 +106,10 @@ class User {
         return await _DB.consulta(`SELECT U.alias,U.idUsu,U.photo from follows F JOIN users U ON(U.idUsu = F.followedIdUsu) where followingIdUsu = ${idUsu} `)
     }
 
+// actualiza img a un usuario
+async newImg(entity) {
+    return await _DB.update(`UPDATE ${table}  SET photo = '${entity.img}' WHERE idUsu = ${entity.idUsu}`);
+}
    
 
 }

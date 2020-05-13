@@ -1,0 +1,27 @@
+<h1>Search Hero by name</h1>
+<form>
+  <mat-form-field appearance="outline">
+    <mat-label>heroName</mat-label>
+    <input
+      matInput
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      #searchQuery
+      (keyup)="getHeroByName(searchQuery.value)"
+    />
+    <mat-error *ngIf="!searchForm.controls['heroName'].valid">{{
+      getErrorMessage("heroName")
+    }}</mat-error>
+  </mat-form-field>
+
+  <button type="submit" (click)="getHeroByName(searchQuery.value)">
+    Search Hero
+  </button>
+</form>
+
+<div *ngFor="let hero of heroes">
+  <!-- <h1>{{ hero.idHero }}</h1> -->
+  <h3>{{ hero.heroName }}</h3>
+  <img   (click)="saveHeroStorage(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+</div>

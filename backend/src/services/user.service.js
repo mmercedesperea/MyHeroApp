@@ -206,6 +206,25 @@ class UserService extends BaseService {
       }
 
 
+      async  newImg(body) {
+        if (!body.idUsu) {
+            const error = new Error()
+            error.status = 400
+            error.message = 'id must be sent'
+            throw error
+        }
+
+        if (!body.img) {
+            const error = new Error()
+            error.status = 400
+            error.message = 'img must be sent'
+            throw error
+        }
+
+        // insertamos la relacion
+        return await _userOBJ.newImg(body)
+
+    }
 
 
 }

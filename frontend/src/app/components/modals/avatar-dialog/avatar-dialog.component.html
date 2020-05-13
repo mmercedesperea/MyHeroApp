@@ -1,0 +1,19 @@
+
+
+<h1 mat-dialog-title>SELECT YOUR HERO</h1>
+<div mat-dialog-content>
+  <div class="imgContainer">
+    <div class="imgRedonda" *ngFor="let hero of heroImg">
+      <img  (click)="selectHero(hero.image)"  [src]="hero.image" [alt]="hero.image" class="img-fluid" />
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <!-- <button mat-button [mat-dialog-close]=" updateImgProfile()" >
+    Send avatar
+  </button> -->
+  <button type="button" mat-raised-button (click)="updateImgProfile()">
+    Send avatar
+  </button>
+</div>

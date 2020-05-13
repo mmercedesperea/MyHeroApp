@@ -41,5 +41,9 @@ module.exports = function ({ UserController }) {
   // obtener todos los usuarios que te siguen
   router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers);
 
+  //actualizar img
+  router.put('/newImg/user', UserController.newImg);
+  
+
   return router;
 };

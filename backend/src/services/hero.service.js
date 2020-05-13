@@ -143,6 +143,19 @@ class HeroService extends BaseService {
         return currentEntity;
     }
 
+    async  profileImgHeroes() {
+        const currentEntity = await _heroOBJ.profileImgHeroes();
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'There is no heros';
+            throw error;
+        }
+        return currentEntity;
+    }
+
 
 
 

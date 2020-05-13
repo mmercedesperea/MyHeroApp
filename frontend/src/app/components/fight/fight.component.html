@@ -1,4 +1,26 @@
-<h1>{{ hero.idHero}}</h1>
-<h3>{{ hero.heroName}}</h3>
-<img [src]="hero.image" [alt]="hero.heroName" class="img-fluid"/>
-<p>{{ hero.totalPoints}}</p>
+<button type="button" mat-raised-button (click)="selectFightDialog(1)">Select first Hero</button>
+<button type="button" mat-raised-button (click)="selectFightDialog(2)">Select second Hero</button>
+
+<div *ngIf="sessonHero">
+    <!-- <h1>{{sessonHero.idHero }}</h1> -->
+<h3>{{ sessonHero.heroName }}</h3>
+<img [src]="sessonHero.image" [alt]="sessonHero.heroName" class="img-fluid" />
+<!-- <p>{{ sessonHero.totalPoints }}</p> -->
+</div>
+
+<div *ngIf="sessonHero2">
+    <!-- <h1>{{sessonHero2.idHero }}</h1> -->
+<h3>{{ sessonHero2.heroName }}</h3>
+<img [src]="sessonHero2.image" [alt]="sessonHero2.heroName" class="img-fluid" />
+<!-- <p>{{ sessonHero.totalPoints }}</p> -->
+</div>
+
+
+<button type="button" mat-raised-button (click)="getHeroWinner()">
+  FIGHT
+</button>
+
+<h1>{{ hero.idHero }}</h1>
+<h3>{{ hero.heroName }}</h3>
+<img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+<p>{{ hero.totalPoints }}</p>
