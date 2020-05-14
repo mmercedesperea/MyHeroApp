@@ -1,4 +1,4 @@
-<div *ngIf="hero && data != 'User'">
+<div *ngIf="hero !='character with given name not found' && data != 'User'">
     <div *ngFor="let hero of hero">
       <!-- <h1>{{ hero.idHero }}</h1> -->
       <h3>{{ hero.heroName }}</h3>
@@ -9,8 +9,8 @@
     </div>
   </div>
   
-  <div *ngIf="!hero && data != 'User'">
-    <h1>character with given name not found</h1>
+  <div *ngIf="hero==='character with given name not found' && data != 'User'">
+    <h1>{{hero}}</h1>
   </div>
   
   <div *ngIf="user && data === 'User'">

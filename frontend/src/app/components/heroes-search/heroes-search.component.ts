@@ -79,6 +79,7 @@ export class HeroesSearchComponent implements OnInit {
         this.user = null;
         // console.log(res.idHero)
         this.hero = res;
+        console.log(res)
         console.log(JSON.stringify(this.hero, null, 2));
         // console.log(this.hero);
       },

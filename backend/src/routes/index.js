@@ -3,7 +3,10 @@ const cors = require('cors');
 require('express-async-errors');
 const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
 
-var bodyParser = require("body-parser");
+// var bodyParser = require("body-parser");
+
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('../swagger/swagger.json');
 
 module.exports = function ({ UserRoutes, AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute, TeamRoute }) {
 
@@ -30,6 +33,9 @@ module.exports = function ({ UserRoutes, AuthRouters, ApiHeroRoute, HeroRoute, U
     apiRoutes.use('/hero', HeroRoute);
     apiRoutes.use('/userHero', UserHeroRoute);
     apiRoutes.use('/team', TeamRoute);
+    //swagger route
+    apiRoutes.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
     // todas nuestras rutas utilizaran de base la siguiente ruta
     router.use('/api', apiRoutes);

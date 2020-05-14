@@ -9,3 +9,14 @@ npm i -D dotenv nodemon
 
 
 swagger
+npm i swagger-ui-express -S
+
+creare swagger.json
+
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/v1', router);
+
+http://localhost:5000/api/api-docs/
