@@ -6,3 +6,6 @@ npm i request-promise
 
 
 npm i -D dotenv nodemon 
+
+
+swagger

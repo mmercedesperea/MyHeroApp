@@ -15,7 +15,7 @@ class UserController {
         user[0].password="0";
         //    JSON.stringify(user)
         console.log(user[0])
-        return res.send(user[0]);
+        return res.json(user[0]);
     }
 
     async update(req, res) {
@@ -64,7 +64,7 @@ class UserController {
 
         const user = await _userService.getUserByName(userName);
        console.log(user)
-        return res.send(user);
+        return res.json(user);
     }
     
     async checkFollow(req, res) {
@@ -72,7 +72,7 @@ class UserController {
         const { idUnfollow } = req.params;
         const  checkFollow = await _userService.checkFollow( idUsu,idUnfollow);
        
-        return res.send( checkFollow);
+        return res.json( checkFollow);
     }
     // async uploadImage(req,res){
     //     const { idUsu } = req.params;
@@ -87,13 +87,13 @@ class UserController {
     async getFollowUsers(req, res) {
         const { idUsu } = req.params;
         const  FollowUsers= await _userService.getFollowUsers( idUsu);
-        return res.send( FollowUsers);
+        return res.json( FollowUsers);
     }
 
     async getFollowersUsers(req, res) {
         const { idUsu } = req.params;
         const  FollowUsers= await _userService.getFollowersUsers( idUsu);
-        return res.send( FollowUsers);
+        return res.json( FollowUsers);
     }
 
 

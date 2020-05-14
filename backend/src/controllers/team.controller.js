@@ -16,21 +16,21 @@ class TeamController{
         const { idTeam } = req.params;
         const team = await _teamService.checkTeam(idTeam);
         //    JSON.stringify(team)
-        return res.send(team);
+        return res.json(team);
     }
 
     async getTeam(req, res) {
         const { idTeam } = req.params;
         const team = await _teamService.get(idTeam);
         //    JSON.stringify(team)
-        return res.send(team);
+        return res.json(team);
     }
 
     async getTeamUsu(req, res) {
         const { idUsu } = req.params;
         const team = await _teamService.getTeamUsu(idUsu);
         //    JSON.stringify(team)
-        return res.send(team);
+        return res.json(team);
     }
 
     async  chageName(req, res) {
@@ -67,7 +67,7 @@ class TeamController{
     async bestTeam(req, res) {
         const team = await _teamService.bestTeam();
         //    JSON.stringify(team)
-        return res.send(team);
+        return res.json(team);
     }
 
     async getTeamInfo(req, res) {
@@ -75,7 +75,7 @@ class TeamController{
         // console.log(idUsu)
         const team = await _teamService.getTeamInfo(idUsu);
         //    JSON.stringify(team)
-        return res.send(team);
+        return res.json(team);
     }
 
 }

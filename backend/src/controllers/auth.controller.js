@@ -15,7 +15,9 @@ class AuthController {
     async signIn(req,res){
         const { body }= req;
         const creds = await _authService.signIn(body);
-        return res.send(creds);
+        // return res.send(creds);
+        return res.json(creds);
+
     }
 
 

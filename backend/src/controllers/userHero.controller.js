@@ -61,7 +61,7 @@ class UserHeroController{
         const { idUsu } = req.params;
         const allHeros = await _userHeroService.getFav(idUsu);
         //    JSON.stringify(user)
-        return res.send(allHeros);
+        return res.json(allHeros);
     }
 
     //obtener todos los heroes siguiendo
@@ -69,7 +69,7 @@ class UserHeroController{
         const { idUsu } = req.params;
         const allHeros = await _userHeroService.get(idUsu);
         //    JSON.stringify(user)
-        return res.send(allHeros);
+        return res.json(allHeros);
     }
 
     
@@ -79,7 +79,7 @@ class UserHeroController{
         const { idHero } = req.params;
         const allHeros = await _userHeroService.getCommentHero(idUsu,idHero);
         //    JSON.stringify(user)
-        return res.send(allHeros);
+        return res.json(allHeros);
     }
 
   //obtener la relacion del heroe y el usuario
@@ -88,7 +88,7 @@ class UserHeroController{
         const { idHero } = req.params;
         const allHeros = await _userHeroService.getHeroUsu(idUsu,idHero);
         //    JSON.stringify(user)
-        return res.send(allHeros);
+        return res.json(allHeros);
     }
 
     
@@ -99,26 +99,26 @@ class UserHeroController{
         const { idHero } = req.params;
         const allHeros = await _userHeroService.getVoteHero(idUsu,idHero);
         //    JSON.stringify(user)
-        return res.send(allHeros);
+        return res.json(allHeros);
     }
 
     
     async bestMarverHero(req, res) {
         const bestM = await _userHeroService.bestMarverHero();
         //    JSON.stringify(user)
-        return res.send(bestM);
+        return res.json(bestM);
     }
 
     async bestDCHero(req, res) {
         const bestDC = await _userHeroService.bestDCHero();
         //    JSON.stringify(user)
-        return res.send(bestDC);
+        return res.json(bestDC);
     }
     
     async  mostFollowHeros(req, res) {
         const mostF = await _userHeroService.mostFollowHeros();
         //    JSON.stringify(user)
-        return res.send(mostF);
+        return res.json(mostF);
     }
 
    
@@ -127,7 +127,7 @@ class UserHeroController{
         const { idHero } = req.params;
         const allComments= await _userHeroService.getHeroComments(idHero);
         //    JSON.stringify(user)
-        return res.send(allComments);
+        return res.json(allComments);
     }
 
 
