@@ -67,7 +67,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['profile']">Profile</a>
-            <a class="dropdown-item" href="#">Admin</a>
+            <a class="dropdown-item" [routerLink]="['admin-panel']">Admin</a>
             <a (click)="logout()" class="dropdown-item" href="#">Exit</a>
           </div>
         </li>

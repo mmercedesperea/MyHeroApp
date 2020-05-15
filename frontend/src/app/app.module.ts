@@ -18,6 +18,9 @@ import { DeleteUserDialogComponent } from './components/modals/delete-user-dialo
 import { ChangePassDialogComponent } from './components/modals/change-pass-dialog/change-pass-dialog.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
+// new modules
+import {AdminModule} from './admin/admin.module'
+
 
 //new imports
 import { HttpClientModule } from "@angular/common/http";
@@ -36,8 +39,6 @@ import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog
 import { TeamComponent } from './components/team/team.component';
 import { AvatarDialogComponent } from './components/modals/avatar-dialog/avatar-dialog.component';
 import { FightDialogComponent } from './components/modals/fight-dialog/fight-dialog.component';
-
-
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { FightDialogComponent } from './components/modals/fight-dialog/fight-dia
     MatDatepickerModule,
     MatSnackBarModule,
     MatDialogModule,
-    NgbRatingModule
+    NgbRatingModule,
+    AdminModule
   ],
   entryComponents: [FightDialogComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
   providers: [],

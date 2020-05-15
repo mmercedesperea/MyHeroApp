@@ -1,0 +1,15 @@
+<h3 >{{ title }}</h3>
+<div class="adminPanel">
+  <div class="menu">
+    <a [routerLink]="['userList']">User List</a>
+    <a [routerLink]="['addHero']">Add Hero</a>
+    <a [routerLink]="['editHero']">Edit Hero</a>
+
+  </div>
+
+  <div class="contentPanel">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

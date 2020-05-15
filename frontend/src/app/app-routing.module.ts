@@ -15,7 +15,9 @@ import { PublicProfileComponent } from './components/public-profile/public-profi
 
 // // canActivate:[AuthGuardService]
 const routes: Routes = [
-
+  {
+    path: '', pathMatch: 'full', redirectTo: 'home'
+  },
   {
     path: 'home', component: HomeComponent
   }, {
@@ -35,9 +37,9 @@ const routes: Routes = [
   },{
     path: 'publicProfile/:user', component: PublicProfileComponent, canActivate:[AuthGuard]
   },
-  {
-    path: '**', pathMatch: 'full', redirectTo: 'home'
-  }
+  // {
+  //   path: '**', component: HomeComponent
+  // }
 ];
 
 @NgModule({
