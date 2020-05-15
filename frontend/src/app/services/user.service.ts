@@ -169,6 +169,8 @@ export class UserService {
   // }
 
   public newImg( data) {
+    console.log("llego aqui")
+    console.log(data)
     // para convertir el objeto en un string
     // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
