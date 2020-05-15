@@ -85,7 +85,11 @@ class UserHero {
     }
 
     async getHeroComments(idHero) {
-        return await _DB.consulta(`SELECT UH.comment,U.alias,U.idUsu,U.photo from usu_hero UH JOIN users U ON(U.idUsu = UH.idUsu) where idHero = ${idHero}`)
+        return await _DB.consulta(`SELECT UH.comment, UH.socre,U.alias,U.idUsu,U.photo from usu_hero UH JOIN users U ON(U.idUsu = UH.idUsu) where idHero = ${idHero}`)
+    }
+
+    async getHeroRateScore(idHero) {
+        return await _DB.consulta(`SELECT ROUND((SUM(score))/(count(idUsu)),1) as 'rate' from usu_hero where idHero = ${idHero} AND score > 0 `)
     }
 
 

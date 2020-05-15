@@ -365,6 +365,24 @@ class UserHeroService extends BaseService {
     return currentEntity;
   }
 
+  async  getHeroRateScore(idHero ) {
+    if (!idHero ) {
+      const error = new Error();
+      error.status = 400;
+      error.message = 'idHero must be sent';
+      throw error;
+    }
+
+    // en caso de que exista la id vamos a buscar esa entidad
+    const currentEntity = await _userHeroOBJ.getHeroRateScore(idHero);
+    // JSON.stringify(currentEntity);
+    // console.log(currentEntity)
+    if (!currentEntity) {
+      return null;
+    }
+    return currentEntity;
+  }
+
 
   // async modifyCHero(body) {
   //   if (!body.idUsu) {

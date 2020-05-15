@@ -20,10 +20,6 @@
             "description": "Access to App"
         },
         {
-            "name": "apiHero",
-            "description": "Operations in the apihero Api"
-        },
-        {
             "name": "hero",
             "description": "Operations about Heros"
         },
@@ -868,651 +864,347 @@
                 }
             }
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        "/pet/findByStatus": {
+        "/team/bestTeam": {
             "get": {
                 "tags": [
-                    "pet"
+                    "team"
                 ],
-                "summary": "Finds Pets by status",
-                "description": "Multiple status values can be provided with comma separated strings",
-                "operationId": "findPetsByStatus",
+                "summary": "Get team with higher stats",
+                "description": "Get team with higher stats",
+                "operationId": "bestTeam",
                 "produces": [
-                    "application/xml",
                     "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "Status values that need to be considered for filter",
-                        "required": true,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "available",
-                                "pending",
-                                "sold"
-                            ],
-                            "default": "available"
-                        },
-                        "collectionFormat": "multi"
-                    }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Pet"
-                            }
+                            "type": "object"
                         }
                     },
                     "400": {
-                        "description": "Invalid status value"
+                        "description": "Ids must be sent"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ]
+                }
             }
         },
-        "/pet/findByTags": {
+        "/team/getTeamInfo/{idUsu}": {
             "get": {
                 "tags": [
-                    "pet"
+                    "team"
                 ],
-                "summary": "Finds Pets by tags",
-                "description": "Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.",
-                "operationId": "findPetsByTags",
+                "summary": "Get basic info user Team",
+                "description": "Get basic info user team",
+                "operationId": "GetTeamInfo",
                 "produces": [
-                    "application/xml",
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "tags",
-                        "in": "query",
-                        "description": "Tags to filter by",
-                        "required": true,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Pet"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid tag value"
-                    }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ],
-                "deprecated": true
-            }
-        },
-        "/pet/{petId}": {
-            "get": {
-                "tags": [
-                    "pet"
-                ],
-                "summary": "Find pet by ID",
-                "description": "Returns a single pet",
-                "operationId": "getPetById",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "petId",
                         "in": "path",
-                        "description": "ID of pet to return",
+                        "name": "idUsu",
+                        "description": "id of the User",
                         "required": true,
-                        "type": "integer",
-                        "format": "int64"
+                        "type": "number"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "$ref": "#/definitions/Pet"
+                            "$ref": "#/definitions/team"
                         }
                     },
                     "400": {
-                        "description": "Invalid ID supplied"
-                    },
-                    "404": {
-                        "description": "Pet not found"
+                        "description": "Ids must be sent"
                     }
-                },
-                "security": [
-                    {
-                        "api_key": []
-                    }
-                ]
-            },
+                }
+            }
+        },
+        "/team/createTeam": {
             "post": {
                 "tags": [
-                    "pet"
+                    "team"
                 ],
-                "summary": "Updates a pet in the store with form data",
-                "description": "",
-                "operationId": "updatePetWithForm",
+                "summary": "Create a team",
+                "description": "Create a team",
+                "operationId": "createTeam",
                 "consumes": [
-                    "application/x-www-form-urlencoded"
+                    "application/json"
                 ],
                 "produces": [
-                    "application/xml",
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "petId",
-                        "in": "path",
-                        "description": "ID of pet that needs to be updated",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "name": "name",
-                        "in": "formData",
-                        "description": "Updated name of the pet",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "status",
-                        "in": "formData",
-                        "description": "Updated status of the pet",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "name": "body",
+                        "description": "comment a hero",
+                        "required": [
+                            "idUsu",
+                            "teamName"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "teamName": {
+                                "type": "string",
+                                "desciption": "Team name"
+                            }
+                        }
                     }
                 ],
                 "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
                     "405": {
                         "description": "Invalid input"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "pet"
-                ],
-                "summary": "Deletes a pet",
-                "description": "",
-                "operationId": "deletePet",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "api_key",
-                        "in": "header",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "petId",
-                        "in": "path",
-                        "description": "Pet id to delete",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "400": {
-                        "description": "Invalid ID supplied"
-                    },
-                    "404": {
-                        "description": "Pet not found"
-                    }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ]
+                }
             }
         },
-        "/pet/{petId}/uploadImage": {
-            "post": {
+        "/team/chageName/{idTeam}": {
+            "put": {
                 "tags": [
-                    "pet"
+                    "team"
                 ],
-                "summary": "uploads an image",
-                "description": "",
-                "operationId": "uploadFile",
-                "consumes": [
-                    "multipart/form-data"
-                ],
+                "summary": "change team name",
+                "description": "change team name",
+                "operationId": "changeTeamName",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "petId",
+                        "name": "idTeam",
                         "in": "path",
-                        "description": "ID of pet to update",
+                        "description": "id Team",
                         "required": true,
                         "type": "integer",
                         "format": "int64"
                     },
                     {
-                        "name": "additionalMetadata",
-                        "in": "formData",
-                        "description": "Additional data to pass to server",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "file",
-                        "in": "formData",
-                        "description": "file to upload",
-                        "required": false,
-                        "type": "file"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/ApiResponse"
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ]
-            }
-        },
-        "/store/inventory": {
-            "get": {
-                "tags": [
-                    "store"
-                ],
-                "summary": "Returns pet inventories by status",
-                "description": "Returns a map of status codes to quantities",
-                "operationId": "getInventory",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "integer",
-                                "format": "int32"
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "api_key": []
-                    }
-                ]
-            }
-        },
-        "/store/order": {
-            "post": {
-                "tags": [
-                    "store"
-                ],
-                "summary": "Place an order for a pet",
-                "description": "",
-                "operationId": "placeOrder",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
                         "in": "body",
                         "name": "body",
-                        "description": "order placed for purchasing the pet",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Order"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/Order"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Order"
-                    }
-                }
-            }
-        },
-        "/store/order/{orderId}": {
-            "get": {
-                "tags": [
-                    "store"
-                ],
-                "summary": "Find purchase order by ID",
-                "description": "For valid response try integer IDs with value >= 1 and <= 10.         Other values will generated exceptions",
-                "operationId": "getOrderById",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "orderId",
-                        "in": "path",
-                        "description": "ID of pet that needs to be fetched",
-                        "required": true,
-                        "type": "integer",
-                        "maximum": 10,
-                        "minimum": 1,
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/Order"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid ID supplied"
-                    },
-                    "404": {
-                        "description": "Order not found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "store"
-                ],
-                "summary": "Delete purchase order by ID",
-                "description": "For valid response try integer IDs with positive integer value.         Negative or non-integer values will generate API errors",
-                "operationId": "deleteOrder",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "orderId",
-                        "in": "path",
-                        "description": "ID of the order that needs to be deleted",
-                        "required": true,
-                        "type": "integer",
-                        "minimum": 1,
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "400": {
-                        "description": "Invalid ID supplied"
-                    },
-                    "404": {
-                        "description": "Order not found"
-                    }
-                }
-            }
-        },
-        "/user": {
-            "post": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "Create user",
-                "description": "This can only be done by the logged in user.",
-                "operationId": "createUser",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Created user object",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/User"
-                        }
-                    }
-                ],
-                "responses": {
-                    "default": {
-                        "description": "successful operation"
-                    }
-                }
-            }
-        },
-        "/user/createWithArray": {
-            "post": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "Creates list of users with given input array",
-                "description": "",
-                "operationId": "createUsersWithArrayInput",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "List of user object",
-                        "required": true,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/User"
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "default": {
-                        "description": "successful operation"
-                    }
-                }
-            }
-        },
-        "/user/createWithList": {
-            "post": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "Creates list of users with given input array",
-                "description": "",
-                "operationId": "createUsersWithListInput",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "List of user object",
-                        "required": true,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/User"
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "default": {
-                        "description": "successful operation"
-                    }
-                }
-            }
-        },
-        "/user/login": {
-            "get": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "Logs user into the system",
-                "description": "",
-                "operationId": "loginUser",
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "username",
-                        "in": "query",
-                        "description": "The user name for login",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "description": "The password for login in clear text",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "headers": {
-                            "X-Rate-Limit": {
-                                "type": "integer",
-                                "format": "int32",
-                                "description": "calls per hour allowed by the user"
-                            },
-                            "X-Expires-After": {
+                        "description": "teamName",
+                        "required": [
+                            "teamName"
+                        ],
+                        "properties": {
+                            "teamName": {
                                 "type": "string",
-                                "format": "date-time",
-                                "description": "date in UTC when token expires"
+                                "desciption": "team Name"
                             }
                         }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
                     },
                     "400": {
-                        "description": "Invalid username/password supplied"
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
                     }
                 }
             }
         },
-        "/user/logout": {
-            "get": {
+        "/team/addMember/{idTeam}": {
+            "put": {
                 "tags": [
-                    "user"
+                    "team"
                 ],
-                "summary": "Logs out current logged in user session",
-                "description": "",
-                "operationId": "logoutUser",
+                "summary": "Add member in the team",
+                "description": "Add member in the team",
+                "operationId": "addMember",
                 "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [],
-                "responses": {
-                    "default": {
-                        "description": "successful operation"
-                    }
-                }
-            }
-        },
-        "/user/{username}": {
-            "get": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "Get user by user name",
-                "description": "",
-                "operationId": "getUserByName",
-                "produces": [
-                    "application/xml",
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "idTeam",
                         "in": "path",
-                        "description": "The name that needs to be fetched. Use user1 for testing. ",
+                        "description": "id Team",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Member position ej.member_1 and cod Hero",
+                        "required": [
+                            "member",
+                            "codHero"
+                        ],
+                        "properties": {
+                            "member": {
+                                "type": "string",
+                                "desciption": "member in the team, ex. member_1"
+                            },
+                            "codHero": {
+                                "type": "string",
+                                "desciption": "id hero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/team/deleteMember/{idTeam}": {
+            "put": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "Delete member in the team",
+                "description": "Delete member in the team",
+                "operationId": "deleteMember",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idTeam",
+                        "in": "path",
+                        "description": "id Team",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Member position ej.member_1 and cod Hero",
+                        "required": [
+                            "member",
+                            "codHero"
+                        ],
+                        "properties": {
+                            "member": {
+                                "type": "string",
+                                "desciption": "member in the team, ex. member_1"
+                            },
+                            "codHero": {
+                                "type": "string",
+                                "desciption": "id hero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/team/{idTeam}": {
+            "delete": {
+                "tags": [
+                    "team"
+                ],
+                "summary": "Delete team",
+                "description": "",
+                "operationId": "Delete team",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idTeam",
+                        "in": "path",
+                        "description": "Team id to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "team not found"
+                    }
+                }
+            }
+        },
+        "/user/{idUsu}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get user information",
+                "description": "Get user information",
+                "operationId": "getUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idUsu",
+                        "in": "path",
+                        "description": "id User",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "name must be sent"
+                    }
+                }
+            }
+        },
+        "/user/getUserByName/{userName}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get user information",
+                "description": "Get user information",
+                "operationId": "getUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "path",
+                        "description": "user Name",
                         "required": true,
                         "type": "string"
                     }
@@ -1525,77 +1217,526 @@
                         }
                     },
                     "400": {
-                        "description": "Invalid username supplied"
-                    },
-                    "404": {
-                        "description": "User not found"
+                        "description": "Ids must be sent"
                     }
                 }
-            },
+            }
+        },
+        "/user/checkFollow/{idUsu}/{idUnfollow}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "check whether a user is being followed",
+                "description": "check whether a user is being followed",
+                "operationId": "checkFollow",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idUsu",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "idUnfollow",
+                        "in": "path",
+                        "description": "id user follow",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Ids must be sent"
+                    }
+                }
+            }
+        },
+        "/user/getFollowUsers/{idUsu}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get all the users you follow",
+                "description": "Get all the users you follow",
+                "operationId": "getFollowUsers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idUsu",
+                        "in": "path",
+                        "description": "id User",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "name must be sent"
+                    }
+                }
+            }
+        },
+        "/user/getFollowersUsers/{idUsu}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get all the users who follow you",
+                "description": "Get all the users who follow you",
+                "operationId": "getFollowersUsers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idUsu",
+                        "in": "path",
+                        "description": "id User",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "name must be sent"
+                    }
+                }
+            }
+        },
+        "/user/{idUsu}": {
             "put": {
                 "tags": [
                     "user"
                 ],
-                "summary": "Updated user",
-                "description": "This can only be done by the logged in user.",
+                "summary": "update a user",
+                "description": "update a user",
                 "operationId": "updateUser",
                 "produces": [
-                    "application/xml",
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "idUsu",
                         "in": "path",
-                        "description": "name that need to be updated",
+                        "description": "id User",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Updated user object",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/User"
+                        "description": "update a user",
+                        "required": [
+                            "email",
+                            "userName",
+                            "alias",
+                            "surname",
+                            "dateOfBirth"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "desciption": "email"
+                            },
+                            "userName": {
+                                "type": "string",
+                                "desciption": "userName"
+                            },
+                            "alias": {
+                                "type": "alias",
+                                "desciption": "email"
+                            },
+                            "surname": {
+                                "type": "alias",
+                                "desciption": "surname"
+                            },
+                            "dateOfBirth": {
+                                "type": "string",
+                                "format": "date-time",
+                                "desciption": "date Of Birth"
+                            }
                         }
                     }
                 ],
                 "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
                     "400": {
-                        "description": "Invalid user supplied"
+                        "description": "ids must be sent"
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Not found"
                     }
                 }
-            },
-            "delete": {
+            }
+        },
+        "/user/newpass/{idUsu}": {
+            "put": {
                 "tags": [
                     "user"
                 ],
-                "summary": "Delete user",
-                "description": "This can only be done by the logged in user.",
-                "operationId": "deleteUser",
+                "summary": "user new pass",
+                "description": "user new pass",
+                "operationId": "newpass",
                 "produces": [
-                    "application/xml",
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "idUsu",
                         "in": "path",
-                        "description": "The name that needs to be deleted",
+                        "description": "id User",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "passwords",
+                        "required": [
+                            "email",
+                            "password",
+                            "newPassword"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "desciption": "email"
+                            },
+                            "password": {
+                                "type": "string",
+                                "desciption": "old password"
+                            },
+                            "newPassword": {
+                                "type": "string",
+                                "desciption": "new password"
+                            }
+                        }
                     }
                 ],
                 "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
                     "400": {
-                        "description": "Invalid username supplied"
+                        "description": "information must be sent"
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/user/newImg/user": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "user new img",
+                "description": "user new img",
+                "operationId": "newImg",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "img and id User",
+                        "required": [
+                            "img",
+                            "idUsu"
+                        ],
+                        "properties": {
+                            "img": {
+                                "type": "string",
+                                "desciption": "img url"
+                            },
+                            "idUsu": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "information must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/user/deleteUser/{idUsu}": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Delete a user",
+                "description": "Delete a user",
+                "operationId": "DeleteUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idUsu",
+                        "in": "path",
+                        "description": "id User",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "comment a hero",
+                        "required": [
+                            "email",
+                            "password"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "desciption": "email"
+                            },
+                            "password": {
+                                "type": "string",
+                                "desciption": "old password"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/user/followUser": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Follow a user",
+                "description": "Follow a user",
+                "operationId": "followUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "comment a hero",
+                        "required": [
+                            "idUsu",
+                            "idUsuFollow"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "integer",
+                                "format": "int64"
+                            },
+                            "idUsuFollow": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/user/unFollowUser/{idUsu}/{idUnfollow}": {
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Unfollow a user",
+                "description": "Unfollow a user",
+                "operationId": "unFollowUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idUsu",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "idUnfollow",
+                        "in": "path",
+                        "description": "id user Unfollow",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "team not found"
+                    }
+                }
+            }
+        },
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "signup user",
+                "description": "signup user",
+                "operationId": "signupUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "sign up a user",
+                        "required": [
+                            "email",
+                            "password",
+                            "alias"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "desciption": "email"
+                            },
+                            "password": {
+                                "type": "string",
+                                "desciption": "password"
+                            },
+                            "alias": {
+                                "type": "string",
+                                "desciption": "alias"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/auth/signin": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "signin user",
+                "description": "signin user",
+                "operationId": "signinUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "sign in a user",
+                        "required": [
+                            "email",
+                            "password"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "desciption": "email"
+                            },
+                            "password": {
+                                "type": "string",
+                                "desciption": "password"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "405": {
+                        "description": "Invalid input"
                     }
                 }
             }
@@ -1727,21 +1868,48 @@
                 }
             }
         },
-        "User": {
+        "team": {
             "type": "object",
             "properties": {
-                "id": {
+                "idTeam": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "username": {
+                "idUsu": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "teamName": {
                     "type": "string"
                 },
-                "firstName": {
-                    "type": "string"
+                "member_1": {
+                    "type": "integer",
+                    "format": "int64"
                 },
-                "lastName": {
-                    "type": "string"
+                "member_2": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "member_3": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "member_4": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "member_5": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "idUsu": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "email": {
                     "type": "string"
@@ -1749,97 +1917,22 @@
                 "password": {
                     "type": "string"
                 },
-                "phone": {
+                "userName": {
                     "type": "string"
                 },
-                "userStatus": {
-                    "type": "integer",
-                    "format": "int32",
-                    "description": "User Status"
-                }
-            },
-            "xml": {
-                "name": "User"
-            }
-        },
-        "Tag": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "xml": {
-                "name": "Tag"
-            }
-        },
-        "Pet": {
-            "type": "object",
-            "required": [
-                "name",
-                "photoUrls"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "category": {
-                    "$ref": "#/definitions/Category"
-                },
-                "name": {
-                    "type": "string",
-                    "example": "doggie"
-                },
-                "photoUrls": {
-                    "type": "array",
-                    "xml": {
-                        "name": "photoUrl",
-                        "wrapped": true
-                    },
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "tags": {
-                    "type": "array",
-                    "xml": {
-                        "name": "tag",
-                        "wrapped": true
-                    },
-                    "items": {
-                        "$ref": "#/definitions/Tag"
-                    }
-                },
-                "status": {
-                    "type": "string",
-                    "description": "pet status in the store",
-                    "enum": [
-                        "available",
-                        "pending",
-                        "sold"
-                    ]
-                }
-            },
-            "xml": {
-                "name": "Pet"
-            }
-        },
-        "ApiResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "type": {
+                "alias": {
                     "type": "string"
                 },
-                "message": {
+                "surname": {
+                    "type": "string"
+                },
+                "dateOfBirth": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string"
+                },
+                "admin": {
                     "type": "string"
                 }
             }

@@ -130,6 +130,14 @@ class UserHeroController{
         return res.json(allComments);
     }
 
+      // obtener todos los comentarios de un heroe
+      async getHeroRateScore(req, res) {
+        const { idHero } = req.params;
+        const score= await _userHeroService.getHeroRateScore(idHero);
+        //    JSON.stringify(user)
+        return res.json(score);
+    }
+
 
     // async modifyCHero(req, res) {
     //     const { body } = req;

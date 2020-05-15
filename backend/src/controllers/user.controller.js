@@ -12,7 +12,7 @@ class UserController {
         const user = await _userService.get(idUsu);
         console.log(user.password)
 
-        user[0].password="0";
+        user[0].password = "0";
         //    JSON.stringify(user)
         console.log(user[0])
         return res.json(user[0]);
@@ -23,87 +23,87 @@ class UserController {
         const { body } = req;
         const updateUser = await _userService.update(idUsu, body);
         console.log(updateUser)
-        return res.status(201).send({message:updateUser});
+        return res.status(201).send({ message: updateUser });
     }
-    
+
     async updatePass(req, res) {
         const { idUsu } = req.params;
         const { body } = req;
-        const  updatePass = await _userService.updatePass(idUsu,body);
-        console.log( updatePass)
-        return res.status(201).send({message: updatePass});
+        const updatePass = await _userService.updatePass(idUsu, body);
+        console.log(updatePass)
+        return res.status(201).send({ message: updatePass });
     }
 
     async delete(req, res) {
         const { idUsu } = req.params;
         const { body } = req;
-        const  deleteUser = await _userService.deleteUser(idUsu, body);
-        console.log( deleteUser)
-        return res.status(201).send({message: deleteUser});
+        const deleteUser = await _userService.deleteUser(idUsu, body);
+        console.log(deleteUser)
+        return res.status(201).send({ message: deleteUser });
 
     }
 
     async followUser(req, res) {
         const { body } = req;
-        const  followUser = await _userService.followUser(body);
+        const followUser = await _userService.followUser(body);
         console.log(followUser)
-        return res.status(201).send({message:followUser});
+        return res.status(201).send({ message: followUser });
     }
-    
+
     async unFollowUser(req, res) {
         const { idUsu } = req.params;
         const { idUnfollow } = req.params;
-        const  unFollowUser = await _userService.unFollowUser( idUsu,idUnfollow);
+        const unFollowUser = await _userService.unFollowUser(idUsu, idUnfollow);
         console.log(unFollowUser)
-        return res.status(201).send({message:unFollowUser});
+        return res.status(201).send({ message: unFollowUser });
     }
 
     //Buscar un usuario por nombre
     async getUserByName(req, res) {
-        const { userName} = req.params;
+        const { userName } = req.params;
 
         const user = await _userService.getUserByName(userName);
-       console.log(user)
+        console.log(user)
         return res.json(user);
     }
-    
+
     async checkFollow(req, res) {
         const { idUsu } = req.params;
         const { idUnfollow } = req.params;
-        const  checkFollow = await _userService.checkFollow( idUsu,idUnfollow);
-       
-        return res.json( checkFollow);
+        const checkFollow = await _userService.checkFollow(idUsu, idUnfollow);
+
+        return res.json(checkFollow);
     }
     // async uploadImage(req,res){
     //     const { idUsu } = req.params;
     //     const file_name = "no subido...";
 
     //     if(req.files){
-            
+
     //     }
 
     // }
 
     async getFollowUsers(req, res) {
         const { idUsu } = req.params;
-        const  FollowUsers= await _userService.getFollowUsers( idUsu);
-        return res.json( FollowUsers);
+        const FollowUsers = await _userService.getFollowUsers(idUsu);
+        return res.json(FollowUsers);
     }
 
     async getFollowersUsers(req, res) {
         const { idUsu } = req.params;
-        const  FollowUsers= await _userService.getFollowersUsers( idUsu);
-        return res.json( FollowUsers);
+        const FollowUsers = await _userService.getFollowersUsers(idUsu);
+        return res.json(FollowUsers);
     }
 
 
-     //actualizar img
-//   router.put('/newImg/:idUsu/:img', UserController.newImg);
-async newImg(req, res) {
-    const { body } = req;
-    const  updateImg = await _userService.newImg(body);
-    return res.status(201).send({message: updateImg});
-}
+    //actualizar img
+    //   router.put('/newImg/:idUsu/:img', UserController.newImg);
+    async newImg(req, res) {
+        const { body } = req;
+        const updateImg = await _userService.newImg(body);
+        return res.status(201).send({ message: updateImg });
+    }
 
 }
 module.exports = UserController;

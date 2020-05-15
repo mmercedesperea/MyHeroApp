@@ -12,10 +12,10 @@ module.exports = function ({ UserController }) {
   //obtener un usuario
   router.get('/:idUsu', UserController.get);
 
-  //actualizar un usuario
+  //update a user
   router.put('/:idUsu', UserController.update);
 
-  //actualizar contraseña
+  //user new pass
   router.put('/newpass/:idUsu', UserController.updatePass);
 
   // Eliminar informacion de usuario de la bd
@@ -32,13 +32,13 @@ module.exports = function ({ UserController }) {
 
   // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
 
-// comprobar si se sigue
+// check whether a user is being followed
   router.get('/checkFollow/:idUsu/:idUnfollow', UserController.checkFollow);
 
-// obtener todos los usuarios que sigues
+// get all the users you follow
   router.get('/getFollowUsers/:idUsu', UserController.getFollowUsers);
 
-  // obtener todos los usuarios que te siguen
+  // get all the users who follow you
   router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers);
 
   //actualizar img

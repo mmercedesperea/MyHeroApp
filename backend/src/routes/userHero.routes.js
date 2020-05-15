@@ -53,6 +53,10 @@ module.exports = function ({ UserHeroController }) {
     // get all the comments from a hero
     router.get('/getHeroComments/:idHero', UserHeroController.getHeroComments);
 
+
+     // get the mean of a hero's scores A PASA A SWAAAAAAGEEERR
+     router.get('/getHeroRateScore/:idHero', UserHeroController.getHeroRateScore);
+
     // // modifyCHerocomment
     // router.put('/modifyCHero', UserHeroController.modifyCHero);
 
