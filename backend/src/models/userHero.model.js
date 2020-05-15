@@ -89,9 +89,10 @@ class UserHero {
     }
 
 
-    async modifyCHero(body) {
-        return await _DB.update(`UPDATE ${table}  SET comment =  '${body.comment}' WHERE idUsu = ${body.idUsu} AND idHero = ${body.idHero}`);
-    }
+    // async modifyCHero(body) {
+    //     return await _DB.update(`UPDATE ${table}  SET comment =  '${body.comment}' WHERE idUsu = ${body.idUsu} AND idHero = ${body.idHero}`);
+    // }
+    
 }
 
 module.exports = UserHero;

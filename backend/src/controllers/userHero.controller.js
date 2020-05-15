@@ -131,12 +131,12 @@ class UserHeroController{
     }
 
 
-    async modifyCHero(req, res) {
-        const { body } = req;
-        const  commentHero = await _userHeroService.modifyCHero(body);
-        // console.log( commentHero)
-        return res.status(201).send({message: commentHero});
-    }
+    // async modifyCHero(req, res) {
+    //     const { body } = req;
+    //     const  commentHero = await _userHeroService.modifyCHero(body);
+    //     // console.log( commentHero)
+    //     return res.status(201).send({message: commentHero});
+    // }
 
 }
 

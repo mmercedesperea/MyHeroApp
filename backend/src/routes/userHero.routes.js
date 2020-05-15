@@ -47,14 +47,14 @@ module.exports = function ({ UserHeroController }) {
     // obtener los heroes más seguidos
     router.get('/mostFollowHeros', UserHeroController.mostFollowHeros);
 
-    //obtener la relacion del heroe y el usuario
+    //Get the relationship of the hero and the user
     router.get('/getHeroUsu/:idUsu/:idHero', UserHeroController.getHeroUsu);
 
-    // obtener todos los comentarios de un heroe
+    // get all the comments from a hero
     router.get('/getHeroComments/:idHero', UserHeroController.getHeroComments);
 
-    // modifyCHerocomment
-    router.put('/modifyCHero', UserHeroController.modifyCHero);
+    // // modifyCHerocomment
+    // router.put('/modifyCHero', UserHeroController.modifyCHero);
 
     return router;
 }

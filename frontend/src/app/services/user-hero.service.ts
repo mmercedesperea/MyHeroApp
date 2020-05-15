@@ -118,10 +118,10 @@ public mostFollowHeros() {
    }
 
 
-   public modifyCHero( data) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(data);
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(`${this.baseUrl}/userHero/modifyCHero`, data, { headers: headers });
-  }
+  //  public modifyCHero( data) {
+  //   // para convertir el objeto en un string
+  //   // let params = JSON.stringify(data);
+  //   let headers = new HttpHeaders().set('Content-Type', 'application/json');
+  //   return this.http.put(`${this.baseUrl}/userHero/modifyCHero`, data, { headers: headers });
+  // }
 }

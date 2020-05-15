@@ -356,6 +356,520 @@
                 }
             }
         },
+        "/userHero/allHerosFoll/{idUsu}": {
+            "get": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Bring all follow heroes from the user",
+                "description": "Bring all follow heroes from the user",
+                "operationId": "getFoll",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idUsu",
+                        "description": "id of the User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Hero"
+                        }
+                    },
+                    "400": {
+                        "description": "Id must be sent"
+                    }
+                }
+            }
+        },
+        "/userHero/bestMarverHero": {
+            "get": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Bring the best Marvel Heroe",
+                "description": "Bring the marvel hero with more votes ",
+                "operationId": "bestMarverHero",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Hero"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "There is no heros"
+                    }
+                }
+            }
+        },
+        "/userHero/bestDCHero": {
+            "get": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Bring the best DC Heroe",
+                "description": "Bring the DC hero with more votes ",
+                "operationId": "bestDCHero",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Hero"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "There is no heros"
+                    }
+                }
+            }
+        },
+        "/userHero/mostFollowHeros": {
+            "get": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Bring heroes with more followers",
+                "description": "Bring heroes with more followers",
+                "operationId": "mostFollowHeros",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Hero"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "There is no heros"
+                    }
+                }
+            }
+        },
+        "/userHero/getHeroUsu/{idUsu}/{idHero}": {
+            "get": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Get the relationship of the hero and the user",
+                "description": "Get the relationship of the hero and the user",
+                "operationId": "getHeroUsu",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idUsu",
+                        "description": "id of the User",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idHero",
+                        "description": "id of the Hero",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/userHero"
+                        }
+                    },
+                    "400": {
+                        "description": "Ids must be sent"
+                    }
+                }
+            }
+        },
+        "/userHero/getHeroComments/{idHero}": {
+            "get": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Get all the comments from a hero",
+                "description": "Get all the comments from a hero",
+                "operationId": "getHeroComments",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "idHero",
+                        "description": "id of the User",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Ids must be sent"
+                    }
+                }
+            }
+        },
+        "/userHero/followHero": {
+            "put": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Follow a hero",
+                "description": "Follow a hero",
+                "operationId": "followHero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Follow a hero",
+                        "required": [
+                            "idUsu",
+                            "idHero"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "idHero": {
+                                "type": "number",
+                                "desciption": "id Hero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/userHero/unfollowHero": {
+            "put": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Unfollow a hero",
+                "description": "Unfollow a hero",
+                "operationId": "unfollowHero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Unfollow a hero",
+                        "required": [
+                            "idUsu",
+                            "idHero"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "idHero": {
+                                "type": "number",
+                                "desciption": "id Hero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/userHero/favorite": {
+            "put": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "favorite a hero",
+                "description": "favorite a hero",
+                "operationId": "favorite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "favorite a hero",
+                        "required": [
+                            "idUsu",
+                            "idHero"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "idHero": {
+                                "type": "number",
+                                "desciption": "id Hero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/userHero/unfavorite": {
+            "put": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "unfavorite a hero",
+                "description": "unfavorite a hero",
+                "operationId": "unfavorite",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "unfavorite a hero",
+                        "required": [
+                            "idUsu",
+                            "idHero"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "idHero": {
+                                "type": "number",
+                                "desciption": "id Hero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/userHero/voteHero": {
+            "put": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Vote a hero",
+                "description": "Vote a hero",
+                "operationId": "voteHero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Vote a hero",
+                        "required": [
+                            "idUsu",
+                            "idHero",
+                            "score"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "idHero": {
+                                "type": "number",
+                                "desciption": "id Hero"
+                            },
+                            "score": {
+                                "type": "number",
+                                "desciption": "score"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/userHero/commentHero": {
+            "put": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "comment a hero",
+                "description": "comment a hero",
+                "operationId": "commentHero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "comment a hero",
+                        "required": [
+                            "idUsu",
+                            "idHero",
+                            "comment"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "idHero": {
+                                "type": "number",
+                                "desciption": "id Hero"
+                            },
+                            "comment": {
+                                "type": "string",
+                                "desciption": "comment"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/userHero/deleteCHero": {
+            "put": {
+                "tags": [
+                    "userHero"
+                ],
+                "summary": "Delete comment a hero",
+                "description": "Delete comment a hero",
+                "operationId": "deleteCHero",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete comment a hero",
+                        "required": [
+                            "idUsu",
+                            "idHero"
+                        ],
+                        "properties": {
+                            "idUsu": {
+                                "type": "number",
+                                "desciption": "id User"
+                            },
+                            "idHero": {
+                                "type": "number",
+                                "desciption": "id Hero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "ids must be sent"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+
+
 
 
 
@@ -1185,19 +1699,32 @@
                 }
             }
         },
-        "Category": {
+        "userHero": {
             "type": "object",
             "properties": {
-                "id": {
+                "idUsu": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "name": {
+                "idHero": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "score": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "comment": {
                     "type": "string"
+                },
+                "favorite": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "follow": {
+                    "type": "integer",
+                    "format": "int64"
                 }
-            },
-            "xml": {
-                "name": "Category"
             }
         },
         "User": {

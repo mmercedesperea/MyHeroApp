@@ -19,20 +19,20 @@ export class TeamService {
       { headers: headers });
   }
 
-  // check the numbers of menbers
-  public checkTeam(idTeam: number) {
-    return this.http.get<any>(`${this.baseUrl}/team/checkTeam/${idTeam}`);
-  }
+  // // check the numbers of menbers
+  // public checkTeam(idTeam: number) {
+  //   return this.http.get<any>(`${this.baseUrl}/team/checkTeam/${idTeam}`);
+  // }
 
   // obtener equipo por su id
-  public getTeam(idTeam: number) {
-    return this.http.get<Team>(`${this.baseUrl}/team/getTeam/${idTeam}`);
-  }
+  // public getTeam(idTeam: number) {
+  //   return this.http.get<Team>(`${this.baseUrl}/team/getTeam/${idTeam}`);
+  // }
 
   // obtener equipo de usuario
-  public getTeamUsu(idUsu: number) {
-    return this.http.get<any>(`${this.baseUrl}/team/getTeam/usu/${idUsu}`);
-  }
+  // public getTeamUsu(idUsu: number) {
+  //   return this.http.get<any>(`${this.baseUrl}/team/getTeam/usu/${idUsu}`);
+  // }
 
 
   // obtener equipo con mayor stats

@@ -17,13 +17,13 @@ module.exports = function ({ TeamController }) {
     router.put('/deleteMember/:idTeam', TeamController.deleteMember);
 
     // check the numbers of menbers
-    router.get('/checkTeam/:idTeam', TeamController.checkTeam);
+    // router.get('/checkTeam/:idTeam', TeamController.checkTeam);
 
     // obtener equipo por id
-    router.get('/getTeam/:idTeam', TeamController.getTeam);
+    // router.get('/getTeam/:idTeam', TeamController.getTeam);
 
     // obtener equipo de usuario
-    router.get('/getTeam/usu/:idUsu', TeamController.getTeamUsu);
+    // router.get('/getTeam/usu/:idUsu', TeamController.getTeamUsu);
 
     // borrar un equipo
     router.delete('/:idTeam', TeamController.delete);

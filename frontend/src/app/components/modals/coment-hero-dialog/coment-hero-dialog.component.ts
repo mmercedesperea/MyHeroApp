@@ -75,7 +75,7 @@ export class ComentHeroDialogComponent implements OnInit {
       var commentObj = { comment: commentForm.value.comment, idUsu: this.data.idUsu, idHero: this.data.idHero };
 
       console.log(commentObj)
-      this._UserHeroService.modifyCHero(commentObj).subscribe(
+      this._UserHeroService.commentHero(commentObj).subscribe(
         res => {
           console.log(res)
           this.openSnackBar('YOUR COMMENT HAS BEEN MODIFY', 'Close')
