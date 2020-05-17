@@ -30,12 +30,13 @@ import { UserListComponent } from './components/user-list/user-list.component';
         MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
+   
     ],
     exports: [
         MainComponent,
         AddHeroComponent,
         EditHeroComponent
     ],
-    providers: []
+    providers: [ ]
 })
 export class AdminModule { }

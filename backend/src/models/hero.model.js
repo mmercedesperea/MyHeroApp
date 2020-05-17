@@ -182,6 +182,12 @@ class Hero {
             "INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,eyeColor,hairColor,work) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", entity);
     }
 
+    async newHero(entity) {
+         return await _DB.create(
+            `INSERT INTO heroes ( heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,work) VALUES ("${entity.heroName}","${entity.image}",${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},"${entity.fullName}","${entity.placeOfBirth}","${entity.publisher}","${entity.alignment}","${entity.firstApperance}","${entity.gender}","${entity.race}",'${entity.height}','${entity.weight}',"${entity.work}")`
+        ); 
+    }
+
     async getHeroByid(id) {
         const url = `${host}${id}`;
 

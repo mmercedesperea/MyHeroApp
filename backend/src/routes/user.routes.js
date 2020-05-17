@@ -33,13 +33,13 @@ module.exports = function ({ UserController }) {
   // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
 
 // check whether a user is being followed
-  router.get('/checkFollow/:idUsu/:idUnfollow',[AuthMiddleware], UserController.checkFollow);
+  router.get('/checkFollow/:idUsu/:idUnfollow',UserController.checkFollow);
 
 // get all the users you follow
-  router.get('/getFollowUsers/:idUsu',[AuthMiddleware], UserController.getFollowUsers);
+  router.get('/getFollowUsers/:idUsu', UserController.getFollowUsers);
 
   // get all the users who follow you
-  router.get('/getFollowersUsers/:idUsu',[AuthMiddleware], UserController.getFollowersUsers);
+  router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers);
 
   //actualizar img
   router.put('/newImg/user',[AuthMiddleware], UserController.newImg);

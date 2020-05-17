@@ -7,7 +7,7 @@ const config = require('../config');
 const server = require('./index');
 
 // routes
-const { UserRoutes, AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute, TeamRoute } = require('../routes/index.routes');
+const { AdminRoute, UserRoutes, AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute, TeamRoute } = require('../routes/index.routes');
 const Routes = require('../routes');
 
 // DB
@@ -15,11 +15,11 @@ const DB = require('../database/db');
 
 
 // services
-const { UserService, AuthService, ApiHeroService, HeroService, UserHeroService, TeamService } = require("../services");
+const {   AdminService,UserService, AuthService, ApiHeroService, HeroService, UserHeroService, TeamService } = require("../services");
 
 
 // controllers
-const { UserController, AuthController, ApiHeroController, HeroController, UserHeroController, TeamController } = require('../controllers');
+const { AdminController ,UserController, AuthController, ApiHeroController, HeroController, UserHeroController, TeamController } = require('../controllers');
 
 //models
 const { User, Hero, UserHero, Team } = require('../models');
@@ -41,7 +41,8 @@ container
         ApiHeroService: asClass(ApiHeroService).singleton(),
         HeroService: asClass(HeroService).singleton(),
         UserHeroService: asClass(UserHeroService).singleton(),
-        TeamService: asClass(TeamService).singleton()
+        TeamService: asClass(TeamService).singleton(),
+        AdminService: asClass(  AdminService).singleton()
     })
     .register({
         // bind se utiliza para que express a la hora de llamar un controlador el scope se mantenga
@@ -51,6 +52,7 @@ container
         HeroController: asClass(HeroController.bind(HeroController)).singleton(),
         UserHeroController: asClass(UserHeroController.bind(UserHeroController)).singleton(),
         TeamController: asClass(TeamController.bind(TeamController)).singleton(),
+        AdminController: asClass(AdminController.bind(AdminController)).singleton()
     })
     .register({
         UserRoutes: asFunction(UserRoutes).singleton(),
@@ -59,6 +61,7 @@ container
         HeroRoute: asFunction(HeroRoute).singleton(),
         UserHeroRoute: asFunction(UserHeroRoute).singleton(),
         TeamRoute: asFunction(TeamRoute).singleton(),
+        AdminRoute: asFunction(AdminRoute).singleton()
     })
    
     .register({ Team: asClass(Team), User: asClass(User), Hero: asClass(Hero), UserHero: asClass(UserHero) })

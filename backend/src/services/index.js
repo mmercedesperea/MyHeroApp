@@ -4,5 +4,6 @@ module.exports = {
     ApiHeroService:require('./apiHero.service'),
     HeroService: require('./hero.service'),
     UserHeroService: require('./userHero.service'),
-    TeamService: require('./team.service')
+    TeamService: require('./team.service'),
+    AdminService: require('./admin.service')
 }

@@ -4,5 +4,6 @@ module.exports = {
     ApiHeroController: require('./apiHero.controller'),
     HeroController: require('./hero.controller'),
     UserHeroController: require('./userHero.controller'),
-    TeamController: require('./team.controller')
+    TeamController: require('./team.controller'),
+    AdminController: require('./admin.controller')
 }

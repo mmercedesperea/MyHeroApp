@@ -56,7 +56,8 @@ class AuthService {
       email: userExist[0].email,
       id: userExist[0].idUsu,
       alias: userExist[0].alias,
-      admin: userExist[0].admin
+      admin: userExist[0].admin,
+      photo: userExist[0].photo
     }
     console.log(usertToEncode)
     // generamos el token

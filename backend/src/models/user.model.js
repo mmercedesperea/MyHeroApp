@@ -110,6 +110,10 @@ class User {
 async newImg(entity) {
     return await _DB.update(`UPDATE ${table}  SET photo = '${entity.img}' WHERE idUsu = ${entity.idUsu}`);
 }
+
+async allUsers() {
+    return await _DB.consulta(`SELECT alias,idUsu,createDate,admin,email from ${table}`)
+}
    
 
 }

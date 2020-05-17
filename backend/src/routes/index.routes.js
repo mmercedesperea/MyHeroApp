@@ -5,4 +5,5 @@ module.exports = {
     HeroRoute: require('./hero.route'),
     UserHeroRoute: require('./userHero.routes'),
     TeamRoute: require('./team.routes'),
+    AdminRoute: require('./admin.route')
 }

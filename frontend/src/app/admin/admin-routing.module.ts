@@ -7,6 +7,7 @@ import { MainComponent } from './components/main/main.component';
 import { AddHeroComponent } from './components/add-hero/add-hero.component';
 import { EditHeroComponent } from './components/edit-hero/edit-hero.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { AdminGuard } from '../services/admin.guard';
 
 
 const adminRoutes: Routes = [
@@ -14,6 +15,7 @@ const adminRoutes: Routes = [
         // componente padre 
         path: 'admin-panel',
         component: MainComponent,
+        canActivate: [AdminGuard],
         children: [
             {
                 path: 'editHero', component: EditHeroComponent

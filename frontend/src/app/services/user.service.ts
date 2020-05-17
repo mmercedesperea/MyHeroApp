@@ -101,6 +101,11 @@ export class UserService {
     // para convertir el objeto en un string
     // let params = JSON.stringify(user);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    // añadimos el token a la cabecera
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    
+    // headers = headers.set('Authorization', `Bearer ${ tokenAuth }`);
     return this.http.put(`${this.baseUrl}/user/${idUsu}`, user, { headers: headers });
   }
 
@@ -110,13 +115,17 @@ export class UserService {
     // para convertir el objeto en un string
     // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(`${this.baseUrl}/user/newpass/${idUsu}`,data, { headers: headers });
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.put(`${this.baseUrl}/user/newpass/${idUsu}`, data, { headers: headers });
   }
 
   // // Eliminar informacion de usuario de la bd (email,password)
   public deleteUser(idUsu: number, data) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     // let params = JSON.stringify(data);
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.post(`${this.baseUrl}/user/deleteUser/${idUsu}`, data,
       { headers: headers });
   }
@@ -126,6 +135,8 @@ export class UserService {
   // router.post('/followUser', UserController.followUser);
   public followUser(ides) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.post(`${this.baseUrl}/user/followUser`, ides,
       { headers: headers });
   }
@@ -134,6 +145,8 @@ export class UserService {
   // router.delete('/unFollowUser/:idUsu/:idUnfollow', UserController.unFollowUser);
   public unFollowUser(idUsu: number, idUnfollow: number) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.delete(`${this.baseUrl}/user/unFollowUser/${idUsu}/${idUnfollow}`, { headers: headers });
   }
 
@@ -158,7 +171,7 @@ export class UserService {
     return this.http.get<User[]>(`${this.baseUrl}/user/getFollowersUsers/${idUsu}`);
   }
 
-  
+
   //actualizar img
   // router.put('/newImg/:idUsu/:img', UserController.newImg);
 
@@ -168,12 +181,14 @@ export class UserService {
   //   return this.http.put(`${this.baseUrl}/user/newImg/${idUsu}/${img}`,{ headers: headers });
   // }
 
-  public newImg( data) {
+  public newImg(data) {
     console.log("llego aqui")
     console.log(data)
     // para convertir el objeto en un string
     // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/user/newImg/user`, data, { headers: headers });
   }
 }
