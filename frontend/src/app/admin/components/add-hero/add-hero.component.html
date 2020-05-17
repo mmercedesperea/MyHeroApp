@@ -1,1 +1,207 @@
 <p>add-hero works!</p>
+<div id="form">
+    <h1>Add new Hero</h1>
+    <form [formGroup]="newHeroForm" (ngSubmit)="saveHero()">
+        <mat-form-field appearance="outline">
+            <mat-label>heroName</mat-label>
+            <input matInput type="text" formControlName="heroName" placeholder="heroName" [(ngModel)]="hero.heroName" />
+            <mat-error *ngIf="!newHeroForm.controls['heroName'].valid">{{
+        getErrorMessage("heroName")
+      }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>image</mat-label>
+            <input matInput type="text" formControlName="image" placeholder="image" [(ngModel)]="hero.image" />
+            <mat-error *ngIf="!newHeroForm.controls['image'].valid">{{
+        getErrorMessage("image")
+      }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>fullName</mat-label>
+            <input matInput type="text" formControlName="fullName" placeholder="fullName" [(ngModel)]="hero.fullName" />
+            <mat-error *ngIf="!newHeroForm.controls['fullName'].valid">{{
+          getErrorMessage("fullName")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>placeOfBirth</mat-label>
+            <input matInput type="text" formControlName="placeOfBirth" placeholder="placeOfBirth"
+                [(ngModel)]="hero.placeOfBirth" />
+            <mat-error *ngIf="!newHeroForm.controls['placeOfBirth'].valid">{{
+          getErrorMessage("placeOfBirth")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>publisher</mat-label>
+            <input matInput type="text" formControlName="publisher" placeholder="publisher"
+                [(ngModel)]="hero.publisher" />
+            <mat-error *ngIf="!newHeroForm.controls['publisher'].valid">{{
+          getErrorMessage("publisher")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>alignment</mat-label>
+            <input matInput type="text" formControlName="alignment" placeholder="alignment"
+                [(ngModel)]="hero.alignment" />
+            <mat-error *ngIf="!newHeroForm.controls['alignment'].valid">{{
+          getErrorMessage("alignment")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>firstApperance</mat-label>
+            <input matInput type="text" formControlName="firstApperance" placeholder="firstApperance"
+                [(ngModel)]="hero.firstApperance" />
+            <mat-error *ngIf="!newHeroForm.controls['firstApperance'].valid">{{
+          getErrorMessage("firstApperance")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>gender</mat-label>
+            <input matInput type="text" formControlName="gender" placeholder="gender"
+                [(ngModel)]="hero.gender" />
+            <mat-error *ngIf="!newHeroForm.controls['gender'].valid">{{
+          getErrorMessage("gender")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>race</mat-label>
+            <input matInput type="text" formControlName="race" placeholder="race"
+                [(ngModel)]="hero.race" />
+            <mat-error *ngIf="!newHeroForm.controls['race'].valid">{{
+          getErrorMessage("race")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>height</mat-label>
+            <input matInput type="text" formControlName="height" placeholder="height"
+                [(ngModel)]="hero.height" />
+            <mat-error *ngIf="!newHeroForm.controls['height'].valid">{{
+          getErrorMessage("height")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>weight</mat-label>
+            <input matInput type="text" formControlName="weight" placeholder="weight"
+                [(ngModel)]="hero.weight" />
+            <mat-error *ngIf="!newHeroForm.controls['weight'].valid">{{
+          getErrorMessage("weight")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label> eyeColor</mat-label>
+            <input matInput type="text" formControlName="eyeColor" placeholder="eyeColor"
+                [(ngModel)]="hero.eyeColor" />
+            <mat-error *ngIf="!newHeroForm.controls['eyeColor'].valid">{{
+          getErrorMessage("eyeColor")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>hairColor</mat-label>
+            <input matInput type="text" formControlName="hairColor" placeholder="hairColor"
+                [(ngModel)]="hero.hairColor" />
+            <mat-error *ngIf="!newHeroForm.controls['hairColor'].valid">{{
+          getErrorMessage("hairColor")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>work</mat-label>
+            <input matInput type="text" formControlName="work" placeholder="work"
+                [(ngModel)]="hero.work" />
+            <mat-error *ngIf="!newHeroForm.controls['work'].valid">{{
+          getErrorMessage("work")
+        }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>biography</mat-label>
+            <input matInput type="text" formControlName="biography" placeholder="biography"
+                [(ngModel)]="hero.biography" />
+            <mat-error *ngIf="!newHeroForm.controls['biography'].valid">{{
+          getErrorMessage("biography")
+        }}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>intelligence</mat-label>
+            <input matInput type="number" placeholder="intelligence" formControlName="intelligence" min="1" max="100" />
+            <span matSuffix>points</span>
+            <mat-error *ngIf="!newHeroForm.controls['intelligence'].valid">{{
+        getErrorMessage("intelligence")
+      }}</mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>strength</mat-label>
+            <input matInput type="number" placeholder="strength" formControlName="strength" min="1" max="100" />
+            <span matSuffix>points</span>
+            <mat-error *ngIf="!newHeroForm.controls['strength'].valid">{{
+        getErrorMessage("strength")
+      }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>speed</mat-label>
+            <input matInput type="number" placeholder="speed" formControlName="speed" min="1" max="100" />
+            <span matSuffix>points</span>
+            <mat-error *ngIf="!newHeroForm.controls['speed'].valid">{{
+        getErrorMessage("speed")
+      }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>durability</mat-label>
+            <input matInput type="number" placeholder="durability" formControlName="durability" min="1" max="100" />
+            <span matSuffix>points</span>
+            <mat-error *ngIf="!newHeroForm.controls['durability'].valid">{{
+        getErrorMessage("durability")
+      }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>power</mat-label>
+            <input matInput type="number" placeholder="power" formControlName="power" min="1" max="100" />
+            <span matSuffix>points</span>
+            <mat-error *ngIf="!newHeroForm.controls['power'].valid">{{
+        getErrorMessage("power")
+      }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>combat</mat-label>
+            <input matInput type="number" placeholder="combat" formControlName="combat" min="1" max="100" />
+            <span matSuffix>points</span>
+            <mat-error *ngIf="!newHeroForm.controls['combat'].valid">{{
+        getErrorMessage("combat")
+      }}</mat-error>
+        </mat-form-field>
+
+        
+
+
+
+
+
+
+        <!-- <div *ngIf="!datosCorrectos">
+          <p class="mensajeError">{{  this.message }}</p>
+        </div> -->
+
+        <button type="submit" [disabled]="!newHeroForm.valid">
+            Add new hero
+        </button>
+    </form>
+</div>

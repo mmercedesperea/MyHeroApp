@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module'
 import { HttpClientModule } from "@angular/common/http";
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material';
+import { MatInputModule, MatNativeDateModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 //components
 import { MainComponent } from './components/main/main.component';
@@ -20,7 +23,13 @@ import { UserListComponent } from './components/user-list/user-list.component';
     imports: [
         CommonModule,
         AdminRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
     ],
     exports: [
         MainComponent,

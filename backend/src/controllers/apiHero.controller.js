@@ -21,7 +21,7 @@ class ApiHeroController {
         const hero = await _apiHeroService.getHeroByid(id);
         //    JSON.stringify(user)
         // console.log('llego aqui'+ id)
-        console.log(hero);
+        // console.log(hero);
 
         // return res.send(hero);
         return res.json(hero);

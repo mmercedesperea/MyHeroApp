@@ -55,8 +55,10 @@ class AuthService {
     const usertToEncode = {
       email: userExist[0].email,
       id: userExist[0].idUsu,
-      alias: userExist[0].alias
+      alias: userExist[0].alias,
+      admin: userExist[0].admin
     }
+    console.log(usertToEncode)
     // generamos el token
     const token = generateToken(usertToEncode)
 

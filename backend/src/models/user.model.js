@@ -39,7 +39,7 @@ class User {
     }
 
 
-    // hash Password
+    // hash Password codificar la contraseña
     async hasPass(password) {
         const salt = genSaltSync(10)
         // console.log(user)

@@ -1,20 +1,24 @@
 const { Router } = require('express');
 
+// para asegurarnos de que el usuario este autentificado para acceder a ciertas rutas
+const { AuthMiddleware,AdminAuth, ParseIntMiddleware, CacheMiddleware } = require('../middlewares');
+
+
 module.exports = function ({ TeamController }) {
 
     const router = Router();
 
     // Create a team
-    router.post('/createTeam', TeamController.createTeam);
+    router.post('/createTeam',[AuthMiddleware], TeamController.createTeam);
 
     //change name
-    router.put('/chageName/:idTeam', TeamController.chageName);
+    router.put('/chageName/:idTeam',[AuthMiddleware], TeamController.chageName);
 
     //añadir nuevo miembro (hay que mandarle el campo de la bd "member_1, member_2, etc" y el codigo del hero)
-    router.put('/addMember/:idTeam', TeamController.addMember);
+    router.put('/addMember/:idTeam',[AuthMiddleware], TeamController.addMember);
 
     //delete member
-    router.put('/deleteMember/:idTeam', TeamController.deleteMember);
+    router.put('/deleteMember/:idTeam',[AuthMiddleware], TeamController.deleteMember);
 
     // check the numbers of menbers
     // router.get('/checkTeam/:idTeam', TeamController.checkTeam);
@@ -26,7 +30,7 @@ module.exports = function ({ TeamController }) {
     // router.get('/getTeam/usu/:idUsu', TeamController.getTeamUsu);
 
     // borrar un equipo
-    router.delete('/:idTeam', TeamController.delete);
+    router.delete('/:idTeam',[AuthMiddleware], TeamController.delete);
 
     // obtener equipo con mayor stats
     router.get('/bestTeam', TeamController.bestTeam);
