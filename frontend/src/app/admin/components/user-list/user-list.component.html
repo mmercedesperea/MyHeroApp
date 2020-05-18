@@ -1,1 +1,12 @@
 <p>user-list works!</p>
+
+<div  *ngFor=" let user of users">
+    <h3>{{ user.alias }}</h3>
+    <br />
+    <!-- <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a> -->
+    <br />
+    <img [src]="user.photo" [alt]="user.alias" class="img-fluid" />
+    <button type="button" mat-raised-button (click)="deleteUserDialog(user.idUsu,user.alias)">Delete user</button>
+
+
+</div>

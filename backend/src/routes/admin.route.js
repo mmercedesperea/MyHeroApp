@@ -15,7 +15,7 @@ module.exports = function ({ AdminController }) {
     router.put('/modifyHero/:idHero',[AuthMiddleware,AdminAuth.isAdmin], AdminController.modifyHero);
 
     // Delete user
-    router.delete('/:iUsu',[AuthMiddleware,AdminAuth.isAdmin],  AdminController.deleteUser);
+    router.delete('/:idUsu',[AuthMiddleware,AdminAuth.isAdmin],  AdminController.deleteUser);
 
     // get all users
     router.get('/allUsers',[AuthMiddleware,AdminAuth.isAdmin],  AdminController.allUsers);

@@ -29,7 +29,8 @@ class AdminController{
 
     async  deleteUser(req, res) {
         const { idUsu } = req.params;
-        const  deleteUser = await _teamService.deleteUser(idUsu);
+        console.log(idUsu)
+        const  deleteUser = await _adminService.deleteUser(idUsu);
         // console.log(deleteUser)
         return res.status(201).send({message: deleteUser});
     }

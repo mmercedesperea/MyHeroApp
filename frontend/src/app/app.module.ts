@@ -39,6 +39,7 @@ import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog
 import { TeamComponent } from './components/team/team.component';
 import { AvatarDialogComponent } from './components/modals/avatar-dialog/avatar-dialog.component';
 import { FightDialogComponent } from './components/modals/fight-dialog/fight-dialog.component';
+import { AdminDeleteUserDialogComponent } from './components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { FightDialogComponent } from './components/modals/fight-dialog/fight-dia
     TeamDialogComponent,
     TeamComponent,
     AvatarDialogComponent,
-    FightDialogComponent
+    FightDialogComponent,
+    AdminDeleteUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,7 @@ import { FightDialogComponent } from './components/modals/fight-dialog/fight-dia
     NgbRatingModule,
     AdminModule
   ],
-  entryComponents: [FightDialogComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
+  entryComponents: [AdminDeleteUserDialogComponent,FightDialogComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

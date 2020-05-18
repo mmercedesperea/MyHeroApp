@@ -191,4 +191,22 @@ export class UserService {
     headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/user/newImg/user`, data, { headers: headers });
   }
+
+  public allusers(){
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.get<User[]>(`${this.baseUrl}/admin/allusers`,{ headers: headers });
+  }
+
+
+  public adminDeleteUser(idUsu: number) {
+    console.log(idUsu)
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.delete(`${this.baseUrl}/admin/${idUsu}`,
+      { headers: headers });
+  }
+
 }

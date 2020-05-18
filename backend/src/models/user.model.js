@@ -112,7 +112,7 @@ async newImg(entity) {
 }
 
 async allUsers() {
-    return await _DB.consulta(`SELECT alias,idUsu,createDate,admin,email from ${table}`)
+    return await _DB.consulta(`SELECT photo,alias,idUsu,createDate,admin,email from ${table}`)
 }
    
 

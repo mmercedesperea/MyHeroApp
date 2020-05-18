@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material';
 import { MatInputModule, MatNativeDateModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material';
 
 //components
 import { MainComponent } from './components/main/main.component';
@@ -30,6 +31,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
         MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
+    MatDialogModule
    
     ],
     exports: [
