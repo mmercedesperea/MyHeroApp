@@ -184,8 +184,12 @@ class Hero {
 
     async newHero(entity) {
          return await _DB.create(
-            `INSERT INTO heroes ( heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,work) VALUES ("${entity.heroName}","${entity.image}",${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},"${entity.fullName}","${entity.placeOfBirth}","${entity.publisher}","${entity.alignment}","${entity.firstApperance}","${entity.gender}","${entity.race}",'${entity.height}','${entity.weight}',"${entity.work}")`
+            `INSERT INTO heroes ( heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,eyeColor,hairColor,work) VALUES ("${entity.heroName}","${entity.image}",${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},"${entity.fullName}","${entity.placeOfBirth}","${entity.publisher}","${entity.alignment}","${entity.firstApperance}","${entity.gender}","${entity.race}",'${entity.height}','${entity.weight}',"${entity.eyeColor}","${entity.hairColor}","${entity.work}")`
         ); 
+    }
+    async modifyHero(idHero,entity){
+        return await _DB.update(`UPDATE ${table}  SET heroName = '${entity.heroName}', image = '${entity.image}', intelligence = ${entity.intelligence}, strength =${entity.strength}, speed =${entity.speed},durability =${entity.durability},power =${entity.power},combat =${entity.combat},fullName='${entity.fullName}',placeOfBirth='${entity.placeOfBirth}',publisher='${entity.publisher}',alignment='${entity.alignment}',firstAppearance='${entity.firstAppearance}',gender='${entity.gender}',race='${entity.race}',height='${entity.height}',weight='${entity.weight}',work='${entity.work}',eyeColor='${entity.eyeColor}' ,hairColor='${entity.hairColor}'  WHERE idHero = ${idHero}`);
+
     }
 
     async getHeroByid(id) {
@@ -229,7 +233,7 @@ class Hero {
     }
 
     async searchAllHeroes() {
-        for (var i = 201; i < 300; i++) {
+        for (var i = 700; i < 800; i++) {
             this.getHeroByid(i)
         }
     }

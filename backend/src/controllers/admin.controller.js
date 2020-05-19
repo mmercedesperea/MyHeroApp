@@ -8,7 +8,7 @@ class AdminController{
 
     async  newHero(req, res) {
         const { body } = req;
-        const  newHero = await _adminService.create(body);
+        const  newHero = await _adminService.newHero(body);
         // console.log(newHero)
         return res.status(201).send({message: newHero});
     }
@@ -22,7 +22,7 @@ class AdminController{
     async  modifyHero(req, res) {
         const { idHero } = req.params;
         const { body } = req;
-        const  modifyHero = await _adminService.update(idHero,body);
+        const  modifyHero = await _adminService.modifyHero(idHero,body);
         console.log(modifyHero)
         return res.status(201).send({message:modifyHero});
     }

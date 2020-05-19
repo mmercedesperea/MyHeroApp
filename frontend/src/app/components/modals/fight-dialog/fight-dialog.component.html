@@ -23,5 +23,12 @@
 <div *ngFor="let hero of heroes">
   <!-- <h1>{{ hero.idHero }}</h1> -->
   <h3>{{ hero.heroName }}</h3>
-  <img   (click)="saveHeroStorage(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+  <img  class="imgc"  *ngIf="data.action==='edit'"  (click)="selectHero(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" />
+
+  <img *ngIf="data.action==='fight'"  (click)="saveHeroStorage(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
 </div>
+
+<button mat-button (click)="onNoClick()">cancel</button>
+
+<button  *ngIf="data.action==='edit'" mat-button [mat-dialog-close]="HeroSelectId" cdkFocusInitial>Select Hero</button>
+

@@ -12,7 +12,7 @@ export class AdminGuard implements CanActivate {
   canActivate(
   ) {
     let identity = this._UserService.getIdentity();
-    console.log(identity.admin)
+    
     if (identity && identity.admin == 1) {
       return true
     } else {

@@ -1,6 +1,6 @@
 <p>add-hero works!</p>
 <div id="form">
-    <h1>Add new Hero</h1>
+    <h1>Modify hero</h1>
     <form [formGroup]="newHeroForm" (ngSubmit)="saveHero()">
         <mat-form-field appearance="outline">
             <mat-label>heroName</mat-label>
@@ -54,11 +54,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>firstApperance</mat-label>
-            <input matInput type="text" formControlName="firstApperance" placeholder="firstApperance"
-                [(ngModel)]="hero.firstApperance" />
-            <mat-error *ngIf="!newHeroForm.controls['firstApperance'].valid">{{
-          getErrorMessage("firstApperance")
+            <mat-label>firstAppearance</mat-label>
+            <input matInput type="text" formControlName="firstAppearance" placeholder="firstAppearance"
+                [(ngModel)]="hero.firstAppearance" />
+            <mat-error *ngIf="!newHeroForm.controls['firstAppearance'].valid">{{
+          getErrorMessage("firstAppearance")
         }}</mat-error>
         </mat-form-field>
 
@@ -137,7 +137,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>intelligence</mat-label>
-            <input matInput type="number" placeholder="intelligence" formControlName="intelligence" min="1" max="100" />
+            <input matInput type="number" placeholder="intelligence"  [(ngModel)]="hero.intelligence" formControlName="intelligence" min="1" max="100" />
             <span matSuffix>points</span>
             <mat-error *ngIf="!newHeroForm.controls['intelligence'].valid">{{
         getErrorMessage("intelligence")
@@ -146,7 +146,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>strength</mat-label>
-            <input matInput type="number" placeholder="strength" formControlName="strength" min="1" max="100" />
+            <input matInput type="number" placeholder="strength"  [(ngModel)]="hero.strength"  formControlName="strength" min="1" max="100" />
             <span matSuffix>points</span>
             <mat-error *ngIf="!newHeroForm.controls['strength'].valid">{{
         getErrorMessage("strength")
@@ -155,7 +155,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>speed</mat-label>
-            <input matInput type="number" placeholder="speed" formControlName="speed" min="1" max="100" />
+            <input matInput type="number" placeholder="speed"  [(ngModel)]="hero.speed"  formControlName="speed" min="1" max="100" />
             <span matSuffix>points</span>
             <mat-error *ngIf="!newHeroForm.controls['speed'].valid">{{
         getErrorMessage("speed")
@@ -164,7 +164,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>durability</mat-label>
-            <input matInput type="number" placeholder="durability" formControlName="durability" min="1" max="100" />
+            <input matInput type="number" placeholder="durability"  [(ngModel)]="hero.durability"  formControlName="durability" min="1" max="100" />
             <span matSuffix>points</span>
             <mat-error *ngIf="!newHeroForm.controls['durability'].valid">{{
         getErrorMessage("durability")
@@ -173,7 +173,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>power</mat-label>
-            <input matInput type="number" placeholder="power" formControlName="power" min="1" max="100" />
+            <input matInput type="number" placeholder="power"  [(ngModel)]="hero.power"  formControlName="power" min="1" max="100" />
             <span matSuffix>points</span>
             <mat-error *ngIf="!newHeroForm.controls['power'].valid">{{
         getErrorMessage("power")
@@ -182,7 +182,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>combat</mat-label>
-            <input matInput type="number" placeholder="combat" formControlName="combat" min="1" max="100" />
+            <input matInput type="number" placeholder="combat"   [(ngModel)]="hero.combat"  formControlName="combat" min="1" max="100" />
             <span matSuffix>points</span>
             <mat-error *ngIf="!newHeroForm.controls['combat'].valid">{{
         getErrorMessage("combat")
@@ -196,9 +196,9 @@
 
 
 
-        <!-- <div *ngIf="!datosCorrectos">
+        <div *ngIf="!correctData">
           <p class="mensajeError">{{  this.message }}</p>
-        </div> -->
+        </div>
 
         <button type="submit" [disabled]="!newHeroForm.valid">
             Add new hero

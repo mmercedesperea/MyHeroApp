@@ -5,6 +5,7 @@ import { FormGroup, FormControl, AbstractControl } from '@angular/forms'
 import { Hero } from 'src/app/models/hero'
 import { HeroService } from 'src/app/services/hero.service'
 import { DateAdapter } from '@angular/material/core'
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-add-hero',
@@ -18,6 +19,7 @@ export class AddHeroComponent implements OnInit {
   public correctData: boolean
 
   constructor(
+    private _snackBar: MatSnackBar,
     private _adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
     private _heroService: HeroService
@@ -77,7 +79,7 @@ export class AddHeroComponent implements OnInit {
         '',
         [Validators.required, Validators.minLength(1), Validators.maxLength(30)]
       ],
-      firstApperance: [
+      firstAppearance: [
         '',
         [
           Validators.required,
@@ -111,7 +113,7 @@ export class AddHeroComponent implements OnInit {
       ],
       work: [
         '',
-        [Validators.required, Validators.minLength(1), Validators.maxLength(30)]
+        [Validators.required, Validators.minLength(1), Validators.maxLength(300)]
       ],
       biography: [
         '',
@@ -133,7 +135,7 @@ export class AddHeroComponent implements OnInit {
       return (result = 'You must enter at least 1 characters')
 
     } else if (this.newHeroForm.controls[dato].hasError('maxlength')) {
-      if (dato === 'image' || dato === 'firstApperance' || dato === 'biography') {
+      if (dato === 'image' || dato === 'firstAppearance' || dato === 'biography' || dato === 'work') {
         return (result = 'The maximum of characters is 300')
       } else {
 
@@ -148,28 +150,36 @@ export class AddHeroComponent implements OnInit {
 
 
   saveHero() {
-    // this._heroService.newHero(this.hero).subscribe(
-    //   response => {
-    //     console.log(this.hero);
-    //     console.log('Save correctly');
-    //     this.message = 'Create correctly';
-    //     // limpiamos el usuario
-    //     this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', null)
-    //     this.newHeroForm.reset();
-    //     this.correctData = true;
-    //   },
-    //   error => {
-    //     this.correctData = false;
-    //     // if (error.status === 400) {
-    //     //   this.message = 'User already exists';
-    //     //   console.log(error.status);
-    //     //   console.log(this.message);
-    //     // } else {
-    //       console.log(error.status);
-    //       this.message = 'create hero failed';
-    //       console.log(this.message);
-    //     // }
-    //   }
-    // );
+    this._heroService.newHero(this.hero).subscribe(
+      response => {
+        console.log(this.hero);
+        console.log(response)
+        console.log('Save correctly');
+        this.message = 'Create correctly';
+        this.correctData = true;
+      },
+      error => {
+        this.correctData = false;
+        // if (error.status === 400) {
+        //   this.message = 'User already exists';
+        //   console.log(error.status);
+        //   console.log(this.message);
+        // } else {
+          console.log(error.status);
+          this.message = 'create hero failed';
+          console.log(this.message);
+        // }
+      }
+    );
   }
+
+
+
+  // openSnackBar(message: string, action: string) {
+  //   this._snackBar.open(message, action, {
+  //     duration: 8000,
+  //     panelClass: ['blue-snackbar']
+  //   })
+  // }
+
 }

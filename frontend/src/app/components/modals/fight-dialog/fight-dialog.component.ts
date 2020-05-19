@@ -14,6 +14,7 @@ export class FightDialogComponent implements OnInit {
   public sessonHero: Hero;
   public heroes: Hero[];
   public searchForm: FormGroup;
+  public HeroSelectId: number=0;
   // public sessonHero2: Hero;
   constructor(public dialogRef: MatDialogRef<FightDialogComponent>,
     private formBuilder: FormBuilder,
@@ -60,6 +61,9 @@ export class FightDialogComponent implements OnInit {
     )
   }
 
+  selectHero(idHero){
+    this.HeroSelectId=idHero
+  }
   // getHero(id) {
   //   this._HeroService.getHeroById(id).subscribe(res => {
   //     this.sessonHero = res;
@@ -107,5 +111,10 @@ export class FightDialogComponent implements OnInit {
   //   }
 
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 
 }

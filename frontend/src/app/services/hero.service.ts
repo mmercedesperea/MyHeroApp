@@ -17,13 +17,13 @@ export class HeroService {
 
   // //obtener un heroe por el nombre
   public getHeroByName(name: string) {
-     return this.http.get<Hero[]>(`${this.baseUrl}/apiHero/search/${name}`);
+    return this.http.get<Hero[]>(`${this.baseUrl}/apiHero/search/${name}`);
   }
 
   // //obtener un heroe por el id
-   public  getHeroById(id: any){
-    
-   return  this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
+  public getHeroById(id: any) {
+
+    return this.http.get<Hero>(`${this.baseUrl}/hero/${id}`);
 
   }
 
@@ -74,6 +74,24 @@ export class HeroService {
   // router.get('/profileImgHeroes', HeroController.profileImgHeroes);
   public profileImgHeroes() {
     return this.http.get<any[]>(`${this.baseUrl}/hero/img/profileImgHeroes`);
+  }
+
+  // Create new hero
+  public newHero(hero) {
+    console.log("llego al servicio")
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.post(this.baseUrl + '/admin/newHero', hero,
+      { headers: headers });
+  }
+
+  //modify hero
+  public modifyHero(idHero: number, data) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.put(`${this.baseUrl}/admin/modifyHero/${idHero}`, data, { headers: headers });
   }
 
 

@@ -55,7 +55,8 @@ export class FightComponent implements OnInit {
     const dialogRef = this.dialog.open(FightDialogComponent, {
       // Le pasamos los datos que queremos
       data: {
-        position: position
+        position: position,
+        action: "fight"
       }
     });
     dialogRef.afterClosed().subscribe(result => {
