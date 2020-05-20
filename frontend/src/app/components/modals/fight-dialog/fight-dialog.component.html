@@ -10,9 +10,7 @@
       #searchQuery
       (keyup)="getHeroByName(searchQuery.value)"
     />
-    <mat-error *ngIf="!searchForm.controls['heroName'].valid">{{
-      getErrorMessage("heroName")
-    }}</mat-error>
+   
   </mat-form-field>
 
   <button type="submit" (click)="getHeroByName(searchQuery.value)">

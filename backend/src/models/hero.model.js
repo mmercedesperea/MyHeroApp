@@ -238,6 +238,12 @@ class Hero {
         }
     }
 
+    async searchHeroByName(name) {
+        return await _DB.consulta(`SELECT heroName, idHero,image from heroes where heroName LIKE '${name}%' 
+        `)
+    }
+
+
 }
 
 module.exports = Hero;

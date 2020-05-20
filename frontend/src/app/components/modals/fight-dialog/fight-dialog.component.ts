@@ -13,11 +13,11 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class FightDialogComponent implements OnInit {
   public sessonHero: Hero;
   public heroes: Hero[];
-  public searchForm: FormGroup;
+  // public searchForm: FormGroup;
   public HeroSelectId: number=0;
   // public sessonHero2: Hero;
   constructor(public dialogRef: MatDialogRef<FightDialogComponent>,
-    private formBuilder: FormBuilder,
+    // private formBuilder: FormBuilder,
     private _HeroService: HeroService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.sessonHero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', null, 0)
@@ -25,26 +25,26 @@ export class FightDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchForm = this.formBuilder.group({
-      heroName: [
-        '',
-        [Validators.required, Validators.minLength(1), Validators.maxLength(100)]
-      ]
-    });
+    // this.searchForm = this.formBuilder.group({
+    //   heroName: [
+    //     '',
+    //     [Validators.required, Validators.minLength(1), Validators.maxLength(100)]
+    //   ]
+    // });
   }
 
-  getErrorMessage(dato) {
-    var result: string;
-    if (this.searchForm.controls[dato].hasError('required')) {
-      return (result = 'This information is required');
-    } else if (this.searchForm.controls[dato].hasError('minlength')) {
-      return (result = 'You must enter at least 1 characters');
-    } else if (this.searchForm.controls[dato].hasError('maxlength')) {
-      return (result = 'The maximum of characters is 100');
-    } else {
-      return (result = '');
-    }
-  }
+  // getErrorMessage(dato) {
+  //   var result: string;
+  //   if (this.searchForm.controls[dato].hasError('required')) {
+  //     return (result = 'This information is required');
+  //   } else if (this.searchForm.controls[dato].hasError('minlength')) {
+  //     return (result = 'You must enter at least 1 characters');
+  //   } else if (this.searchForm.controls[dato].hasError('maxlength')) {
+  //     return (result = 'The maximum of characters is 100');
+  //   } else {
+  //     return (result = '');
+  //   }
+  // }
 
   getHeroByName(name){
     console.log("llego")

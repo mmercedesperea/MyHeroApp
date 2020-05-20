@@ -46,6 +46,8 @@ export class TeamService {
     // para convertir el objeto en un string
     let params = JSON.stringify(team);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/team/chageName/${idTeam}`, params, { headers: headers });
   }
 
@@ -55,6 +57,8 @@ export class TeamService {
     // let params = JSON.stringify(data);
     console.log(data)
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/team/addMember/${idTeam}`, data, { headers: headers });
   }
 
@@ -63,18 +67,33 @@ export class TeamService {
     // para convertir el objeto en un string
     // let params = JSON.stringify(member);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/team/deleteMember/${idTeam}`, member, { headers: headers });
   }
 
   // borrar un equipo
   public delete(idTeam: number) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.delete(`${this.baseUrl}/team/${idTeam}`, { headers: headers });
   }
 
  // obtener equipo de usuario
  public getTeamInfo(idUsu: number) {
   return this.http.get<any>(`${this.baseUrl}/team/getTeamInfo/${idUsu}`);
+}
+
+// obtener el equipo con mayor puntos 
+public getteamWinner(idteam1: number, idTeam2: number) {
+  return this.http.get<any>(`${this.baseUrl}/team/getTeamWinner/${idteam1}/${idTeam2}`);
+}
+
+//obtener un team por el nombre
+// router.get('/searchTeam/:TeamName', TeamController.searchTeam);
+public searchTeam(teamName:string) {
+  return this.http.get<Team[]>(`${this.baseUrl}/team/searchTeam/${teamName}`);
 }
 
 }

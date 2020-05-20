@@ -38,12 +38,13 @@ export class TeamComponent implements OnInit {
     this._TeamService.getTeamInfo(this.idUsu).subscribe(
       res => {
         this.myTeamInfo = res
-        // para saber si ya se han countM los miembros del equipo
+       
+        if (this.myTeamInfo) {
+           // para saber si ya se han countM los miembros del equipo
         if (this.countM === false) {
           this.countMembers()
         }
         this.countM = true
-        if (this.myTeamInfo) {
           this.GlobalV.memberTeamNUll = this.getMemberNull()
           this.teamUsugetHeroes(this.myTeamInfo.member_1, 0)
           this.teamUsugetHeroes(this.myTeamInfo.member_2, 1)

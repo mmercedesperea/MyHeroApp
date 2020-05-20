@@ -12,6 +12,8 @@ import { HeroesSearchComponent } from './components/heroes-search/heroes-search.
 import { MyHeroesComponent } from './components/my-heroes/my-heroes.component';
 import { AuthGuard } from './services/auth.guard';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
+import { FightTeamComponent } from './components/fight/fight-team/fight-team.component';
+import { FightHeroComponent } from './components/fight/fight-hero/fight-hero.component';
 
 // // canActivate:[AuthGuardService]
 const routes: Routes = [
@@ -25,7 +27,15 @@ const routes: Routes = [
   }, {
     path: 'register', component: RegisterComponent
   }, {
-    path: 'fight', component: FightComponent, canActivate:[AuthGuard]
+    path: 'fight', component: FightComponent, canActivate:[AuthGuard],
+    children: [
+      {
+          path: 'fightTeam', component: FightTeamComponent, canActivate:[AuthGuard]
+      },
+      {
+        path: 'fightHero', component: FightHeroComponent, canActivate:[AuthGuard]
+    },
+    ]
   }, {
     path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]
   }, {

@@ -3,7 +3,7 @@ const { Router } = require('express');
 module.exports = function ({ HeroController }) {
   const router = Router();
   //obtener un hero
-  router.get('/:idHero', HeroController.get);
+  router.get('/getByid/:idHero', HeroController.get);
 
   //obtener un heroe ganador
   router.get('/getWinner/:idHero/:idHero2', HeroController.getWinner);
@@ -37,6 +37,9 @@ module.exports = function ({ HeroController }) {
 
   //obtener imagenes de heroes para perfil
   router.get('/img/profileImgHeroes', HeroController.profileImgHeroes);
+
+  //obtener un hero por el nombre tirando de nuestra bd
+  router.get('/searchHeroByName/:name', HeroController.searchHeroByName);
 
   return router;
 };

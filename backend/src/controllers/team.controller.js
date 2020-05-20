@@ -78,6 +78,31 @@ class TeamController{
         return res.json(team);
     }
 
+    
+    //obtener un equipo ganador
+//   router.get('/getTeamWinner/:idTeam1/:idTeam2', TeamController.getTeamWinner);
+// getTeamWinner
+
+async getTeamWinner(req, res) {
+    const { idTeam1 } = req.params;
+    const { idTeam2 } = req.params;
+    const heroWin = await _teamService.getTeamWinner(idTeam1,idTeam2);
+    //    JSON.stringify(user)
+    return res.json(heroWin);
+    // return res.send(heroWin);
+
+}
+
+
+async searchTeam(req, res) {
+    const {TeamName } = req.params;
+    const team= await _teamService.searchTeam(TeamName);
+    return res.json(team);
+
+}
+
+
+
 }
 
 

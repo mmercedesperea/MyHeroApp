@@ -118,6 +118,41 @@ class TeamService extends BaseService {
     }
 
 
+    async getTeamWinner(idTeam1, idTeam2) {
+        if (!idTeam1) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'idTeam must be sent';
+            throw error;
+        }
+
+        if (!idTeam2) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'idteam must be sent';
+            throw error;
+        }
+        return await _teamObj.getTeamWinner(idTeam1, idTeam2);
+    }
+
+    // searchTeam
+    async  searchTeam(teamName) {
+        if (!teamName) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'teamName must be sent';
+            throw error;
+        }
+        // en caso de que exista la id vamos a buscar esa entidad
+        const currentEntity = await _teamObj.searchTeam(teamName);
+        // JSON.stringify(currentEntity);
+        // console.log(currentEntity)
+        if (!currentEntity) {
+            return null;
+        }
+        return currentEntity;
+    }
+
 
 }
 

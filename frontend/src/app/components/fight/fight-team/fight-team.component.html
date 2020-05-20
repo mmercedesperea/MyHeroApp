@@ -1,0 +1,19 @@
+<button type="button" mat-raised-button (click)="selectTeamDialog(1)">Select first Team</button>
+<button type="button" mat-raised-button (click)="selectTeamDialog(2)">Select second Team</button>
+
+<div *ngIf="sessonTeam1">
+    <!-- <h1>{{sessonTeam1.idTeam}}</h1> -->
+<app-team [idUsu]="sessonTeam1.idUsu"></app-team>
+</div>
+
+<div *ngIf="sessonTeam2">
+    <!-- <h1>{{sessonHero2.idHero }}</h1> -->
+    <app-team [idUsu]="sessonTeam2.idUsu"></app-team>
+</div>
+
+<button type="button" mat-raised-button (click)="getTeamWinner()">
+  FIGHT
+</button>
+
+<h1>THE WINNER ISSSSS...</h1>
+<app-team [idUsu]="team.idUsu"></app-team>

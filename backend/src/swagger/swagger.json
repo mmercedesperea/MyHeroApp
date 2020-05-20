@@ -37,7 +37,7 @@
         "http"
     ],
     "paths": {
-        "/hero/{idHero}": {
+        "/hero/getByid/{idHero}": {
             "get": {
                 "tags": [
                     "hero"

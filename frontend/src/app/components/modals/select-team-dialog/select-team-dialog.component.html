@@ -1,0 +1,31 @@
+<h1>Search Team by name</h1>
+<form>
+  <mat-form-field appearance="outline">
+    <mat-label>Team name</mat-label>
+    <input
+      matInput
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      #searchQuery
+      (keyup)="getTeamByName(searchQuery.value)"
+    />
+   
+  </mat-form-field>
+
+  <button type="submit" (click)="getTeamByName(searchQuery.value)">
+    Search Team
+  </button>
+</form>
+
+<div *ngFor="let team of teams">
+  <h2>{{ team.idTeam }}</h2>
+  <h3  (click)="saveTeamStorage(team.idUsu)" >{{ team.teamName }}</h3>
+
+
+</div>
+
+<button mat-button (click)="onNoClick()">cancel</button>
+
+<!-- <button  *ngIf="data.action==='edit'" mat-button [mat-dialog-close]="HeroSelectId" cdkFocusInitial>Select Team</button> -->
+

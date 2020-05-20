@@ -93,6 +93,17 @@ class HeroController{
     //    JSON.stringify(user)
     return res.json(profileImg);
 }
+
+
+async searchHeroByName(req, res) {
+    const { name } = req.params;
+    const hero = await _heroService.searchHeroByName(name);
+    //    JSON.stringify(user)
+    // console.log('llego aqui'+ name)
+    // return res.send(hero);
+    return res.json(hero);
+
+}
 }
 
 module.exports = HeroController;
