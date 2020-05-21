@@ -3,9 +3,20 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * Globals variables
+ */
+
 export class GlobalVariableService {
 
-  public countTeamMembers:number=0;
-  public memberTeamNUll:string = "";
+  /**
+   * To keep track of team members
+   */
+  public countTeamMembers: number = 0;
+  /**
+  * add in the position where there is a null team member
+  */
+  public memberTeamNUll: string = "";
   constructor() { }
 }

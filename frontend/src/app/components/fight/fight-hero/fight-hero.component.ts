@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from 'src/app/models/hero';
 import { HeroService } from 'src/app/services/hero.service';
 import { MatDialog } from '@angular/material';
-import { FightDialogComponent } from '../../modals/fight-dialog/fight-dialog.component';
+import { selectHeroComponent } from '../../modals/select-hero-dialog/select-hero-dialog.component';
 
 @Component({
   selector: 'app-fight-hero',
@@ -55,7 +55,7 @@ export class FightHeroComponent implements OnInit {
   }
 
   selectFightDialog(position) {
-    const dialogRef = this.dialog.open(FightDialogComponent, {
+    const dialogRef = this.dialog.open(selectHeroComponent, {
       // Le pasamos los datos que queremos
       data: {
         position: position,

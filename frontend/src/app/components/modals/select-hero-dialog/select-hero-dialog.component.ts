@@ -6,17 +6,17 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-fight-dialog',
-  templateUrl: './fight-dialog.component.html',
-  styleUrls: ['./fight-dialog.component.scss']
+  selector: 'select-hero-dialog',
+  templateUrl: './select-hero-dialog.component.html',
+  styleUrls: ['./select-hero-dialog.component.scss']
 })
-export class FightDialogComponent implements OnInit {
+export class selectHeroComponent implements OnInit {
   public sessonHero: Hero;
   public heroes: Hero[];
   // public searchForm: FormGroup;
   public HeroSelectId: number=0;
   // public sessonHero2: Hero;
-  constructor(public dialogRef: MatDialogRef<FightDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<selectHeroComponent>,
     // private formBuilder: FormBuilder,
     private _HeroService: HeroService,
     @Inject(MAT_DIALOG_DATA) public data: any) {

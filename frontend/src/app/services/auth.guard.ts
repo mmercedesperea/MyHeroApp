@@ -3,13 +3,20 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 
+/**
+* Auth guard ,controls whether the user is identified or not
+*/
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthGuard implements CanActivate {
   constructor(private _userService: UserService, private _router: Router) { }
 
-  canActivate() {
+/**
+ * @returns boolean, if the user is identified returns true if not false
+ */
+canActivate(): boolean {
     if (!this._userService.isLoggedIn()) {
       localStorage.clear();
       this._router.navigateByUrl('/login');

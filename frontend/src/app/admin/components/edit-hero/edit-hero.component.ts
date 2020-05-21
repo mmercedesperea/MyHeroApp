@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from 'src/app/models/hero';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HeroService } from 'src/app/services/hero.service';
-import { FightDialogComponent } from 'src/app/components/modals/fight-dialog/fight-dialog.component';
 import { MatDialog } from '@angular/material';
+import { selectHeroComponent } from 'src/app/components/modals/select-hero-dialog/select-hero-dialog.component';
 
 @Component({
   selector: 'app-edit-hero',
@@ -174,7 +174,7 @@ export class EditHeroComponent implements OnInit {
   }
 
   SearchHeroDialog(): void {
-    const dialogRef = this.dialog.open(FightDialogComponent, {
+    const dialogRef = this.dialog.open(selectHeroComponent, {
       // Le pasamos los datos que queremos
       data: {
         //   userId: this.identity.id,

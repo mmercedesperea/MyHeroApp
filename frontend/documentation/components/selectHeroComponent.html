@@ -1,0 +1,981 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>selectHeroComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>select-hero-dialog</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./select-hero-dialog.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./select-hero-dialog.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#data">data</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogRef">dialogRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#heroes">heroes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#HeroSelectId">HeroSelectId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sessonHero">sessonHero</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getHeroByName">getHeroByName</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onNoClick">onNoClick</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#saveHeroStorage">saveHeroStorage</a>
+                            </li>
+                            <li>
+                                <a href="#selectHero">selectHero</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialogRef: <a href="../classes/Hero.html">MatDialogRef<selectHeroComponent></a>, _HeroService: <a href="../injectables/HeroService.html">HeroService</a>, data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Hero.html" target="_self" >MatDialogRef&lt;selectHeroComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_HeroService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HeroService.html" target="_self" >HeroService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHeroByName"></a>
+                    <span class="name">
+                        <b>
+                            getHeroByName
+                        </b>
+                        <a href="#getHeroByName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getHeroByName(name)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onNoClick"></a>
+                    <span class="name">
+                        <b>
+                            onNoClick
+                        </b>
+                        <a href="#onNoClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onNoClick()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:115</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveHeroStorage"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            saveHeroStorage
+                        </b>
+                        <a href="#saveHeroStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>saveHeroStorage(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectHero"></a>
+                    <span class="name">
+                        <b>
+                            selectHero
+                        </b>
+                        <a href="#selectHero"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectHero(idHero)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>idHero</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            data</b>
+                            <a href="#data"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Inject(MAT_DIALOG_DATA)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialogRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialogRef</b>
+                            <a href="#dialogRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Hero.html" target="_self" >MatDialogRef&lt;selectHeroComponent&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="heroes"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            heroes</b>
+                            <a href="#heroes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Hero.html" target="_self" >Hero[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="HeroSelectId"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            HeroSelectId</b>
+                            <a href="#HeroSelectId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sessonHero"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            sessonHero</b>
+                            <a href="#sessonHero"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Hero.html" target="_self" >Hero</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/modals/select-hero-dialog/select-hero-dialog.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Inject } from &#x27;@angular/core&#x27;;
+import { MatDialogRef, MAT_DIALOG_DATA } from &quot;@angular/material/dialog&quot;;
+import { HeroService } from &#x27;src/app/services/hero.service&#x27;;
+import { Hero } from &#x27;src/app/models/hero&#x27;;
+import { FormBuilder, Validators, FormGroup } from &#x27;@angular/forms&#x27;;
+
+
+@Component({
+  selector: &#x27;select-hero-dialog&#x27;,
+  templateUrl: &#x27;./select-hero-dialog.component.html&#x27;,
+  styleUrls: [&#x27;./select-hero-dialog.component.scss&#x27;]
+})
+export class selectHeroComponent implements OnInit {
+  public sessonHero: Hero;
+  public heroes: Hero[];
+  // public searchForm: FormGroup;
+  public HeroSelectId: number&#x3D;0;
+  // public sessonHero2: Hero;
+  constructor(public dialogRef: MatDialogRef&lt;selectHeroComponent&gt;,
+    // private formBuilder: FormBuilder,
+    private _HeroService: HeroService,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.sessonHero &#x3D; new Hero(0, &#x27;&#x27;, &#x27;&#x27;, 0, 0, 0, 0, 0, 0, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, null, 0)
+    // this.sessonHero2 &#x3D; new Hero(0, &#x27;&#x27;, &#x27;&#x27;, 0, 0, 0, 0, 0, 0, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;,&#x27;&#x27;, &#x27;&#x27;,&#x27;&#x27;, null,0)
+  }
+
+  ngOnInit() {
+    // this.searchForm &#x3D; this.formBuilder.group({
+    //   heroName: [
+    //     &#x27;&#x27;,
+    //     [Validators.required, Validators.minLength(1), Validators.maxLength(100)]
+    //   ]
+    // });
+  }
+
+  // getErrorMessage(dato) {
+  //   var result: string;
+  //   if (this.searchForm.controls[dato].hasError(&#x27;required&#x27;)) {
+  //     return (result &#x3D; &#x27;This information is required&#x27;);
+  //   } else if (this.searchForm.controls[dato].hasError(&#x27;minlength&#x27;)) {
+  //     return (result &#x3D; &#x27;You must enter at least 1 characters&#x27;);
+  //   } else if (this.searchForm.controls[dato].hasError(&#x27;maxlength&#x27;)) {
+  //     return (result &#x3D; &#x27;The maximum of characters is 100&#x27;);
+  //   } else {
+  //     return (result &#x3D; &#x27;&#x27;);
+  //   }
+  // }
+
+  getHeroByName(name){
+    console.log(&quot;llego&quot;)
+    this._HeroService.getHeroByName(name).subscribe(res &#x3D;&gt; {
+     
+      // console.log(res.idHero)
+      this.heroes &#x3D; res;
+      console.log(JSON.stringify(this.heroes, null, 2));
+      // console.log(this.hero);
+    },
+      error &#x3D;&gt; {
+        console.log(error)
+      }
+    )
+  }
+
+  selectHero(idHero){
+    this.HeroSelectId&#x3D;idHero
+  }
+  // getHero(id) {
+  //   this._HeroService.getHeroById(id).subscribe(res &#x3D;&gt; {
+  //     this.sessonHero &#x3D; res;
+  //     // console.log(JSON.stringify(this.hero, null, 2));
+  //   },
+  //     error &#x3D;&gt; {
+  //       console.log(error)
+  //     }
+
+  //   )
+  // }
+
+  async saveHeroStorage(id) {
+    // await this.getHero(id)
+    this._HeroService.getHeroById(id).subscribe(res &#x3D;&gt; {
+      this.sessonHero &#x3D; res;
+      if (this.data.position &#x3D;&#x3D;&#x3D; 1) {
+        console.log(&quot;hero1&quot;)
+        console.log(this.sessonHero)
+        sessionStorage.setItem(&#x27;Hero&#x27;, JSON.stringify(this.sessonHero));
+  
+      } else {
+        console.log(&quot;hero2&quot;)
+        sessionStorage.setItem(&#x27;Hero2&#x27;, JSON.stringify(this.sessonHero));
+  
+  
+      }
+      // console.log(JSON.stringify(this.hero, null, 2));
+    },
+      error &#x3D;&gt; {
+        console.log(error)
+      }
+
+    )
+  //   if (this.data.position &#x3D;&#x3D;&#x3D; 1) {
+  //     console.log(&quot;hero1&quot;)
+  //     console.log(this.sessonHero)
+  //     sessionStorage.setItem(&#x27;Hero&#x27;, JSON.stringify(this.sessonHero));
+
+  //   } else {
+  //     console.log(&quot;hero2&quot;)
+  //     sessionStorage.setItem(&#x27;Hero2&#x27;, JSON.stringify(this.sessonHero));
+
+
+  //   }
+
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h1&gt;Search Hero by name&lt;/h1&gt;
+&lt;form&gt;
+  &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+    &lt;mat-label&gt;heroName&lt;/mat-label&gt;
+    &lt;input
+      matInput
+      type&#x3D;&quot;search&quot;
+      placeholder&#x3D;&quot;Search&quot;
+      aria-label&#x3D;&quot;Search&quot;
+      #searchQuery
+      (keyup)&#x3D;&quot;getHeroByName(searchQuery.value)&quot;
+    /&gt;
+   
+  &lt;/mat-form-field&gt;
+
+  &lt;button type&#x3D;&quot;submit&quot; (click)&#x3D;&quot;getHeroByName(searchQuery.value)&quot;&gt;
+    Search Hero
+  &lt;/button&gt;
+&lt;/form&gt;
+
+&lt;div *ngFor&#x3D;&quot;let hero of heroes&quot;&gt;
+  &lt;!-- &lt;h1&gt;{{ hero.idHero }}&lt;/h1&gt; --&gt;
+  &lt;h3&gt;{{ hero.heroName }}&lt;/h3&gt;
+  &lt;img  class&#x3D;&quot;imgc&quot;  *ngIf&#x3D;&quot;data.action&#x3D;&#x3D;&#x3D;&#x27;edit&#x27;&quot;  (click)&#x3D;&quot;selectHero(hero.idHero)&quot; [src]&#x3D;&quot;hero.image&quot; [alt]&#x3D;&quot;hero.heroName&quot; /&gt;
+
+  &lt;img *ngIf&#x3D;&quot;data.action&#x3D;&#x3D;&#x3D;&#x27;fight&#x27;&quot;  (click)&#x3D;&quot;saveHeroStorage(hero.idHero)&quot; [src]&#x3D;&quot;hero.image&quot; [alt]&#x3D;&quot;hero.heroName&quot; class&#x3D;&quot;img-fluid&quot; /&gt;
+&lt;/div&gt;
+
+&lt;button mat-button (click)&#x3D;&quot;onNoClick()&quot;&gt;cancel&lt;/button&gt;
+
+&lt;button  *ngIf&#x3D;&quot;data.action&#x3D;&#x3D;&#x3D;&#x27;edit&#x27;&quot; mat-button [mat-dialog-close]&#x3D;&quot;HeroSelectId&quot; cdkFocusInitial&gt;Select Hero&lt;/button&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./select-hero-dialog.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.imgc{
+    height: 2em;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h1>Search Hero by name</h1><form>  <mat-form-field appearance="outline">    <mat-label>heroName</mat-label>    <input      matInput      type="search"      placeholder="Search"      aria-label="Search"      #searchQuery      (keyup)="getHeroByName(searchQuery.value)"    />     </mat-form-field>  <button type="submit" (click)="getHeroByName(searchQuery.value)">    Search Hero  </button></form><div *ngFor="let hero of heroes">  <!-- <h1>{{ hero.idHero }}</h1> -->  <h3>{{ hero.heroName }}</h3>  <img  class="imgc"  *ngIf="data.action===\'edit\'"  (click)="selectHero(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" />  <img *ngIf="data.action===\'fight\'"  (click)="saveHeroStorage(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" /></div><button mat-button (click)="onNoClick()">cancel</button><button  *ngIf="data.action===\'edit\'" mat-button [mat-dialog-close]="HeroSelectId" cdkFocusInitial>Select Hero</button></div>'
+    var COMPONENTS = [{'name': 'AddHeroComponent', 'selector': 'app-add-hero'},{'name': 'AdminDeleteUserDialogComponent', 'selector': 'app-admin-delete-user-dialog'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AvatarDialogComponent', 'selector': 'app-avatar-dialog'},{'name': 'ChangePassDialogComponent', 'selector': 'app-change-pass-dialog'},{'name': 'ComentHeroDialogComponent', 'selector': 'app-coment-hero-dialog'},{'name': 'DeleteUserDialogComponent', 'selector': 'app-delete-user-dialog'},{'name': 'EditHeroComponent', 'selector': 'app-edit-hero'},{'name': 'FightComponent', 'selector': 'app-fight'},{'name': 'FightHeroComponent', 'selector': 'app-fight-hero'},{'name': 'FightTeamComponent', 'selector': 'app-fight-team'},{'name': 'HeroesDetailComponent', 'selector': 'app-heroes-detail'},{'name': 'HeroesSearchComponent', 'selector': 'app-heroes-search'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'ModalsComponent', 'selector': 'app-modals'},{'name': 'MyHeroesComponent', 'selector': 'app-my-heroes'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'PublicProfileComponent', 'selector': 'app-public-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'selectHeroComponent', 'selector': 'select-hero-dialog'},{'name': 'SelectTeamDialogComponent', 'selector': 'app-select-team-dialog'},{'name': 'TeamComponent', 'selector': 'app-team'},{'name': 'TeamDialogComponent', 'selector': 'app-create-team-dialog'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'selectHeroComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'selectHeroComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

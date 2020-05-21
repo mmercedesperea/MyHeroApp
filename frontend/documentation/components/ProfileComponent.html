@@ -1,0 +1,1380 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ProfileComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/profile/profile.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-profile</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./profile.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./profile.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#FollowedUsers">FollowedUsers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#FollowersUsers">FollowersUsers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#identity">identity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#profileForm">profileForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#textError">textError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#user">user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#avatarDialog">avatarDialog</a>
+                            </li>
+                            <li>
+                                <a href="#changePassDialog">changePassDialog</a>
+                            </li>
+                            <li>
+                                <a href="#deleteUserDialog">deleteUserDialog</a>
+                            </li>
+                            <li>
+                                <a href="#getErrorMessage">getErrorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#getFollowedUsers">getFollowedUsers</a>
+                            </li>
+                            <li>
+                                <a href="#getFollowersUsers">getFollowersUsers</a>
+                            </li>
+                            <li>
+                                <a href="#getInfoUser">getInfoUser</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openSnackBar">openSnackBar</a>
+                            </li>
+                            <li>
+                                <a href="#submit">submit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_snackBar: MatSnackBar, _adapter: DateAdapter<any>, formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, _UserService: <a href="../injectables/UserService.html">UserService</a>, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/profile/profile.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_snackBar</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_adapter</td>
+                                                  
+                                                        <td>
+                                                                    <code>DateAdapter&lt;any&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_UserService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avatarDialog"></a>
+                    <span class="name">
+                        <b>
+                            avatarDialog
+                        </b>
+                        <a href="#avatarDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>avatarDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:163</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changePassDialog"></a>
+                    <span class="name">
+                        <b>
+                            changePassDialog
+                        </b>
+                        <a href="#changePassDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changePassDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteUserDialog"></a>
+                    <span class="name">
+                        <b>
+                            deleteUserDialog
+                        </b>
+                        <a href="#deleteUserDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteUserDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getErrorMessage"></a>
+                    <span class="name">
+                        <b>
+                            getErrorMessage
+                        </b>
+                        <a href="#getErrorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getErrorMessage(dato)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dato</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;You must enter at least 6 characters&quot; | &quot;The maximum of characters is 30&quot; | &quot;You have to enter a...</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFollowedUsers"></a>
+                    <span class="name">
+                        <b>
+                            getFollowedUsers
+                        </b>
+                        <a href="#getFollowedUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFollowedUsers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFollowersUsers"></a>
+                    <span class="name">
+                        <b>
+                            getFollowersUsers
+                        </b>
+                        <a href="#getFollowersUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFollowersUsers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getInfoUser"></a>
+                    <span class="name">
+                        <b>
+                            getInfoUser
+                        </b>
+                        <a href="#getInfoUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getInfoUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openSnackBar"></a>
+                    <span class="name">
+                        <b>
+                            openSnackBar
+                        </b>
+                        <a href="#openSnackBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openSnackBar(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, action: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>action</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submit"></a>
+                    <span class="name">
+                        <b>
+                            submit
+                        </b>
+                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:113</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/profile/profile.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="FollowedUsers"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            FollowedUsers</b>
+                            <a href="#FollowedUsers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/profile/profile.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="FollowersUsers"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            FollowersUsers</b>
+                            <a href="#FollowersUsers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/profile/profile.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="identity"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            identity</b>
+                            <a href="#identity"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/profile/profile.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="profileForm"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            profileForm</b>
+                            <a href="#profileForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/profile/profile.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="textError"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            textError</b>
+                            <a href="#textError"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/profile/profile.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/profile/profile.component.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;
+import { User } from &#x27;../../models/user&#x27;
+import { UserService } from &#x27;src/app/services/user.service&#x27;
+import { FormBuilder } from &#x27;@angular/forms&#x27;
+import { Validators } from &#x27;@angular/forms&#x27;
+import { FormGroup, FormControl, AbstractControl } from &#x27;@angular/forms&#x27;
+import { DateAdapter } from &#x27;@angular/material/core&#x27;
+import { MatSnackBar } from &#x27;@angular/material&#x27;
+import { MatDialog } from &quot;@angular/material/dialog&quot;;
+import { ChangePassDialogComponent } from &#x27;../modals/change-pass-dialog/change-pass-dialog.component&#x27;
+import { DeleteUserDialogComponent } from &#x27;../modals/delete-user-dialog/delete-user-dialog.component&#x27;
+import { AvatarDialogComponent } from &#x27;../modals/avatar-dialog/avatar-dialog.component&#x27;
+
+@Component({
+  selector: &#x27;app-profile&#x27;,
+  templateUrl: &#x27;./profile.component.html&#x27;,
+  styleUrls: [&#x27;./profile.component.scss&#x27;]
+})
+export class ProfileComponent implements OnInit {
+  public identity
+  public user: User
+  public profileForm: FormGroup
+  public textError: any
+  public FollowedUsers: User[] &#x3D; []
+  public FollowersUsers: User[] &#x3D; []
+
+  constructor(
+    private _snackBar: MatSnackBar,
+    private _adapter: DateAdapter&lt;any&gt;,
+    private formBuilder: FormBuilder,
+    private _UserService: UserService,
+    public dialog: MatDialog,
+  ) {
+    this.user &#x3D; new User(0, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, new Date(0), &#x27;&#x27;, 0)
+  }
+
+  ngOnInit() {
+    this.identity &#x3D; this._UserService.getIdentity()
+    this.getInfoUser()
+    this.getFollowersUsers()
+    this.getFollowedUsers()
+
+    this.profileForm &#x3D; this.formBuilder.group({
+      alias: [&#x27;&#x27;, [Validators.minLength(3), Validators.maxLength(30)]],
+      name: [&#x27;&#x27;, [Validators.minLength(3), Validators.maxLength(30)]],
+      surname: [&#x27;&#x27;, [Validators.minLength(3), Validators.maxLength(30)]],
+      dateOfBirth: [
+        this._adapter.setLocale(&#x27;us&#x27;)
+      ],
+      email: [
+        &#x27;&#x27;,
+        [Validators.email, Validators.minLength(6), Validators.maxLength(30)]
+      ]
+    })
+  }
+
+  getInfoUser() {
+    this._UserService.getUser(this.identity.id).subscribe(
+      res &#x3D;&gt; {
+        console.log(res)
+        this.user &#x3D; res
+      },
+      error &#x3D;&gt; {
+        console.log(error)
+      }
+    )
+  }
+
+  getFollowedUsers() {
+    this._UserService.getFollowUsers(this.identity.id).subscribe(
+      res &#x3D;&gt; {
+        console.log(res)
+        this.FollowedUsers &#x3D; res
+      },
+      error &#x3D;&gt; {
+        console.log(error)
+      }
+    )
+  }
+
+  getFollowersUsers() {
+    this._UserService.getFollowersUsers(this.identity.id).subscribe(
+      res &#x3D;&gt; {
+        console.log(res)
+        this.FollowersUsers &#x3D; res
+      },
+      error &#x3D;&gt; {
+        console.log(error)
+      }
+    )
+  }
+
+  getErrorMessage(dato) {
+    var result: string;
+    if (this.profileForm.controls[dato].hasError(&#x27;minlength&#x27;)) {
+      if (dato &#x3D;&#x3D;&#x3D; &#x27;email&#x27;) {
+        return (result &#x3D; &#x27;You must enter at least 6 characters&#x27;);
+      } else {
+        return (result &#x3D; &#x27;You must enter at least 3 characters&#x27;);
+      }
+    } else if (this.profileForm.controls[dato].hasError(&#x27;maxlength&#x27;)) {
+      return (result &#x3D; &#x27;The maximum of characters is 30&#x27;);
+    } else if (
+      this.profileForm.controls[dato].hasError(&#x27;email&#x27;) &amp;&amp;
+      dato &#x3D;&#x3D;&#x3D; &#x27;email&#x27;
+    ) {
+      return (result &#x3D; &#x27;You have to enter a valid email&#x27;)
+    } else {
+      return (result &#x3D; &#x27;&#x27;);
+    }
+  }
+
+  submit() {
+    this._UserService.updateUser(this.identity.id, this.user).subscribe(
+      res &#x3D;&gt; {
+        console.log(res)
+        this.openSnackBar(&#x27;YOUR PROFILE HAS BEEN UPDATED&#x27;, &#x27;Close&#x27;)
+
+        // this.router.navigateByUrl(&quot;/profile&quot;);
+      },
+      err &#x3D;&gt; console.error(err)
+    )
+
+    // this.dialogRef.close(&#x60;${form.value.name}&#x60;);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 8000,
+      panelClass: [&#x27;blue-snackbar&#x27;]
+    })
+  }
+
+
+  changePassDialog(): void {
+    const dialogRef &#x3D; this.dialog.open(ChangePassDialogComponent, {
+      // Le pasamos los datos que queremos
+      data: {
+        userId: this.identity.id,
+        alias: this.identity.alias,
+        email: this.identity.email
+      }
+    });
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      console.log(&quot;The dialog was closed&quot;);
+    });
+  }
+
+  deleteUserDialog(): void {
+    const dialogRef &#x3D; this.dialog.open(DeleteUserDialogComponent, {
+      // Le pasamos los datos que queremos
+      data: {
+        userId: this.identity.id,
+        alias: this.identity.alias,
+        email: this.identity.email
+      }
+    });
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      console.log(&quot;The dialog was closed&quot;);
+    });
+  }
+
+  avatarDialog(): void {
+    const dialogRef &#x3D; this.dialog.open(AvatarDialogComponent, {
+      // Le pasamos los datos que queremos
+      data: {
+        userId: this.identity.id,
+        userPhoto: this.user.photo
+      }
+    });
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      console.log(&quot;The dialog was closed&quot;);
+      this.getInfoUser()
+    });
+  }
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;p&gt;User-detail works!&lt;/p&gt;
+&lt;h1&gt;{{ user.idUsu }}&lt;/h1&gt;
+&lt;h3&gt;{{ user.alias }}&lt;/h3&gt;
+&lt;p&gt;{{ user.email }}&lt;/p&gt;
+&lt;p&gt;{{ user.userName }}&lt;/p&gt;
+&lt;p&gt;{{ user.dateOfBirth | date }}&lt;/p&gt;
+&lt;p&gt;{{ user.surname }}&lt;/p&gt;
+&lt;p&gt;{{ user.admin.data }}&lt;/p&gt;
+&lt;img [src]&#x3D;&quot;user.photo&quot; [alt]&#x3D;&quot;user.alias&quot; class&#x3D;&quot;img-fluid&quot;/&gt;
+&lt;button type&#x3D;&quot;button&quot; mat-raised-button (click)&#x3D;&quot;avatarDialog()&quot;&gt;Avatar&lt;/button&gt;
+
+
+  &lt;div id&#x3D;&quot;form&quot;&gt;
+    &lt;h1&gt;Change information&lt;/h1&gt;
+    &lt;form [formGroup]&#x3D;&quot;profileForm&quot; (ngSubmit)&#x3D;&quot;submit()&quot;&gt;
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+        &lt;mat-label&gt;Alias&lt;/mat-label&gt;
+        &lt;input
+          matInput
+          type&#x3D;&quot;text&quot;
+          formControlName&#x3D;&quot;alias&quot;
+          placeholder&#x3D;&quot;Alias&quot;
+          [(ngModel)]&#x3D;&quot;user.alias&quot;
+        /&gt;
+        &lt;mat-error *ngIf&#x3D;&quot;!profileForm.controls[&#x27;alias&#x27;].valid&quot;&gt;{{
+          getErrorMessage(&quot;alias&quot;)
+        }}&lt;/mat-error&gt;
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+        &lt;mat-label&gt;Email&lt;/mat-label&gt;
+        &lt;input
+          matInput
+          type&#x3D;&quot;email&quot;
+          formControlName&#x3D;&quot;email&quot;
+          placeholder&#x3D;&quot;Email&quot;
+          [(ngModel)]&#x3D;&quot;user.email&quot;
+        /&gt;
+        &lt;mat-error *ngIf&#x3D;&quot;!profileForm.controls[&#x27;email&#x27;].valid&quot;&gt;{{
+          getErrorMessage(&quot;email&quot;)
+        }}&lt;/mat-error&gt;
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+        &lt;mat-label&gt;Name&lt;/mat-label&gt;
+        &lt;input
+          matInput
+          type&#x3D;&quot;text&quot;
+          formControlName&#x3D;&quot;name&quot;
+          placeholder&#x3D;&quot;Name&quot;
+          [(ngModel)]&#x3D;&quot;userName&quot;
+        /&gt;
+        &lt;mat-error *ngIf&#x3D;&quot;!profileForm.controls[&#x27;name&#x27;].valid&quot;&gt;{{
+          getErrorMessage(&quot;name&quot;)
+        }}&lt;/mat-error&gt;
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+        &lt;mat-label&gt;Surname&lt;/mat-label&gt;
+        &lt;input
+          matInput
+          type&#x3D;&quot;text&quot;
+          formControlName&#x3D;&quot;surname&quot;
+          placeholder&#x3D;&quot;Surname&quot;
+          [(ngModel)]&#x3D;&quot;user.surname&quot;
+        /&gt;
+        &lt;mat-error *ngIf&#x3D;&quot;!profileForm.controls[&#x27;surname&#x27;].valid&quot;&gt;{{
+          getErrorMessage(&quot;surname&quot;)
+        }}&lt;/mat-error&gt;
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field&gt;
+        &lt;input
+          matInput
+          [matDatepicker]&#x3D;&quot;picker1&quot;
+          placeholder&#x3D;&quot;Date Of Birth&quot;
+          [(ngModel)]&#x3D;&quot;user.dateOfBirth&quot;
+          formControlName&#x3D;&quot;dateOfBirth&quot;
+        /&gt;
+        &lt;mat-datepicker-toggle
+          matSuffix
+          [for]&#x3D;&quot;picker1&quot;
+        &gt;&lt;/mat-datepicker-toggle&gt;
+        &lt;mat-datepicker #picker1&gt;&lt;/mat-datepicker&gt;
+      &lt;/mat-form-field&gt;
+
+      &lt;!-- &lt;div *ngIf&#x3D;&quot;!datosCorrectos&quot;&gt;
+          &lt;p class&#x3D;&quot;mensajeError&quot;&gt;{{  this.message }}&lt;/p&gt;
+        &lt;/div&gt; --&gt;
+
+      &lt;button
+        type&#x3D;&quot;submit&quot;
+        class&#x3D;&quot;LoginButton i&quot;
+        [disabled]&#x3D;&quot;!profileForm.valid&quot;
+      &gt;
+      Update profile
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+  &lt;button type&#x3D;&quot;button&quot; mat-raised-button (click)&#x3D;&quot;changePassDialog()&quot;&gt;Change Password&lt;/button&gt;
+  &lt;button type&#x3D;&quot;button&quot; mat-raised-button (click)&#x3D;&quot; deleteUserDialog()&quot;&gt;Delete Acount&lt;/button&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./profile.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><p>User-detail works!</p><h1>{{ user.idUsu }}</h1><h3>{{ user.alias }}</h3><p>{{ user.email }}</p><p>{{ user.userName }}</p><p>{{ user.dateOfBirth | date }}</p><p>{{ user.surname }}</p><p>{{ user.admin.data }}</p><img [src]="user.photo" [alt]="user.alias" class="img-fluid"/><button type="button" mat-raised-button (click)="avatarDialog()">Avatar</button>  <div id="form">    <h1>Change information</h1>    <form [formGroup]="profileForm" (ngSubmit)="submit()">      <mat-form-field appearance="outline">        <mat-label>Alias</mat-label>        <input          matInput          type="text"          formControlName="alias"          placeholder="Alias"          [(ngModel)]="user.alias"        />        <mat-error *ngIf="!profileForm.controls[\'alias\'].valid">{{          getErrorMessage("alias")        }}</mat-error>      </mat-form-field>      <mat-form-field appearance="outline">        <mat-label>Email</mat-label>        <input          matInput          type="email"          formControlName="email"          placeholder="Email"          [(ngModel)]="user.email"        />        <mat-error *ngIf="!profileForm.controls[\'email\'].valid">{{          getErrorMessage("email")        }}</mat-error>      </mat-form-field>      <mat-form-field appearance="outline">        <mat-label>Name</mat-label>        <input          matInput          type="text"          formControlName="name"          placeholder="Name"          [(ngModel)]="userName"        />        <mat-error *ngIf="!profileForm.controls[\'name\'].valid">{{          getErrorMessage("name")        }}</mat-error>      </mat-form-field>      <mat-form-field appearance="outline">        <mat-label>Surname</mat-label>        <input          matInput          type="text"          formControlName="surname"          placeholder="Surname"          [(ngModel)]="user.surname"        />        <mat-error *ngIf="!profileForm.controls[\'surname\'].valid">{{          getErrorMessage("surname")        }}</mat-error>      </mat-form-field>      <mat-form-field>        <input          matInput          [matDatepicker]="picker1"          placeholder="Date Of Birth"          [(ngModel)]="user.dateOfBirth"          formControlName="dateOfBirth"        />        <mat-datepicker-toggle          matSuffix          [for]="picker1"        ></mat-datepicker-toggle>        <mat-datepicker #picker1></mat-datepicker>      </mat-form-field>      <!-- <div *ngIf="!datosCorrectos">          <p class="mensajeError">{{  this.message }}</p>        </div> -->      <button        type="submit"        class="LoginButton i"        [disabled]="!profileForm.valid"      >      Update profile      </button>    </form>  </div>  <button type="button" mat-raised-button (click)="changePassDialog()">Change Password</button>  <button type="button" mat-raised-button (click)=" deleteUserDialog()">Delete Acount</button></div>'
+    var COMPONENTS = [{'name': 'AddHeroComponent', 'selector': 'app-add-hero'},{'name': 'AdminDeleteUserDialogComponent', 'selector': 'app-admin-delete-user-dialog'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AvatarDialogComponent', 'selector': 'app-avatar-dialog'},{'name': 'ChangePassDialogComponent', 'selector': 'app-change-pass-dialog'},{'name': 'ComentHeroDialogComponent', 'selector': 'app-coment-hero-dialog'},{'name': 'DeleteUserDialogComponent', 'selector': 'app-delete-user-dialog'},{'name': 'EditHeroComponent', 'selector': 'app-edit-hero'},{'name': 'FightComponent', 'selector': 'app-fight'},{'name': 'FightHeroComponent', 'selector': 'app-fight-hero'},{'name': 'FightTeamComponent', 'selector': 'app-fight-team'},{'name': 'HeroesDetailComponent', 'selector': 'app-heroes-detail'},{'name': 'HeroesSearchComponent', 'selector': 'app-heroes-search'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'ModalsComponent', 'selector': 'app-modals'},{'name': 'MyHeroesComponent', 'selector': 'app-my-heroes'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'PublicProfileComponent', 'selector': 'app-public-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'selectHeroComponent', 'selector': 'select-hero-dialog'},{'name': 'SelectTeamDialogComponent', 'selector': 'app-select-team-dialog'},{'name': 'TeamComponent', 'selector': 'app-team'},{'name': 'TeamDialogComponent', 'selector': 'app-create-team-dialog'},{'name': 'UserListComponent', 'selector': 'app-user-list'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ProfileComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProfileComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

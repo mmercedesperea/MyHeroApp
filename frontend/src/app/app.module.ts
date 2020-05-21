@@ -38,11 +38,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog.component';
 import { TeamComponent } from './components/team/team.component';
 import { AvatarDialogComponent } from './components/modals/avatar-dialog/avatar-dialog.component';
-import { FightDialogComponent } from './components/modals/fight-dialog/fight-dialog.component';
 import { AdminDeleteUserDialogComponent } from './components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component';
 import { FightTeamComponent } from './components/fight/fight-team/fight-team.component';
 import { FightHeroComponent } from './components/fight/fight-hero/fight-hero.component';
 import { SelectTeamDialogComponent } from './components/modals/select-team-dialog/select-team-dialog.component';
+import { selectHeroComponent } from './components/modals/select-hero-dialog/select-hero-dialog.component';
 
 
 @NgModule({
@@ -65,7 +65,7 @@ import { SelectTeamDialogComponent } from './components/modals/select-team-dialo
     TeamDialogComponent,
     TeamComponent,
     AvatarDialogComponent,
-    FightDialogComponent,
+    selectHeroComponent,
     AdminDeleteUserDialogComponent,
     FightTeamComponent,
     FightHeroComponent,
@@ -88,7 +88,7 @@ import { SelectTeamDialogComponent } from './components/modals/select-team-dialo
     NgbRatingModule,
     AdminModule
   ],
-  entryComponents: [SelectTeamDialogComponent,AdminDeleteUserDialogComponent,FightDialogComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
+  entryComponents: [SelectTeamDialogComponent,AdminDeleteUserDialogComponent,selectHeroComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
