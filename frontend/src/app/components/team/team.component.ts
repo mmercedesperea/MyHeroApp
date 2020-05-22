@@ -22,9 +22,17 @@ import { GlobalVariableService } from 'src/app/services/global-variable.service'
 })
 
 export class TeamComponent implements OnInit {
+  /**
+   * variable to save the team info
+   */
   public myTeamInfo: Team
+  /**
+   * variable to save the team members
+   */
   public TeamHeroes: Hero[] = []
-  public maxMembers: boolean = false
+ /**
+  * Variable to count team members
+  */
   public countM: boolean = false
   //Decorator that will receive the id, with the input we define that aucnaod calls this component an id must be sent to it
   @Input() idUsu: number = 0

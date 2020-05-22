@@ -5,23 +5,47 @@ import { TeamService } from 'src/app/services/team.service'
 import { Team } from 'src/app/models/team'
 import { Hero } from 'src/app/models/hero'
 
+/**
+ * Component for home page
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 
-/**
- * Component for home page
- */
 export class HomeComponent implements OnInit {
+  /**
+   * variable to store best Marvel hero
+   */
   public bestM: any = ''
+  /**
+   * variable to store best DC hero
+   */
   public bestD: any = ''
+  /**
+   * variable to store most follow heroes
+   */
   public mostF: Hero[]
+  /**
+   * variable to store best team
+   */
   public bestT: Team
+  /** variable to store best team heroes
+   * 
+   */
   public bestTeamHeroes: Hero[] = []
+  /**
+   * variable to store mheroes with more stats
+   */
   public mostStatsHero: Hero[] = []
+  /**
+   * variable to store new heros in bd
+   */
   public newHeros: Hero[] = []
+  /**
+   * variable to store hero stats
+   */
   public stats: string[] = [
     'mostIntelligence',
     'mostStrength',

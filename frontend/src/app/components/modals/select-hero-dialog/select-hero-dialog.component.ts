@@ -3,18 +3,27 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { HeroService } from 'src/app/services/hero.service'
 import { Hero } from 'src/app/models/hero'
 
+/**
+ * Component for select a Hero
+ */
 @Component({
   selector: 'select-hero-dialog',
   templateUrl: './select-hero-dialog.component.html',
   styleUrls: ['./select-hero-dialog.component.scss']
 })
 
-/**
- * Component for select a Hero
- */
 export class selectHeroComponent implements OnInit {
+  /**
+   * variable to store sesson hero from sesson
+   */
   public sessonHero: Hero
+  /**
+   * variable to store heros from the search
+   */
   public heroes: Hero[]
+  /**
+   * variable to store selected hero id
+   */
   public HeroSelectId: number = 0
 
    /**

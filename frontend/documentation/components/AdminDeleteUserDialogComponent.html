@@ -64,6 +64,13 @@
     <code>src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for admin to delete a user</p>
+
+    </p>
 
 
     <p class="comment">
@@ -261,14 +268,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:26</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Start when de component init</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -300,8 +309,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:32</a></div>
                 </td>
             </tr>
 
@@ -399,15 +408,15 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Inject } from &#x27;@angular/core&#x27;;
 import { MatDialogRef, MAT_DIALOG_DATA } from &quot;@angular/material/dialog&quot;;
 
+/**
+ * Component for admin to delete a user
+ */
 @Component({
   selector: &#x27;app-admin-delete-user-dialog&#x27;,
   templateUrl: &#x27;./admin-delete-user-dialog.component.html&#x27;,
   styleUrls: [&#x27;./admin-delete-user-dialog.component.scss&#x27;]
 })
 
-/**
- * Component for admin to delete a user
- */
 export class AdminDeleteUserDialogComponent implements OnInit {
 
    /**
@@ -418,6 +427,9 @@ export class AdminDeleteUserDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
+    /**
+   * Start when de component init
+   */
   ngOnInit() {
   }
   

@@ -4,15 +4,15 @@ import { TeamService } from 'src/app/services/team.service'
 import { MatDialog } from '@angular/material'
 import { SelectTeamDialogComponent } from '../../modals/select-team-dialog/select-team-dialog.component'
 
+/**
+ * Component for fight team
+ */
 @Component({
   selector: 'app-fight-team',
   templateUrl: './fight-team.component.html',
   styleUrls: ['./fight-team.component.scss']
 })
 
-/**
- * Component for fight team
- */
 export class FightTeamComponent implements OnInit {
   public team: Team
   public sessonTeam1: Team

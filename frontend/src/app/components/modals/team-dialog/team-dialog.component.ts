@@ -6,18 +6,27 @@ import { FormGroup, FormControl, AbstractControl } from '@angular/forms'
 import { MatSnackBar } from '@angular/material'
 import { TeamService } from 'src/app/services/team.service'
 
+/**
+ * Component for create or modify a team
+ */
 @Component({
   selector: 'app-create-team-dialog',
   templateUrl: './team-dialog.component.html',
   styleUrls: ['./team-dialog.component.scss']
 })
 
-/**
- * Component for create or modify a team
- */
 export class TeamDialogComponent implements OnInit {
+  /**
+   * to add fromGoup
+   */
   public teamForm: FormGroup
+  /**
+   * variable to save message info
+   */  
   public message: string
+   /**
+   * variable to check if the function was ok
+   */
   public correctdata: boolean
 
   /**

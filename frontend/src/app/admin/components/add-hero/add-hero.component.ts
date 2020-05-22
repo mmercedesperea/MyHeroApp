@@ -7,15 +7,15 @@ import { HeroService } from 'src/app/services/hero.service'
 import { DateAdapter } from '@angular/material/core'
 import { MatSnackBar } from '@angular/material';
 
+/**
+ * Component for add a hero
+ */
 @Component({
   selector: 'app-add-hero',
   templateUrl: './add-hero.component.html',
   styleUrls: ['./add-hero.component.scss']
 })
 
-/**
- * Component for add a hero
- */
 export class AddHeroComponent implements OnInit {
   public newHeroForm: FormGroup
   public hero: Hero

@@ -64,6 +64,13 @@
     <code>src/app/components/fight/fight-team/fight-team.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for fight team</p>
+
+    </p>
 
 
     <p class="comment">
@@ -618,15 +625,15 @@ import { TeamService } from &#x27;src/app/services/team.service&#x27;
 import { MatDialog } from &#x27;@angular/material&#x27;
 import { SelectTeamDialogComponent } from &#x27;../../modals/select-team-dialog/select-team-dialog.component&#x27;
 
+/**
+ * Component for fight team
+ */
 @Component({
   selector: &#x27;app-fight-team&#x27;,
   templateUrl: &#x27;./fight-team.component.html&#x27;,
   styleUrls: [&#x27;./fight-team.component.scss&#x27;]
 })
 
-/**
- * Component for fight team
- */
 export class FightTeamComponent implements OnInit {
   public team: Team
   public sessonTeam1: Team

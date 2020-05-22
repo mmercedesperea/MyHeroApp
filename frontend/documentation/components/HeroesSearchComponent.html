@@ -64,6 +64,13 @@
     <code>src/app/components/heroes-search/heroes-search.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for heroes search</p>
+
+    </p>
 
 
     <p class="comment">
@@ -186,7 +193,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -281,8 +288,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:58</a></div>
                 </td>
             </tr>
 
@@ -322,8 +329,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:47</a></div>
                 </td>
             </tr>
 
@@ -373,10 +380,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:29</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>variable to store data from search</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -401,10 +414,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:21</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>variable to store the hero from the search</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -434,10 +453,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:33</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>variable to store term from search</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -462,10 +487,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/heroes-search/heroes-search.component.ts:25</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>variable to store the user from the search</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -482,19 +513,31 @@ import { ActivatedRoute } from &#x27;@angular/router&#x27;
 import { UserService } from &#x27;src/app/services/user.service&#x27;
 import { User } from &#x27;src/app/models/user&#x27;
 
+/**
+ * Component for heroes search
+ */
 @Component({
   selector: &#x27;app-heroes-search&#x27;,
   templateUrl: &#x27;./heroes-search.component.html&#x27;,
   styleUrls: [&#x27;./heroes-search.component.scss&#x27;]
 })
 
-/**
- * Component for heroes search
- */
 export class HeroesSearchComponent implements OnInit {
+  /**
+   * variable to store the hero from the search
+   */
   public hero: Hero[]
+  /**
+   * variable to store the user from the search
+   */
   public user: User[]
+  /**
+   * variable to store data from search
+   */
   public data: string &#x3D; &#x27;&#x27;
+  /**
+   * variable to store term from search
+   */
   public term: string &#x3D; &#x27;&#x27;
 
   /**

@@ -64,6 +64,13 @@
     <code>src/app/admin/components/edit-hero/edit-hero.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for edit a hero</p>
+
+    </p>
 
 
     <p class="comment">
@@ -727,15 +734,15 @@ import { FormGroup, FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
 import { HeroService } from &#x27;src/app/services/hero.service&#x27;;
 import { MatDialog } from &#x27;@angular/material&#x27;;
 import { selectHeroComponent } from &#x27;src/app/components/modals/select-hero-dialog/select-hero-dialog.component&#x27;;
-
+/**
+ * Component for edit a hero
+ */
 @Component({
   selector: &#x27;app-edit-hero&#x27;,
   templateUrl: &#x27;./edit-hero.component.html&#x27;,
   styleUrls: [&#x27;./edit-hero.component.scss&#x27;]
 })
-/**
- * Component for edit a hero
- */
+
 export class EditHeroComponent implements OnInit {
 
   public hero: Hero;

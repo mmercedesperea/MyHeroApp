@@ -4,15 +4,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HeroService } from 'src/app/services/hero.service';
 import { MatDialog } from '@angular/material';
 import { selectHeroComponent } from 'src/app/components/modals/select-hero-dialog/select-hero-dialog.component';
-
+/**
+ * Component for edit a hero
+ */
 @Component({
   selector: 'app-edit-hero',
   templateUrl: './edit-hero.component.html',
   styleUrls: ['./edit-hero.component.scss']
 })
-/**
- * Component for edit a hero
- */
+
 export class EditHeroComponent implements OnInit {
 
   public hero: Hero;

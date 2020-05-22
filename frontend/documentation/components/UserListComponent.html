@@ -64,6 +64,13 @@
     <code>src/app/admin/components/user-list/user-list.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component that bring List of users</p>
+
+    </p>
 
 
     <p class="comment">
@@ -551,15 +558,15 @@ import { UserService } from &#x27;src/app/services/user.service&#x27;;
 import { MatDialog } from &quot;@angular/material/dialog&quot;;
 import { AdminDeleteUserDialogComponent } from &#x27;src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component&#x27;;
 
+/**
+ * Component that bring List of users
+ */
 @Component({
   selector: &#x27;app-user-list&#x27;,
   templateUrl: &#x27;./user-list.component.html&#x27;,
   styleUrls: [&#x27;./user-list.component.scss&#x27;]
 })
 
-/**
- * Component that bring List of users
- */
 export class UserListComponent implements OnInit {
   public users: User[] &#x3D; [];
 

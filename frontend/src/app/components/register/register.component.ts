@@ -6,20 +6,31 @@ import { User } from '../../models/user'
 import { UserService } from 'src/app/services/user.service'
 import { Router } from '@angular/router'
 
+/**
+ * Component for register users
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 
-/**
- * Component for register users
- */
 export class RegisterComponent implements OnInit {
-  // variables
+   /**
+   * to add fromGoup
+   */
   public registerForm: FormGroup
+  /**
+   * variable to save user in it
+   */
   public user: User
+  /**
+   * variable to save message info about register
+   */
   public message: string
+  /**
+   * variable to check if the register works
+   */
   public datosCorrectos: boolean
 
   /**

@@ -64,6 +64,13 @@
     <code>src/app/admin/components/main/main.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component  to contain other components</p>
+
+    </p>
 
 
     <p class="comment">
@@ -285,15 +292,15 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;
-
+/**
+ * Component  to contain other components
+ */
 @Component({
   selector: &#x27;app-main&#x27;,
   templateUrl: &#x27;./main.component.html&#x27;,
   styleUrls: [&#x27;./main.component.scss&#x27;]
 })
-/**
- * Component  to contain other components
- */
+
 export class MainComponent implements OnInit {
   /**
    * component title

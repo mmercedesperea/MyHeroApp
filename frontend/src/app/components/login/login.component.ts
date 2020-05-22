@@ -6,22 +6,39 @@ import { User } from '../../models/user'
 import { UserService } from 'src/app/services/user.service'
 import { Router } from '@angular/router'
 
+/**
+ * Component for login user
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 
-/**
- * Component for login user
- */
 export class LoginComponent implements OnInit {
-  // variables
+  /**
+   * Login form for FormGroup
+   */
   public LoginForm: FormGroup
+  /**
+   * Variable for save user in it
+   */
   public user: User
+  /**
+   * variable for form message
+   */
   public message: string
+  /**
+   * variable for show or hide message if there is a error in login
+   */
   public datosCorrectos: boolean
+  /**
+   * userLov variable
+   */
   public UserLog
+  /**
+   * For save the token
+   */
   public token
 
   /**

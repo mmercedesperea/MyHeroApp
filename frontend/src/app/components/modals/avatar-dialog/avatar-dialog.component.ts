@@ -3,18 +3,23 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { HeroService } from 'src/app/services/hero.service';
 import { UserService } from 'src/app/services/user.service';
 
-
+/**
+ * Component for change avatar
+ */
 @Component({
   selector: 'app-avatar-dialog',
   templateUrl: './avatar-dialog.component.html',
   styleUrls: ['./avatar-dialog.component.scss']
 })
 
-/**
- * Component for change avatar
- */
 export class AvatarDialogComponent implements OnInit {
+  /**
+   * variable to store heros url img
+   */
   public heroImg: any[] = [];
+  /**
+   * to store user img
+   */
   public img: string = "";
 
     /**

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+
+/**
+ * Component for fcontains other fight component
+ */
 @Component({
   selector: 'app-fight',
   templateUrl: './fight.component.html',
   styleUrls: ['./fight.component.scss']
 })
 
-/**
- * Component for fcontains other fight component
- */
 export class FightComponent implements OnInit {
 
   /**

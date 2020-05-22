@@ -7,22 +7,30 @@ import { MatSnackBar } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
-
+/**
+ * Component for delete a user
+ */
 @Component({
   selector: 'app-delete-user-dialog',
   templateUrl: './delete-user-dialog.component.html',
   styleUrls: ['./delete-user-dialog.component.scss']
 })
 
-/**
- * Component for delete a user
- */
 export class DeleteUserDialogComponent implements OnInit {
+   /**
+   * to add fromGoup
+   */
   public passForm: FormGroup;
+  /**
+   * variable to save message info 
+   */  
   public message: string;
+  /**
+   * variable to check if the function was ok
+   */
   public correctdata: boolean;
 
-     /**
+  /**
    * Constructor in which we inject our services and diferents elements
    */
   constructor(

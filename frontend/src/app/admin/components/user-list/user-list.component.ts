@@ -4,15 +4,15 @@ import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from "@angular/material/dialog";
 import { AdminDeleteUserDialogComponent } from 'src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component';
 
+/**
+ * Component that bring List of users
+ */
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
 
-/**
- * Component that bring List of users
- */
 export class UserListComponent implements OnInit {
   public users: User[] = [];
 

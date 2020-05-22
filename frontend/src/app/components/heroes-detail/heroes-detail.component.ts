@@ -8,21 +8,39 @@ import { MatDialog } from '@angular/material/dialog'
 import { ComentHeroDialogComponent } from '../modals/coment-hero-dialog/coment-hero-dialog.component'
 import { UserHero } from 'src/app/models/userHero'
 
+/**
+ * Component for hero details
+ */
 @Component({
   selector: 'app-heroes-detail',
   templateUrl: './heroes-detail.component.html',
   styleUrls: ['./heroes-detail.component.scss']
 })
 
-/**
- * Component for hero details
- */
 export class HeroesDetailComponent implements OnInit {
+  /**
+   * variable to store hero info
+   */
   public hero: Hero
+  /**
+   * variable to store the relathionship user hero
+   */
   public heroUsu: UserHero
+  /**
+   * variable tu store user identity
+   */
   public identity
+  /**
+   * variable to check if hero is favorite by the user
+   */
   public favoriteHero: boolean = false
+  /**
+   * variable to check is the hero is followed by the user
+   */
   public followtHero: boolean = false
+  /**
+   * variable for star ranking
+   */
   public hovered: any
   public readonly: any
   public score: number = 0

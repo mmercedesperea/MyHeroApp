@@ -13,11 +13,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 
 export class NavbarComponent implements OnInit, DoCheck {
+ /**
+  * to save the tittle
+  */
   public title: string;
+  /**
+   * to save the user identity
+   */
   public identity;
+  /**
+   * to add fromGoup
+   */
   public searchForm: FormGroup;
+  /**
+   * to save the select value in the form
+   */
   public selectedValue2: string = 'HeroName'
-  public isAnonymous: boolean = true;
 
   /**
    * Constructor in which we inject our services and diferents elements
@@ -40,6 +51,9 @@ export class NavbarComponent implements OnInit, DoCheck {
     this.identity = this._userService.getIdentity();
   }
 
+  /**
+   * search value options
+   */
   searchValue = [
     { value: 'HeroName', viewValue: 'Hero' },
     { value: 'Marvel', viewValue: 'All Marvel Heroes' },

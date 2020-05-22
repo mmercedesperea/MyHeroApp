@@ -64,6 +64,13 @@
     <code>src/app/admin/components/add-hero/add-hero.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for add a hero</p>
+
+    </p>
 
 
     <p class="comment">
@@ -558,15 +565,15 @@ import { HeroService } from &#x27;src/app/services/hero.service&#x27;
 import { DateAdapter } from &#x27;@angular/material/core&#x27;
 import { MatSnackBar } from &#x27;@angular/material&#x27;;
 
+/**
+ * Component for add a hero
+ */
 @Component({
   selector: &#x27;app-add-hero&#x27;,
   templateUrl: &#x27;./add-hero.component.html&#x27;,
   styleUrls: [&#x27;./add-hero.component.scss&#x27;]
 })
 
-/**
- * Component for add a hero
- */
 export class AddHeroComponent implements OnInit {
   public newHeroForm: FormGroup
   public hero: Hero

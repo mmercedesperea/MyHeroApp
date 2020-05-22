@@ -11,21 +11,39 @@ import { ChangePassDialogComponent } from '../modals/change-pass-dialog/change-p
 import { DeleteUserDialogComponent } from '../modals/delete-user-dialog/delete-user-dialog.component'
 import { AvatarDialogComponent } from '../modals/avatar-dialog/avatar-dialog.component'
 
+/**
+ * Component that bring user profile
+ */
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 
-/**
- * Component that bring user profile
- */
 export class ProfileComponent implements OnInit {
+  /**
+   * variable to store user identity
+   */
   public identity
+  /**
+   * variable to save user in it
+   */  
   public user: User
+  /**
+   * to add fromGoup
+   */  
   public profileForm: FormGroup
+  /**
+   * variable to save message info
+   */  
   public textError: any
+ /**
+   * variable to store info about followed users
+   */  
   public FollowedUsers: User[] = []
+ /**
+   * variable to store info about followers
+   */  
   public FollowersUsers: User[] = []
 
   /**

@@ -5,19 +5,31 @@ import { ActivatedRoute } from '@angular/router'
 import { UserService } from 'src/app/services/user.service'
 import { User } from 'src/app/models/user'
 
+/**
+ * Component for heroes search
+ */
 @Component({
   selector: 'app-heroes-search',
   templateUrl: './heroes-search.component.html',
   styleUrls: ['./heroes-search.component.scss']
 })
 
-/**
- * Component for heroes search
- */
 export class HeroesSearchComponent implements OnInit {
+  /**
+   * variable to store the hero from the search
+   */
   public hero: Hero[]
+  /**
+   * variable to store the user from the search
+   */
   public user: User[]
+  /**
+   * variable to store data from search
+   */
   public data: string = ''
+  /**
+   * variable to store term from search
+   */
   public term: string = ''
 
   /**

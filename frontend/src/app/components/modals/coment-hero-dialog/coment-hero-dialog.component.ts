@@ -7,18 +7,27 @@ import { MatSnackBar } from '@angular/material'
 import { UserService } from 'src/app/services/user.service'
 import { UserHeroService } from 'src/app/services/user-hero.service'
 
+/**
+ * Component for comment a hero
+ */
 @Component({
   selector: 'app-coment-hero-dialog',
   templateUrl: './coment-hero-dialog.component.html',
   styleUrls: ['./coment-hero-dialog.component.scss']
 })
 
-/**
- * Component for comment a hero
- */
 export class ComentHeroDialogComponent implements OnInit {
+   /**
+   * to add fromGoup
+   */
   public commentForm: FormGroup
+  /**
+   * variable to save message info 
+   */  
   public message: string
+  /**
+   * variable to check if the function was ok
+   */  
   public correctdata: boolean
 
   /**

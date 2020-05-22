@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core'
-
+/**
+ * Component  to contain other components
+ */
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-/**
- * Component  to contain other components
- */
+
 export class MainComponent implements OnInit {
   /**
    * component title

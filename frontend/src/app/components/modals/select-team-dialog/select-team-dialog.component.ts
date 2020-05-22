@@ -3,18 +3,27 @@ import { TeamService } from 'src/app/services/team.service'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { Team } from 'src/app/models/team'
 
+/**
+ * Component for select a team
+ */
 @Component({
   selector: 'app-select-team-dialog',
   templateUrl: './select-team-dialog.component.html',
   styleUrls: ['./select-team-dialog.component.scss']
 })
 
-/**
- * Component for select a team
- */
 export class SelectTeamDialogComponent implements OnInit {
+  /**
+   * variable to store teams
+   */
   public teams: Team[]
+  /**
+   * variable to store teams from sessons
+   */
   public sessonTeam: Team
+  /**
+   * variable to  store team selec id
+   */
   public TeamSelectId: number = 0
 
   /**

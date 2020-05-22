@@ -5,22 +5,44 @@ import { UserService } from 'src/app/services/user.service'
 import { UserHeroService } from 'src/app/services/user-hero.service'
 import { Hero } from 'src/app/models/hero'
 
+/**
+ * Component that bring public user profile
+ */
 @Component({
   selector: 'app-public-profile',
   templateUrl: './public-profile.component.html',
   styleUrls: ['./public-profile.component.scss']
 })
 
-/**
- * Component that bring public user profile
- */
 export class PublicProfileComponent implements OnInit {
+  /**
+   * variable to save de id from params
+   */
   public idParams: number = 0
+  /**
+   * variable to save user
+   */
   public user: User
+  /**
+   * variable to save array of favorite heroes
+   */
   public heroesFav: Hero[]
+  /**
+   * variable to store user identity
+   */
   public identity
+  /**
+   * 
+   */
   public followActive: any = ''
+  /**
+   * variable to store info about user followeb
+   */
   public FollowedUsers: User[] = []
+
+  /**
+   * variable to store info about followers
+   */
   public FollowersUsers: User[] = []
 
   /**

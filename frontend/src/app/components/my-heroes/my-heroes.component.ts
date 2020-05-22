@@ -9,23 +9,41 @@ import { MatDialog } from '@angular/material'
 import { TeamDialogComponent } from '../modals/team-dialog/team-dialog.component'
 import { Observable } from 'rxjs'
 import { GlobalVariableService } from 'src/app/services/global-variable.service'
+
+/**
+ * Component that bring user heroes followed, favorites and user team
+ */
 @Component({
   selector: 'app-my-heroes',
   templateUrl: './my-heroes.component.html',
   styleUrls: ['./my-heroes.component.scss']
 })
 
-/**
- * Component that bring user heroes followed, favorites and user team
- */
 export class MyHeroesComponent implements OnInit {
+  /**
+   * variable to store user identity
+   */  
   public identity
+  /**
+   * variable to store info team
+   */  
   public myTeamInfo: Team
+  /**
+   * variable to store heroes follow
+   */
   public heroesFol: Hero[]
+  /**
+   * variable to store heroes fav
+   */
   public heroesFav: Hero[]
+  /**
+   * variable to save id User
+   */
   public idUser: number = 0
+  /**
+   * variable to count new members in the team
+   */
   public newM: number = 0
-  public type: boolean = true
 
   /**
    * Constructor in which we inject user service, modal material moduler,hero service,team service and global variables services

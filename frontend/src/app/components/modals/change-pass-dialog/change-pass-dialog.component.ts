@@ -6,18 +6,27 @@ import { FormGroup, FormControl, AbstractControl } from '@angular/forms'
 import { MatSnackBar } from '@angular/material'
 import { UserService } from 'src/app/services/user.service'
 
+/**
+ * Component for change pass
+ */
 @Component({
   selector: 'app-change-pass-dialog',
   templateUrl: './change-pass-dialog.component.html',
   styleUrls: ['./change-pass-dialog.component.scss']
 })
 
-/**
- * Component for change pass
- */
 export class ChangePassDialogComponent implements OnInit {
+   /**
+   * to add fromGoup
+   */
   public passForm: FormGroup
+  /**
+   * variable to save message info 
+   */   
   public message: string
+  /**
+   * variable to check if the function was ok
+   */    
   public correctdata: boolean
 
   /**

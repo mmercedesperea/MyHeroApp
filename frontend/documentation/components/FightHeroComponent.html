@@ -64,6 +64,13 @@
     <code>src/app/components/fight/fight-hero/fight-hero.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for fight hero</p>
+
+    </p>
 
 
     <p class="comment">
@@ -618,15 +625,15 @@ import { HeroService } from &#x27;src/app/services/hero.service&#x27;
 import { MatDialog } from &#x27;@angular/material&#x27;
 import { selectHeroComponent } from &#x27;../../modals/select-hero-dialog/select-hero-dialog.component&#x27;
 
+/**
+ * Component for fight hero
+ */
 @Component({
   selector: &#x27;app-fight-hero&#x27;,
   templateUrl: &#x27;./fight-hero.component.html&#x27;,
   styleUrls: [&#x27;./fight-hero.component.scss&#x27;]
 })
 
-/**
- * Component for fight hero
- */
 export class FightHeroComponent implements OnInit {
   public hero: Hero
   public sessonHero: Hero

@@ -4,15 +4,15 @@ import { HeroService } from 'src/app/services/hero.service'
 import { MatDialog } from '@angular/material'
 import { selectHeroComponent } from '../../modals/select-hero-dialog/select-hero-dialog.component'
 
+/**
+ * Component for fight hero
+ */
 @Component({
   selector: 'app-fight-hero',
   templateUrl: './fight-hero.component.html',
   styleUrls: ['./fight-hero.component.scss']
 })
 
-/**
- * Component for fight hero
- */
 export class FightHeroComponent implements OnInit {
   public hero: Hero
   public sessonHero: Hero
