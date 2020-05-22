@@ -1,6 +1,5 @@
 const BaseService = require('./base.service')
 
-
 let _userHeroOBJ = null
 
 class UserHeroService extends BaseService {

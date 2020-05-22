@@ -1,4 +1,6 @@
-// Para la configuracion del contenedor de inyeccion de dependencias usamos awilix
+/**
+ * For the configuration of the dependency injection container we use awilix
+ */
 const { createContainer, asClass, asValue, asFunction } = require("awilix");
 
 
@@ -15,7 +17,7 @@ const DB = require('../database/db');
 
 
 // services
-const {   AdminService,UserService, AuthService, ApiHeroService, HeroService, UserHeroService, TeamService } = require("../services");
+const {  AdminService,UserService, AuthService, ApiHeroService, HeroService, UserHeroService, TeamService } = require("../services");
 
 
 // controllers
