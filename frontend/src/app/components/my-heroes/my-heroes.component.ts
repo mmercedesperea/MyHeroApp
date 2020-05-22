@@ -44,6 +44,7 @@ export class MyHeroesComponent implements OnInit {
    * variable to count new members in the team
    */
   public newM: number = 0
+  public type: boolean = true;
 
   /**
    * Constructor in which we inject user service, modal material moduler,hero service,team service and global variables services
