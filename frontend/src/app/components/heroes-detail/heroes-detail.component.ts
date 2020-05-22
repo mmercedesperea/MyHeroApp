@@ -33,7 +33,7 @@ export class HeroesDetailComponent implements OnInit {
     public dialog: MatDialog,
     private _activatedRoute: ActivatedRoute) {
     this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', null)
-    this.heroUsu = new UserHero(0, 0, 0, '', 0, 0);
+    this.heroUsu = new UserHero(0, 0, 0, '', false, false);
   }
 
   ngOnInit() {

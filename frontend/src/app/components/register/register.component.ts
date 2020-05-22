@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     private _userService: UserService,
     private router: Router
   ) {
-    this.user = new User(0, '', '', '', '', '', null, '', 0);
+    this.user = new User(0, '', '', '', '', '', null, '', false);
   }
 
   ngOnInit () {
@@ -98,7 +98,7 @@ export class RegisterComponent implements OnInit {
         console.log('Register correctly');
         this.message = 'Register correctly';
         // limpiamos el usuario
-        this.user = new User(0, '', '', '', '', '', new Date(0), '', 0);
+        this.user = new User(0, '', '', '', '', '', new Date(0), '', false);
         this.registerForm.reset();
         this.router.navigate(['/login']);
         this.datosCorrectos = true;

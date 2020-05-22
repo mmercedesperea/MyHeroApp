@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
     private _UserService: UserService,
     public dialog: MatDialog,
   ) {
-    this.user = new User(0, '', '', '', '', '', new Date(0), '', 0)
+    this.user = new User(0, '', '', '', '', '', new Date(0), '', false)
   }
 
   ngOnInit() {

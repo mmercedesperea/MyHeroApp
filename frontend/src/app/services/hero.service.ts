@@ -20,25 +20,26 @@ export class HeroService {
   /**
    * Constructor in which we inject httpClient to make http requests
    */
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Get a hero by his name
    * @param {string} name
    * @returns Array of heroes
    */
-  public getHeroByName(name: string) {
+  public getHeroByName(name: string) :Observable<Hero[]> {
     return this.http.get<Hero[]>(
       `${this.baseUrl}/hero/searchHeroByName/${name}`
     );
   }
+
 
   /**
    * Get a hero by id
    * @param {any} id
    * @returns Hero
    */
-  public getHeroById(id: any) {
+  public getHeroById(id: any): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/getByid/${id}`);
   }
 
@@ -46,7 +47,7 @@ export class HeroService {
    * Get all the marvel heroes
    * @returns Array of heroes
    */
-  public allMarvelHeroes() {
+  public allMarvelHeroes():  Observable<Hero[]> {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/MarvelHeroes`);
   }
 
@@ -54,7 +55,7 @@ export class HeroService {
    * Get all the DC heroes
    * @returns Array of heroes
    */
-  public allDCHeroes() {
+  public allDCHeroes():  Observable<Hero[]> {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/DCHeroes`);
   }
 
@@ -64,8 +65,8 @@ export class HeroService {
    * @param {number} idHero2
    * @returns Hero
    */
-  public getWinner(idHero: number, idHero2: number) {
-    return this.http.get<any>(
+  public getWinner(idHero: number, idHero2: number) :  Observable<Hero>{
+    return this.http.get<Hero>(
       `${this.baseUrl}/hero/getWinner/${idHero}/${idHero2}`
     );
   }
@@ -74,7 +75,7 @@ export class HeroService {
    * Get the smartest hero
    * @returns Hero
    */
-  public mostIntelligence() {
+  public mostIntelligence():  Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostIntelligence`);
   }
 
@@ -82,7 +83,7 @@ export class HeroService {
    * Get the stronger hero
    * @returns Hero
    */
-  public mostStrength() {
+  public mostStrength():  Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostStrength`);
   }
 
@@ -90,7 +91,7 @@ export class HeroService {
    * Get the fastest hero
    * @returns Hero
    */
-  public mostSpeed() {
+  public mostSpeed():  Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostSpeed`);
   }
 
@@ -98,7 +99,7 @@ export class HeroService {
    * Get more resistant hero
    * @returns Hero
    */
-  public mostDurability() {
+  public mostDurability() :  Observable<Hero>{
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostDurability`);
   }
 
@@ -106,7 +107,7 @@ export class HeroService {
    * Get more power hero
    * @returns Hero
    */
-  public mostPower() {
+  public mostPower() :  Observable<Hero>{
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostPower`);
   }
 
@@ -114,18 +115,18 @@ export class HeroService {
    * Get the hero with more combat
    * @returns Hero
    */
-  public mostCombat() {
+  public mostCombat():  Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostCombat`);
   }
 
   // //obtener ultimos heroes añadidos
-  public newHeros() {
+  public newHeros():  Observable<Hero[]> {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/new/heros`);
   }
 
   // obtener imagenes de heroes para perfil
   // router.get('/profileImgHeroes', HeroController.profileImgHeroes);
-  public profileImgHeroes() {
+  public profileImgHeroes() :  Observable<any[]>{
     return this.http.get<any[]>(`${this.baseUrl}/hero/img/profileImgHeroes`);
   }
 
