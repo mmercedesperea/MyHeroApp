@@ -61,6 +61,13 @@
                 <code>src/app/services/admin.guard.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Admin guard ,controls whether the user is an administrator or not</p>
+
+                </p>
 
 
 
@@ -104,12 +111,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/admin.guard.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/admin.guard.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor in which we inject User Service and Router service</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -181,8 +190,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/services/admin.guard.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/app/services/admin.guard.ts:24</a></div>
                 </td>
             </tr>
 
@@ -209,38 +218,42 @@
 
 
         <div class="tab-pane fade  tab-source-code" id="c-source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { CanActivate, Router } from &#x27;@angular/router&#x27;;
-import { UserService } from &#x27;./user.service&#x27;;
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;
+import { CanActivate, Router } from &#x27;@angular/router&#x27;
+import { UserService } from &#x27;./user.service&#x27;
 
+/**
+ * Admin guard ,controls whether the user is an administrator or not
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 
 /**
-* Admin guard ,controls whether the user is an administrator or not
-*/
-export class AdminGuard implements CanActivate {
-  constructor(private _UserService: UserService, private _router: Router) { }
-
-/**
- * @returns boolean, if the user is admin returns true if not false
+ * Admin guard ,controls whether the user is an administrator or not
  */
-  canActivate(): boolean {
+export class AdminGuard implements CanActivate {
+  /**
+   * Constructor in which we inject User Service and Router service
+   */
+  constructor (private _UserService: UserService, private _router: Router) {}
 
+  /**
+   * @returns boolean, if the user is admin returns true if not false
+   */
+  canActivate (): boolean {
     /**
      * Store the user that is in the session
      */
-    let identity &#x3D; this._UserService.getIdentity();
+    let identity &#x3D; this._UserService.getIdentity()
 
     if (identity &amp;&amp; identity.admin &#x3D;&#x3D; 1) {
       return true
     } else {
-      this._router.navigateByUrl(&#x27;/&#x27;);
+      this._router.navigateByUrl(&#x27;/&#x27;)
       return false
     }
   }
-
 }
 </code></pre>
         </div>

@@ -9,15 +9,28 @@ import { AdminDeleteUserDialogComponent } from 'src/app/components/modals/admin-
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
+
+/**
+ * Component that bring List of users
+ */
 export class UserListComponent implements OnInit {
   public users: User[] = [];
 
+  /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(  public dialog: MatDialog,private _userService: UserService) { }
 
+  /**
+   * Start when de component init
+   */
   ngOnInit() {
     this.getAllUsers()
   }
 
+  /**
+   * To get all users in the app
+   */
   getAllUsers() {
     this._userService.allusers().subscribe(res => {
       this.users = res;
@@ -27,6 +40,10 @@ export class UserListComponent implements OnInit {
     })
   }
 
+  /**
+   * To delete a user from app
+   * @param {number}idUsu 
+   */
   deteteUser(idUsu){
     this._userService.adminDeleteUser(idUsu).subscribe(res => {
       console.log(res)
@@ -36,12 +53,14 @@ export class UserListComponent implements OnInit {
     })
   }
 
-
+  /**
+   * Open modal for delete a user
+   * @param {number} idUsu 
+   * @param {string}name 
+   */
   deleteUserDialog(idUsu,name): void {
     console.log(idUsu,name)
     const dialogRef = this.dialog.open(AdminDeleteUserDialogComponent, {
-      // Le pasamos los datos que queremos
-      
       data: {
         userId: idUsu,
         UserName:name

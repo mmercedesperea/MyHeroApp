@@ -1,50 +1,72 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges, DoCheck } from '@angular/core';
-import { TeamService } from 'src/app/services/team.service';
-import { HeroService } from 'src/app/services/hero.service';
-import { Team } from 'src/app/models/team';
-import { Hero } from 'src/app/models/hero';
-import { GlobalVariableService } from 'src/app/services/global-variable.service';
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  OnChanges,
+  DoCheck
+} from '@angular/core'
+import { TeamService } from 'src/app/services/team.service'
+import { HeroService } from 'src/app/services/hero.service'
+import { Team } from 'src/app/models/team'
+import { Hero } from 'src/app/models/hero'
+import { GlobalVariableService } from 'src/app/services/global-variable.service'
 
+/**
+ * Component that bring team info and details to export
+ */
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss']
 })
+
 export class TeamComponent implements OnInit {
   public myTeamInfo: Team
   public TeamHeroes: Hero[] = []
   public maxMembers: boolean = false
-  public countM: boolean = false;
-  // decorador que va a recibir la id, con el input definimos que aucnaod se llame a este componento se le tiene que mandar una id
-  @Input() idUsu: number = 0;
-  @Input() newM;
-  @Input() type;
+  public countM: boolean = false
+  //Decorator that will receive the id, with the input we define that aucnaod calls this component an id must be sent to it
+  @Input() idUsu: number = 0
+  @Input() newM
+  @Input() type
 
-  constructor(private _TeamService: TeamService,
+  /**
+   * Constructor in which we inject team service, hero service and our Global variables
+   */
+  constructor (
+    private _TeamService: TeamService,
     private _heroService: HeroService,
-    private GlobalV: GlobalVariableService) { }
+    private GlobalV: GlobalVariableService
+  ) {}
 
-  ngOnInit() {
+  /**
+   * Start when de component init
+   */
+  ngOnInit () {
+    this.getTeamUsu()
+  }
+  /**
+   * Activates when it detects any change
+   */
+  ngOnChanges () {
+    console.log('ngonchange')
     this.getTeamUsu()
   }
 
-  ngOnChanges() {
-    console.log("ngonchange")
-    this.getTeamUsu()
-  }
-
-  // obtenemos la informacion del equipo
-  getTeamUsu() {
+  /**
+   * Get the team information
+   */
+  getTeamUsu (): void {
     this._TeamService.getTeamInfo(this.idUsu).subscribe(
       res => {
         this.myTeamInfo = res
-       
         if (this.myTeamInfo) {
-           // para saber si ya se han countM los miembros del equipo
-        if (this.countM === false) {
-          this.countMembers()
-        }
-        this.countM = true
+          // para saber si ya se han countM los miembros del equipo
+          if (this.countM === false) {
+            this.countMembers()
+          }
+          this.countM = true
           this.GlobalV.memberTeamNUll = this.getMemberNull()
           this.teamUsugetHeroes(this.myTeamInfo.member_1, 0)
           this.teamUsugetHeroes(this.myTeamInfo.member_2, 1)
@@ -59,45 +81,57 @@ export class TeamComponent implements OnInit {
     )
   }
 
-  //obtenemos los heroes y los metemos en el array de equipo
-  teamUsugetHeroes(member, position) {
+  /**
+   * Get the heroes and put them in the team array
+   * @param {string} member
+   * @param {number} position
+   */
+  teamUsugetHeroes (member, position): void {
     this._heroService.getHeroById(member).subscribe(res => {
-      this.TeamHeroes[position] = (res)
+      this.TeamHeroes[position] = res
     })
   }
 
-  deleteMember(number) {
-    var memberSelect = `member_${number}`;
-    // console.log(memberSelect)
-    var data = { member: memberSelect };
+  /**
+   * Delete a team member
+   * @param {number} number
+   */
+  deleteMember (number): void {
+    var memberSelect = `member_${number}`
+    var data = { member: memberSelect }
     this._TeamService.deleteMember(this.myTeamInfo.idTeam, data).subscribe(
       res => {
         this.getTeamUsu()
-        this.GlobalV.countTeamMembers--;
-        // this.GlobalV.memberTeamNUll = this.getMemberNull()
+        this.GlobalV.countTeamMembers--
       },
       error => {
         console.log(error)
       }
     )
   }
-  // contamos los miembros que hay en el club 
-  countMembers() {
+
+  /**
+   * We count the members in the club
+   */
+  countMembers (): void {
     for (var i = 1; i < 6; i++) {
       if (this.myTeamInfo[`member_${i}`] != null) {
-        this.GlobalV.countTeamMembers++;
+        this.GlobalV.countTeamMembers++
         console.log(this.GlobalV.countTeamMembers)
       }
     }
   }
 
-  getMemberNull() {
-    // comprobamos el hueco de member que esta vacio y lo almacenamos
+  /**
+   * Get the member that is null
+   *  @returns member
+   */
+  getMemberNull (): any {
+    // we check the member slot that is empty and store it
     for (var i = 1; i < 6; i++) {
       if (this.myTeamInfo[`member_${i}`] == null) {
         return `member_${i}`
       }
     }
   }
-
 }

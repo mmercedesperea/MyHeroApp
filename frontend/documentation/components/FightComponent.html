@@ -156,10 +156,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/components/fight/fight.component.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/fight/fight.component.ts:11</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor in which we inject our services and diferents elements</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -195,14 +201,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/components/fight/fight.component.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/components/fight/fight.component.ts:22</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Start when de component init</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -224,11 +232,21 @@
   templateUrl: &#x27;./fight.component.html&#x27;,
   styleUrls: [&#x27;./fight.component.scss&#x27;]
 })
+
+/**
+ * Component for fcontains other fight component
+ */
 export class FightComponent implements OnInit {
 
+  /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(
   ){}
 
+  /**
+   * Start when de component init
+   */
   ngOnInit() {
   }
 

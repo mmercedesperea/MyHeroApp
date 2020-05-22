@@ -29,16 +29,16 @@ import { UserListComponent } from './components/user-list/user-list.component';
         ReactiveFormsModule,
         MatSelectModule,
         MatFormFieldModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatDialogModule
-   
+        MatInputModule,
+        MatNativeDateModule,
+        MatDialogModule
+
     ],
     exports: [
         MainComponent,
         AddHeroComponent,
         EditHeroComponent
     ],
-    providers: [ ]
+    providers: []
 })
 export class AdminModule { }

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-
 /**
  * Globals variables
  */
+@Injectable({
+  providedIn: 'root'
+})
 
 export class GlobalVariableService {
 
@@ -18,5 +17,8 @@ export class GlobalVariableService {
   * add in the position where there is a null team member
   */
   public memberTeamNUll: string = "";
+  /**
+   * Constructor
+   */
   constructor() { }
 }

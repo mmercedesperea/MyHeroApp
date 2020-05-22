@@ -13,21 +13,30 @@ import { Router } from '@angular/router';
   templateUrl: './delete-user-dialog.component.html',
   styleUrls: ['./delete-user-dialog.component.scss']
 })
+
+/**
+ * Component for delete a user
+ */
 export class DeleteUserDialogComponent implements OnInit {
   public passForm: FormGroup;
   public message: string;
   public correctdata: boolean;
 
+     /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(
     public dialogRef: MatDialogRef<DeleteUserDialogComponent>,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private _UserService: UserService,
     private _router: Router,
-
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
+   /**
+   * Start when de component init
+   */
   ngOnInit() {
     this.passForm = this.formBuilder.group({
       password: [
@@ -37,6 +46,11 @@ export class DeleteUserDialogComponent implements OnInit {
     });
   }
 
+   /**
+   * function to control error messages
+   * @param {string} dato
+   * @returns message
+   */
   getErrorMessage(dato) {
     var result: string;
     if (this.passForm.controls[dato].hasError('required')) {
@@ -50,6 +64,10 @@ export class DeleteUserDialogComponent implements OnInit {
     }
   }
 
+   /**
+   * function to submit form
+   * @param {any} passForm
+   */
   submit(passForm) {
     var deleteObj = { email: this.data.email, password: passForm.value.password };
    
@@ -76,10 +94,13 @@ export class DeleteUserDialogComponent implements OnInit {
       }
     )
 
-    // this.dialogRef.close(`${form.value.name}`);
   }
 
-
+  /**
+   * function for open snackBars
+   *  @param {string} message
+   *  @param {string} action
+   */
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 8000,

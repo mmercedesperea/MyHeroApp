@@ -10,6 +10,9 @@ import { selectHeroComponent } from 'src/app/components/modals/select-hero-dialo
   templateUrl: './edit-hero.component.html',
   styleUrls: ['./edit-hero.component.scss']
 })
+/**
+ * Component for edit a hero
+ */
 export class EditHeroComponent implements OnInit {
 
   public hero: Hero;
@@ -18,17 +21,20 @@ export class EditHeroComponent implements OnInit {
   public message: string
   public correctData: boolean
   
+  /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(
-
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private _HeroService: HeroService,
   ) { }
 
+  /**
+   * Start when de component init
+   */
   ngOnInit() {
-    // this.getInfoHero(id)
     this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', null)
-
 
     this.editHeroForm = this.formBuilder.group({
       heroName: [
@@ -127,7 +133,10 @@ export class EditHeroComponent implements OnInit {
     })
   }
 
-
+/**
+ * Get the info about the hero
+ * @param {number}idHero 
+ */
   getInfoHero(idHero) {
     this._HeroService.getHeroById(idHero).subscribe(res => {
       console.log(res)
@@ -138,21 +147,26 @@ export class EditHeroComponent implements OnInit {
 
   }
 
+  /**
+   * for submit form
+   */
   submit() {
     this._HeroService.modifyHero(this.idHero, this.hero).subscribe(
       res => {
         console.log(res)
-        // this.openSnackBar('YOUR PROFILE HAS BEEN UPDATED', 'Close')
         this.message = 'Create correctly';
         this.correctData = true;
-        // this.router.navigateByUrl("/profile");
       },
       err => {console.error(err);         this.message = 'create hero failed';}
     )
 
-    // this.dialogRef.close(`${form.value.name}`);
   }
 
+  /**
+   * function to control error messages
+   * @param {string} dato
+   * @returns message
+   */
   getErrorMessage(dato) {
     var result: string
     if (this.editHeroForm.controls[dato].hasError('required')) {
@@ -173,12 +187,12 @@ export class EditHeroComponent implements OnInit {
     }
   }
 
+  /**
+   * Open modal for search hero
+   */
   SearchHeroDialog(): void {
     const dialogRef = this.dialog.open(selectHeroComponent, {
-      // Le pasamos los datos que queremos
       data: {
-        //   userId: this.identity.id,
-        //   alias: this.identity.alias,
         action: 'edit'
       }
     });

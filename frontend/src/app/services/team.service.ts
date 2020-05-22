@@ -2,48 +2,51 @@ import { Injectable } from '@angular/core';
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Team } from '../models/team';
+import { Observable } from 'rxjs';
 
+/**
+ * Service that contains all the routes to our api regarding Teams
+ */
 @Injectable({
   providedIn: 'root'
 })
+
 export class TeamService {
-  //variable almacenamos la url de nuestra api node
+  /**
+  * Variable in which we store the url of our api
+  */
   private baseUrl: string = environment.BASE_API_URL;
 
+  /**
+  * Constructor in which we inject httpClient to make http requests
+  */
   constructor(private http: HttpClient) { }
 
-  // create a team
+  /**
+   * Create a new team
+   * @param {Team} team
+   */
   public createTeam(team) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(`${this.baseUrl}/team/createTeam`, team,
       { headers: headers });
   }
 
-  // // check the numbers of menbers
-  // public checkTeam(idTeam: number) {
-  //   return this.http.get<any>(`${this.baseUrl}/team/checkTeam/${idTeam}`);
-  // }
-
-  // obtener equipo por su id
-  // public getTeam(idTeam: number) {
-  //   return this.http.get<Team>(`${this.baseUrl}/team/getTeam/${idTeam}`);
-  // }
-
-  // obtener equipo de usuario
-  // public getTeamUsu(idUsu: number) {
-  //   return this.http.get<any>(`${this.baseUrl}/team/getTeam/usu/${idUsu}`);
-  // }
-
-
-  // obtener equipo con mayor stats
-  public bestTeam() {
+  /**
+   * Get team with higher stats
+   * @returns Team
+   */
+  public bestTeam(): Observable<Team> {
     return this.http.get<Team>(`${this.baseUrl}/team/bestTeam`);
   }
 
-  //change name
 
+  /**
+     * Change name
+     * @param {number} idTeam
+     * @param {Team} team
+     */
   public changeName(idTeam: number, team) {
-    // para convertir el objeto en un string
     let params = JSON.stringify(team);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
@@ -51,10 +54,12 @@ export class TeamService {
     return this.http.put(`${this.baseUrl}/team/chageName/${idTeam}`, params, { headers: headers });
   }
 
-  // //añadir nuevo miembro (hay que mandarle el campo de la bd "member_1, member_2, etc" y el codigo del hero)
+  /**
+   * Add new member (you must send the field of the bd "member_1, member_2, etc" and the hero code)
+   * @param {number} idTeam
+   * @param {any} data
+   */
   public addMember(idTeam: number, data) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(data);
     console.log(data)
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
@@ -62,17 +67,22 @@ export class TeamService {
     return this.http.put(`${this.baseUrl}/team/addMember/${idTeam}`, data, { headers: headers });
   }
 
-  //delete member
+  /**
+    * Delete member
+    * @param {number} idTeam
+    * @param {string} member
+    */
   public deleteMember(idTeam: number, member) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(member);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/team/deleteMember/${idTeam}`, member, { headers: headers });
   }
 
-  // borrar un equipo
+  /**
+     * Delete Team
+     * @param {number} idTeam
+     */
   public delete(idTeam: number) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
@@ -80,20 +90,33 @@ export class TeamService {
     return this.http.delete(`${this.baseUrl}/team/${idTeam}`, { headers: headers });
   }
 
- // obtener equipo de usuario
- public getTeamInfo(idUsu: number) {
-  return this.http.get<any>(`${this.baseUrl}/team/getTeamInfo/${idUsu}`);
-}
 
-// obtener el equipo con mayor puntos 
-public getteamWinner(idteam1: number, idTeam2: number) {
-  return this.http.get<any>(`${this.baseUrl}/team/getTeamWinner/${idteam1}/${idTeam2}`);
-}
+  /**
+  * Get user Team
+  * @param {number} idUsu
+  * @returns team
+  */
+  public getTeamInfo(idUsu: number): Observable<Team> {
+    return this.http.get<Team>(`${this.baseUrl}/team/getTeamInfo/${idUsu}`);
+  }
 
-//obtener un team por el nombre
-// router.get('/searchTeam/:TeamName', TeamController.searchTeam);
-public searchTeam(teamName:string) {
-  return this.http.get<Team[]>(`${this.baseUrl}/team/searchTeam/${teamName}`);
-}
+  /**
+  * Get the team with the highest points
+  * @param {number} idteam1
+  * @param {number} idteam2
+  * @returns team
+  */
+  public getteamWinner(idteam1: number, idTeam2: number): Observable<Team> {
+    return this.http.get<Team>(`${this.baseUrl}/team/getTeamWinner/${idteam1}/${idTeam2}`);
+  }
+
+  /**
+   * Get the team by name
+   * @param {string} teamName
+   * @returns team[]
+   */
+  public searchTeam(teamName: string): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.baseUrl}/team/searchTeam/${teamName}`);
+  }
 
 }

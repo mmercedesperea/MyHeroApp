@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
+/**
+ * Component  to contain other components
+ */
 export class MainComponent implements OnInit {
-title= 'Admin Panel'
-  constructor() { }
+  /**
+   * component title
+   */
+  title = 'Admin Panel'
 
-  ngOnInit() {
-  }
+  /**
+   * Constructor in which we inject our services and diferents elements
+   */
+  constructor () {}
 
+  /**
+   * Start when de component init
+   */
+  ngOnInit () {}
 }

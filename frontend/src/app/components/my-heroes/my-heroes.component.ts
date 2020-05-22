@@ -7,26 +7,32 @@ import { Hero } from 'src/app/models/hero'
 import { UserService } from 'src/app/services/user.service'
 import { MatDialog } from '@angular/material'
 import { TeamDialogComponent } from '../modals/team-dialog/team-dialog.component'
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'
 import { GlobalVariableService } from 'src/app/services/global-variable.service'
 @Component({
   selector: 'app-my-heroes',
   templateUrl: './my-heroes.component.html',
   styleUrls: ['./my-heroes.component.scss']
 })
+
+/**
+ * Component that bring user heroes followed, favorites and user team
+ */
 export class MyHeroesComponent implements OnInit {
   public identity
   public myTeamInfo: Team
   public heroesFol: Hero[]
   public heroesFav: Hero[]
-  public idUser: number = 0;
-  public newM: number = 0;
-  public type: boolean = true;
+  public idUser: number = 0
+  public newM: number = 0
+  public type: boolean = true
 
-  constructor(
+  /**
+   * Constructor in which we inject user service, modal material moduler,hero service,team service and global variables services
+   */
+  constructor (
     public dialog: MatDialog,
     private _userService: UserService,
-    private _heroService: HeroService,
     private _UserHero: UserHeroService,
     private _Team: TeamService,
     private GlobalV: GlobalVariableService
@@ -34,21 +40,29 @@ export class MyHeroesComponent implements OnInit {
     this.myTeamInfo = new Team(0, 0, '', '', '', '', '', '')
   }
 
-  ngOnInit() {
+  /**
+   * Start when de component init
+   */
+  ngOnInit () {
     this.getUsu()
     this.getTeamUsu()
     this.following()
     this.favorites()
-    this.GlobalV.countTeamMembers = 0;
+    this.GlobalV.countTeamMembers = 0
   }
 
-  getUsu() {
+  /**
+   * Get info user
+   */
+  getUsu () {
     this.identity = this._userService.getIdentity()
     this.idUser = this.identity.id
   }
 
-  getTeamUsu() {
-    //obtenemos la informacion basica del team basico del usuario
+  /**
+   * Get Team info
+   */
+  getTeamUsu () {
     this._Team.getTeamInfo(this.identity.id).subscribe(
       res => {
         console.log(res)
@@ -60,13 +74,16 @@ export class MyHeroesComponent implements OnInit {
     )
   }
 
-  // entity.member entity.codHero para eñ body
-  addMember(idHero) {
+  /**
+   * Add member to the team
+   * @param {number} idHero
+   */
+  addMember (idHero) {
     var data = { member: this.GlobalV.memberTeamNUll, codHero: idHero }
     this._Team.addMember(this.myTeamInfo.idTeam, data).subscribe(
       res => {
         this.getTeamUsu()
-        this.GlobalV.countTeamMembers++;
+        this.GlobalV.countTeamMembers++
         this.newM = this.newM + 1
       },
       error => {
@@ -75,7 +92,10 @@ export class MyHeroesComponent implements OnInit {
     )
   }
 
-  following() {
+  /**
+   * hero`s following
+   */
+  following () {
     this._UserHero.allHerosFoll(this.identity.id).subscribe(res => {
       this.heroesFol = res
     }),
@@ -84,7 +104,10 @@ export class MyHeroesComponent implements OnInit {
       }
   }
 
-  favorites() {
+  /**
+   * hero`s favorites
+   */
+  favorites () {
     this._UserHero.allHerosFav(this.identity.id).subscribe(res => {
       this.heroesFav = res
     }),
@@ -93,20 +116,21 @@ export class MyHeroesComponent implements OnInit {
       }
   }
 
-  createTeam(statusF): void {
+  /**
+   * function for open modal to create a team
+   *  @param {string} statusF
+   */
+  createTeam (statusF): void {
     const dialogRef = this.dialog.open(TeamDialogComponent, {
-      // Le pasamos los datos que queremos
       data: {
         idUsu: this.identity.id,
         status: statusF,
-        teamInfo: this.myTeamInfo,
+        teamInfo: this.myTeamInfo
       }
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed')
-      // this.getTeamUsu()
       this.idUser = this.identity.id
     })
   }
-
 }

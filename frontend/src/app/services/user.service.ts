@@ -2,38 +2,60 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from '../models/user';
+import { Observable } from 'rxjs';
 
+/**
+ * Service that contains all the routes to our api regarding users
+ */
 @Injectable({
   providedIn: "root",
 })
+
+
 export class UserService {
-  //variable almacenamos la url de nuestra api node
+  /**
+  * Variable in which we store the url of our api
+  */
   private baseUrl: string = environment.BASE_API_URL;
+  /**
+  * Variable in which we store the token info about the user
+  */
   public identity;
+  /**
+  * Variable in which we store the token 
+  */
   public token;
 
-  // inyectamos en nuestro constructtor nuestro servicio http
+  /**
+   * Constructor in which we inject httpClient to make http requests
+   */
   constructor(private http: HttpClient) { }
 
-  // routes
-
-  // Register User
+  /**
+  * Register User
+  * @param {User} user
+  */
   public RegisterUser(user) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
     return this.http.post(this.baseUrl + '/auth/signup', user,
       { headers: headers });
   }
 
-  // login User
+  /**
+   * Login User
+   * @param {User} user
+   */
   public LoginUser(user) {
-    // si toker es igual a null user lleva la propiedad token
+    // if toker equals null user takes the token property
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.baseUrl + '/auth/signin', user,
       { headers: headers });
   }
 
-  //obtener usuario del localstorage
+  /**
+   * Get user from localstorage
+   * @returns identity
+   */
   public getIdentity() {
     let identity = JSON.parse(localStorage.getItem('User'));
     if (identity != 'undefined') {
@@ -44,7 +66,10 @@ export class UserService {
     return this.identity;
   }
 
-  // obtener token del localstorage
+  /**
+ * Get token from localstorage
+ * @returns token
+ */
   public getToken() {
     let token = localStorage.getItem('token');
     if (token != 'undefined') {
@@ -55,18 +80,21 @@ export class UserService {
     return this.token;
   }
 
-  //traducir el token para coger la fecha de expedicion
+  /**
+  * translate the token to catch the expiration date
+  * @returns token expiration date
+  */
   public getTokenInfo() {
     let token = (localStorage.getItem('token'));
     let payload;
     if (token) {
-      //cortamos el token desde el punto que nos interesa
+      // we cut the token from the point that interests us
       payload = token.split('.')[1];
-      //  utilizamos window.atob que descodifica una cadena de datos que ha sido codificada utilizando la codificación en base-64
+      // we use window.atob which decodes a data string that has been encoded using base-64 encoding
       payload = window.atob(payload);
       // console.log(payload.split(`"exp":`)[1])
       return JSON.parse(payload);
-      //  // JSON.parse(payload);
+      //  JSON.parse(payload);
       //  payload.split(`"exp":`)[1];
       //  payload.split("}")[0];
       //  console.log(payload)
@@ -76,10 +104,12 @@ export class UserService {
     }
   }
 
-  //comprobar tiempo de expiracion del token
+  /**
+  * Check token expiration time
+  * @returns boolean
+  */
   public isLoggedIn(): boolean {
     const user = this.getTokenInfo();
-    // console.log(user.exp)
     if (user) {
       // return user.exp > (Date.now() / 1000) + (60 * 60);  // Token de una hora de duración
       return user.exp > Date.now() / 1000;
@@ -88,51 +118,57 @@ export class UserService {
     }
   }
 
-
-  // //obtener un usuario
-  // router.get('/:idUsu', UserController.get);
-  public getUser(idUsu: number) {
+  /**
+   * Get user 
+   * @param {number} idUsu
+   * @returns user
+   */
+  public getUser(idUsu: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/user/${idUsu}`);
   }
 
-  // //actualizar un usuario
-  // router.put('/:idUsu', UserController.update);
+  /**
+  * Update a user 
+  * @param {number} idUsu
+  * @param {User} user
+  */
   public updateUser(idUsu: number, user) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(user);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    // añadimos el token a la cabecera
+    // we add the token to the header
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
-    
-    // headers = headers.set('Authorization', `Bearer ${ tokenAuth }`);
     return this.http.put(`${this.baseUrl}/user/${idUsu}`, user, { headers: headers });
   }
 
-  // //actualizar contraseña(email,password,newpassword)
-  // router.put('/newpass/:idUsu', UserController.updatePass);
+  /**
+  * Update a user password
+  * @param {number} idUsu
+  * @param {any} data
+  */
   public updatePass(idUsu: number, data) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/user/newpass/${idUsu}`, data, { headers: headers });
   }
 
-  // // Eliminar informacion de usuario de la bd (email,password)
+  /**
+  * Delete a user
+  * @param {number} idUsu
+  * @param {any} data
+  */
   public deleteUser(idUsu: number, data) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    // let params = JSON.stringify(data);
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.post(`${this.baseUrl}/user/deleteUser/${idUsu}`, data,
       { headers: headers });
   }
 
-
-  // // Follow a user(idUsu,idUsuFollow)
-  // router.post('/followUser', UserController.followUser);
+  /**
+   * Follow a user
+   * @param {any} ides
+   */
   public followUser(ides) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
@@ -141,8 +177,10 @@ export class UserService {
       { headers: headers });
   }
 
-  // // unfollow a user
-  // router.delete('/unFollowUser/:idUsu/:idUnfollow', UserController.unFollowUser);
+  /**
+  * Unfollow a user
+  * @param {any} ides
+  */
   public unFollowUser(idUsu: number, idUnfollow: number) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
@@ -150,56 +188,70 @@ export class UserService {
     return this.http.delete(`${this.baseUrl}/user/unFollowUser/${idUsu}/${idUnfollow}`, { headers: headers });
   }
 
-  public getUserByName(alias: string) {
-    console.log('llego aqui')
+  /**
+ * Get users by alias
+ * @param {string} alias
+ * @returns user[]
+ */
+  public getUserByName(alias: string) : Observable<User[]>{
     return this.http.get<User[]>(`${this.baseUrl}/user/getUserByName/${alias}`);
   }
 
+  /**
+  * Check whether a user is being followed
+  * @param {number} idUsu
+  * @param {number} idUnfollow
+  * @returns any
+  */
   public checkFollow(idUsu: number, idUnfollow: number) {
     return this.http.get<any>(`${this.baseUrl}/user/checkFollow/${idUsu}/${idUnfollow}`);
   }
 
-
-  // // obtener todos los usuarios que sigues
-  // router.get('/getFollowUsers/:idUsu', UserController.getFollowUsers);
-  public getFollowUsers(idUsu: number) {
+  /**
+    * Get all the users you follow
+    * @param {number} idUsu
+    * @returns User[]
+    */
+  public getFollowUsers(idUsu: number): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/user/getFollowUsers/${idUsu}`);
   }
-  // // obtener todos los usuarios que te siguen
-  // router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers);
-  public getFollowersUsers(idUsu: number) {
+
+  /**
+  * Get all the users who follow you
+  * @param {number} idUsu
+  * @returns User[]
+  */
+  public getFollowersUsers(idUsu: number): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/user/getFollowersUsers/${idUsu}`);
   }
 
-
-  //actualizar img
-  // router.put('/newImg/:idUsu/:img', UserController.newImg);
-
-
-  // public newImg(idUsu: number, img:string) {
-  //   let headers = new HttpHeaders().set('Content-Type', 'application/json');
-  //   return this.http.put(`${this.baseUrl}/user/newImg/${idUsu}/${img}`,{ headers: headers });
-  // }
-
+  /**
+  * Update profile picture
+  * @param {any} data
+  */
   public newImg(data) {
-    console.log("llego aqui")
-    console.log(data)
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.put(`${this.baseUrl}/user/newImg/user`, data, { headers: headers });
   }
 
-  public allusers(){
+  /**
+* Get all the users 
+* @returns User[]
+*/
+  public allusers(): Observable<User[]> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
-    return this.http.get<User[]>(`${this.baseUrl}/admin/allusers`,{ headers: headers });
+    return this.http.get<User[]>(`${this.baseUrl}/admin/allusers`, { headers: headers });
   }
 
 
+  /**
+    * Delete a user 
+    * @param {number} idUsu
+    */
   public adminDeleteUser(idUsu: number) {
     console.log(idUsu)
     let headers = new HttpHeaders().set('Content-Type', 'application/json');

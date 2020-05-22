@@ -61,6 +61,13 @@
                 <code>src/app/services/auth.guard.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Auth guard ,controls whether the user is identified or not</p>
+
+                </p>
 
 
 
@@ -104,12 +111,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.guard.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/auth.guard.ts:16</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor in which we inject User Service and Router service</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -181,8 +190,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/services/auth.guard.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/services/auth.guard.ts:25</a></div>
                 </td>
             </tr>
 
@@ -214,6 +223,9 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from &#x27;rxjs&#x27;;
 import { UserService } from &#x27;./user.service&#x27;;
 
+/**
+* Auth guard ,controls whether the user is identified or not
+*/
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -222,12 +234,15 @@ import { UserService } from &#x27;./user.service&#x27;;
 * Auth guard ,controls whether the user is identified or not
 */
 export class AuthGuard implements CanActivate {
+  /**
+    * Constructor in which we inject User Service and Router service
+    */
   constructor(private _userService: UserService, private _router: Router) { }
 
-/**
- * @returns boolean, if the user is identified returns true if not false
- */
-canActivate(): boolean {
+  /**
+   * @returns boolean, if the user is identified returns true if not false
+   */
+  canActivate(): boolean {
     if (!this._userService.isLoggedIn()) {
       localStorage.clear();
       this._router.navigateByUrl(&#x27;/login&#x27;);

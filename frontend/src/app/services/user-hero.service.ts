@@ -2,80 +2,100 @@ import { Injectable } from '@angular/core';
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { UserHero } from '../models/userHero';
+import { Hero } from '../models/hero';
+import { Observable } from 'rxjs';
 
+/**
+ * Service that contains all the routes to our api about the relationship of users and heroes
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class UserHeroService {
-  //variable almacenamos la url de nuestra api node
+  /**
+   * Variable in which we store the url of our api
+   */
   private baseUrl: string = environment.BASE_API_URL;
 
-
+  /**
+    * Constructor in which we inject httpClient to make http requests
+    */
   constructor(private http: HttpClient) { }
 
-
-  //  // Follow a hero(idUsu,idHero)
-  //  router.put('/followHero', UserHeroController.followHero);
+  /**
+   * Follow a hero
+   * @param {any} ids
+   */
   public followHero(ids) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(ids);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/userHero/followHero`, ids, { headers: headers });
   }
 
-  //  // Unfollow a hero(idUsu,idHero)
-  //  router.put('/unfollowHero', UserHeroController.unfollowHero);
+  /**
+   * Unfollow a hero
+   * @param {any} ids
+   */
   public unfollowHero(ids) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(ids);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/userHero/unfollowHero`, ids, { headers: headers });
   }
-  //  // favorite a hero(idUsu,idHero)
-  //  router.put('/favorite', UserHeroController.favorite);
+
+  /**
+   * Favorite a hero
+   * @param {any} ids
+   */
   public favorite(ids) {
-    // para convertir el objeto en un string
     let params = JSON.stringify(ids);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/userHero/favorite`, params, { headers: headers });
   }
-  //  // unfavorite a hero(idUsu,idHero)
-  //  router.put('/unfavorite', UserHeroController.unfavorite);
+
+  /**
+   * Unfavorite a hero
+   * @param {any} ids
+   */
   public unfavorite(ids) {
-    // para convertir el objeto en un string
     let params = JSON.stringify(ids);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/userHero/unfavorite`, params, { headers: headers });
   }
-  //  // vote (score,idUsu,idHero)
+
+
+  /**
+    * vote a hero
+    * @param {any} data
+    */
   public voteHero(data) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/userHero/voteHero`, data, { headers: headers });
   }
 
-  //  // comment(comment,idUsu,idHero)
-  //  router.put('/commentHero', UserHeroController.commentHero);
+  /**
+   * Comment a hero
+   * @param {any} data
+   */
   public commentHero(data) {
-    // para convertir el objeto en un string
-    // let params = JSON.stringify(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/userHero/commentHero`, data, { headers: headers });
   }
 
-  //  // delete comment  (idUsu,idHero)
-  //  router.put('/deleteCHero', UserHeroController.deleteCHero);
+  /**
+    * Delete comment
+    * @param {any} ids
+    */
   public deleteCHero(ids) {
-    // para convertir el objeto en un string
     let params = JSON.stringify(ids);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put(`${this.baseUrl}/userHero/deleteCHero`, params, { headers: headers });
   }
 
-  //obtener la relacion del heroe y el usuario
-  //  router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
-  public getHeroUsu(idUsu: number, idHero: number) {
+  /**
+  * Get the relationship of the hero and the user
+  * @param {number} idUsu
+  * @param {number} idHero
+  * @returns UserHero
+  */
+  public getHeroUsu(idUsu: number, idHero: number): Observable<UserHero> {
     return this.http.get<UserHero>(`${this.baseUrl}/userHero/getHeroUsu/${idUsu}/${idHero}`);
   }
 
@@ -85,40 +105,65 @@ export class UserHeroService {
   //   return this.http.get<UserHero>(`${this.baseUrl}/userHero/commentHero/${idUsu}/${idHero}`);
   // }
 
-  //  // obtener todos los heroes favoritos
-  //  router.get('/allHerosFav/:idUsu', UserHeroController.allHerosFav);
-  public allHerosFav(idUsu: number) {
-    return this.http.get<any>(`${this.baseUrl}/userHero/allHerosFav/${idUsu}`);
+  /**
+  * Get all the favorite heroes
+  * @param {number} idUsu
+  * @returns hero[]
+  */
+  public allHerosFav(idUsu: number): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this.baseUrl}/userHero/allHerosFav/${idUsu}`);
   }
 
-  //  //obtener todos los heroes follow
-  //  router.get('/allHerosFoll/:idUsu', UserHeroController.allHerosFoll);
-  public allHerosFoll(idUsu: number) {
-    return this.http.get<any>(`${this.baseUrl}/userHero/allHerosFoll/${idUsu}`);
-  }
-  //   //obtener hero de marvel mas votado
-  //   router.get('/bestMarverHero', UserHeroController.bestMarverHero);
-  public bestMarverHero() {
-    return this.http.get(`${this.baseUrl}/userHero/bestMarverHero`);
-  }
-  //   //obtener hero de Dc mas votado
-  //   router.get('/bestDCHero', UserHeroController.bestDCHero);
-  public bestDCHero() {
-    return this.http.get(`${this.baseUrl}/userHero/bestDCHero`);
-  }
-  //   // obtener los heroes más seguidos
-  //  router.get('/mostFollowHeros', UserHeroController.mostFollowHeros);
-  public mostFollowHeros() {
-    return this.http.get<any>(`${this.baseUrl}/userHero/mostFollowHeros`);
+  /**
+ * Get all the follow heroes
+ * @param {number} idUsu
+ * @returns hero[]
+ */
+  public allHerosFoll(idUsu: number): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this.baseUrl}/userHero/allHerosFoll/${idUsu}`);
   }
 
-  // //obtener todos los comentarios de un hero
-  public getHeroComments(id: number) {
+  /**
+  * Get top rated marvel hero
+  * @returns hero
+  */
+  public bestMarverHero(): Observable<Hero> {
+    return this.http.get<Hero>(`${this.baseUrl}/userHero/bestMarverHero`);
+  }
+
+  /**
+   * Get top rated DC hero
+   * @returns hero
+   */
+  public bestDCHero(): Observable<Hero> {
+    return this.http.get<Hero>(`${this.baseUrl}/userHero/bestDCHero`);
+  }
+
+  /**
+    * Get the most followed heroes
+    * @returns hero[]
+    */
+  public mostFollowHeros(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this.baseUrl}/userHero/mostFollowHeros`);
+  }
+
+
+  /**
+    * Get all the comments of a hero
+    * @param {number} id
+    * @returns any
+    */
+  public getHeroComments(id: number) : Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/userHero/getHeroComments/${id}`);
   }
 
-  //  get the mean of a hero's scores
-  public getHeroRateScore(id: number) {
+
+  /**
+   * Get the mean of a hero's scores
+   * @param {number} id
+   * @returns any
+   */
+  public getHeroRateScore(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/userHero/getHeroRateScore/${id}`);
   }
 

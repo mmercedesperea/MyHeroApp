@@ -12,12 +12,19 @@ import { MatSnackBar } from '@angular/material';
   templateUrl: './add-hero.component.html',
   styleUrls: ['./add-hero.component.scss']
 })
+
+/**
+ * Component for add a hero
+ */
 export class AddHeroComponent implements OnInit {
   public newHeroForm: FormGroup
   public hero: Hero
   public message: string
   public correctData: boolean
 
+  /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(
     private _snackBar: MatSnackBar,
     private _adapter: DateAdapter<any>,
@@ -25,6 +32,9 @@ export class AddHeroComponent implements OnInit {
     private _heroService: HeroService
   ) { }
 
+  /**
+   * Start when de component init
+   */
   ngOnInit() {
     this.correctData = true;
     this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', null)
@@ -126,6 +136,11 @@ export class AddHeroComponent implements OnInit {
     })
   }
 
+  /**
+   * function to control error messages
+   * @param {string} dato
+   * @returns message
+   */
   getErrorMessage(dato) {
     var result: string
     if (this.newHeroForm.controls[dato].hasError('required')) {
@@ -147,8 +162,9 @@ export class AddHeroComponent implements OnInit {
   }
 
 
-
-
+/**
+ * Function for save a hero
+ */
   saveHero() {
     this._heroService.newHero(this.hero).subscribe(
       response => {
@@ -160,11 +176,6 @@ export class AddHeroComponent implements OnInit {
       },
       error => {
         this.correctData = false;
-        // if (error.status === 400) {
-        //   this.message = 'User already exists';
-        //   console.log(error.status);
-        //   console.log(this.message);
-        // } else {
           console.log(error.status);
           this.message = 'create hero failed';
           console.log(this.message);

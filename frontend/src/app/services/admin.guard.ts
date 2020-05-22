@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { UserService } from './user.service';
+import { Injectable } from '@angular/core'
+import { CanActivate, Router } from '@angular/router'
+import { UserService } from './user.service'
 
 /**
  * Admin guard ,controls whether the user is an administrator or not
@@ -9,25 +9,29 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 
-export class AdminGuard implements CanActivate {
-  constructor(private _UserService: UserService, private _router: Router) { }
-
 /**
- * @returns boolean, if the user is admin returns true if not false
+ * Admin guard ,controls whether the user is an administrator or not
  */
-  canActivate(): boolean {
+export class AdminGuard implements CanActivate {
+  /**
+   * Constructor in which we inject User Service and Router service
+   */
+  constructor (private _UserService: UserService, private _router: Router) {}
 
+  /**
+   * @returns boolean, if the user is admin returns true if not false
+   */
+  canActivate (): boolean {
     /**
      * Store the user that is in the session
      */
-    let identity = this._UserService.getIdentity();
+    let identity = this._UserService.getIdentity()
 
     if (identity && identity.admin == 1) {
       return true
     } else {
-      this._router.navigateByUrl('/');
+      this._router.navigateByUrl('/')
       return false
     }
   }
-
 }

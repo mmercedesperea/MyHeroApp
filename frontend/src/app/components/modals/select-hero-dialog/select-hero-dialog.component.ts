@@ -1,120 +1,89 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { HeroService } from 'src/app/services/hero.service';
-import { Hero } from 'src/app/models/hero';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
+import { Component, OnInit, Inject } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { HeroService } from 'src/app/services/hero.service'
+import { Hero } from 'src/app/models/hero'
 
 @Component({
   selector: 'select-hero-dialog',
   templateUrl: './select-hero-dialog.component.html',
   styleUrls: ['./select-hero-dialog.component.scss']
 })
+
+/**
+ * Component for select a Hero
+ */
 export class selectHeroComponent implements OnInit {
-  public sessonHero: Hero;
-  public heroes: Hero[];
-  // public searchForm: FormGroup;
-  public HeroSelectId: number=0;
-  // public sessonHero2: Hero;
-  constructor(public dialogRef: MatDialogRef<selectHeroComponent>,
-    // private formBuilder: FormBuilder,
+  public sessonHero: Hero
+  public heroes: Hero[]
+  public HeroSelectId: number = 0
+
+   /**
+   * Constructor in which we inject our services and diferents elements
+   */
+  constructor (
+    public dialogRef: MatDialogRef<selectHeroComponent>,
     private _HeroService: HeroService,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.sessonHero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', null, 0)
-    // this.sessonHero2 = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '','', '','', null,0)
   }
 
-  ngOnInit() {
-    // this.searchForm = this.formBuilder.group({
-    //   heroName: [
-    //     '',
-    //     [Validators.required, Validators.minLength(1), Validators.maxLength(100)]
-    //   ]
-    // });
-  }
+   /**
+   * Start when de component init
+   */
+  ngOnInit () {}
 
-  // getErrorMessage(dato) {
-  //   var result: string;
-  //   if (this.searchForm.controls[dato].hasError('required')) {
-  //     return (result = 'This information is required');
-  //   } else if (this.searchForm.controls[dato].hasError('minlength')) {
-  //     return (result = 'You must enter at least 1 characters');
-  //   } else if (this.searchForm.controls[dato].hasError('maxlength')) {
-  //     return (result = 'The maximum of characters is 100');
-  //   } else {
-  //     return (result = '');
-  //   }
-  // }
-
-  getHeroByName(name){
-    console.log("llego")
-    this._HeroService.getHeroByName(name).subscribe(res => {
-     
-      // console.log(res.idHero)
-      this.heroes = res;
-      console.log(JSON.stringify(this.heroes, null, 2));
-      // console.log(this.hero);
-    },
+  /**
+   * function get a hero by name
+   * @param {string} teamName
+   */
+  getHeroByName (name) {
+    this._HeroService.getHeroByName(name).subscribe(
+      res => {
+        this.heroes = res
+        console.log(JSON.stringify(this.heroes, null, 2))
+      },
       error => {
         console.log(error)
       }
     )
   }
 
-  selectHero(idHero){
-    this.HeroSelectId=idHero
+  /**
+   * function save idHero
+   * @param {number} idHero
+   */
+  selectHero (idHero) {
+    this.HeroSelectId = idHero
   }
-  // getHero(id) {
-  //   this._HeroService.getHeroById(id).subscribe(res => {
-  //     this.sessonHero = res;
-  //     // console.log(JSON.stringify(this.hero, null, 2));
-  //   },
-  //     error => {
-  //       console.log(error)
-  //     }
 
-  //   )
-  // }
-
-  async saveHeroStorage(id) {
-    // await this.getHero(id)
-    this._HeroService.getHeroById(id).subscribe(res => {
-      this.sessonHero = res;
-      if (this.data.position === 1) {
-        console.log("hero1")
-        console.log(this.sessonHero)
-        sessionStorage.setItem('Hero', JSON.stringify(this.sessonHero));
-  
-      } else {
-        console.log("hero2")
-        sessionStorage.setItem('Hero2', JSON.stringify(this.sessonHero));
-  
-  
-      }
-      // console.log(JSON.stringify(this.hero, null, 2));
-    },
+  /**
+   * function to save hero in the storage
+   * @param {number} id
+   */
+  async saveHeroStorage (id) {
+    this._HeroService.getHeroById(id).subscribe(
+      res => {
+        this.sessonHero = res
+        if (this.data.position === 1) {
+          console.log('hero1')
+          console.log(this.sessonHero)
+          sessionStorage.setItem('Hero', JSON.stringify(this.sessonHero))
+        } else {
+          console.log('hero2')
+          sessionStorage.setItem('Hero2', JSON.stringify(this.sessonHero))
+        }
+      },
       error => {
         console.log(error)
       }
-
     )
-  //   if (this.data.position === 1) {
-  //     console.log("hero1")
-  //     console.log(this.sessonHero)
-  //     sessionStorage.setItem('Hero', JSON.stringify(this.sessonHero));
-
-  //   } else {
-  //     console.log("hero2")
-  //     sessionStorage.setItem('Hero2', JSON.stringify(this.sessonHero));
-
-
-  //   }
-
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  /**
+   * To close modal
+   */
+  onNoClick (): void {
+    this.dialogRef.close()
   }
-
-
 }

@@ -70,65 +70,93 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;
+import { Routes, RouterModule } from &#x27;@angular/router&#x27;
 
-//components
-import { LoginComponent } from &#x27;./components/login/login.component&#x27;;
-import { RegisterComponent } from &#x27;./components/register/register.component&#x27;;
-import { HomeComponent } from &#x27;./components/home/home.component&#x27;;
-import { FightComponent } from &#x27;./components/fight/fight.component&#x27;;
-import { ProfileComponent } from &#x27;./components/profile/profile.component&#x27;;
-import { HeroesDetailComponent } from &#x27;./components/heroes-detail/heroes-detail.component&#x27;;
-import { HeroesSearchComponent } from &#x27;./components/heroes-search/heroes-search.component&#x27;;
-import { MyHeroesComponent } from &#x27;./components/my-heroes/my-heroes.component&#x27;;
-import { AuthGuard } from &#x27;./services/auth.guard&#x27;;
-import { PublicProfileComponent } from &#x27;./components/public-profile/public-profile.component&#x27;;
-import { FightTeamComponent } from &#x27;./components/fight/fight-team/fight-team.component&#x27;;
-import { FightHeroComponent } from &#x27;./components/fight/fight-hero/fight-hero.component&#x27;;
+/**
+ * Components
+ */
+import { LoginComponent } from &#x27;./components/login/login.component&#x27;
+import { RegisterComponent } from &#x27;./components/register/register.component&#x27;
+import { HomeComponent } from &#x27;./components/home/home.component&#x27;
+import { FightComponent } from &#x27;./components/fight/fight.component&#x27;
+import { ProfileComponent } from &#x27;./components/profile/profile.component&#x27;
+import { HeroesDetailComponent } from &#x27;./components/heroes-detail/heroes-detail.component&#x27;
+import { HeroesSearchComponent } from &#x27;./components/heroes-search/heroes-search.component&#x27;
+import { MyHeroesComponent } from &#x27;./components/my-heroes/my-heroes.component&#x27;
+import { AuthGuard } from &#x27;./services/auth.guard&#x27;
+import { PublicProfileComponent } from &#x27;./components/public-profile/public-profile.component&#x27;
+import { FightTeamComponent } from &#x27;./components/fight/fight-team/fight-team.component&#x27;
+import { FightHeroComponent } from &#x27;./components/fight/fight-hero/fight-hero.component&#x27;
 
-// // canActivate:[AuthGuardService]
+/**
+ * App Routes
+ */
 const routes: Routes &#x3D; [
   {
-    path: &#x27;&#x27;, pathMatch: &#x27;full&#x27;, redirectTo: &#x27;home&#x27;
+    path: &#x27;&#x27;,
+    pathMatch: &#x27;full&#x27;,
+    redirectTo: &#x27;home&#x27;
   },
   {
-    path: &#x27;home&#x27;, component: HomeComponent
-  }, {
-    path: &#x27;login&#x27;, component: LoginComponent
-  }, {
-    path: &#x27;register&#x27;, component: RegisterComponent
-  }, {
-    path: &#x27;fight&#x27;, component: FightComponent, canActivate:[AuthGuard],
+    path: &#x27;home&#x27;,
+    component: HomeComponent
+  },
+  {
+    path: &#x27;login&#x27;,
+    component: LoginComponent
+  },
+  {
+    path: &#x27;register&#x27;,
+    component: RegisterComponent
+  },
+  {
+    path: &#x27;fight&#x27;,
+    component: FightComponent,
+    canActivate: [AuthGuard],
     children: [
       {
-          path: &#x27;fightTeam&#x27;, component: FightTeamComponent, canActivate:[AuthGuard]
+        path: &#x27;fightTeam&#x27;,
+        component: FightTeamComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path: &#x27;fightHero&#x27;, component: FightHeroComponent, canActivate:[AuthGuard]
-    },
+        path: &#x27;fightHero&#x27;,
+        component: FightHeroComponent,
+        canActivate: [AuthGuard]
+      }
     ]
-  }, {
-    path: &#x27;profile&#x27;, component: ProfileComponent, canActivate:[AuthGuard]
-  }, {
-    path: &#x27;heroesDetail/:id&#x27;, component: HeroesDetailComponent
-  }, {
-    path: &#x27;heroesSearch/:data/:term&#x27;, component: HeroesSearchComponent
-  }, {
-    path: &#x27;myHeroes&#x27;, component: MyHeroesComponent, canActivate:[AuthGuard]
-  },{
-    path: &#x27;publicProfile/:user&#x27;, component: PublicProfileComponent, canActivate:[AuthGuard]
   },
-  // {
-  //   path: &#x27;**&#x27;, component: HomeComponent
-  // }
-];
+  {
+    path: &#x27;profile&#x27;,
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: &#x27;heroesDetail/:id&#x27;,
+    component: HeroesDetailComponent
+  },
+  {
+    path: &#x27;heroesSearch/:data/:term&#x27;,
+    component: HeroesSearchComponent
+  },
+  {
+    path: &#x27;myHeroes&#x27;,
+    component: MyHeroesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: &#x27;publicProfile/:user&#x27;,
+    component: PublicProfileComponent,
+    canActivate: [AuthGuard]
+  }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 </code></pre>
     </div>
 </div>

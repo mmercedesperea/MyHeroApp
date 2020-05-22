@@ -27,7 +27,7 @@ export class HeroService {
    * @param {string} name
    * @returns Array of heroes
    */
-  public getHeroByName(name: string) :Observable<Hero[]> {
+  public getHeroByName(name: string): Observable<Hero[]> {
     return this.http.get<Hero[]>(
       `${this.baseUrl}/hero/searchHeroByName/${name}`
     );
@@ -47,7 +47,7 @@ export class HeroService {
    * Get all the marvel heroes
    * @returns Array of heroes
    */
-  public allMarvelHeroes():  Observable<Hero[]> {
+  public allMarvelHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/MarvelHeroes`);
   }
 
@@ -55,7 +55,7 @@ export class HeroService {
    * Get all the DC heroes
    * @returns Array of heroes
    */
-  public allDCHeroes():  Observable<Hero[]> {
+  public allDCHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/all/DCHeroes`);
   }
 
@@ -65,7 +65,7 @@ export class HeroService {
    * @param {number} idHero2
    * @returns Hero
    */
-  public getWinner(idHero: number, idHero2: number) :  Observable<Hero>{
+  public getWinner(idHero: number, idHero2: number): Observable<Hero> {
     return this.http.get<Hero>(
       `${this.baseUrl}/hero/getWinner/${idHero}/${idHero2}`
     );
@@ -75,7 +75,7 @@ export class HeroService {
    * Get the smartest hero
    * @returns Hero
    */
-  public mostIntelligence():  Observable<Hero> {
+  public mostIntelligence(): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostIntelligence`);
   }
 
@@ -83,7 +83,7 @@ export class HeroService {
    * Get the stronger hero
    * @returns Hero
    */
-  public mostStrength():  Observable<Hero> {
+  public mostStrength(): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostStrength`);
   }
 
@@ -91,7 +91,7 @@ export class HeroService {
    * Get the fastest hero
    * @returns Hero
    */
-  public mostSpeed():  Observable<Hero> {
+  public mostSpeed(): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostSpeed`);
   }
 
@@ -99,7 +99,7 @@ export class HeroService {
    * Get more resistant hero
    * @returns Hero
    */
-  public mostDurability() :  Observable<Hero>{
+  public mostDurability(): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostDurability`);
   }
 
@@ -107,7 +107,7 @@ export class HeroService {
    * Get more power hero
    * @returns Hero
    */
-  public mostPower() :  Observable<Hero>{
+  public mostPower(): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostPower`);
   }
 
@@ -115,22 +115,31 @@ export class HeroService {
    * Get the hero with more combat
    * @returns Hero
    */
-  public mostCombat():  Observable<Hero> {
+  public mostCombat(): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/hero/stats/mostCombat`);
   }
 
-  // //obtener ultimos heroes añadidos
-  public newHeros():  Observable<Hero[]> {
+  /**
+   * Get the latest heroes added to the bd
+   * @returns Array of heroes
+   */
+  public newHeros(): Observable<Hero[]> {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/new/heros`);
   }
 
-  // obtener imagenes de heroes para perfil
-  // router.get('/profileImgHeroes', HeroController.profileImgHeroes);
-  public profileImgHeroes() :  Observable<any[]>{
+
+  /**
+   * Get hero images for profile
+   * @returns Array of heroes img
+   */
+  public profileImgHeroes(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/hero/img/profileImgHeroes`);
   }
 
-  // Create new hero
+  /**
+   * Create a new hero
+   * @param {Hero} hero
+   */
   public newHero(hero) {
     console.log('llego al servicio');
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -141,7 +150,12 @@ export class HeroService {
     });
   }
 
-  // modify hero
+
+  /**
+   * Modify hero
+   * @param {number} idHero
+   * @param {any} data
+   */
   public modifyHero(idHero: number, data) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     const tokenAuth = localStorage.getItem('token');

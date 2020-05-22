@@ -70,50 +70,51 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;
+import { Routes, RouterModule } from &#x27;@angular/router&#x27;
 
+/**
+ * Components
+ */
+import { MainComponent } from &#x27;./components/main/main.component&#x27;
+import { AddHeroComponent } from &#x27;./components/add-hero/add-hero.component&#x27;
+import { EditHeroComponent } from &#x27;./components/edit-hero/edit-hero.component&#x27;
+import { UserListComponent } from &#x27;./components/user-list/user-list.component&#x27;
+import { AdminGuard } from &#x27;../services/admin.guard&#x27;
+import { AuthGuard } from &#x27;../services/auth.guard&#x27;
 
-//components
-import { MainComponent } from &#x27;./components/main/main.component&#x27;;
-import { AddHeroComponent } from &#x27;./components/add-hero/add-hero.component&#x27;;
-import { EditHeroComponent } from &#x27;./components/edit-hero/edit-hero.component&#x27;;
-import { UserListComponent } from &#x27;./components/user-list/user-list.component&#x27;;
-import { AdminGuard } from &#x27;../services/admin.guard&#x27;;
-import { AuthGuard } from &#x27;../services/auth.guard&#x27;;
-
-
+/**
+ * App Routes about admin
+ */
 const adminRoutes: Routes &#x3D; [
-    {
-        // componente padre 
-        path: &#x27;admin-panel&#x27;,
-        component: MainComponent,
-        canActivate: [AdminGuard,AuthGuard],
-        children: [
-            {
-                path: &#x27;editHero&#x27;, component: EditHeroComponent
-            },
-            {
-                path: &#x27;addHero&#x27;, component: AddHeroComponent
-            },
-            {
-                path: &#x27;userList&#x27;, component: UserListComponent
-            }
-        ]
-
-    }
-
-];
+  {
+    // componente padre
+    path: &#x27;admin-panel&#x27;,
+    component: MainComponent,
+    canActivate: [AdminGuard, AuthGuard],
+    children: [
+      {
+        path: &#x27;editHero&#x27;,
+        component: EditHeroComponent
+      },
+      {
+        path: &#x27;addHero&#x27;,
+        component: AddHeroComponent
+      },
+      {
+        path: &#x27;userList&#x27;,
+        component: UserListComponent
+      }
+    ]
+  }
+]
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(adminRoutes)
-    ],
-    exports: [
-        RouterModule
-    ]
+  imports: [RouterModule.forChild(adminRoutes)],
+  exports: [RouterModule]
 })
-export class AdminRoutingModule { }</code></pre>
+export class AdminRoutingModule {}
+</code></pre>
     </div>
 </div>
 

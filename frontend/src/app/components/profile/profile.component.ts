@@ -6,7 +6,7 @@ import { Validators } from '@angular/forms'
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms'
 import { DateAdapter } from '@angular/material/core'
 import { MatSnackBar } from '@angular/material'
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog } from '@angular/material/dialog'
 import { ChangePassDialogComponent } from '../modals/change-pass-dialog/change-pass-dialog.component'
 import { DeleteUserDialogComponent } from '../modals/delete-user-dialog/delete-user-dialog.component'
 import { AvatarDialogComponent } from '../modals/avatar-dialog/avatar-dialog.component'
@@ -16,6 +16,10 @@ import { AvatarDialogComponent } from '../modals/avatar-dialog/avatar-dialog.com
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
+
+/**
+ * Component that bring user profile
+ */
 export class ProfileComponent implements OnInit {
   public identity
   public user: User
@@ -24,17 +28,23 @@ export class ProfileComponent implements OnInit {
   public FollowedUsers: User[] = []
   public FollowersUsers: User[] = []
 
-  constructor(
+  /**
+   * Constructor in which we inject user service,material module for snackBar, form builder, date adaptar and modals
+   */
+  constructor (
     private _snackBar: MatSnackBar,
     private _adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
     private _UserService: UserService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
     this.user = new User(0, '', '', '', '', '', new Date(0), '', false)
   }
 
-  ngOnInit() {
+  /**
+   * Start when de component init
+   */
+  ngOnInit () {
     this.identity = this._UserService.getIdentity()
     this.getInfoUser()
     this.getFollowersUsers()
@@ -44,9 +54,7 @@ export class ProfileComponent implements OnInit {
       alias: ['', [Validators.minLength(3), Validators.maxLength(30)]],
       name: ['', [Validators.minLength(3), Validators.maxLength(30)]],
       surname: ['', [Validators.minLength(3), Validators.maxLength(30)]],
-      dateOfBirth: [
-        this._adapter.setLocale('us')
-      ],
+      dateOfBirth: [this._adapter.setLocale('us')],
       email: [
         '',
         [Validators.email, Validators.minLength(6), Validators.maxLength(30)]
@@ -54,7 +62,10 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  getInfoUser() {
+  /**
+   * Get info user
+   */
+  getInfoUser () {
     this._UserService.getUser(this.identity.id).subscribe(
       res => {
         console.log(res)
@@ -66,7 +77,10 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  getFollowedUsers() {
+  /**
+   * Get users followed by the user
+   */
+  getFollowedUsers () {
     this._UserService.getFollowUsers(this.identity.id).subscribe(
       res => {
         console.log(res)
@@ -78,7 +92,10 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  getFollowersUsers() {
+  /**
+   * Get users followers
+   */
+  getFollowersUsers () {
     this._UserService.getFollowersUsers(this.identity.id).subscribe(
       res => {
         console.log(res)
@@ -90,88 +107,101 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  getErrorMessage(dato) {
-    var result: string;
+ /**
+   * function to control error messages
+   * @param {string} dato
+   * @returns message
+   */
+  getErrorMessage (dato) {
+    var result: string
     if (this.profileForm.controls[dato].hasError('minlength')) {
       if (dato === 'email') {
-        return (result = 'You must enter at least 6 characters');
+        return (result = 'You must enter at least 6 characters')
       } else {
-        return (result = 'You must enter at least 3 characters');
+        return (result = 'You must enter at least 3 characters')
       }
     } else if (this.profileForm.controls[dato].hasError('maxlength')) {
-      return (result = 'The maximum of characters is 30');
+      return (result = 'The maximum of characters is 30')
     } else if (
       this.profileForm.controls[dato].hasError('email') &&
       dato === 'email'
     ) {
       return (result = 'You have to enter a valid email')
     } else {
-      return (result = '');
+      return (result = '')
     }
   }
 
-  submit() {
+  /**
+   * submit form function
+   */
+  submit () {
     this._UserService.updateUser(this.identity.id, this.user).subscribe(
       res => {
         console.log(res)
         this.openSnackBar('YOUR PROFILE HAS BEEN UPDATED', 'Close')
-
-        // this.router.navigateByUrl("/profile");
       },
       err => console.error(err)
     )
-
-    // this.dialogRef.close(`${form.value.name}`);
   }
 
-  openSnackBar(message: string, action: string) {
+  /**
+   * function for open snackBars
+   *  @param {string} message
+   *  @param {string} action
+   */
+  openSnackBar (message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 8000,
       panelClass: ['blue-snackbar']
     })
   }
 
-
-  changePassDialog(): void {
+  /**
+   * function for open modal to change pass
+   */
+  changePassDialog (): void {
     const dialogRef = this.dialog.open(ChangePassDialogComponent, {
-      // Le pasamos los datos que queremos
       data: {
         userId: this.identity.id,
         alias: this.identity.alias,
         email: this.identity.email
       }
-    });
+    })
     dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
-    });
+      console.log('The dialog was closed')
+    })
   }
 
-  deleteUserDialog(): void {
+  /**
+   * function for open modal to delete user
+   */
+  deleteUserDialog (): void {
     const dialogRef = this.dialog.open(DeleteUserDialogComponent, {
-      // Le pasamos los datos que queremos
       data: {
         userId: this.identity.id,
         alias: this.identity.alias,
         email: this.identity.email
       }
-    });
+    })
     dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
-    });
+      console.log('The dialog was closed')
+    })
   }
 
-  avatarDialog(): void {
+  /**
+   * function for open modal to change avatar
+   */
+  avatarDialog (): void {
     const dialogRef = this.dialog.open(AvatarDialogComponent, {
-      // Le pasamos los datos que queremos
       data: {
         userId: this.identity.id,
         userPhoto: this.user.photo
       }
-    });
+    })
     dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
+      console.log('The dialog was closed')
       this.getInfoUser()
-    });
+    })
   }
 }
-

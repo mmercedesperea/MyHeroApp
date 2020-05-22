@@ -184,12 +184,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:17</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor in which we inject our services and diferents elements</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -265,14 +267,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:61</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Open modal for delete a user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -340,14 +344,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:47</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>To delete a user from app</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -406,14 +412,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:34</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>To get all users in the app</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -445,14 +453,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:27</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Start when de component init</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -489,7 +499,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -522,7 +532,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/admin/components/user-list/user-list.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -546,15 +556,28 @@ import { AdminDeleteUserDialogComponent } from &#x27;src/app/components/modals/a
   templateUrl: &#x27;./user-list.component.html&#x27;,
   styleUrls: [&#x27;./user-list.component.scss&#x27;]
 })
+
+/**
+ * Component that bring List of users
+ */
 export class UserListComponent implements OnInit {
   public users: User[] &#x3D; [];
 
+  /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(  public dialog: MatDialog,private _userService: UserService) { }
 
+  /**
+   * Start when de component init
+   */
   ngOnInit() {
     this.getAllUsers()
   }
 
+  /**
+   * To get all users in the app
+   */
   getAllUsers() {
     this._userService.allusers().subscribe(res &#x3D;&gt; {
       this.users &#x3D; res;
@@ -564,6 +587,10 @@ export class UserListComponent implements OnInit {
     })
   }
 
+  /**
+   * To delete a user from app
+   * @param {number}idUsu 
+   */
   deteteUser(idUsu){
     this._userService.adminDeleteUser(idUsu).subscribe(res &#x3D;&gt; {
       console.log(res)
@@ -573,12 +600,14 @@ export class UserListComponent implements OnInit {
     })
   }
 
-
+  /**
+   * Open modal for delete a user
+   * @param {number} idUsu 
+   * @param {string}name 
+   */
   deleteUserDialog(idUsu,name): void {
     console.log(idUsu,name)
     const dialogRef &#x3D; this.dialog.open(AdminDeleteUserDialogComponent, {
-      // Le pasamos los datos que queremos
-      
       data: {
         userId: idUsu,
         UserName:name

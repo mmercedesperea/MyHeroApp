@@ -4,11 +4,21 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './fight.component.html',
   styleUrls: ['./fight.component.scss']
 })
+
+/**
+ * Component for fcontains other fight component
+ */
 export class FightComponent implements OnInit {
 
+  /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(
   ){}
 
+  /**
+   * Start when de component init
+   */
   ngOnInit() {
   }
 

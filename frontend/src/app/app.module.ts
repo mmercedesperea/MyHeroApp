@@ -18,14 +18,28 @@ import { DeleteUserDialogComponent } from './components/modals/delete-user-dialo
 import { ChangePassDialogComponent } from './components/modals/change-pass-dialog/change-pass-dialog.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
-// new modules
+/**
+  * New modules
+  */
 import {AdminModule} from './admin/admin.module'
+import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog.component';
+import { TeamComponent } from './components/team/team.component';
+import { AvatarDialogComponent } from './components/modals/avatar-dialog/avatar-dialog.component';
+import { AdminDeleteUserDialogComponent } from './components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component';
+import { FightTeamComponent } from './components/fight/fight-team/fight-team.component';
+import { FightHeroComponent } from './components/fight/fight-hero/fight-hero.component';
+import { SelectTeamDialogComponent } from './components/modals/select-team-dialog/select-team-dialog.component';
+import { selectHeroComponent } from './components/modals/select-hero-dialog/select-hero-dialog.component';
+
 
 
 //new imports
 import { HttpClientModule } from "@angular/common/http";
 
-// angular material module
+
+/**
+  * Angular material module
+  */
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,14 +49,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog.component';
-import { TeamComponent } from './components/team/team.component';
-import { AvatarDialogComponent } from './components/modals/avatar-dialog/avatar-dialog.component';
-import { AdminDeleteUserDialogComponent } from './components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component';
-import { FightTeamComponent } from './components/fight/fight-team/fight-team.component';
-import { FightHeroComponent } from './components/fight/fight-hero/fight-hero.component';
-import { SelectTeamDialogComponent } from './components/modals/select-team-dialog/select-team-dialog.component';
-import { selectHeroComponent } from './components/modals/select-hero-dialog/select-hero-dialog.component';
 
 
 @NgModule({

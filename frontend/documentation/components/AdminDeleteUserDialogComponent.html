@@ -178,12 +178,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:13</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor in which we inject our services and diferents elements</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -259,8 +261,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:23</a></div>
                 </td>
             </tr>
 
@@ -298,14 +300,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:29</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>To close modal</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -351,7 +355,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -379,7 +383,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/modals/admin-delete-user-dialog/admin-delete-user-dialog.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -400,8 +404,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from &quot;@angular/material/dialog&quo
   templateUrl: &#x27;./admin-delete-user-dialog.component.html&#x27;,
   styleUrls: [&#x27;./admin-delete-user-dialog.component.scss&#x27;]
 })
+
+/**
+ * Component for admin to delete a user
+ */
 export class AdminDeleteUserDialogComponent implements OnInit {
 
+   /**
+   * Constructor in which we inject our services and diferents elements
+   */
   constructor(
     public dialogRef: MatDialogRef&lt;AdminDeleteUserDialogComponent&gt;,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -410,7 +421,9 @@ export class AdminDeleteUserDialogComponent implements OnInit {
   ngOnInit() {
   }
   
-
+  /**
+   * To close modal
+   */
   onNoClick(): void {
     this.dialogRef.close();
   }
