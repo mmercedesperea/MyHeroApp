@@ -14,8 +14,17 @@ import { selectHeroComponent } from '../../modals/select-hero-dialog/select-hero
 })
 
 export class FightHeroComponent implements OnInit {
+  /**
+   * variable for store de hero winner
+   */
   public hero: Hero
+  /**
+   * variable for store the hero for local storage
+   */
   public sessonHero: Hero
+  /**
+   * variable for store the hero for local storage
+   */  
   public sessonHero2: Hero
 
   /**

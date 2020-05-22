@@ -42,10 +42,25 @@ export class HeroesDetailComponent implements OnInit {
    * variable for star ranking
    */
   public hovered: any
+  /**
+   * variable for star ranking
+   */
   public readonly: any
+  /**
+   * variable store star ranking points
+   */
   public score: number = 0
+  /**
+   * variable for store the user comment about the hero
+   */
   public comment: string = ''
+  /**
+   * variable to store id from param
+   */
   public idParams: number = 0
+  /**
+   * variable for store all comments about the hero
+   */
   public allComments: [] = []
 
   /**

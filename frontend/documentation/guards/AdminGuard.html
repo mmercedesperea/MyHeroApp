@@ -111,7 +111,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/admin.guard.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/admin.guard.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -190,8 +190,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/services/admin.guard.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/services/admin.guard.ts:31</a></div>
                 </td>
             </tr>
 
@@ -229,19 +229,26 @@ import { UserService } from &#x27;./user.service&#x27;
   providedIn: &#x27;root&#x27;
 })
 
-/**
- * Admin guard ,controls whether the user is an administrator or not
- */
 export class AdminGuard implements CanActivate {
   /**
    * Constructor in which we inject User Service and Router service
    */
-  constructor (private _UserService: UserService, private _router: Router) {}
+  constructor(
+    /**
+     * variable for save user service
+     */
+    private _UserService: UserService,
+    
+    /**
+     * variable for save router service
+     */
+    private _router: Router
+  ) { }
 
   /**
    * @returns boolean, if the user is admin returns true if not false
    */
-  canActivate (): boolean {
+  canActivate(): boolean {
     /**
      * Store the user that is in the session
      */

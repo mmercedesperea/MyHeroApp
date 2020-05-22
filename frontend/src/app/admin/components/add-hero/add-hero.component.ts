@@ -17,9 +17,21 @@ import { MatSnackBar } from '@angular/material';
 })
 
 export class AddHeroComponent implements OnInit {
+  /**
+   * to add fromGoup
+   */    
   public newHeroForm: FormGroup
+  /**
+   * variable to store the hero to add
+   */
   public hero: Hero
+  /**
+   * variable to save message info 
+   */     
   public message: string
+/**
+   * variable to check if the function was ok
+   */ 
   public correctData: boolean
 
   /**
@@ -27,7 +39,6 @@ export class AddHeroComponent implements OnInit {
    */
   constructor(
     private _snackBar: MatSnackBar,
-    private _adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
     private _heroService: HeroService
   ) { }

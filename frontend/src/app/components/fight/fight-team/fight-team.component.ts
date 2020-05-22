@@ -14,8 +14,17 @@ import { SelectTeamDialogComponent } from '../../modals/select-team-dialog/selec
 })
 
 export class FightTeamComponent implements OnInit {
+  /**
+   * variable for store the team winner
+   */
   public team: Team
+  /**
+   * variable for store the team for local storage
+   */
   public sessonTeam1: Team
+  /**
+   * variable for store the team for local storage
+   */  
   public sessonTeam2: Team
 
   /**

@@ -14,11 +14,25 @@ import { selectHeroComponent } from 'src/app/components/modals/select-hero-dialo
 })
 
 export class EditHeroComponent implements OnInit {
-
+/**
+ * variable for store hero to edit
+ */
   public hero: Hero;
+  /**
+   * to add fromGoup
+   */  
   public editHeroForm: FormGroup
+  /**
+   * variable for id Hero
+   */
   public idHero:number=0
+  /**
+   * variable to save message info 
+   */   
   public message: string
+  /**
+   * variable to check if the function was ok
+   */      
   public correctData: boolean
   
   /**

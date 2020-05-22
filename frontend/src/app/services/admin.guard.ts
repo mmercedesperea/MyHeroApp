@@ -9,19 +9,26 @@ import { UserService } from './user.service'
   providedIn: 'root'
 })
 
-/**
- * Admin guard ,controls whether the user is an administrator or not
- */
 export class AdminGuard implements CanActivate {
   /**
    * Constructor in which we inject User Service and Router service
    */
-  constructor (private _UserService: UserService, private _router: Router) {}
+  constructor(
+    /**
+     * variable for save user service
+     */
+    private _UserService: UserService,
+    
+    /**
+     * variable for save router service
+     */
+    private _router: Router
+  ) { }
 
   /**
    * @returns boolean, if the user is admin returns true if not false
    */
-  canActivate (): boolean {
+  canActivate(): boolean {
     /**
      * Store the user that is in the session
      */

@@ -111,7 +111,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/auth.guard.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.guard.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -190,8 +190,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/services/auth.guard.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/services/auth.guard.ts:30</a></div>
                 </td>
             </tr>
 
@@ -230,14 +230,19 @@ import { UserService } from &#x27;./user.service&#x27;;
   providedIn: &#x27;root&#x27;
 })
 
-/**
-* Auth guard ,controls whether the user is identified or not
-*/
 export class AuthGuard implements CanActivate {
   /**
     * Constructor in which we inject User Service and Router service
     */
-  constructor(private _userService: UserService, private _router: Router) { }
+  constructor(
+    /**
+     * variable for save user service
+     */
+    private _userService: UserService,
+     /**
+     * variable for save router service
+     */
+    private _router: Router) { }
 
   /**
    * @returns boolean, if the user is identified returns true if not false

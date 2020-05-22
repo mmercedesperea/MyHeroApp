@@ -14,6 +14,9 @@ import { AdminDeleteUserDialogComponent } from 'src/app/components/modals/admin-
 })
 
 export class UserListComponent implements OnInit {
+  /**
+   * variable for store list of users from app
+   */
   public users: User[] = [];
 
   /**

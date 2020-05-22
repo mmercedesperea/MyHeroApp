@@ -17,6 +17,9 @@ export class AdminDeleteUserDialogComponent implements OnInit {
    */
   constructor(
     public dialogRef: MatDialogRef<AdminDeleteUserDialogComponent>,
+    /**
+     * variable for store the data for modal
+     */
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
