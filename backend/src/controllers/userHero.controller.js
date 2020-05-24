@@ -1,151 +1,231 @@
-let _userHeroService = null;
+let _userHeroService = null
 
-class UserHeroController{
-    constructor({UserHeroService}){
-        _userHeroService = UserHeroService;
-    }
+/**
+ * Class with User hero controllers functions
+ */
+class UserHeroController {
+  /**
+   *
+   * @param {class} UserHeroService insert our userHero service in our class
+   */
+  constructor ({ UserHeroService }) {
+    _userHeroService = UserHeroService
+  }
 
-    async  followHero(req, res) {
-        const { body } = req;
-        const  followHero = await _userHeroService.followHero(body);
-        // console.log( followHero)
-        return res.status(201).send({message: followHero});
-    }
+  /**
+   * follow hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async followHero (req, res) {
+    const { body } = req
+    const followHero = await _userHeroService.followHero(body)
+    return res.status(201).send({ message: followHero })
+  }
 
+  /**
+   * unfollow hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async unfollowHero (req, res) {
+    const { body } = req
+    const unfollowHero = await _userHeroService.unfollowHero(body)
+    return res.status(201).send({ message: unfollowHero })
+  }
 
-    async unfollowHero(req, res) {
-        const { body } = req;
-        const  unfollowHero = await _userHeroService.unfollowHero(body);
-        // console.log( unfollowHero)
-        return res.status(201).send({message: unfollowHero});
-    }
+  /**
+   * favorite a hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async favorite (req, res) {
+    const { body } = req
+    const favorite = await _userHeroService.favorite(body)
+    return res.status(201).send({ message: favorite })
+  }
 
-    async  favorite(req, res) {
-        const { body } = req;
-        const  favorite = await _userHeroService.favorite(body);
-        // console.log( favorite)
-        return res.status(201).send({message: favorite});
-    }
+  /**
+   * unfavorite a hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async unfavorite (req, res) {
+    const { body } = req
+    const unfavorite = await _userHeroService.unfavorite(body)
+    return res.status(201).send({ message: unfavorite })
+  }
 
+  /**
+   * vote a hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async voteHero (req, res) {
+    const { body } = req
+    const voteHero = await _userHeroService.voteHero(body)
+    return res.status(201).send({ message: voteHero })
+  }
 
-    async unfavorite(req, res) {
-        const { body } = req;
-        const  unfavorite = await _userHeroService.unfavorite(body);
-        // console.log( unfavorite)
-        return res.status(201).send({message: unfavorite});
-    }
+  /**
+   * comment a hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async commentHero (req, res) {
+    const { body } = req
+    const commentHero = await _userHeroService.commentHero(body)
+    // console.log( commentHero)
+    return res.status(201).send({ message: commentHero })
+  }
 
-    async voteHero(req, res) {
-        const { body } = req;
-        const  voteHero = await _userHeroService.voteHero(body);
-        // console.log( voteHero)
-        return res.status(201).send({message: voteHero});
-    }
+  /**
+   * delete comment hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async deleteCHero (req, res) {
+    const { body } = req
+    const deleteCHero = await _userHeroService.deleteCHero(body)
+    return res.status(201).send({ message: deleteCHero })
+  }
 
-    async commentHero(req, res) {
-        const { body } = req;
-        const  commentHero = await _userHeroService.commentHero(body);
-        // console.log( commentHero)
-        return res.status(201).send({message: commentHero});
-    }
+  /**
+   * Get all favorites heroes
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  heroes
+   */
+  async allHerosFav (req, res) {
+    const { idUsu } = req.params
+    const allHeros = await _userHeroService.getFav(idUsu)
+    return res.json(allHeros)
+  }
 
-    async deleteCHero(req, res) {
-        const { body } = req;
-        const  deleteCHero = await _userHeroService.deleteCHero(body);
-        // console.log(deleteCHero)
-        return res.status(201).send({message: deleteCHero});
-    }
+  /**
+   * Get all follow heroes
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  heroes
+   */
+  async allHerosFoll (req, res) {
+    const { idUsu } = req.params
+    const allHeros = await _userHeroService.get(idUsu)
+    //    JSON.stringify(user)
+    return res.json(allHeros)
+  }
 
-    //obtener todos los heroes favoritos
-    async allHerosFav(req, res) {
-        const { idUsu } = req.params;
-        const allHeros = await _userHeroService.getFav(idUsu);
-        //    JSON.stringify(user)
-        return res.json(allHeros);
-    }
+  /**
+   * Get a user's comment about a hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  heroes
+   */
+  //obtener tel comentario de un usuario sobre un hero
+  async getCommentHero (req, res) {
+    const { idUsu } = req.params
+    const { idHero } = req.params
+    const allHeros = await _userHeroService.getCommentHero(idUsu, idHero)
+    return res.json(allHeros)
+  }
 
-    //obtener todos los heroes siguiendo
-    async allHerosFoll(req, res) {
-        const { idUsu } = req.params;
-        const allHeros = await _userHeroService.get(idUsu);
-        //    JSON.stringify(user)
-        return res.json(allHeros);
-    }
+  /**
+   * Get the relationship of the hero and the user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {(object | null)}  hero or null
+   */
+  async getHeroUsu (req, res) {
+    const { idUsu } = req.params
+    const { idHero } = req.params
+    const allHeros = await _userHeroService.getHeroUsu(idUsu, idHero)
+    //    JSON.stringify(user)
+    return res.json(allHeros)
+  }
 
-    
-     //obtener tel comentario de un usuario sobre un hero
-     async getCommentHero(req, res) {
-        const { idUsu } = req.params;
-        const { idHero } = req.params;
-        const allHeros = await _userHeroService.getCommentHero(idUsu,idHero);
-        //    JSON.stringify(user)
-        return res.json(allHeros);
-    }
+  /**
+   * Get the comment of the hero and the user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  heroes user comment
+   */
+  async getVoteHero (req, res) {
+    const { idUsu } = req.params
+    const { idHero } = req.params
+    const allHeros = await _userHeroService.getVoteHero(idUsu, idHero)
+    return res.json(allHeros)
+  }
 
-  //obtener la relacion del heroe y el usuario
-    async getHeroUsu(req, res) {
-        const { idUsu } = req.params;
-        const { idHero } = req.params;
-        const allHeros = await _userHeroService.getHeroUsu(idUsu,idHero);
-        //    JSON.stringify(user)
-        return res.json(allHeros);
-    }
+  /**
+   * Get best marvel hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {array}  best marvel heros
+   */
+  async bestMarverHero (req, res) {
+    const bestM = await _userHeroService.bestMarverHero()
+    return res.json(bestM)
+  }
 
-    
+  /**
+   * Get best dcl hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {array}  best dc heros
+   */
+  async bestDCHero (req, res) {
+    const bestDC = await _userHeroService.bestDCHero()
+    return res.json(bestDC)
+  }
 
-    //obtener el voto de un usuario sobre un hero
-    async getVoteHero(req, res) {
-        const { idUsu } = req.params;
-        const { idHero } = req.params;
-        const allHeros = await _userHeroService.getVoteHero(idUsu,idHero);
-        //    JSON.stringify(user)
-        return res.json(allHeros);
-    }
+  /**
+   * Most follow heroes
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {array}  heroes
+   */
+  async mostFollowHeros (req, res) {
+    const mostF = await _userHeroService.mostFollowHeros()
+    return res.json(mostF)
+  }
 
-    
-    async bestMarverHero(req, res) {
-        const bestM = await _userHeroService.bestMarverHero();
-        //    JSON.stringify(user)
-        return res.json(bestM);
-    }
+  /**
+   * Get all the comments from a hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {(Array | null)}  heroes
+   */
+  async getHeroComments (req, res) {
+    const { idHero } = req.params
+    const allComments = await _userHeroService.getHeroComments(idHero)
+    return res.json(allComments)
+  }
 
-    async bestDCHero(req, res) {
-        const bestDC = await _userHeroService.bestDCHero();
-        //    JSON.stringify(user)
-        return res.json(bestDC);
-    }
-    
-    async  mostFollowHeros(req, res) {
-        const mostF = await _userHeroService.mostFollowHeros();
-        //    JSON.stringify(user)
-        return res.json(mostF);
-    }
+  /**
+   * Get hero rate
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {(Array | null)}  heroes
+   */
+  async getHeroRateScore (req, res) {
+    const { idHero } = req.params
+    const score = await _userHeroService.getHeroRateScore(idHero)
+    return res.json(score)
+  }
 
-   
-    // obtener todos los comentarios de un heroe
-    async getHeroComments(req, res) {
-        const { idHero } = req.params;
-        const allComments= await _userHeroService.getHeroComments(idHero);
-        //    JSON.stringify(user)
-        return res.json(allComments);
-    }
-
-      // obtener todos los comentarios de un heroe
-      async getHeroRateScore(req, res) {
-        const { idHero } = req.params;
-        const score= await _userHeroService.getHeroRateScore(idHero);
-        //    JSON.stringify(user)
-        return res.json(score);
-    }
-
-
-    // async modifyCHero(req, res) {
-    //     const { body } = req;
-    //     const  commentHero = await _userHeroService.modifyCHero(body);
-    //     // console.log( commentHero)
-    //     return res.status(201).send({message: commentHero});
-    // }
-
+  // async modifyCHero(req, res) {
+  //     const { body } = req;
+  //     const  commentHero = await _userHeroService.modifyCHero(body);
+  //     // console.log( commentHero)
+  //     return res.status(201).send({message: commentHero});
+  // }
 }
 
-module.exports = UserHeroController;
+module.exports = UserHeroController

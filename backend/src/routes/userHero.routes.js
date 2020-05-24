@@ -5,7 +5,7 @@
 const { Router } = require('express')
 
 /**
- * function to manage the routes that affect UserHero
+ * to manage the routes that affect UserHero
  * @param {class} UserHeroController we introduce our class where the UserHero controller are
  */
 module.exports = function ({ UserHeroController }) {

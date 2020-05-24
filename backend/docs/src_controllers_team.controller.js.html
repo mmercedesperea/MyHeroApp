@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/controllers/team.controller.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/controllers/team.controller.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let _teamService = null
+
+/**
+ * Team class with controllers functions
+ */
+class TeamController {
+  /**
+   *
+   * @param {class} TeamService insert our team service in our class
+   */
+  constructor ({ TeamService }) {
+    _teamService = TeamService
+  }
+
+  /**
+   * create a team
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async createTeam (req, res) {
+    const { body } = req
+    const createTeam = await _teamService.create(body)
+    return res.status(201).send({ message: createTeam })
+  }
+
+  /**
+   * check the number of members
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {boolean}
+   */
+  async checkTeam (req, res) {
+    const { idTeam } = req.params
+    const team = await _teamService.checkTeam(idTeam)
+    return res.json(team)
+  }
+
+  /**
+   * Get team by id
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  team
+   */
+  async getTeam (req, res) {
+    const { idTeam } = req.params
+    const team = await _teamService.get(idTeam)
+    //    JSON.stringify(team)
+    return res.json(team)
+  }
+
+  /**
+   * Get team user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  team
+   */
+  async getTeamUsu (req, res) {
+    const { idUsu } = req.params
+    const team = await _teamService.getTeamUsu(idUsu)
+    //    JSON.stringify(team)
+    return res.json(team)
+  }
+
+  /**
+   * Change name team
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async chageName (req, res) {
+    const { idTeam } = req.params
+    const { body } = req
+    const chageName = await _teamService.update(idTeam, body)
+    return res.status(201).send({ message: chageName })
+  }
+
+  /**
+   * Add member
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async addMember (req, res) {
+    const { idTeam } = req.params
+    const { body } = req
+    const addMember = await _teamService.addMember(idTeam, body)
+    return res.status(201).send({ message: addMember })
+  }
+
+  /**
+   * Delete member
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async deleteMember (req, res) {
+    const { idTeam } = req.params
+    const { body } = req
+    const deleteMember = await _teamService.deleteMember(idTeam, body)
+    return res.status(201).send({ message: deleteMember })
+  }
+
+  /**
+   * Delete team
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async delete (req, res) {
+    const { idTeam } = req.params
+    const deleteTeam = await _teamService.delete(idTeam)
+    // console.log(deleteTeam)
+    return res.status(201).send({ message: deleteTeam })
+  }
+
+  /**
+   * Get best team
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  teams
+   */
+  async bestTeam (req, res) {
+    const team = await _teamService.bestTeam()
+    return res.json(team)
+  }
+
+  /**
+   * Get team info
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  team
+   */
+  async getTeamInfo (req, res) {
+    const { idUsu } = req.params
+    // console.log(idUsu)
+    const team = await _teamService.getTeamInfo(idUsu)
+    //    JSON.stringify(team)
+    return res.json(team)
+  }
+
+  /**
+   * Get team winner
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  team
+   */
+  async getTeamWinner (req, res) {
+    const { idTeam1 } = req.params
+    const { idTeam2 } = req.params
+    const heroWin = await _teamService.getTeamWinner(idTeam1, idTeam2)
+    return res.json(heroWin)
+  }
+
+  /**
+   * Search team by name
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  teams
+   */
+  async searchTeam (req, res) {
+    const { TeamName } = req.params
+    const team = await _teamService.searchTeam(TeamName)
+    return res.json(team)
+  }
+}
+
+module.exports = TeamController
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminController.html">AdminController</a></li><li><a href="AdminService.html">AdminService</a></li><li><a href="ApiHeroController.html">ApiHeroController</a></li><li><a href="ApiHeroService.html">ApiHeroService</a></li><li><a href="AuthController.html">AuthController</a></li><li><a href="AuthService.html">AuthService</a></li><li><a href="BaseService.html">BaseService</a></li><li><a href="DBConexion.html">DBConexion</a></li><li><a href="Hero.html">Hero</a></li><li><a href="HeroController.html">HeroController</a></li><li><a href="HeroService.html">HeroService</a></li><li><a href="Server.html">Server</a></li><li><a href="Team.html">Team</a></li><li><a href="TeamController.html">TeamController</a></li><li><a href="TeamService.html">TeamService</a></li><li><a href="User.html">User</a></li><li><a href="UserController.html">UserController</a></li><li><a href="UserHero.html">UserHero</a></li><li><a href="UserHeroController.html">UserHeroController</a></li><li><a href="UserHeroService.html">UserHeroService</a></li><li><a href="UserService.html">UserService</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_config">_config</a></li><li><a href="global.html#conexion">conexion</a></li><li><a href="global.html#config">config</a></li><li><a href="global.html#container">container</a></li><li><a href="global.html#DB">DB</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#isAdmin">isAdmin</a></li><li><a href="global.html#swaggerUi">swaggerUi</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun May 24 2020 19:01:37 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

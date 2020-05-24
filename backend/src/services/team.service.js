@@ -1,159 +1,180 @@
-const BaseService = require('./base.service');
-let _teamObj = null;
-// let _userOBJ = null;
+const BaseService = require('./base.service')
+let _teamObj = null
+
+/**
+ * Team class service, Our services indicated what actions should be taken according to the data that we receive from the different requests to our api controller
+ */
 class TeamService extends BaseService {
-    constructor({ Team }) {
-        super(Team);
-        _teamObj = Team;
+  /**
+   *
+   * @param {class} Team insert our Team class
+   */
+  constructor ({ Team }) {
+    super(Team)
+    _teamObj = Team
+  }
+
+  /**
+   * check the number os members
+   * @param {number} idTeam
+   * @returns {boolean}
+   */
+  async checkTeam (idTeam) {
+    if (!idTeam) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
+    }
+    const numMembers = await _teamObj.checkTeam(idTeam)
+    if (numMembers) {
+      return true
+    }
+    return false
+  }
+
+  /**
+   * Add member
+   * @param {number} idTeam
+   * @param {object} entity body of the element that brings the path
+   * @returns {string}  message
+   */
+  async addMember (idTeam, entity) {
+    if (!idTeam) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
+    }
+    if (!entity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'entity must be sent'
+      throw error
+    }
+    return await _teamObj.addMember(idTeam, entity)
+  }
+
+  /**
+   * Delete member
+   * @param {number} idTeam
+   * @param {object} entity body of the element that brings the path
+   * @returns {string}  message
+   */
+  async deleteMember (idTeam, entity) {
+    if (!idTeam) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
+    }
+    if (!entity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'entity must be sent'
+      throw error
+    }
+    return await _teamObj.deleteMember(idTeam, entity)
+  }
+
+  /**
+   * Best team
+   * @returns {array}  teams
+   */
+  async bestTeam () {
+    const currentEntity = await _teamObj.bestTeam()
+
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'Entity must be sent'
+      throw error
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get team user
+   *  @param {number} idUsu
+   * @returns {(Array | null)}  team or null
+   */
+  async getTeamUsu (id) {
+    if (!id) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+    const currentEntity = await _teamObj.getTeamUsu(id)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get team info user
+   *  @param {number} idUsu
+   * @returns {(object | null)}  team or null
+   */
+  async getTeamInfo (idUsu) {
+    if (!idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idusu must be sent'
+      throw error
+    }
+    const currentEntity = await _teamObj.getTeamInfo(idUsu)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity[0]
+  }
+
+  /**
+   * Get team winner
+   *  @param {number} idTeam1
+   *  @param {number} idTeam2
+   * @returns {object }  team
+   */
+  async getTeamWinner (idTeam1, idTeam2) {
+    if (!idTeam1) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
     }
 
-    // traer el numero de miembros
-    async checkTeam(idTeam) {
-        if (!idTeam) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'idTeam must be sent';
-            throw error;
-        }
-
-        const numMembers = await _teamObj.checkTeam(idTeam);
-
-        // devuelve true si  se tienen todos los miembros del equipo
-        if (numMembers) {
-            return true;
-        }
-        // devuelve false si no se tienen todos los miembros del equipo
-        return false;
+    if (!idTeam2) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idteam must be sent'
+      throw error
     }
+    return await _teamObj.getTeamWinner(idTeam1, idTeam2)
+  }
 
-
-
-    async addMember(idTeam, entity) {
-        if (!idTeam) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'idTeam must be sent';
-            throw error;
-        }
-        if (!entity) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'entity must be sent';
-            throw error;
-        }
-
-        return await _teamObj.addMember(idTeam, entity);
-
+  /**
+   * Get team  by name
+   *  @param {string} teamName
+   * @returns {(array | null)}  team or null
+   */
+  async searchTeam (teamName) {
+    if (!teamName) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'teamName must be sent'
+      throw error
     }
+    const currentEntity = await _teamObj.searchTeam(teamName)
 
-    async deleteMember(idTeam, entity) {
-        if (!idTeam) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'idTeam must be sent';
-            throw error;
-        }
-        if (!entity) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'entity must be sent';
-            throw error;
-        }
-
-        return await _teamObj.deleteMember(idTeam, entity);
-
+    if (!currentEntity) {
+      return null
     }
-
-    // bestTeam
-
-    async bestTeam() {
-        // en caso de que exista la id vamos a buscar esa entidad
-        const currentEntity = await _teamObj.bestTeam();
-        // JSON.stringify(currentEntity);
-        // console.log(currentEntity)
-        if (!currentEntity) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'Entity must be sent';
-            throw error;
-        }
-        return currentEntity;
-    }
-
-    async getTeamUsu(id) {
-        if (!id) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'id must be sent';
-            throw error;
-        }
-        // en caso de que exista la id vamos a buscar esa entidad
-        const currentEntity = await _teamObj.getTeamUsu(id);
-        // console.log(currentEntity[0].idTeam)
-        // console.log('LA ENTIDAD A VER ESSS' +currentEntity)
-        // console.log('LA ENTIDAD A VER ESSS' +id)
-        // JSON.stringify(currentEntity);
-        if (!currentEntity) {
-            return null;
-        }
-        return currentEntity;
-    }
-
-    async getTeamInfo(idUsu) {
-        if (!idUsu) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'idusu must be sent';
-            throw error;
-        }
-        // en caso de que exista la id vamos a buscar esa entidad
-        const currentEntity = await _teamObj.getTeamInfo(idUsu);
-        // console.log(currentEntity)
-        // console.log(currentEntity[0].idTeam)
-        // JSON.stringify(currentEntity);
-        if (!currentEntity) {
-            return null;
-        }
-        return currentEntity[0];
-    }
-
-
-    async getTeamWinner(idTeam1, idTeam2) {
-        if (!idTeam1) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'idTeam must be sent';
-            throw error;
-        }
-
-        if (!idTeam2) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'idteam must be sent';
-            throw error;
-        }
-        return await _teamObj.getTeamWinner(idTeam1, idTeam2);
-    }
-
-    // searchTeam
-    async  searchTeam(teamName) {
-        if (!teamName) {
-            const error = new Error();
-            error.status = 400;
-            error.message = 'teamName must be sent';
-            throw error;
-        }
-        // en caso de que exista la id vamos a buscar esa entidad
-        const currentEntity = await _teamObj.searchTeam(teamName);
-        // JSON.stringify(currentEntity);
-        // console.log(currentEntity)
-        if (!currentEntity) {
-            return null;
-        }
-        return currentEntity;
-    }
-
-
+    return currentEntity
+  }
 }
 
-module.exports = TeamService;
+module.exports = TeamService

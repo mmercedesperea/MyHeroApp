@@ -1,27 +1,40 @@
-let _authService = null;
-
+let _authService = null
+/**
+ * Auth class with controllers functions
+ */
 class AuthController {
-    constructor({AuthService}){
-        _authService = AuthService;
-    }
+  /**
+   *
+   * @param {class} AuthService insert our auth service in our class
+   */
+  constructor ({ AuthService }) {
+    _authService = AuthService
+  }
 
-    async signUp(req,res){
-        const{ body } = req;
-        const createUser = await _authService.signUp(body);
-        console.log(createUser);
-        return res.status(201).send({message:createUser});
-    }
+  /**
+   * signUp user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async signUp (req, res) {
+    const { body } = req
+    const createUser = await _authService.signUp(body)
+    console.log(createUser)
+    return res.status(201).send({ message: createUser })
+  }
 
-    async signIn(req,res){
-        const { body }= req;
-        const creds = await _authService.signIn(body);
-        // return res.send(creds);
-        return res.json(creds);
-
-    }
-
-
-
+  /**
+   * signIn user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  token
+   */
+  async signIn (req, res) {
+    const { body } = req
+    const creds = await _authService.signIn(body)
+    return res.json(creds)
+  }
 }
 
-module.exports = AuthController;
+module.exports = AuthController

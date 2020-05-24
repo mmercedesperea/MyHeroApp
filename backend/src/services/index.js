@@ -1,3 +1,6 @@
+/**
+ * We export the module with the elements that compose it
+ */
 module.exports = {
     UserService: require('./user.service'),
     AuthService: require('./auth.service'),

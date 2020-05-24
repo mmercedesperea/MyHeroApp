@@ -1,109 +1,160 @@
-let _userService = null;
+let _userService = null
 
+/**
+ * Class with User controllers functions
+ */
 class UserController {
-    constructor({ UserService }) {
-        _userService = UserService;
-    }
+  /**
+   *
+   * @param {class} UserService insert our user service in our class
+   */
+  constructor ({ UserService }) {
+    _userService = UserService
+  }
 
-    //obtener usuario por id
-    async get(req, res) {
-        const { idUsu } = req.params;
+  /**
+   * Get a user by id
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  user
+   */
+  async get (req, res) {
+    const { idUsu } = req.params
 
-        const user = await _userService.get(idUsu);
-        console.log(user.password)
+    const user = await _userService.get(idUsu)
+    console.log(user.password)
+    user[0].password = '0'
+    console.log(user[0])
+    return res.json(user[0])
+  }
 
-        user[0].password = "0";
-        //    JSON.stringify(user)
-        console.log(user[0])
-        return res.json(user[0]);
-    }
+  /**
+   * update a user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async update (req, res) {
+    const { idUsu } = req.params
+    const { body } = req
+    const updateUser = await _userService.update(idUsu, body)
+    console.log(updateUser)
+    return res.status(201).send({ message: updateUser })
+  }
 
-    async update(req, res) {
-        const { idUsu } = req.params;
-        const { body } = req;
-        const updateUser = await _userService.update(idUsu, body);
-        console.log(updateUser)
-        return res.status(201).send({ message: updateUser });
-    }
+  /**
+   * update a user pass
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async updatePass (req, res) {
+    const { idUsu } = req.params
+    const { body } = req
+    const updatePass = await _userService.updatePass(idUsu, body)
+    console.log(updatePass)
+    return res.status(201).send({ message: updatePass })
+  }
 
-    async updatePass(req, res) {
-        const { idUsu } = req.params;
-        const { body } = req;
-        const updatePass = await _userService.updatePass(idUsu, body);
-        console.log(updatePass)
-        return res.status(201).send({ message: updatePass });
-    }
+  /**
+   * delete a user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async delete (req, res) {
+    const { idUsu } = req.params
+    const { body } = req
+    const deleteUser = await _userService.deleteUser(idUsu, body)
+    console.log(deleteUser)
+    return res.status(201).send({ message: deleteUser })
+  }
 
-    async delete(req, res) {
-        const { idUsu } = req.params;
-        const { body } = req;
-        const deleteUser = await _userService.deleteUser(idUsu, body);
-        console.log(deleteUser)
-        return res.status(201).send({ message: deleteUser });
+  /**
+   * follow a user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async followUser (req, res) {
+    const { body } = req
+    const followUser = await _userService.followUser(body)
+    console.log(followUser)
+    return res.status(201).send({ message: followUser })
+  }
 
-    }
+  /**
+   * Unfollow a user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async unFollowUser (req, res) {
+    const { idUsu } = req.params
+    const { idUnfollow } = req.params
+    const unFollowUser = await _userService.unFollowUser(idUsu, idUnfollow)
+    return res.status(201).send({ message: unFollowUser })
+  }
 
-    async followUser(req, res) {
-        const { body } = req;
-        const followUser = await _userService.followUser(body);
-        console.log(followUser)
-        return res.status(201).send({ message: followUser });
-    }
+  /**
+   * search user by name
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {(Array | null)}  user or null
+   */
+  async getUserByName (req, res) {
+    const { userName } = req.params
+    const user = await _userService.getUserByName(userName)
+    return res.json(user)
+  }
 
-    async unFollowUser(req, res) {
-        const { idUsu } = req.params;
-        const { idUnfollow } = req.params;
-        const unFollowUser = await _userService.unFollowUser(idUsu, idUnfollow);
-        console.log(unFollowUser)
-        return res.status(201).send({ message: unFollowUser });
-    }
+  /**
+   * check users relathionship
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+    * @returns {(object | null)}  user or null
+   */
+  async checkFollow (req, res) {
+    const { idUsu } = req.params
+    const { idUnfollow } = req.params
+    const checkFollow = await _userService.checkFollow(idUsu, idUnfollow)
+    return res.json(checkFollow)
+  }
 
-    //Buscar un usuario por nombre
-    async getUserByName(req, res) {
-        const { userName } = req.params;
+  /**
+   * followed users
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {(Array | null)}  user or null
+   */
+  async getFollowUsers (req, res) {
+    const { idUsu } = req.params
+    const FollowUsers = await _userService.getFollowUsers(idUsu)
+    return res.json(FollowUsers)
+  }
 
-        const user = await _userService.getUserByName(userName);
-        console.log(user)
-        return res.json(user);
-    }
+  /**
+   * followers users
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  users followers
+   */
+  async getFollowersUsers (req, res) {
+    const { idUsu } = req.params
+    const FollowUsers = await _userService.getFollowersUsers(idUsu)
+    return res.json(FollowUsers)
+  }
 
-    async checkFollow(req, res) {
-        const { idUsu } = req.params;
-        const { idUnfollow } = req.params;
-        const checkFollow = await _userService.checkFollow(idUsu, idUnfollow);
-
-        return res.json(checkFollow);
-    }
-    // async uploadImage(req,res){
-    //     const { idUsu } = req.params;
-    //     const file_name = "no subido...";
-
-    //     if(req.files){
-
-    //     }
-
-    // }
-
-    async getFollowUsers(req, res) {
-        const { idUsu } = req.params;
-        const FollowUsers = await _userService.getFollowUsers(idUsu);
-        return res.json(FollowUsers);
-    }
-
-    async getFollowersUsers(req, res) {
-        const { idUsu } = req.params;
-        const FollowUsers = await _userService.getFollowersUsers(idUsu);
-        return res.json(FollowUsers);
-    }
-
-
-    //actualizar img
-    //   router.put('/newImg/:idUsu/:img', UserController.newImg);
-    async newImg(req, res) {
-        const { body } = req;
-        const updateImg = await _userService.newImg(body);
-        return res.status(201).send({ message: updateImg });
-    }
-
+  /**
+   * update img
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async newImg (req, res) {
+    const { body } = req
+    const updateImg = await _userService.newImg(body)
+    return res.status(201).send({ message: updateImg })
+  }
 }
-module.exports = UserController;
+module.exports = UserController

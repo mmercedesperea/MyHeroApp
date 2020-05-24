@@ -1,109 +1,164 @@
-let _heroService = null;
+let _heroService = null
 
-class HeroController{
+/**
+ * Hero class with controllers functions
+ */
+class HeroController {
+  /**
+   *
+   * @param {class} HeroService insert our hero service in our class
+   */
+  constructor ({ HeroService }) {
+    _heroService = HeroService
+  }
 
-    constructor({ HeroService }) {
-        _heroService = HeroService;
-    }
+  /**
+   * Get hero by id
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async get (req, res) {
+    const { idHero } = req.params
+    const hero = await _heroService.get(idHero)
+    return res.json(hero)
+  }
+  /**
+   * Get hero winner
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async getWinner (req, res) {
+    const { idHero } = req.params
+    const { idHero2 } = req.params
+    const heroWin = await _heroService.getWinner(idHero, idHero2)
+    return res.json(heroWin)
+  }
 
+  /**
+   * Get most intelligence hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async mostIntelligence (req, res) {
+    const mostI = await _heroService.mostIntelligence()
+    return res.json(mostI[0])
+  }
 
-    //obtener hero por id
-    async get(req, res) {
-        const { idHero } = req.params;
-        const hero = await _heroService.get(idHero);
-        //    JSON.stringify(user)
-        // return res.send(hero);
-        return res.json(hero);
+  /**
+   * Get most strength hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async mostStrength (req, res) {
+    const mostS = await _heroService.mostStrength()
+    return res.json(mostS[0])
+  }
 
-    }
-  
-    async getWinner(req, res) {
-        const { idHero } = req.params;
-        const { idHero2 } = req.params;
-        const heroWin = await _heroService.getWinner(idHero,idHero2);
-        //    JSON.stringify(user)
-        return res.json(heroWin);
-        // return res.send(heroWin);
+  /**
+   * Get most speed hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async mostSpeed (req, res) {
+    const mostSp = await _heroService.mostSpeed()
+    return res.json(mostSp[0])
+  }
 
-    }
+  /**
+   * Get most durability hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async mostDurability (req, res) {
+    const mostD = await _heroService.mostDurability()
+    return res.json(mostD[0])
+  }
 
-    async  mostIntelligence(req, res) {
-        const mostI = await _heroService.mostIntelligence();
-        //    JSON.stringify(user)
-        return res.json(mostI[0]);
-        // return res.send(mostI[0]);
+  /**
+   * Get most power hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async mostPower (req, res) {
+    const mostP = await _heroService.mostPower()
+    return res.json(mostP[0])
+  }
 
-    }
+  /**
+   * Get most combat hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {object}  hero
+   */
+  async mostCombat (req, res) {
+    const mostC = await _heroService.mostCombat()
+    return res.json(mostC[0])
+  }
 
-    async  mostStrength(req, res) {
-        const mostS = await _heroService.mostStrength();
-        //    JSON.stringify(user)
-        return res.json(mostS[0]);
-        // return res.send(mostS[0]);
+  /**
+   * Get new heroes in the db
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  heros
+   */
+  async newHeros (req, res) {
+    const mostC = await _heroService.newHeros()
+    return res.json(mostC)
+  }
 
-    }
-
-    async  mostSpeed(req, res) {
-        const mostSp = await _heroService.mostSpeed();
-        //    JSON.stringify(user)
-        return res.json(mostSp[0]);
-    }
-
-    async mostDurability(req, res) {
-        const mostD = await _heroService.mostDurability();
-        //    JSON.stringify(user)
-        return res.json(mostD[0]);
-    }
-
-    async mostPower(req, res) {
-        const mostP = await _heroService.mostPower();
-        //    JSON.stringify(user)
-        return res.json(mostP[0]);
-    }
-
-    async mostCombat(req, res) {
-        const mostC = await _heroService.mostCombat();
-        //    JSON.stringify(user)
-        return res.json(mostC[0]);
-    }
-
-    async newHeros(req, res) {
-        const mostC = await _heroService.newHeros();
-        //    JSON.stringify(user)
-        return res.json(mostC);
-    }
-
-    async allMarvelHeroes(req, res) {
-        const allMarvel = await _heroService.allMarvelHeroes();
-        //    JSON.stringify(user)
-        return res.json(allMarvel);
-    }
-
-    async allDCHeroes(req, res) {
-        const allDC = await _heroService.allDCHeroes();
-        //    JSON.stringify(user)
-        return res.json(allDC);
-    }
-
-      //obtener imagenes de heroes para perfil
-//   router.get('/profileImgHeroes', HeroController.profileImgHeroes);
-
-  async profileImgHeroes(req, res) {
-    const profileImg = await _heroService.profileImgHeroes();
+  /**
+   * All marvel heroes
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  heros
+   */
+  async allMarvelHeroes (req, res) {
+    const allMarvel = await _heroService.allMarvelHeroes()
     //    JSON.stringify(user)
-    return res.json(profileImg);
-}
+    return res.json(allMarvel)
+  }
 
-
-async searchHeroByName(req, res) {
-    const { name } = req.params;
-    const hero = await _heroService.searchHeroByName(name);
+  /**
+   * All dc heroes
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  heros
+   */
+  async allDCHeroes (req, res) {
+    const allDC = await _heroService.allDCHeroes()
     //    JSON.stringify(user)
-    // console.log('llego aqui'+ name)
-    // return res.send(hero);
-    return res.json(hero);
+    return res.json(allDC)
+  }
 
-}
+  /**
+   * Get hero img for user profile
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  heros img
+   */
+  async profileImgHeroes (req, res) {
+    const profileImg = await _heroService.profileImgHeroes()
+    return res.json(profileImg)
+  }
+
+  /**
+   * Search hero by name
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {Array}  heros img
+   */
+  async searchHeroByName (req, res) {
+    const { name } = req.params
+    const hero = await _heroService.searchHeroByName(name)
+    return res.json(hero)
+  }
 }
 
-module.exports = HeroController;
+module.exports = HeroController

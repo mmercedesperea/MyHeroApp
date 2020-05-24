@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/services/team.service.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/services/team.service.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const BaseService = require('./base.service')
+let _teamObj = null
+
+/**
+ * Team class service, Our services indicated what actions should be taken according to the data that we receive from the different requests to our api controller
+ */
+class TeamService extends BaseService {
+  /**
+   *
+   * @param {class} Team insert our Team class
+   */
+  constructor ({ Team }) {
+    super(Team)
+    _teamObj = Team
+  }
+
+  /**
+   * check the number os members
+   * @param {number} idTeam
+   * @returns {boolean}
+   */
+  async checkTeam (idTeam) {
+    if (!idTeam) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
+    }
+    const numMembers = await _teamObj.checkTeam(idTeam)
+    if (numMembers) {
+      return true
+    }
+    return false
+  }
+
+  /**
+   * Add member
+   * @param {number} idTeam
+   * @param {object} entity body of the element that brings the path
+   * @returns {string}  message
+   */
+  async addMember (idTeam, entity) {
+    if (!idTeam) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
+    }
+    if (!entity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'entity must be sent'
+      throw error
+    }
+    return await _teamObj.addMember(idTeam, entity)
+  }
+
+  /**
+   * Delete member
+   * @param {number} idTeam
+   * @param {object} entity body of the element that brings the path
+   * @returns {string}  message
+   */
+  async deleteMember (idTeam, entity) {
+    if (!idTeam) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
+    }
+    if (!entity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'entity must be sent'
+      throw error
+    }
+    return await _teamObj.deleteMember(idTeam, entity)
+  }
+
+  /**
+   * Best team
+   * @returns {array}  teams
+   */
+  async bestTeam () {
+    const currentEntity = await _teamObj.bestTeam()
+
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'Entity must be sent'
+      throw error
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get team user
+   *  @param {number} idUsu
+   * @returns {(Array | null)}  team or null
+   */
+  async getTeamUsu (id) {
+    if (!id) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+    const currentEntity = await _teamObj.getTeamUsu(id)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get team info user
+   *  @param {number} idUsu
+   * @returns {(object | null)}  team or null
+   */
+  async getTeamInfo (idUsu) {
+    if (!idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idusu must be sent'
+      throw error
+    }
+    const currentEntity = await _teamObj.getTeamInfo(idUsu)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity[0]
+  }
+
+  /**
+   * Get team winner
+   *  @param {number} idTeam1
+   *  @param {number} idTeam2
+   * @returns {object }  team
+   */
+  async getTeamWinner (idTeam1, idTeam2) {
+    if (!idTeam1) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idTeam must be sent'
+      throw error
+    }
+
+    if (!idTeam2) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idteam must be sent'
+      throw error
+    }
+    return await _teamObj.getTeamWinner(idTeam1, idTeam2)
+  }
+
+  /**
+   * Get team  by name
+   *  @param {string} teamName
+   * @returns {(array | null)}  team or null
+   */
+  async searchTeam (teamName) {
+    if (!teamName) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'teamName must be sent'
+      throw error
+    }
+    const currentEntity = await _teamObj.searchTeam(teamName)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity
+  }
+}
+
+module.exports = TeamService
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminController.html">AdminController</a></li><li><a href="AdminService.html">AdminService</a></li><li><a href="ApiHeroController.html">ApiHeroController</a></li><li><a href="ApiHeroService.html">ApiHeroService</a></li><li><a href="AuthController.html">AuthController</a></li><li><a href="AuthService.html">AuthService</a></li><li><a href="BaseService.html">BaseService</a></li><li><a href="DBConexion.html">DBConexion</a></li><li><a href="Hero.html">Hero</a></li><li><a href="HeroController.html">HeroController</a></li><li><a href="HeroService.html">HeroService</a></li><li><a href="Server.html">Server</a></li><li><a href="Team.html">Team</a></li><li><a href="TeamController.html">TeamController</a></li><li><a href="TeamService.html">TeamService</a></li><li><a href="User.html">User</a></li><li><a href="UserController.html">UserController</a></li><li><a href="UserHero.html">UserHero</a></li><li><a href="UserHeroController.html">UserHeroController</a></li><li><a href="UserHeroService.html">UserHeroService</a></li><li><a href="UserService.html">UserService</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_config">_config</a></li><li><a href="global.html#conexion">conexion</a></li><li><a href="global.html#config">config</a></li><li><a href="global.html#container">container</a></li><li><a href="global.html#DB">DB</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#isAdmin">isAdmin</a></li><li><a href="global.html#swaggerUi">swaggerUi</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun May 24 2020 19:01:37 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

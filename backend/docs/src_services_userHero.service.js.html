@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/services/userHero.service.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/services/userHero.service.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const BaseService = require('./base.service')
+
+let _userHeroOBJ = null
+/**
+ * User hero class service, Our services indicated what actions should be taken according to the data that we receive from the different requests to our api controller
+ */
+class UserHeroService extends BaseService {
+  /**
+   *
+   * @param {class}  UserHero  insert our UserHero class
+   */
+  constructor ({ UserHero }) {
+    super(UserHero)
+    _userHeroOBJ = UserHero
+  }
+
+  /**
+   * Check if the user have relathion with the hero
+   * @param {object} body
+   * @returns {object}
+   */
+  async match (body) {
+    return await _userHeroOBJ.match(body)
+  }
+  /**
+   * follow hero
+   * @param {object} body body of the element that brings the path
+   * @returns {string}  message
+   */
+  async followHero (body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+
+    const matchUserHero = await this.match(body)
+
+    if (!matchUserHero) {
+      // insert relation
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
+
+      if (insertUserHero) {
+        return await _userHeroOBJ.followUH(body)
+      }
+    }
+
+    if (matchUserHero) {
+      // update the fild to true
+      return await _userHeroOBJ.followUH(body)
+    }
+  }
+
+  /**
+   * Unfollow hero
+   * @param {object} body body of the element that brings the path
+   * @returns {string}  message
+   */
+  async unfollowHero (body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+    // update to false
+    return await _userHeroOBJ.unfollowUH(body)
+  }
+  /**
+   * Favorite hero
+   * @param {object} body body of the element that brings the path
+   * @returns {string}  message
+   */
+  async favorite (body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+
+    // comprobamos si ya existe una relacion entre el usuario y el hero
+    const matchUserHero = await this.match(body)
+
+    if (!matchUserHero) {
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
+      if (insertUserHero) {
+        return await _userHeroOBJ.favoriteUH(body)
+      }
+    }
+    if (matchUserHero) {
+      // update to true
+      return await _userHeroOBJ.favoriteUH(body)
+    }
+  }
+
+  /**
+   * Unfavorite hero
+   * @param {object} body body of the element that brings the path
+   * @returns {string}  message
+   */
+  async unfavorite (body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+
+    // update fild false
+    return await _userHeroOBJ.unfavorite(body)
+  }
+
+  /**
+   * vote hero
+   * @param {object} body body of the element that brings the path
+   * @returns {string}  message
+   */
+  async voteHero (body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+
+    const matchUserHero = await this.match(body)
+
+    if (!matchUserHero) {
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
+
+      if (insertUserHero) {
+        return await _userHeroOBJ.voteHero(body)
+      }
+    }
+
+    if (matchUserHero) {
+      return await _userHeroOBJ.voteHero(body)
+    }
+  }
+
+  /**
+   * comment hero
+   * @param {object} body body of the element that brings the path
+   * @returns {string}  message
+   */
+  async commentHero (body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+
+    const matchUserHero = await this.match(body)
+
+    if (!matchUserHero) {
+      const insertUserHero = await _userHeroOBJ.InsertUH(body)
+
+      if (insertUserHero) {
+        return await _userHeroOBJ.commentHero(body)
+      }
+    }
+
+    if (matchUserHero) {
+      return await _userHeroOBJ.commentHero(body)
+    }
+  }
+
+  /**
+   * delete comment
+   * @param {object} body body of the element that brings the path
+   * @returns {string}  message
+   */
+  async deleteCHero (body) {
+    if (!body.idUsu) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+
+    if (!body.idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id hero must be sent'
+      throw error
+    }
+    return await _userHeroOBJ.deleteCHero(body)
+  }
+
+  /**
+   * get favorites heros
+   * @param {number} id
+   * @returns {(Array | null)}  Heroes or null
+   */
+  async getFav (id) {
+    if (!id) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'id must be sent'
+      throw error
+    }
+    const currentEntity = await _userHeroOBJ.getFav(id)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get comment hero
+   * @param {number} idUser
+   *  @param {number} idHero
+   * @returns {(object | null)}  Hero or null
+   */
+  async getCommentHero (idUser, idHero) {
+    if (!idUser) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idUser must be sent'
+      throw error
+    }
+
+    if (!idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idHero must be sent'
+      throw error
+    }
+    const currentEntity = await _userHeroOBJ.getCommentHero(idUser, idHero)
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity[0]
+  }
+
+  /**
+   * Get vote hero
+ * @param {number} idUser
+   *  @param {number} idHero
+   * @returns {(object | null)}  Hero or null
+   */
+  async getVoteHero (idUser, idHero) {
+    if (!idUser) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idUser must be sent'
+      throw error
+    }
+
+    if (!idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idHero must be sent'
+      throw error
+    }
+    const currentEntity = await _userHeroOBJ.getVoteHero(idUser, idHero)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity[0]
+  }
+
+  /**
+   * Get best marvel heroes
+   * @returns {(Array)}  Hero
+   */
+  async bestMarverHero () {
+    const currentEntity = await _userHeroOBJ.bestMarverHero()
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'There is no hero from marvel'
+      throw error
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get best DC heroes
+   * @returns {(Array)}  Hero
+   */
+  async bestDCHero () {
+    const currentEntity = await _userHeroOBJ.bestDCHero()
+
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'There is no hero from DC'
+      throw error
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get most follow heroes
+   * @returns {(Array)}  Hero
+   */
+  async mostFollowHeros () {
+    const currentEntity = await _userHeroOBJ.mostFollowHeros()
+
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'There is no heros'
+      throw error
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get hero with user relation
+ * @param {number} idUser
+   *  @param {number} idHero
+   * @returns {(object | null)}  Hero or null
+   */
+  async getHeroUsu (idUser, idHero) {
+    if (!idUser) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idUser must be sent'
+      throw error
+    }
+
+    if (!idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idHero must be sent'
+      throw error
+    }
+    const currentEntity = await _userHeroOBJ.getHeroUsu(idUser, idHero)
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity[0]
+  }
+
+  /**
+   * Get hero comments
+   * @param {number} idHero
+   * @returns {(Array | null)}  Hero or null
+   */
+  async getHeroComments (idHero) {
+    if (!idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idHero must be sent'
+      throw error
+    }
+
+    const currentEntity = await _userHeroOBJ.getHeroComments(idHero)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity
+  }
+
+  /**
+   * Get hero rate score
+   * @param {number} idHero
+   * @returns {(Array | null)}  Hero or null
+   */
+  async getHeroRateScore (idHero) {
+    if (!idHero) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'idHero must be sent'
+      throw error
+    }
+
+    const currentEntity = await _userHeroOBJ.getHeroRateScore(idHero)
+
+    if (!currentEntity) {
+      return null
+    }
+    return currentEntity
+  }
+}
+
+module.exports = UserHeroService
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminController.html">AdminController</a></li><li><a href="AdminService.html">AdminService</a></li><li><a href="ApiHeroController.html">ApiHeroController</a></li><li><a href="ApiHeroService.html">ApiHeroService</a></li><li><a href="AuthController.html">AuthController</a></li><li><a href="AuthService.html">AuthService</a></li><li><a href="BaseService.html">BaseService</a></li><li><a href="DBConexion.html">DBConexion</a></li><li><a href="Hero.html">Hero</a></li><li><a href="HeroController.html">HeroController</a></li><li><a href="HeroService.html">HeroService</a></li><li><a href="Server.html">Server</a></li><li><a href="Team.html">Team</a></li><li><a href="TeamController.html">TeamController</a></li><li><a href="TeamService.html">TeamService</a></li><li><a href="User.html">User</a></li><li><a href="UserController.html">UserController</a></li><li><a href="UserHero.html">UserHero</a></li><li><a href="UserHeroController.html">UserHeroController</a></li><li><a href="UserHeroService.html">UserHeroService</a></li><li><a href="UserService.html">UserService</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_config">_config</a></li><li><a href="global.html#conexion">conexion</a></li><li><a href="global.html#config">config</a></li><li><a href="global.html#container">container</a></li><li><a href="global.html#DB">DB</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#isAdmin">isAdmin</a></li><li><a href="global.html#swaggerUi">swaggerUi</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun May 24 2020 19:01:37 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

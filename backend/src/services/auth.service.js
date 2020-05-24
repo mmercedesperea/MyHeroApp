@@ -2,17 +2,28 @@ const { generateToken } = require('../helpers/jwt.helper')
 let _userService = null
 let _userOBJ = null
 
+/**
+ * Auth class service, Our services indicated what actions should be taken according to the data that we receive from the different requests to our api controller
+ */
 class AuthService {
+  /**
+   *
+   * @param {class} UserService
+   * @param {class} User
+   */
   constructor ({ UserService, User }) {
     _userService = UserService
     _userOBJ = User
   }
 
+  /**
+   * signUp user
+   * @param {Object} user
+   * @returns {string}  message
+   */
   async signUp (user) {
     const { email } = user
     const userExist = await _userService.getUserByemail(email)
-    // console.log(userExist)
-
     if (userExist) {
       const error = new Error()
       error.status = 400
@@ -21,14 +32,16 @@ class AuthService {
     }
     if (!userExist) {
       const usuario = await _userOBJ.pre(user)
-      // console.log('llego aqui usuario')
-      // console.log(usuario)
       return await _userService.create(usuario)
     }
   }
 
+  /**
+   * signIn user
+   * @param {Object} user
+   * @returns {object}  token
+   */
   async signIn (user) {
-    // cogemos el email y la contraseña
     const { email, password } = user
     const userExist = await _userService.getUserByemail(email)
     if (!userExist) {
@@ -39,11 +52,7 @@ class AuthService {
     }
 
     const UserPas = userExist[0].password
-    // console.log(UserPas)
-    // const usuario = await _userOBJ.pre(user);
-    //comporbamos las contraseñas
     const validPassword = await _userOBJ.comparePasswords(UserPas, password)
-    // console.log(validPassword)
 
     if (!validPassword) {
       const error = new Error()
@@ -51,7 +60,8 @@ class AuthService {
       error.message = 'Invalid Password'
       throw error
     }
-    // poner los elementos que queremos que contenta el token
+
+    // put the elements we want the token to contain
     const usertToEncode = {
       email: userExist[0].email,
       id: userExist[0].idUsu,
@@ -60,12 +70,10 @@ class AuthService {
       photo: userExist[0].photo
     }
     console.log(usertToEncode)
-    // generamos el token
+    // create the token
     const token = generateToken(usertToEncode)
 
-    // podria ser  return { token, user:userExist};
     return { token, user: usertToEncode }
-    // return { token, user: userExist };
   }
 }
 

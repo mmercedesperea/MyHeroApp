@@ -1,3 +1,6 @@
+/**
+ * We export the module with the elements that compose it
+ */
 module.exports = {
     UserController: require('./user.controller'),
     AuthController: require('./auth.controller'),

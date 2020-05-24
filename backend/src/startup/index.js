@@ -10,10 +10,8 @@ let _config = null
  * server boot
  */
 class Server {
-  /** @constructor
-   * we inject the dependencies of configuration and the routes
-   *
-   */
+
+  
   constructor ({ config, router }) {
     /**
      * to store the server conf

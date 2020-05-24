@@ -1,49 +1,110 @@
-const { Router } = require('express');
+/**
+ * express module
+ * @const
+ */
+const { Router } = require('express')
 
-// para asegurarnos de que el usuario este autentificado para acceder a ciertas rutas
-const { AuthMiddleware,AdminAuth, ParseIntMiddleware, CacheMiddleware } = require('../middlewares');
+/**
+ * to ensure that the user is authenticated to access certain routes
+ * @const
+ */
+const {
+  AuthMiddleware,
+  AdminAuth
+} = require('../middlewares')
 
+/**
+ * to manage the routes that affect user
+ * @param {class} UserHeroController we introduce our class where the User controller are
+ */
 module.exports = function ({ UserController }) {
-  const router = Router();
-  //     // para la subida de archivos
-  // var multipart = require('connect-multiparty');
-  // var md_upload= multipart({ uploadDIr:'./uploads/users'});
+  /**
+   * way to our routes
+   * @const
+   */
+  const router = Router()
 
-  //obtener un usuario
-  router.get('/:idUsu', UserController.get);
+  /**
+   *  Get a user
+   * @param {function}  UserController.get  introduce our class where the User controller are and indicate its specific function
+   */
+  router.get('/:idUsu', UserController.get)
 
-  //update a user
-  router.put('/:idUsu',[AuthMiddleware], UserController.update);
+  /**
+   *  update a user
+   * @param {function}  UserController.update  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.put('/:idUsu', [AuthMiddleware], UserController.update)
 
-  //user new pass
-  router.put('/newpass/:idUsu',[AuthMiddleware], UserController.updatePass);
+  /**
+   *  user new pass
+   * @param {function}  UserController.updatePass  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.put('/newpass/:idUsu', [AuthMiddleware], UserController.updatePass)
 
-  // Eliminar informacion de usuario de la bd
-  router.post('/deleteUser/:idUsu',[AuthMiddleware], UserController.delete);
+  /**
+   *  delete user
+   * @param {function}  UserController.delete  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.post('/deleteUser/:idUsu', [AuthMiddleware], UserController.delete)
 
-  // Follow a user
-  router.post('/followUser',[AuthMiddleware], UserController.followUser);
+  /**
+   *  Follow user
+   * @param {function}  UserController.followUser  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.post('/followUser', [AuthMiddleware], UserController.followUser)
 
-  // unfollow a user
-  router.delete('/unFollowUser/:idUsu/:idUnfollow',[AuthMiddleware], UserController.unFollowUser);
+  /**
+   *  unfollow a user
+   * @param {function}  UserController.unFollowUser  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.delete(
+    '/unFollowUser/:idUsu/:idUnfollow',
+    [AuthMiddleware],
+    UserController.unFollowUser
+  )
 
-  //Buscar un usuario por nombre
-  router.get('/getUserByName/:userName', UserController.getUserByName);
+  /**
+   *  search a user by name
+   * @param {function}  UserController.getUserByName  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.get('/getUserByName/:userName', UserController.getUserByName)
 
   // router.post('/uploadImg/:idUsu',[md_upload],UserController.uploadImage);
 
-// check whether a user is being followed
-  router.get('/checkFollow/:idUsu/:idUnfollow',UserController.checkFollow);
+  /**
+   *  Check whether a user is being followed
+   * @param {function}  UserController.checkFollow  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.get('/checkFollow/:idUsu/:idUnfollow', UserController.checkFollow)
 
-// get all the users you follow
-  router.get('/getFollowUsers/:idUsu', UserController.getFollowUsers);
+  /**
+   *  get all the users you follow
+   * @param {function}  UserController.getFollowUsers  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.get('/getFollowUsers/:idUsu', UserController.getFollowUsers)
 
-  // get all the users who follow you
-  router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers);
+  /**
+   *  get all the users who follow you
+   * @param {function}  UserController.getFollowersUsers  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.get('/getFollowersUsers/:idUsu', UserController.getFollowersUsers)
 
-  //actualizar img
-  router.put('/newImg/user',[AuthMiddleware], UserController.newImg);
-  
+  /**
+   *  Update photo
+   * @param {function}  UserController.newImg  introduce our class where the User controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.put('/newImg/user', [AuthMiddleware], UserController.newImg)
 
-  return router;
-};
+  return router
+}

@@ -1,51 +1,62 @@
+let _adminService = null
+/**
+ * Admin class with controllers functions
+ */
+class AdminController {
+  /**
+   *
+   * @param {class} AdminService insert our Admin service in our class
+   */
+  constructor ({ AdminService }) {
+    _adminService = AdminService
+  }
+  /**
+   * new hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async newHero (req, res) {
+    const { body } = req
+    const newHero = await _adminService.newHero(body)
+    return res.status(201).send({ message: newHero })
+  }
 
-let _adminService = null;
+  /**
+   * Get all users
+   * @param {Object} res - Express response object
+   * @returns {array}  Users
+   */
+  async allUsers (req, res) {
+    const allUsers = await _adminService.allUsers()
+    return res.json(allUsers)
+  }
 
-class AdminController{
-    constructor({AdminService}){
-        _adminService= AdminService;
-    }
+  /**
+   * Modify hero
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async modifyHero (req, res) {
+    const { idHero } = req.params
+    const { body } = req
+    const modifyHero = await _adminService.modifyHero(idHero, body)
+    console.log(modifyHero)
+    return res.status(201).send({ message: modifyHero })
+  }
 
-    async  newHero(req, res) {
-        const { body } = req;
-        const  newHero = await _adminService.newHero(body);
-        // console.log(newHero)
-        return res.status(201).send({message: newHero});
-    }
-
-    async allUsers(req, res) {
-        const allUsers = await _adminService.allUsers();
-        //    JSON.stringify(team)
-        return res.json(allUsers);
-    }
-
-    async  modifyHero(req, res) {
-        const { idHero } = req.params;
-        const { body } = req;
-        const  modifyHero = await _adminService.modifyHero(idHero,body);
-        console.log(modifyHero)
-        return res.status(201).send({message:modifyHero});
-    }
-
-    async  deleteUser(req, res) {
-        const { idUsu } = req.params;
-        console.log(idUsu)
-        const  deleteUser = await _adminService.deleteUser(idUsu);
-        // console.log(deleteUser)
-        return res.status(201).send({message: deleteUser});
-    }
+  /**
+   * Delete user
+   * @param {Object} req - Express request object
+   * @param {Object} res - Express response object
+   * @returns {string}  message
+   */
+  async deleteUser (req, res) {
+    const { idUsu } = req.params
+    const deleteUser = await _adminService.deleteUser(idUsu)
+    return res.status(201).send({ message: deleteUser })
+  }
 }
 
-module.exports = AdminController;
-
-//   // Create new hero
-//   router.post('/newHero',[AuthMiddleware,AdminAuth], AdminController.newHero);
-
-//   //modify hero
-//   router.put('/modifyHero/:idHero',[AuthMiddleware,,AdminAuth], AdminController.modifyHero);
-
-//   // Delete user
-//   router.delete('/:idTeam',[AuthMiddleware,,AdminAuth],  AdminController.delete);
-
-//   // get all users
-//   router.get('/allUsers',[AuthMiddleware,,AdminAuth],  AdminController.bestTeam);
+module.exports = AdminController
