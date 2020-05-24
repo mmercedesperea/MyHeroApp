@@ -1,45 +1,93 @@
-const { Router } = require('express');
+/**
+ * express module
+ * @const
+ */
+const { Router } = require('express')
 
+/**
+ * to manage the routes that affect heros
+ * @param {class} HeroController we introduce our class where the Hero controller are
+ */
 module.exports = function ({ HeroController }) {
-  const router = Router();
-  //obtener un hero
-  router.get('/getByid/:idHero', HeroController.get);
+  const router = Router()
 
-  //obtener un heroe ganador
-  router.get('/getWinner/:idHero/:idHero2', HeroController.getWinner);
+  /**
+   * Get hero by id
+   * @param {class} HeroController.get we introduce our class where the Hero controller are
+   */
+  router.get('/getByid/:idHero', HeroController.get)
 
-  //obtener el heroe mas inteligente
-  router.get('/stats/mostIntelligence', HeroController.mostIntelligence);
+  /**
+   * Get Hero winner
+   * @param {class} HeroController.getWinner we introduce our class where the Hero controller are
+   */
+  router.get('/getWinner/:idHero/:idHero2', HeroController.getWinner)
 
-  //obtener el heroe mas fuerte
-  router.get('/stats/mostStrength', HeroController.mostStrength);
+  /**
+   * Get most intelligent hero
+   * @param {class} HeroController.mostIntelligence we introduce our class where the Hero controller are
+   */
+  router.get('/stats/mostIntelligence', HeroController.mostIntelligence)
 
-  //obtener el heroe mas rapido
-  router.get('/stats/mostSpeed', HeroController.mostSpeed);
+  /**
+   * Get most stenght
+   * @param {class} HeroController.mostStrength we introduce our class where the Hero controller are
+   */
+  router.get('/stats/mostStrength', HeroController.mostStrength)
 
-  //obtener el heroe mas durability
-  router.get('/stats/mostDurability', HeroController.mostDurability);
+  /**
+   * Get most speed hero
+   * @param {class} HeroController.mostSpeed we introduce our class where the Hero controller are
+   */
+  router.get('/stats/mostSpeed', HeroController.mostSpeed)
 
-  //obtener el heroe mas poder
-  router.get('/stats/mostPower', HeroController.mostPower);
+  /**
+   * Get most durability hero
+   * @param {class} HeroController.mostDurability we introduce our class where the Hero controller are
+   */
+  router.get('/stats/mostDurability', HeroController.mostDurability)
 
-  //obtener el heroe mas combate
-  router.get('/stats/mostCombat', HeroController.mostCombat);
+  /**
+   * Get most power hero
+   * @param {class} HeroController.mostPower we introduce our class where the Hero controller are
+   */
+  router.get('/stats/mostPower', HeroController.mostPower)
 
-  //obtener ultimos heroes añadidos
-  router.get('/new/heros', HeroController.newHeros);
+  /**
+   * Get most combat hero
+   * @param {class} HeroController.mostCombat we introduce our class where the Hero controller are
+   */
+  router.get('/stats/mostCombat', HeroController.mostCombat)
 
-  //obtener todos los heroes de Marvel
-  router.get('/all/MarvelHeroes', HeroController.allMarvelHeroes);
+  /**
+   * Get new heros in db
+   * @param {class} HeroController.newHeros we introduce our class where the Hero controller are
+   */
+  router.get('/new/heros', HeroController.newHeros)
 
-  //obtener todos los heroes de DC
-  router.get('/all/DCHeroes', HeroController.allDCHeroes);
+  /**
+   * Get all marvel heroes
+   * @param {class} HeroController.allMarvelHeroes we introduce our class where the Hero controller are
+   */
+  router.get('/all/MarvelHeroes', HeroController.allMarvelHeroes)
 
-  //obtener imagenes de heroes para perfil
-  router.get('/img/profileImgHeroes', HeroController.profileImgHeroes);
+  /**
+   * Get all DC heroes
+   * @param {class} HeroController.allDCHeroes we introduce our class where the Hero controller are
+   */
+  router.get('/all/DCHeroes', HeroController.allDCHeroes)
 
-  //obtener un hero por el nombre tirando de nuestra bd
-  router.get('/searchHeroByName/:name', HeroController.searchHeroByName);
+  /**
+   * Get heros img for profile
+   * @param {class} HeroController.profileImgHeroes we introduce our class where the Hero controller are
+   */
+  router.get('/img/profileImgHeroes', HeroController.profileImgHeroes)
 
-  return router;
-};
+  /**
+   * Get hero by name
+   * @param {class} HeroController.searchHeroByName we introduce our class where the Hero controller are
+   */
+  router.get('/searchHeroByName/:name', HeroController.searchHeroByName)
+
+  return router
+}

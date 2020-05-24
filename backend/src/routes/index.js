@@ -3,6 +3,10 @@
  * @const
  */
 const express = require('express')
+/**
+ * cors module
+ * @const
+ */
 const cors = require('cors')
 require('express-async-errors')
 

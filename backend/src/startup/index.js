@@ -10,8 +10,6 @@ let _config = null
  * server boot
  */
 class Server {
-
-  
   constructor ({ config, router }) {
     /**
      * to store the server conf

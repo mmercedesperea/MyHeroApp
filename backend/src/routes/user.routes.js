@@ -8,10 +8,7 @@ const { Router } = require('express')
  * to ensure that the user is authenticated to access certain routes
  * @const
  */
-const {
-  AuthMiddleware,
-  AdminAuth
-} = require('../middlewares')
+const { AuthMiddleware, AdminAuth } = require('../middlewares')
 
 /**
  * to manage the routes that affect user

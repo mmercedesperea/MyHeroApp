@@ -1,3 +1,6 @@
+/**
+ * We export the module with the elements that compose it
+ */
 module.exports = {
     UserRoutes: require('./user.routes'),
     AuthRouters: require('./auth.routes'),
