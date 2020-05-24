@@ -1,11 +1,18 @@
-// Para los tokens de autentificacion
-const { sign } = require ('jsonwebtoken');
-// para traer el secrest de nuestro token
-const {JWT_SECRET} = require ('../config');
+/**
+ * For authentication tokens
+ */
+const { sign } = require('jsonwebtoken')
+/**
+ * Bring the secrest of our token
+ */
+const { JWT_SECRET } = require('../config')
 
-
-// metodo para devolver el token 
-module.exports.generateToken = function(user){
-    // creamos el token de autentificacion codificando el objeto usuario con nuestra contraseña secreta y le damos un tiempo de expiracion de 4h
-    return sign({ user }, JWT_SECRET, { expiresIn:'4h'});
-};
+/**
+ * function in which we return the token along with its duration
+ * @param {object} user the user with whom we make the token
+ * @return {object} Authentication token encrypting the user object with our secret password
+ */
+module.exports.generateToken = function (user) {
+  //We create the authentication token by encrypting the user object with our secret password and giving it an expiration time of 4h
+  return sign({ user }, JWT_SECRET, { expiresIn: '4h' })
+}

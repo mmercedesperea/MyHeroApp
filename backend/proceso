@@ -20,3 +20,12 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', router);
 
 http://localhost:5000/api/api-docs/
+
+jsdoc
+instalamos jsdoc 
+npm install -g jsdoc
+creamos una carpeta con un jsdoc.json y en el ponemos la configuracion paracrear nuestra documentacion
+
+
+ahora bien para que se arranque con un solo comando de forma rapida en nuestro package.json le ponemos un comando que active la ruta
+"docs": "jsdoc -c src/jsDoc/jsdoc.json"

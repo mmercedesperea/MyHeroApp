@@ -1,64 +1,122 @@
-const { Router } = require('express');
+/**
+ * express module
+ * @const
+ */
+const { Router } = require('express')
 
-
+/**
+ * function to manage the routes that affect UserHero
+ * @param {class} UserHeroController we introduce our class where the UserHero controller are
+ */
 module.exports = function ({ UserHeroController }) {
+  /**
+   * way to our routes
+   * @const
+   */
+  const router = Router()
 
-    const router = Router();
+  /**
+   *  Follow a hero with put
+   * @param {function}  UserHeroController.followHero  introduce our class where the UserHero controller are and indicate its specific function
+   */
+  router.put('/followHero', UserHeroController.followHero)
 
-    // Follow a hero
-    router.put('/followHero', UserHeroController.followHero);
+  /**
+   *  Unfollow a hero with put
+   * @param {function}  UserHeroController.unfollowHero  introduce our class where the UserHero controller are and indicate its specific function
+   */
+  router.put('/unfollowHero', UserHeroController.unfollowHero)
 
-    // Unfollow a hero
-    router.put('/unfollowHero', UserHeroController.unfollowHero);
+  /**
+   * favorite a hero  with put
+   * @param {function}  UserHeroController.favorite introduce our class where the UserHero controller are and indicate its specific function
+   */
+  router.put('/favorite', UserHeroController.favorite)
 
-    // favorite a hero
-    router.put('/favorite', UserHeroController.favorite);
+  /**
+   *  Unfavorite a hero  with put
+   * @param {function}  UserHeroController.unfavorite introduce our class where the UserHero controller are and indicate its specific function
+   */
+  router.put('/unfavorite', UserHeroController.unfavorite)
 
-    // unfavorite a hero
-    router.put('/unfavorite', UserHeroController.unfavorite);
+  /**
+   *  vote a hero with put
+   * @param {function}  UserHeroController.voteHero introduce our class where the UserHero controller are and indicate its specific function
+   */
+  router.put('/voteHero', UserHeroController.voteHero)
 
-    // vote
-    router.put('/voteHero', UserHeroController.voteHero);
+  /**
+   *  Comment a hero with put
+   * @param {function}  UserHeroController.commentHero introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-    // //obtener el voto de un heroe de un usuario
-    // router.get('/voteHero/:idUsu/:idHero', UserHeroController.getVoteHero);
+  router.put('/commentHero', UserHeroController.commentHero)
 
-    // comment
-    router.put('/commentHero', UserHeroController.commentHero);
+  /**
+   *  Delete a comment a hero with put
+   * @param {function}  UserHeroController.deleteCHero introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-    // //obtener el comentario de un heroe de un usuario
-    // router.get('/commentHero/:idUsu/:idHero', UserHeroController.getCommentHero);
+  router.put('/deleteCHero', UserHeroController.deleteCHero)
 
-    // delete comment
-    router.put('/deleteCHero', UserHeroController.deleteCHero);
+  /**
+   * Get all the favorite heroes
+   * @param {function}  UserHeroController.allHerosFav introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-    // obtener todos los heroes favoritos
-    router.get('/allHerosFav/:idUsu', UserHeroController.allHerosFav);
+  router.get('/allHerosFav/:idUsu', UserHeroController.allHerosFav)
 
-    //obtener todos los heroes follow
-    router.get('/allHerosFoll/:idUsu', UserHeroController.allHerosFoll);
+  /**
+   * Get all the follow heroes
+   * @param {function}  UserHeroController.allHerosFoll introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-    //obtener hero de marvel mas votado
-    router.get('/bestMarverHero', UserHeroController.bestMarverHero);
+  router.get('/allHerosFoll/:idUsu', UserHeroController.allHerosFoll)
 
-    //obtener hero de Dc mas votado
-    router.get('/bestDCHero', UserHeroController.bestDCHero);
+  /**
+   * Get top rated marvel hero
+   * @param {function}  UserHeroController.bestMarverHero introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-    // obtener los heroes más seguidos
-    router.get('/mostFollowHeros', UserHeroController.mostFollowHeros);
+  router.get('/bestMarverHero', UserHeroController.bestMarverHero)
 
-    //Get the relationship of the hero and the user
-    router.get('/getHeroUsu/:idUsu/:idHero', UserHeroController.getHeroUsu);
+  /**
+   * Get top rated DC hero
+   * @param {function}  UserHeroController.bestDCHero introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-    // get all the comments from a hero
-    router.get('/getHeroComments/:idHero', UserHeroController.getHeroComments);
+  router.get('/bestDCHero', UserHeroController.bestDCHero)
 
+  /**
+   * Get the most followed heroes
+   * @param {function}  UserHeroController.mostFollowHeros introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-     // get the mean of a hero's scores A PASA A SWAAAAAAGEEERR
-     router.get('/getHeroRateScore/:idHero', UserHeroController.getHeroRateScore);
+  router.get('/mostFollowHeros', UserHeroController.mostFollowHeros)
 
-    // // modifyCHerocomment
-    // router.put('/modifyCHero', UserHeroController.modifyCHero);
+  /**
+   * Get the relationship of the hero and the user
+   * @param {function}  UserHeroController.getHeroUsu introduce our class where the UserHero controller are and indicate its specific function
+   */
 
-    return router;
+  router.get('/getHeroUsu/:idUsu/:idHero', UserHeroController.getHeroUsu)
+
+  /**
+   * Get all the comments from a hero
+   * @param {function}  UserHeroController.getHeroComments introduce our class where the UserHero controller are and indicate its specific function
+   */
+
+  router.get('/getHeroComments/:idHero', UserHeroController.getHeroComments)
+
+  /**
+   * Get the mean of a hero's scores A PASA A SWAAAAAAGEEERR
+   * @param {function}  UserHeroController.getHeroRateScore introduce our class where the UserHero controller are and indicate its specific function
+   */
+
+  router.get('/getHeroRateScore/:idHero', UserHeroController.getHeroRateScore)
+
+  // // modifyCHerocomment
+  // router.put('/modifyCHero', UserHeroController.modifyCHero);
+
+  return router
 }

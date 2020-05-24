@@ -1,49 +1,62 @@
-const express = require('express');
-const cors = require('cors');
-require('express-async-errors');
-const { NotFoundMiddleware, ErrorMiddleware } = require('../middlewares');
+/**
+ * express module
+ * @const
+ */
+const express = require('express')
+const cors = require('cors')
+require('express-async-errors')
 
-// var bodyParser = require("body-parser");
-
+/**
+ * swagger conf
+ */
 var swaggerUi = require('swagger-ui-express'),
-    swaggerDocument = require('../swagger/swagger.json');
+    swaggerDocument = require('../swagger/swagger.json')
 
-module.exports = function ({ AdminRoute,UserRoutes, AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute, TeamRoute }) {
+/**
+ * Function to manage the routes of our api
+ * @param {function} AdminRoute Route admin
+ * @param {function} UserRoutes Route User
+ * @param {function} UserHeroRoute Route user hero
+ * @param {function} AuthRouters Route authentication
+ * @param {function} HeroRoute Route Heroes
+ * @param {function} TeamRoute Route team
+ */
+module.exports = function ({
+    AdminRoute,
+    UserRoutes,
+    AuthRouters,
+    ApiHeroRoute,
+    HeroRoute,
+    UserHeroRoute,
+    TeamRoute
+}) {
+    const router = express.Router()
+    const apiRoutes = express.Router()
 
-    const router = express.Router();
-    const apiRoutes = express.Router();
-
+    /**
+     * we inject diferent elements in our route
+     */
     apiRoutes
-        // para pasar las peticiones a json
+        //to pass the requests to json
         .use(express.json())
         .use(express.urlencoded({ extended: false }))
-        // .use(bodyParser.json())
-        // .use(
-        //     bodyParser.urlencoded({ extended: false })
-        // )
-        // para evitar problemas de cors
+        // avoit corts problems
         .use(cors())
-    // evitar problemas de seguridad
-    // .use(helmet())
-    // 
-    // .use(compression());
-    apiRoutes.use('/user', UserRoutes);
-    apiRoutes.use('/auth', AuthRouters);
-    apiRoutes.use('/apiHero', ApiHeroRoute);
-    apiRoutes.use('/hero', HeroRoute);
-    apiRoutes.use('/userHero', UserHeroRoute);
-    apiRoutes.use('/team', TeamRoute);
-    apiRoutes.use('/admin', AdminRoute);
+    /**
+     * we indicate which routes it have to target
+     */
+    apiRoutes.use('/user', UserRoutes)
+    apiRoutes.use('/auth', AuthRouters)
+    apiRoutes.use('/apiHero', ApiHeroRoute)
+    apiRoutes.use('/hero', HeroRoute)
+    apiRoutes.use('/userHero', UserHeroRoute)
+    apiRoutes.use('/team', TeamRoute)
+    apiRoutes.use('/admin', AdminRoute)
     //swagger route
-    apiRoutes.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    apiRoutes.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
+    // All our routes will use the following route as a base
+    router.use('/api', apiRoutes)
 
-    // todas nuestras rutas utilizaran de base la siguiente ruta
-    router.use('/api', apiRoutes);
-
-
-    // router.use(NotFoundMiddleware);
-    // router.use(ErrorMiddleware);
-
-    return router;
+    return router
 }

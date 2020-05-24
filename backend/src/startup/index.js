@@ -10,12 +10,18 @@ let _config = null
  * server boot
  */
 class Server {
-  /**
+  /** @constructor
    * we inject the dependencies of configuration and the routes
+   *
    */
   constructor ({ config, router }) {
+    /**
+     * to store the server conf
+     */
     _config = config
-    // le decimos a expres que use nuestras rutas
+    /**
+     * we tell expres to use our routes
+     */
     _express = express().use(router)
   }
 

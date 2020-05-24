@@ -1,8 +1,9 @@
-// clase para comprobar si es administrador
-// module.exports = function (req, res, next) {
-
+/**
+ * Function to check if you are an administrator
+ * @param {object} req Element with the user info
+ * @return {any} res if the user is not admin else next
+ */
 exports.isAdmin= function(req,res,next){
-    console.log(req.user.admin)
     if(req.user.admin !=1){
         return res.status(200).send({message: 'You are not admin'})
     }

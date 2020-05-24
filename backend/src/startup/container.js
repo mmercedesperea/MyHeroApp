@@ -4,29 +4,47 @@
 const { createContainer, asClass, asValue, asFunction } = require("awilix");
 
 
-// config
+/**
+ * we bring the route to the configuration
+ */
 const config = require('../config');
 const server = require('./index');
 
-// routes
+/**
+ * we bring the routes of our api
+ */
 const { AdminRoute, UserRoutes, AuthRouters, ApiHeroRoute, HeroRoute, UserHeroRoute, TeamRoute } = require('../routes/index.routes');
 const Routes = require('../routes');
 
-// DB
+/**
+ * we bring the route to the DB conexion
+ */
 const DB = require('../database/db');
 
 
-// services
+/**
+ * We bring the routes of our services where it is indicated what actions should be taken according to the data that we receive from the different requests to our api
+ */
 const {  AdminService,UserService, AuthService, ApiHeroService, HeroService, UserHeroService, TeamService } = require("../services");
 
 
-// controllers
+/**
+ * 
+we bring the routes of our controllers, who are indicated to manage what the routes bring us and send it to the appropriate services
+ */
 const { AdminController ,UserController, AuthController, ApiHeroController, HeroController, UserHeroController, TeamController } = require('../controllers');
 
-//models
+/**
+ * 
+we bring the routes of our models
+ */
 const { User, Hero, UserHero, Team } = require('../models');
 
-// creamos nuestro contenedor donde definimos nuestros elementos
+/**
+ * we create our container where we define our elements
+ * We create our container where we define our elements and inject the different elements that make up our API to be able to work with them from where we want
+ * In the container we indicate if what we bring is a class, a function or a value and that it is a singleton type to make sure that there is only one instance of that element
+ */
 const container = createContainer();
 
 container
@@ -47,7 +65,7 @@ container
         AdminService: asClass(  AdminService).singleton()
     })
     .register({
-        // bind se utiliza para que express a la hora de llamar un controlador el scope se mantenga
+        // bind is used so that when calling a controller the scope is maintained
         UserController: asClass(UserController.bind(UserController)).singleton(),
         AuthController: asClass(AuthController.bind(AuthController)).singleton(),
         ApiHeroController: asClass(ApiHeroController.bind(ApiHeroController)).singleton(),

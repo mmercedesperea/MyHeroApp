@@ -1,32 +1,35 @@
-const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config');
+const jwt = require('jsonwebtoken')
+const { JWT_SECRET } = require('../config')
 
+/**
+ * Function to check is the user has a Token valid
+ * @param {object} req Element with the header info
+ * @return {any} res if the user has a valid token or not
+ */
 module.exports = function (req, res, next) {
-    // cogemos nuestro token de los headers 
-    const token = req.headers["authorization"];
+    /**
+     * we take our token from the headers
+     */
+    const token = req.headers['authorization']
     if (!token) {
         return res.status(401).send({
-            message : "token must be sent" 
+            message: 'token must be sent'
         })
-       
     }
 
-    // desencriptamos nuestro token con la misma contraseña(JWT_SECRET) que hemos puesto en el env
-    //cogemos nuestro token y nuestro secret lo decodificamos y devolvemos el usuario decodificado
+    //we decrypt our token with the same password (JWT_SECRET) that we have put in the env
+    // we take our token and our secret we decode it and return the decoded user
     jwt.verify(token, JWT_SECRET, function (err, decodedToken) {
         if (err) {
-            
             return res.status(401).send({
-                message : "Invalid token" 
+                message: 'Invalid token'
             })
         }
-        // en el caso de que si exista ese token se mandara el user con sus datos
-        // req.user = decodedToken.user;
-        // en el caso de que si exista ese token se mandara el user con sus datos
-        req.user = decodedToken.user;
 
-        // next hace que se salte al metodo siguiente que tengamos asignado en la ruta
-        next();
-    });
+        // in the event that if that token exists, the user will be sent with their data
+        req.user = decodedToken.user
 
+        // next makes it jump to the next method that we have assigned in the route
+        next()
+    })
 }
