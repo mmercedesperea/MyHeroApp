@@ -1103,8 +1103,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>boolean</p>
-
+                        
                     </div>
                 </td>
             </tr>
@@ -1791,7 +1790,7 @@ export class UserService {
 
   /**
   * Check token expiration time
-  * @returns boolean
+  * @returns {boolean}
   */
   public isLoggedIn(): boolean {
     const user &#x3D; this.getTokenInfo();
@@ -1806,7 +1805,7 @@ export class UserService {
   /**
    * Get user 
    * @param {number} idUsu
-   * @returns user
+   * @returns {User} user
    */
   public getUser(idUsu: number): Observable&lt;User&gt; {
     return this.http.get&lt;User&gt;(&#x60;${this.baseUrl}/user/${idUsu}&#x60;);

@@ -106,7 +106,7 @@ export class UserService {
 
   /**
   * Check token expiration time
-  * @returns boolean
+  * @returns {boolean}
   */
   public isLoggedIn(): boolean {
     const user = this.getTokenInfo();
@@ -121,7 +121,7 @@ export class UserService {
   /**
    * Get user 
    * @param {number} idUsu
-   * @returns user
+   * @returns {User} user
    */
   public getUser(idUsu: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/user/${idUsu}`);

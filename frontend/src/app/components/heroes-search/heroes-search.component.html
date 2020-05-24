@@ -9,8 +9,8 @@
     </div>
   </div>
   
-  <div *ngIf="hero==='character with given name not found' && data != 'User'">
-    <h1>{{hero}}</h1>
+  <div *ngIf=" hero==null && data != 'User'">
+    <h1>character with given name not found</h1>
   </div>
   
   <div *ngIf="user && data === 'User'">
