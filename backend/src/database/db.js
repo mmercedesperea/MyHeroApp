@@ -19,12 +19,19 @@ class DBConexion {
      *  we specify our DB conexion data
      */
     const mysqlConnection = mysql.createConnection({
-      host: 'localhost',
+      host: 'bn1pbv6odxmjfnoccu27-mysql.services.clever-cloud.com',
       port: '3306',
-      user: 'root',
-      password: '',
-      database: 'myheroapp'
+      user: 'u4gvix3sfiwyexu0',
+      password: 'OQnOcznyHipH3ld7D5Cq',
+      database: 'bn1pbv6odxmjfnoccu27'
     })
+    // const mysqlConnection = mysql.createConnection({
+    //   host: 'localhost',
+    //   port: '3306',
+    //   user: 'root',
+    //   password: '',
+    //   database: 'myheroapp'
+    // })
     /**
      * Connection with mysqlConnection if error show error else db is conected
      */
