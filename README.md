@@ -80,9 +80,9 @@ LINK al swagger : https://backendmyhero.eu-gb.mybluemix.net/api/api-docs/
 
 Datos de acceso:
  -  Administrador: 
-        email: admim@admim.com   
+        email: admin@admin.com   
         pass: admin1234567admin
 
  -  UsuarioRegistrado:
-        email: registerU@admim.com
+        email: registerU@admin.com
         Pass: register        
