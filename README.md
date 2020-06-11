@@ -3,12 +3,13 @@
 # Descripción general:
 
 ## Perspectiva del producto
-    _La aplicación web desarrollada pretende ser un medio en el que los amantes de los personajes de ficción puedan realizar búsquedas sobre ellos y realizar diferentes acciones sobre ellos, creando también un entorno donde poder interactuar con otros usuarios con las mismas aficiones.
+La aplicación web desarrollada pretende ser un medio en el que los amantes de los personajes de ficción puedan realizar búsquedas sobre ellos y realizar diferentes acciones sobre ellos, creando también un entorno donde poder interactuar con otros usuarios con las mismas aficiones.
 
 ## Funcionalidades del producto
-    _Las funcionalidades que conforman la aplicación se pueden distinguir según el tipo de usuario que se encuentre en ella, y son:
+Las funcionalidades que conforman la aplicación se pueden distinguir según el tipo de usuario que se encuentre en ella, y son:
 
 * Usuarios no registrados:
+<br>
 Autentificación: cuando el usuario no registrado intente hacer una acción que dependa de su autenticación se le informará de que debe registrarse o loguearse para acceder a ella.
 
             Registro en la aplicación, mediante un formulario.
