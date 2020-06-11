@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
   providedIn: "root",
 })
 
-
 export class UserService {
   /**
   * Variable in which we store the url of our api
@@ -92,13 +91,7 @@ export class UserService {
       payload = token.split('.')[1];
       // we use window.atob which decodes a data string that has been encoded using base-64 encoding
       payload = window.atob(payload);
-      // console.log(payload.split(`"exp":`)[1])
       return JSON.parse(payload);
-      //  JSON.parse(payload);
-      //  payload.split(`"exp":`)[1];
-      //  payload.split("}")[0];
-      //  console.log(payload)
-      // console.log(payload.split(`"exp":`)[1])
     } else {
       return null;
     }
@@ -119,7 +112,7 @@ export class UserService {
   }
 
   /**
-   * Get user 
+   * Get user
    * @param {number} idUsu
    * @returns {User} user
    */
@@ -128,7 +121,7 @@ export class UserService {
   }
 
   /**
-  * Update a user 
+  * Update a user
   * @param {number} idUsu
   * @param {User} user
   */
@@ -141,7 +134,7 @@ export class UserService {
   }
 
   /**
-  * Update a user password
+  * Update a user's password
   * @param {number} idUsu
   * @param {any} data
   */
@@ -193,7 +186,7 @@ export class UserService {
  * @param {string} alias
  * @returns user[]
  */
-  public getUserByName(alias: string) : Observable<User[]>{
+  public getUserByName(alias: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/user/getUserByName/${alias}`);
   }
 
@@ -217,7 +210,7 @@ export class UserService {
   }
 
   /**
-  * Get all the users who follow you
+  * Get all the users who follows you
   * @param {number} idUsu
   * @returns User[]
   */
@@ -237,9 +230,9 @@ export class UserService {
   }
 
   /**
-* Get all the users 
-* @returns User[]
-*/
+   * Get all the users
+   * @returns User[]
+   */
   public allusers(): Observable<User[]> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
@@ -253,7 +246,6 @@ export class UserService {
     * @param {number} idUsu
     */
   public adminDeleteUser(idUsu: number) {
-    console.log(idUsu)
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
@@ -261,4 +253,36 @@ export class UserService {
       { headers: headers });
   }
 
+  /**
+   * Get users count
+   * @returns users
+   */
+  public countAllUsers(): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.get<any>(`${this.baseUrl}/admin/countAllUsers`, { headers: headers });
+  }
+
+  /**
+   * Get teams count
+   * @returns count
+   */
+  public countAllTeams(): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.get<any>(`${this.baseUrl}/admin/countAllTeams`, { headers: headers });
+  }
+
+  /**
+   * Get heroes count
+   * @returns count
+   */
+  public countAllHeroes(): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
+    return this.http.get<any>(`${this.baseUrl}/admin/countAllHeroes`, { headers: headers });
+  }
 }

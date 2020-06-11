@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+// import $ from "jquery";
+// or
+// import $ = require("jquery");
 /**
- * Component for fcontains other fight component
+ * Component to contain other fight component
  */
 @Component({
   selector: 'app-fight',
@@ -12,17 +14,16 @@ import { Component, OnInit } from '@angular/core';
 export class FightComponent implements OnInit {
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
   constructor(
-  ){}
+  ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
   ngOnInit() {
+
+
   }
-
 }
-
-

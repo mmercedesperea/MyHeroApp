@@ -11,9 +11,9 @@ var rp = require('request-promise')
 class Hero {
   /**
    *
-   * @param {class} DB insert our db conexion class
+   * @param {class} DB insert our db connection class
    */
-  constructor ({ DB }) {
+  constructor({ DB }) {
     this.idHero = 0
     this.heroName = ''
     this.image = ''
@@ -46,7 +46,7 @@ class Hero {
    * @param {number} idTeam
    * @return {object} if the function is successful it will return one element from the DB, if not will be returned indicating that there has been a failure
    */
-  async get (idHero) {
+  async get(idHero) {
     if (idHero == 'null') {
       return await null
     }
@@ -61,12 +61,12 @@ class Hero {
     }
   }
   /**
-   * Get the hero winner
+   * Get the winner hero
    * @param {number} idHero
    * @param {number} idHero2
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async getWinner (idHero, idHero2) {
+  async getWinner(idHero, idHero2) {
     var Hero1 = await _DB.consulta(
       `SELECT SUM (intelligence + strength + speed +durability +power +combat) as totalPoints,idHero,heroName,image from ${table} WHERE idHero =${idHero}`
     )
@@ -84,57 +84,57 @@ class Hero {
    * Get the most intelligent hero
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async mostIntelligence () {
+  async mostIntelligence() {
     return await _DB.consulta(
       `select idHero, heroName, image,  intelligence from heroes ORDER by intelligence DESC LIMIT 1`
     )
   }
 
   /**
-   * Get the most strength hero
+   * Get the strongest hero
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async mostStrength () {
+  async mostStrength() {
     return await _DB.consulta(
       `select idHero, heroName, image, strength from heroes ORDER by strength DESC LIMIT 1`
     )
   }
 
   /**
-   * Get the most speed hero
+   * Get the fastest hero
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async mostSpeed () {
+  async mostSpeed() {
     return await _DB.consulta(
       `select idHero, heroName, image, speed from heroes ORDER by speed DESC LIMIT 1`
     )
   }
 
   /**
-   * Get the most durability hero
+   * Get the hero with most durability
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async mostDurability () {
+  async mostDurability() {
     return await _DB.consulta(
       `select idHero, heroName, image, durability from heroes ORDER by durability DESC LIMIT 1`
     )
   }
 
   /**
-   * Get the most powerd hero
+   * Get the most powerful hero
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async mostPower () {
+  async mostPower() {
     return await _DB.consulta(
       `select idHero, heroName, image, power from heroes ORDER by power DESC LIMIT 1`
     )
   }
 
   /**
-   * Get the most combat hero
+   * Get the hero with highest combat stats
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async mostCombat () {
+  async mostCombat() {
     return await _DB.consulta(
       `select idHero, heroName, image, combat from heroes ORDER by combat DESC LIMIT 1`
     )
@@ -144,9 +144,9 @@ class Hero {
    * Get new heroes in db
    * @return {array} if the function is successful it will return one or more elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async newHeros () {
+  async newHeros() {
     return await _DB.consulta(
-      `select idHero, heroName, image, createDate  FROM heroes ORDER by createDate DESC limit 10`
+      `select idHero, heroName, image, createDate  FROM heroes ORDER by createDate DESC limit 12`
     )
   }
 
@@ -154,7 +154,7 @@ class Hero {
    * Get all marvel heroes in db
    * @return {array} if the function is successful it will return one or more elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async allMarvelHeroes () {
+  async allMarvelHeroes() {
     return await _DB.consulta(
       `select idHero, heroName, image FROM heroes WHERE publisher ='Marvel Comics'`
     )
@@ -164,7 +164,7 @@ class Hero {
    * Get all DC heroes in db
    * @return {array} if the function is successful it will return one or more elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async allDCHeroes () {
+  async allDCHeroes() {
     return await _DB.consulta(
       `select idHero, heroName, image FROM heroes WHERE publisher ='DC Comics'`
     )
@@ -174,7 +174,7 @@ class Hero {
    * Get select img from heroes for user profile
    * @return {array} if the function is successful it will return one or more elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async profileImgHeroes () {
+  async profileImgHeroes() {
     return await _DB.consulta(
       `select image from heroes where idHero IN( 30,63,70,107,149,165,201,213,275,280,370,530,620)`
     )
@@ -185,7 +185,7 @@ class Hero {
    * @param {string} name
    * @return {array} if the function is successful it will return one or more elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async getHeroByName (name) {
+  async getHeroByName(name) {
     const url = `${host}search/${name}`
     const heroes = new Array()
     return await rp(url, { json: true })
@@ -201,7 +201,7 @@ class Hero {
             hero3.image = her.image.url
             heroes.push(hero3)
           })
-          // devolvemos el array de elementos
+          // we return the elements array
           return heroes
         }
       })
@@ -211,7 +211,7 @@ class Hero {
       })
   }
 
-  // crear unna nueva entidad heroe
+  // we create a new hero identity
   // async insertHero(entity) {
   //     return await _DB.create(
   //         `INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,work) VALUES ('${entity.idHero}',"${entity.heroName}","${entity.image}",${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},"${entity.fullName}","${entity.placeOfBirth}","${entity.publisher}","${entity.alignment}","${entity.firstApperance}","${entity.gender}","${entity.race}",'${entity.height}','${entity.weight}',"${entity.work}")`
@@ -223,7 +223,7 @@ class Hero {
    * @param {object} entity body of the element that brings the path
    * @return {*} if the function has been successful, a resolve will be returned indicating that it could be created, otherwise will be returned indicating the opposite
    */
-  async insertHero (entity) {
+  async insertHero(entity) {
     return await _DB.createNewHero(
       'INSERT INTO heroes ( idHero, heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,eyeColor,hairColor,work) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
       entity
@@ -235,9 +235,9 @@ class Hero {
    * @param {object} entity body of the element that brings the path
    * @return {*} if the function has been successful, a resolve will be returned indicating that it could be created, otherwise will be returned indicating the opposite
    */
-  async newHero (entity) {
+  async newHero(entity) {
     return await _DB.create(
-      `INSERT INTO heroes ( heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,eyeColor,hairColor,work) VALUES ("${entity.heroName}","${entity.image}",${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},"${entity.fullName}","${entity.placeOfBirth}","${entity.publisher}","${entity.alignment}","${entity.firstApperance}","${entity.gender}","${entity.race}",'${entity.height}','${entity.weight}',"${entity.eyeColor}","${entity.hairColor}","${entity.work}")`
+      `INSERT INTO heroes ( heroName,image,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,publisher,alignment,firstAppearance,gender,race,height,weight,eyeColor,hairColor,work,biography) VALUES ("${entity.heroName}","${entity.image}",${entity.intelligence},${entity.strength},${entity.speed},${entity.durability},${entity.power},${entity.combat},"${entity.fullName}","${entity.placeOfBirth}","${entity.publisher}","${entity.alignment}","${entity.firstApperance}","${entity.gender}","${entity.race}",'${entity.height}','${entity.weight}',"${entity.eyeColor}","${entity.hairColor}","${entity.work}","${entity.biography}")`
     )
   }
 
@@ -247,9 +247,9 @@ class Hero {
    * @param {object} entity  body of the element that brings the path
    * @return {*} if the function has been successful, a resolve will be returned indicating that it could be created, otherwise will be returned indicating the opposite
    */
-  async modifyHero (idHero, entity) {
+  async modifyHero(idHero, entity) {
     return await _DB.update(
-      `UPDATE ${table}  SET heroName = '${entity.heroName}', image = '${entity.image}', intelligence = ${entity.intelligence}, strength =${entity.strength}, speed =${entity.speed},durability =${entity.durability},power =${entity.power},combat =${entity.combat},fullName='${entity.fullName}',placeOfBirth='${entity.placeOfBirth}',publisher='${entity.publisher}',alignment='${entity.alignment}',firstAppearance='${entity.firstAppearance}',gender='${entity.gender}',race='${entity.race}',height='${entity.height}',weight='${entity.weight}',work='${entity.work}',eyeColor='${entity.eyeColor}' ,hairColor='${entity.hairColor}'  WHERE idHero = ${idHero}`
+      `UPDATE ${table}  SET heroName = '${entity.heroName}', image = '${entity.image}', intelligence = ${entity.intelligence}, strength =${entity.strength}, speed =${entity.speed},durability =${entity.durability},power =${entity.power},combat =${entity.combat},fullName='${entity.fullName}',placeOfBirth='${entity.placeOfBirth}',publisher='${entity.publisher}',alignment='${entity.alignment}',firstAppearance='${entity.firstAppearance}',gender='${entity.gender}',race='${entity.race}',height='${entity.height}',weight='${entity.weight}',work='${entity.work}',eyeColor='${entity.eyeColor}' ,hairColor='${entity.hairColor}' ,biography='${entity.biography}' WHERE idHero = ${idHero}`
     )
   }
 
@@ -258,7 +258,7 @@ class Hero {
    * @param {number} id
    * @return {object} if the function is successful it will return one elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async getHeroByid (id) {
+  async getHeroByid(id) {
     const url = `${host}${id}`
 
     var newHeroGet = await rp(url, { json: true })
@@ -311,16 +311,16 @@ class Hero {
         console.log(err)
         return err
       })
-    //insertamos en la bd
+    // insert in the db
     await this.insertHero(newHeroGet)
-    //devolvemos el elemento
+    // return the element
     return this.get(newHeroGet.idHero)
   }
 
   /**
    * search all heroes in api
    */
-  async searchAllHeroes () {
+  async searchAllHeroes() {
     for (var i = 700; i < 800; i++) {
       this.getHeroByid(i)
     }
@@ -331,7 +331,7 @@ class Hero {
    * @param {string} name
    * @return {array} if the function is successful it will return one or more elements from the DB, if not will be returned indicating that there has been a failure
    */
-  async searchHeroByName (name) {
+  async searchHeroByName(name) {
     return await _DB.consulta(`SELECT heroName, idHero,image from heroes where heroName LIKE '${name}%' 
         `)
   }

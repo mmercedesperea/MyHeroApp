@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/routes/admin.route.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/routes/admin.route.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * express module
+ * @const
+ */
+const { Router } = require('express')
+
+/**
+ * to ensure that the user is authenticated to access certain routes
+ * @const
+ */
+const {
+  AuthMiddleware,
+  AdminAuth,
+  ParseIntMiddleware,
+  CacheMiddleware
+} = require('../middlewares')
+
+/**
+ * to manage the routes that affect Admin
+ * @param {class} AdminController we introduce our class where the Admin controller are
+ */
+module.exports = function ({ AdminController }) {
+  /**
+   * way to our routes
+   * @const
+   */
+  const router = Router()
+
+  /**
+   * Create a new hero
+   * @param {class} AdminController.newHero we introduce our class where the Admin controller are
+   * @param {function} AuthMiddleware
+   * @param {function} AdminAuth.isAdmin
+   */
+  router.post(
+    '/newHero',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.newHero
+  )
+
+  /**
+   * Modify hero
+   * @param {class} AdminController.modifyHero we introduce our class where the Admin controller are
+   * @param {function} AuthMiddleware
+   * @param {function} AdminAuth.isAdmin
+   */
+  router.put(
+    '/modifyHero/:idHero',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.modifyHero
+  )
+
+  /**
+   * Delete user
+   * @param {class} AdminController.deleteUser we introduce our class where the Admin controller are
+   * @param {function} AuthMiddleware
+   * @param {function} AdminAuth.isAdmin
+   */
+  router.delete(
+    '/:idUsu',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.deleteUser
+  )
+
+  /**
+   * Get all Users
+   * @param {class} AdminController.allUsers we introduce our class where the Admin controller are
+   * @param {function} AuthMiddleware
+   * @param {function} AdminAuth.isAdmin
+   */
+  router.get(
+    '/allUsers',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.allUsers
+  )
+
+  /**
+   * Get count users
+   * @param {class} AdminController.countAllUsers we introduce our class where the Admin controller are
+   * @param {function} AuthMiddleware
+   * @param {function} AdminAuth.isAdmin
+   */
+  router.get(
+    '/countAllUsers',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.countAllUsers
+  )
+
+  /**
+  * Get count teams
+  * @param {class} AdminController.countAllTeams introduce our class where the Admin controller are
+  * @param {function} AuthMiddleware
+  * @param {function} AdminAuth.isAdmin
+  */
+  router.get(
+    '/countAllTeams',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.countAllTeams
+  )
+
+  /**
+  * Get count heroes
+  * @param {class} AdminController.countAllHeroes we introduce our class where the Admin controller are
+  * @param {function} AuthMiddleware
+  * @param {function} AdminAuth.isAdmin
+  */
+  router.get(
+    '/countAllHeroes',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.countAllHeroes
+  )
+
+  return router
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminController.html">AdminController</a></li><li><a href="AdminService.html">AdminService</a></li><li><a href="ApiHeroController.html">ApiHeroController</a></li><li><a href="ApiHeroService.html">ApiHeroService</a></li><li><a href="AuthController.html">AuthController</a></li><li><a href="AuthService.html">AuthService</a></li><li><a href="BaseService.html">BaseService</a></li><li><a href="DBConexion.html">DBConexion</a></li><li><a href="Hero.html">Hero</a></li><li><a href="HeroController.html">HeroController</a></li><li><a href="HeroService.html">HeroService</a></li><li><a href="Server.html">Server</a></li><li><a href="Team.html">Team</a></li><li><a href="TeamController.html">TeamController</a></li><li><a href="TeamService.html">TeamService</a></li><li><a href="User.html">User</a></li><li><a href="UserController.html">UserController</a></li><li><a href="UserHero.html">UserHero</a></li><li><a href="UserHeroController.html">UserHeroController</a></li><li><a href="UserHeroService.html">UserHeroService</a></li><li><a href="UserService.html">UserService</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_config">_config</a></li><li><a href="global.html#conexion">conexion</a></li><li><a href="global.html#config">config</a></li><li><a href="global.html#container">container</a></li><li><a href="global.html#cors">cors</a></li><li><a href="global.html#DB">DB</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#isAdmin">isAdmin</a></li><li><a href="global.html#swaggerUi">swaggerUi</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Tue Jun 09 2020 08:31:47 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

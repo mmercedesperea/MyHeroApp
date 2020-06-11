@@ -21,22 +21,19 @@ const Routes = require('../routes');
  */
 const DB = require('../database/db');
 
-
 /**
  * We bring the routes of our services where it is indicated what actions should be taken according to the data that we receive from the different requests to our api
  */
-const {  AdminService,UserService, AuthService, ApiHeroService, HeroService, UserHeroService, TeamService } = require("../services");
+const { AdminService, UserService, AuthService, ApiHeroService, HeroService, UserHeroService, TeamService } = require("../services");
 
 
 /**
- * 
-we bring the routes of our controllers, who are indicated to manage what the routes bring us and send it to the appropriate services
+ * we bring the routes of our controllers, who are indicated to manage what the routes bring us and send it to the appropriate services
  */
-const { AdminController ,UserController, AuthController, ApiHeroController, HeroController, UserHeroController, TeamController } = require('../controllers');
+const { AdminController, UserController, AuthController, ApiHeroController, HeroController, UserHeroController, TeamController } = require('../controllers');
 
 /**
- * 
-we bring the routes of our models
+ * we bring the routes of our models
  */
 const { User, Hero, UserHero, Team } = require('../models');
 
@@ -62,7 +59,7 @@ container
         HeroService: asClass(HeroService).singleton(),
         UserHeroService: asClass(UserHeroService).singleton(),
         TeamService: asClass(TeamService).singleton(),
-        AdminService: asClass(  AdminService).singleton()
+        AdminService: asClass(AdminService).singleton()
     })
     .register({
         // bind is used so that when calling a controller the scope is maintained
@@ -83,7 +80,7 @@ container
         TeamRoute: asFunction(TeamRoute).singleton(),
         AdminRoute: asFunction(AdminRoute).singleton()
     })
-   
+
     .register({ Team: asClass(Team), User: asClass(User), Hero: asClass(Hero), UserHero: asClass(UserHero) })
 
 module.exports = container;

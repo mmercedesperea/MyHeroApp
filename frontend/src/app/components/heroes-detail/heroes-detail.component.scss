@@ -5,15 +5,447 @@ ngb-rating {
 .star {
   position: relative;
   display: inline-block;
-  font-size: 3rem;
-  color: #d3d3d3;
+  font-size: 2rem;
+  color: #cc4224;
 }
-.full {
-  color: red;
+
+.cardHero {
+  border: 2.5px solid #00a23d;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+  padding: 2em;
+  padding-top: 0.5em;
+  background-color: #272727;
+  color: white;
 }
-.half {
+.cardHero2 {
+  border: 2.5px solid #00a23d;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+  padding: 2em;
+  background-color: #272727;
+  color: white;
+  margin-top: 2em !important;
+}
+.cardHero3 {
+  display: flex;
+  font-family: "B612";
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.Bio {
+  padding-top: 2vw;
+  text-align: center;
+  font-family: "B612";
+}
+.Bio h5 {
+  color: #00a23d;
+}
+.cardHero h1 {
+  text-align: center;
+  padding-bottom: 1vw;
+  color: #cc4224;
+  font-family: "Bangers", cursive;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #00a23d; /* Safari */
+  text-decoration-color: #00a23d;
+}
+#HeroDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.imgH {
+  border-radius: 2%;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+}
+
+.HeroInfo {
+  width: 100%;
+}
+.stats {
+  padding-top: 2vw;
+}
+.statsC {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 0.4vw;
+  align-items: center;
+}
+.statsC div {
+  padding-left: 2vw;
+  width: 100%;
+  font-family: "B612";
+  color: rgb(223, 221, 221);
+}
+.icon {
+  width: 10vw !important;
+  height: 10vw !important;
+  padding-top: 0 !important;
+}
+.progresB {
+  width: 100%;
+  font-size: 2vw;
+}
+::ng-deep.progress {
+  font-size: 3.5vw !important;
+  height: 4.5vw !important;
+  border-radius: 0 !important;
+  background-color: #272727 !important;
+}
+.statName {
+  margin-bottom: 0;
+}
+.S ::ng-deep.progress-bar {
+  background-color: #45c2f4 !important;
+}
+
+.I ::ng-deep.progress-bar {
+  background-color: #fa681c !important;
+}
+
+.C ::ng-deep.progress-bar {
+  background-color: #ff634d !important;
+}
+
+.D ::ng-deep.progress-bar {
+  background-color: #b429f6 !important;
+}
+
+.P ::ng-deep.progress-bar {
+  background-color: #ffc627 !important;
+}
+
+.ST ::ng-deep.progress-bar {
+  background-color: #7bd74f !important;
+}
+
+.silueteI {
+  color: #cc4224;
+  position: relative;
+}
+.silueteI img {
+  width: 63vw;
+  height: 86vw;
+}
+.silueteI p {
   position: absolute;
-  display: inline-block;
+  font-size: 14px;
+}
+.hair {
+  bottom: 90%;
+  right: 12%;
+}
+.eyes {
+  bottom: 83%;
+  right: 12%;
+}
+.gender {
+  bottom: 94%;
+  right: 73%;
+}
+.height {
+  bottom: 43%;
+  right: -24%;
+}
+.weight {
+  bottom: -7%;
+  right: 44%;
+}
+
+.infoCard3 {
+  width: 100%;
+}
+.infoCard3 span {
+  color: #00a23d;
+}
+
+.comments {
+  margin-top: 2em !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "B612";
+}
+.comments h4 {
+  color: #cc4224;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #00a23d; /* Safari */
+  text-decoration-color: #00a23d;
+}
+
+///tablee
+.tablaContainer {
+  color: #00a23d;
+}
+.userAvatar2 {
+  height: 4em;
+  width: 4em;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: 100% auto;
   overflow: hidden;
-  color: red;
+  border: #00a23d 2px solid;
+  height: auto;
+  width: 4.1em;
+  height: 4.1em;
+}
+
+.imgUser {
+  height: auto;
+  width: 4.1em;
+  height: 4.1em;
+}
+.table tr {
+  color: #00a23d;
+}
+.table td {
+  color: rgb(223, 221, 221);
+}
+
+.star2 {
+  font-size: 15px;
+  color: #cc4224;
+  outline: none;
+}
+
+.pag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 0 1em 0;
+}
+.textName {
+  padding-top: 30px !important;
+  cursor: pointer;
+}
+.textName:hover p {
+  color: #cc4224;
+}
+.comS {
+  width: 70%;
+}
+
+.noInfo {
+  text-align: center;
+  color: #00a23d;
+}
+
+//pagination
+
+ngb-pagination ::ng-deep a {
+  color: black !important;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  color: white !important;
+  border-color: black !important;
+  background-color: #00a23d;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link:focus,
+.page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem black;
+}
+ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem black;
+}
+
+.YScore {
+  padding-top: 2vw;
+  color: #00a23d;
+  font-family: "B612";
+}
+.YScore p {
+  color: rgb(223, 221, 221);
+}
+.iconBuuton {
+  cursor: pointer;
+  height: 8vw;
+}
+
+.Ycomment {
+  display: flex;
+  flex-direction: row;
+  font-family: "B612";
+  color: #00a23d;
+}
+.Ycomment h5 {
+  padding-top: 0.5vw;
+  padding-right: 0.5vw;
+}
+.comP {
+  font-family: "B612";
+  color: rgb(223, 221, 221);
+}
+
+// button
+$bg: #272727;
+$fg: #f3d403;
+$border-width: 0.2rem;
+$corner-size: 3rem;
+$dur: 0.3s;
+
+.followB,
+.UnfollowB {
+  margin: 0 0.5vw 1.2vw 0.5vw;
+  outline: none;
+
+  font-family: "B612";
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+  background: transparent;
+  border: $border-width solid currentColor;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.7rem;
+  color: $fg;
+  position: relative;
+  transition: color $dur;
+
+  &:hover {
+    color: #cc4224;
+    &::before {
+      width: 0;
+    }
+    &::after {
+      height: 0;
+    }
+  }
+  &:active {
+    border-width: $border-width / 2;
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: $bg;
+    z-index: 1;
+    transition: all $dur;
+  }
+  &::before {
+    width: calc(100% - #{$corner-size});
+    height: calc(101% + #{$border-width * 2});
+    top: -$border-width;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    height: calc(100% - #{$corner-size});
+    width: calc(101% + #{$border-width * 2});
+    left: -$border-width;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.UnfollowB {
+  color: #2a75b3;
+}
+
+.nameAndFollow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.HButton {
+  padding-left: 2vw;
+  padding-top: 0.5vw;
+}
+.imgUser {
+  display: none;
+}
+
+.points {
+  text-align: right;
+  position: relative;
+}
+.points svg {
+  height: 3.5em;
+  position: relative;
+}
+.points p {
+  position: absolute;
+  color: black;
+  z-index: 2;
+  font-family: "B612";
+}
+.tenP {
+  right: 1.1em;
+  top: 1.2em;
+}
+.noTenP {
+  right: 1.5em;
+  top: 1.2em;
+}
+
+/* web */
+@media (min-width: 992px) {
+  .cardHero3 {
+    flex-direction: row;
+  }
+
+  .silueteI img {
+    width: 16vw;
+
+    height: 27vw;
+  }
+
+  .tablaContainer {
+    width: 70%;
+  }
+  .imgUser {
+    display: table-cell;
+  }
+
+  .star2 {
+    font-size: 27px;
+  }
+  .iconBuuton {
+    height: 2vw;
+  }
+
+  .followB,
+  .UnfollowB {
+    font-size: 1rem;
+  }
+
+  #HeroDetail {
+    flex-direction: row;
+  }
+
+  .imgH {
+    width: 19.5vw;
+  }
+
+  .HeroInfo {
+    width: 50%;
+  }
+
+  .progresB {
+    width: 29vw;
+  }
+
+  ::ng-deep.progress {
+    font-size: 0.9vw !important;
+    height: 1.5vw !important;
+  }
+  .icon {
+    width: 4vw !important;
+    height: 4vw !important;
+  }
+
+  .infoCard3 {
+    width: 40%;
+  }
+
+  .stats {
+    padding-top: 0;
+  }
 }

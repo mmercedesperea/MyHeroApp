@@ -16,7 +16,7 @@ import { AuthGuard } from '../services/auth.guard'
  */
 const adminRoutes: Routes = [
   {
-    // componente padre
+    // father component
     path: 'admin-panel',
     component: MainComponent,
     canActivate: [AdminGuard, AuthGuard],
@@ -41,4 +41,4 @@ const adminRoutes: Routes = [
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule { }

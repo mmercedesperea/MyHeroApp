@@ -8,18 +8,18 @@ class HeroService extends BaseService {
   /**
    * @param {class} Hero insert our Hero class
    */
-  constructor ({ Hero }) {
+  constructor({ Hero }) {
     super(Hero)
     _heroOBJ = Hero
   }
 
   /**
-   * Get hero winner
+   * Get winner hero
    *  @param {number} idHero
    *  @param {number} idHero2
    * @returns {object }  hero
    */
-  async getWinner (idHero, idHero2) {
+  async getWinner(idHero, idHero2) {
     if (!idHero) {
       const error = new Error()
       error.status = 400
@@ -37,10 +37,10 @@ class HeroService extends BaseService {
   }
 
   /**
-   * Get most intelligence hero
+   * Get most intelligent hero
    * @returns {object }  hero
    */
-  async mostIntelligence () {
+  async mostIntelligence() {
     const currentEntity = await _heroOBJ.mostIntelligence()
 
     if (!currentEntity) {
@@ -53,10 +53,10 @@ class HeroService extends BaseService {
   }
 
   /**
-   * Get most strength hero
+   * Get strongest hero
    * @returns {object }  hero
    */
-  async mostStrength () {
+  async mostStrength() {
     const currentEntity = await _heroOBJ.mostStrength()
 
     if (!currentEntity) {
@@ -69,10 +69,10 @@ class HeroService extends BaseService {
   }
 
   /**
-   * Get most speed hero
+   * Get fastest hero
    * @returns {object }  hero
    */
-  async mostSpeed () {
+  async mostSpeed() {
     const currentEntity = await _heroOBJ.mostSpeed()
     if (!currentEntity) {
       const error = new Error()
@@ -84,10 +84,10 @@ class HeroService extends BaseService {
   }
 
   /**
-   * Get most durability hero
+   * Get hero with most durability
    * @returns {object }  hero
    */
-  async mostDurability () {
+  async mostDurability() {
     const currentEntity = await _heroOBJ.mostDurability()
     if (!currentEntity) {
       const error = new Error()
@@ -99,10 +99,10 @@ class HeroService extends BaseService {
   }
 
   /**
-   * Get most power hero
+   * Get most powerful hero
    * @returns {object }  hero
    */
-  async mostPower () {
+  async mostPower() {
     const currentEntity = await _heroOBJ.mostPower()
     if (!currentEntity) {
       const error = new Error()
@@ -114,10 +114,10 @@ class HeroService extends BaseService {
   }
 
   /**
-   * Get most combat hero
+   * Get hero with highest combat stats
    * @returns {object }  hero
    */
-  async mostCombat () {
+  async mostCombat() {
     const currentEntity = await _heroOBJ.mostCombat()
     if (!currentEntity) {
       const error = new Error()
@@ -132,7 +132,7 @@ class HeroService extends BaseService {
    * Get new heros
    * @returns {Array }  heroes
    */
-  async newHeros () {
+  async newHeros() {
     const currentEntity = await _heroOBJ.newHeros()
     if (!currentEntity) {
       const error = new Error()
@@ -147,7 +147,7 @@ class HeroService extends BaseService {
    * Get all marvel heroes
    * @returns {Array }  heroes
    */
-  async allMarvelHeroes () {
+  async allMarvelHeroes() {
     const currentEntity = await _heroOBJ.allMarvelHeroes()
     if (!currentEntity) {
       const error = new Error()
@@ -159,10 +159,10 @@ class HeroService extends BaseService {
   }
 
   /**
-   * Get allDC heroes
+   * Get all DC heroes
    * @returns {Array }  heroes
    */
-  async allDCHeroes () {
+  async allDCHeroes() {
     const currentEntity = await _heroOBJ.allDCHeroes()
     if (!currentEntity) {
       const error = new Error()
@@ -177,7 +177,7 @@ class HeroService extends BaseService {
    * Get hero img for user profile
    * @returns {Array }  heroes
    */
-  async profileImgHeroes () {
+  async profileImgHeroes() {
     const currentEntity = await _heroOBJ.profileImgHeroes()
     if (!currentEntity) {
       const error = new Error()
@@ -193,7 +193,7 @@ class HeroService extends BaseService {
    * @param {string} name
    * @returns {Array }  heroes
    */
-  async searchHeroByName (name) {
+  async searchHeroByName(name) {
     if (!name) {
       const error = new Error()
       error.status = 400

@@ -1,12 +1,88 @@
-<p>user-list works!</p>
+<div class="adminDetail">
+  <div class="title">
+    <h1>USERS LIST</h1>
+  </div>
 
-<div  *ngFor=" let user of users">
+  <div class="tablaContainer">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="imgUser" scope="col"></th>
+          <th scope="col">ALIAS</th>
+          <th scope="col" class="nodisplay">CREATE</th>
+          <th scope="col" class="nodisplay">EMAIL</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let user of users
+              | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
+            index as i
+          "
+        >
+          <td class="usu imgUser">
+            <div class="userAvatar2 img">
+              <img
+                class="imgUser"
+                *ngIf="user.photo"
+                src="{{ user.photo }}"
+                alt="Photo a book"
+              />
+            </div>
+          </td>
+          <td class="textName" [routerLink]="['/publicProfile', user.idUsu]">
+            <p>
+              {{
+                user.alias.length > 20
+                  ? (user.alias | slice: 0:20) + "..."
+                  : user.alias
+              }}
+            </p>
+          </td>
+          <td class="nodisplay">
+            <p>
+              {{ user.createDate | date }}
+            </p>
+          </td>
+          <td class="nodisplay">
+            <p>
+              {{ user.email }}
+            </p>
+          </td>
+          <td>
+            <img
+              class="iconBuuton"
+              (click)="deleteUserDialog(user.idUsu, user.alias)"
+              src="../../../assets/img/trash.svg"
+              alt=""
+            />
+
+            <!-- <button type="button" mat-raised-button (click)="deleteUserDialog(user.idUsu,user.alias)">Delete
+                            user</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- </div> -->
+  <div class="pag">
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="users.length"
+    >
+    </ngb-pagination>
+  </div>
+</div>
+<!-- <div  *ngFor=" let user of users">
     <h3>{{ user.alias }}</h3>
     <br />
-    <!-- <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a> -->
     <br />
     <img [src]="user.photo" [alt]="user.alias" class="img-fluid" />
     <button type="button" mat-raised-button (click)="deleteUserDialog(user.idUsu,user.alias)">Delete user</button>
 
-
-</div>
+</div> -->
+<!-- </div> -->

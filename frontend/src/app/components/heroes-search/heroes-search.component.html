@@ -1,30 +1,41 @@
-<div *ngIf="hero !='character with given name not found' && data != 'User'">
-    <div *ngFor="let hero of hero">
-      <!-- <h1>{{ hero.idHero }}</h1> -->
-      <h3>{{ hero.heroName }}</h3>
-      <br />
-      <a [routerLink]="['/heroesDetail', hero.idHero]">{{ hero.idHero }}</a>
-      <br />
-      <img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+<div class="color1">
+  <div class="searchFor">
+    SEARCHING FOR: <span>{{ term }}</span>
+  </div>
+  <div class="containerSearch" *ngIf="hero != null && data != 'User'">
+    <div class="card2" *ngFor="let hero of hero">
+      <img
+        *ngIf="hero.image"
+        [src]="hero.image"
+        [routerLink]="['/heroesDetail', hero.idHero]"
+        [alt]="hero.heroName"
+        onError="this.src='../../../assets/img/nogender_2.jpg'"
+        class="img-fluid img2"
+      />
+      <div class="overImg">
+        <h4>{{ hero.heroName }}</h4>
+      </div>
     </div>
   </div>
-  
-  <div *ngIf=" hero==null && data != 'User'">
-    <h1>character with given name not found</h1>
+  <div *ngIf="hero == null && data != 'User'">
+    <h1 class="NotFound">CHARACTER WITH GIVEN NAME NOT FOUND</h1>
   </div>
-  
-  <div *ngIf="user && data === 'User'">
-    <div *ngFor="let usu of user">
-      <!-- <h1>{{ hero.idHero }}</h1> -->
-      <h3>{{ usu.alias }}</h3>
-      <br />
-      <a [routerLink]="[ '/publicProfile', usu.idUsu ]" >{{ usu.idUsu }}</a>
-      <br />
-      <img [src]="usu.photo" [alt]="usu.alias" class="img-fluid" />
+  <div class="containerSearch" *ngIf="user && data === 'User'">
+    <div class="card2" *ngFor="let usu of user">
+      <img
+        *ngIf="usu.photo"
+        [src]="usu.photo"
+        [routerLink]="['/publicProfile', usu.idUsu]"
+        [alt]="usu.alias"
+        onError="this.src='../../../assets/img/nogender_2.jpg'"
+        class="img-fluid img2"
+      />
+      <div class="overImg">
+        <h4>{{ usu.alias }}</h4>
+      </div>
     </div>
   </div>
-  
   <div *ngIf="!user && data === 'User'">
-    <h1>User with given alias not found</h1>
+    <h1 class="NotFound">USER WITH GIVEN ALIAS NOT FOUND</h1>
   </div>
-  
+</div>

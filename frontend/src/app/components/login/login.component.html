@@ -1,38 +1,60 @@
-<body>
-    <div id="form">
-      <h1>log in</h1>
-      <form [formGroup]="LoginForm" (ngSubmit)="signIn()">
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email" placeholder="Email" [(ngModel)]="user.email" />
-          <mat-error *ngIf="!LoginForm.controls['email'].valid">{{
-              getErrorMessage("email")
-          }}</mat-error>
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" placeholder="Contraseña"
-            [(ngModel)]="user.password" />
-          <mat-error *ngIf="!LoginForm.controls['password'].valid">
-            {{getErrorMessage("password")}}</mat-error>
-        </mat-form-field>
-  
-        <div *ngIf="!datosCorrectos">
-          <p class="mensajeError">{{  this.message }}</p>
-        </div>
-  
-        <button type="submit" class="LoginButton i" [disabled]="!LoginForm.valid">
-          Logeate
-        </button>
-      </form>
-  
-      <p>o</p>
-  
-      <p>
-        It's not registered?
-        <b><a class="registrate" [routerLink]="['/register']">
-          Sign up</a></b>
-      </p>
+<div id="form">
+  <h1>LOGIN</h1>
+  <form [formGroup]="LoginForm" (ngSubmit)="signIn()">
+    <div class="fildP">
+      <div class="logo">
+        <img class="icon" src="../../../assets/img/email.svg" alt="" />
+      </div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          [(ngModel)]="user.email"
+        />
+        <mat-error *ngIf="!LoginForm.controls['email'].valid">{{
+          getErrorMessage("email")
+        }}</mat-error>
+      </mat-form-field>
     </div>
-  </body>
+    <br />
+    <div class="fildP">
+      <div class="logo">
+        <img class="icon2" src="../../../assets/img/lock.svg" alt="" />
+      </div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          placeholder="Password"
+          [(ngModel)]="user.password"
+        />
+        <mat-error *ngIf="!LoginForm.controls['password'].valid">
+          {{ getErrorMessage("password") }}</mat-error
+        >
+      </mat-form-field>
+      <mat-icon
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        {{ hide ? "visibility_off" : "visibility" }}</mat-icon
+      >
+    </div>
+    <br />
+    <div id="ErroInfo" class="d-none">
+      <p class="errorM">{{ this.message }}</p>
+    </div>
+    <button type="submit" class="UnfollowB">
+      <span>LOG IN</span>
+    </button>
+  </form>
+  <p class="NotRegister">
+    Not registered?
+    <b><a class="registrate" [routerLink]="['/register']">Sign up</a></b>
+  </p>
+</div>

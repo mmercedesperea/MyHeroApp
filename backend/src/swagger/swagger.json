@@ -8,7 +8,7 @@
             "email": "m.mercedes.perea@gmail.com"
         }
     },
-    "host": "localhost:5000",
+    "host": "backendmyhero.eu-gb.mybluemix.net",
     "basePath": "/api",
     "tags": [
         {

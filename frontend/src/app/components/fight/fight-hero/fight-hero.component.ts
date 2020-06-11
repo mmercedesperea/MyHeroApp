@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material'
 import { selectHeroComponent } from '../../modals/select-hero-dialog/select-hero-dialog.component'
 
 /**
- * Component for fight hero
+ * Component for Fight hero
  */
 @Component({
   selector: 'app-fight-hero',
@@ -15,22 +15,22 @@ import { selectHeroComponent } from '../../modals/select-hero-dialog/select-hero
 
 export class FightHeroComponent implements OnInit {
   /**
-   * variable for store de hero winner
+   * variable to store the winner hero
    */
   public hero: Hero
   /**
-   * variable for store the hero for local storage
+   * variable to store the 1st hero in local storage
    */
   public sessonHero: Hero
   /**
-   * variable for store the hero for local storage
-   */  
+   * variable to store the 2nd hero in local storage
+   */
   public sessonHero2: Hero
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
-  constructor (private _hero: HeroService, public dialog: MatDialog) {
+  constructor(private _hero: HeroService, public dialog: MatDialog) {
     this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', null, 0)
     this.sessonHero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', null, 0)
     this.sessonHero2 = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', null, 0)
@@ -38,37 +38,44 @@ export class FightHeroComponent implements OnInit {
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.clearHerosSession()
   }
 
   /**
    * clear local storage
    */
-  clearHerosSession () {
+  clearHerosSession() {
     sessionStorage.clear()
   }
 
   /**
    * Get heroes in session storage
    */
-  getSessionHeroes () {
+  getSessionHeroes() {
     this.sessonHero = JSON.parse(sessionStorage.getItem('Hero'))
     this.sessonHero2 = JSON.parse(sessionStorage.getItem('Hero2'))
   }
 
   /**
-   * Get Hero winner
+   * Play audio
    */
-  getHeroWinner () {
+  playAudio() {
+    let audio = <HTMLAudioElement>document.getElementById("myAudio");
+    audio.play();
+  }
+
+  /**
+   * Get winner hero
+   */
+  getHeroWinner() {
     this._hero
       .getWinner(this.sessonHero.idHero, this.sessonHero2.idHero)
       .subscribe(
         res => {
           this.hero = res
-          console.log(res)
         },
         error => {
           console.log(error)
@@ -77,10 +84,10 @@ export class FightHeroComponent implements OnInit {
   }
 
   /**
-   * Open modal for comment hero
+   * Open modal to choose hero
    * @param {number} position
    */
-  selectFightDialog (position) {
+  selectFightDialog(position) {
     const dialogRef = this.dialog.open(selectHeroComponent, {
       data: {
         position: position,
@@ -88,7 +95,6 @@ export class FightHeroComponent implements OnInit {
       }
     })
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed')
       this.getSessionHeroes()
     })
   }

@@ -1,15 +1,47 @@
-<h3 >{{ title }}</h3>
-<div class="adminPanel">
-  <div class="menu">
-    <a [routerLink]="['userList']">User List</a>
-    <a [routerLink]="['addHero']">Add Hero</a>
-    <a [routerLink]="['editHero']">Edit Hero</a>
+<div class="AdminContainer">
+  <h2>{{ title }}</h2>
+  <div class="adminPanel">
+    <div class="menu">
+      <a
+        class="buttonStyle"
+        mat-raised-button
+        [routerLink]="['userList']"
+        routerLinkActive="active"
+      >
+        <span>USERS</span>
+      </a>
+      <a
+        class="buttonStyle"
+        mat-raised-button
+        [routerLink]="['addHero']"
+        routerLinkActive="active"
+      >
+        <span>ADD HERO</span>
+      </a>
+      <a
+        class="buttonStyle"
+        mat-raised-button
+        [routerLink]="['editHero']"
+        routerLinkActive="active"
+      >
+        <span>EDIT HERO</span>
+      </a>
+    </div>
 
-  </div>
+    <div class="contentPanel">
+      <div class="countPanel">
+        <h5>
+          USERS: <span> {{ totalUsers }}</span>
+        </h5>
+        <h5>
+          TEAMS: <span> {{ totalTeams }}</span>
+        </h5>
+        <h5>
+          HEROES:<span> {{ totalHeros }}</span>
+        </h5>
+      </div>
 
-  <div class="contentPanel">
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
-
-

@@ -8,7 +8,7 @@ import { DateAdapter } from '@angular/material/core'
 import { MatSnackBar } from '@angular/material';
 
 /**
- * Component for add a hero
+ * Component to add a hero
  */
 @Component({
   selector: 'app-add-hero',
@@ -18,24 +18,24 @@ import { MatSnackBar } from '@angular/material';
 
 export class AddHeroComponent implements OnInit {
   /**
-   * to add fromGoup
-   */    
+   * to add FormGroup
+   */
   public newHeroForm: FormGroup
   /**
    * variable to store the hero to add
    */
   public hero: Hero
   /**
-   * variable to save message info 
-   */     
+   * variable to save message info
+   */
   public message: string
-/**
+  /**
    * variable to check if the function was ok
-   */ 
+   */
   public correctData: boolean
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
   constructor(
     private _snackBar: MatSnackBar,
@@ -44,7 +44,7 @@ export class AddHeroComponent implements OnInit {
   ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
   ngOnInit() {
     this.correctData = true;
@@ -91,7 +91,7 @@ export class AddHeroComponent implements OnInit {
         '',
         [Validators.required, Validators.minLength(1), Validators.maxLength(30)]
       ],
-      placeOfBirth:['',  [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
+      placeOfBirth: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
       publisher: [
         '',
         [Validators.required, Validators.minLength(1), Validators.maxLength(30)]
@@ -172,36 +172,37 @@ export class AddHeroComponent implements OnInit {
     }
   }
 
-
-/**
- * Function for save a hero
- */
+  /**
+   * Function to save a hero
+   */
   saveHero() {
     this._heroService.newHero(this.hero).subscribe(
       response => {
-        console.log(this.hero);
-        console.log(response)
-        console.log('Save correctly');
         this.message = 'Create correctly';
         this.correctData = true;
+        this.openSnackBar('CREATE CORRECTLY', 'Close')
+
       },
       error => {
         this.correctData = false;
-          console.log(error.status);
-          this.message = 'create hero failed';
-          console.log(this.message);
-        // }
+        console.log(error.status);
+        this.message = 'create hero failed';
+        console.log(this.message);
+        this.openSnackBar('CREATE HERO FAILED', 'Close')
       }
     );
   }
 
-
-
-  // openSnackBar(message: string, action: string) {
-  //   this._snackBar.open(message, action, {
-  //     duration: 8000,
-  //     panelClass: ['blue-snackbar']
-  //   })
-  // }
+  /**
+   * function to open snackBars
+   *  @param {string} message
+   *  @param {string} action
+   */
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 8000,
+      panelClass: ['blue-snackbar']
+    })
+  }
 
 }

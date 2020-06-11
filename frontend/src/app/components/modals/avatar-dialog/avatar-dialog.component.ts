@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 
 export class AvatarDialogComponent implements OnInit {
+  activeState: string;
   /**
    * variable to store heros url img
    */
@@ -22,9 +23,9 @@ export class AvatarDialogComponent implements OnInit {
    */
   public img: string = "";
 
-    /**
-   * Constructor in which we inject our services and diferents elements
-   */
+  /**
+ * Constructor in which we inject our services and different elements
+ */
   constructor(
     public dialogRef: MatDialogRef<AvatarDialogComponent>,
     private _UserService: UserService,
@@ -32,52 +33,55 @@ export class AvatarDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
-    /**
-   * Start when de component init
-   */
+  /**
+ * Start when the component inits
+ */
   ngOnInit() {
     this.getProfilesimg()
-    this.img= this.data.userPhoto;
+    this.img = this.data.userPhoto;
   }
 
-    /**
-   * function for change img hero variable
-   *   @param {string} imgHero
-   */
+  /**
+ * function to change img hero variable
+ *   @param {string} imgHero
+ */
   selectHero(imgHero) {
     this.img = imgHero;
+    this.activeState = imgHero;
   }
 
-   /**
-   * function fof get img profile user
-   */
+  /**
+  * function to get img profile user
+  */
   getProfilesimg() {
     this._HeroService.profileImgHeroes().subscribe(res => {
       this.heroImg = res;
+      this.heroImg.push({image:'./../../../../assets/img/nomember.jpg'})
     }, err => {
       console.log(err)
     })
   }
 
-   /**
-   * function for update img
-   */
-  updateImgProfile(){
-    this.dialogRef.close();
-    var userImgObj = {idUsu: this.data.userId, img: this.img};
+  /**
+  * function to update img
+  */
+  updateImgProfile() {
 
-    this._UserService.newImg(userImgObj).subscribe(res=>{
-      console.log(res)
-    },err=>{
+    var userImgObj = { idUsu: this.data.userId, img: this.img };
+
+    this._UserService.newImg(userImgObj).subscribe(res => {
+      
+      localStorage.setItem('UserPhoto', this.img)
+    }, err => {
       console.log(err)
     })
+    this.dialogRef.close();
   }
 
- /**
-   * function for close modal
-   */
+  /**
+    * function to close modal
+    */
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }

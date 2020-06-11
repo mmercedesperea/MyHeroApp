@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 
 /**
-* Auth guard ,controls whether the user is identified or not
+* Auth guard, controls whether the user is identified or not
 */
 @Injectable({
   providedIn: 'root'
@@ -16,12 +16,12 @@ export class AuthGuard implements CanActivate {
     */
   constructor(
     /**
-     * variable for save user service
+     * variable to save user service
      */
     private _userService: UserService,
-     /**
-     * variable for save router service
-     */
+    /**
+    * variable to save router service
+    */
     private _router: Router) { }
 
   /**

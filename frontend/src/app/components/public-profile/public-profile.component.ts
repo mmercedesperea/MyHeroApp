@@ -15,8 +15,12 @@ import { Hero } from 'src/app/models/hero'
 })
 
 export class PublicProfileComponent implements OnInit {
+  page = 1;
+  page2 = 1;
+  pageSize = 4;
+  public showName: boolean = true;
   /**
-   * variable to save de id from params
+   * variable to save the id from params
    */
   public idParams: number = 0
   /**
@@ -32,23 +36,23 @@ export class PublicProfileComponent implements OnInit {
    */
   public identity
   /**
-   * 
+   * variable to store active follow
    */
   public followActive: any = ''
   /**
-   * variable to store info about user followeb
+   * variable to store info about users followeds
    */
   public FollowedUsers: User[] = []
 
   /**
-   * variable to store info about followers
+   * variable to store info about users followers
    */
   public FollowersUsers: User[] = []
 
   /**
-   * Constructor in which we inject user service, user Hero service, and service to controll de router params
+   * Constructor in which we inject user service, user Hero service, and service to control the router params
    */
-  constructor (
+  constructor(
     private _UserHero: UserHeroService,
     private _UserService: UserService,
     private _activatedRoute: ActivatedRoute
@@ -57,9 +61,9 @@ export class PublicProfileComponent implements OnInit {
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       this.idParams = params['user']
       this.getUsuInfo()
@@ -74,18 +78,17 @@ export class PublicProfileComponent implements OnInit {
   /**
    * Get user identity
    */
-  getIdentity () {
+  getIdentity() {
     this.identity = this._UserService.getIdentity()
   }
 
   /**
    * Get user info
    */
-  getUsuInfo () {
+  getUsuInfo() {
     this._UserService.getUser(this.idParams).subscribe(
       res => {
         this.user = res
-        console.log(res)
       },
       error => {
         console.log(error)
@@ -96,10 +99,9 @@ export class PublicProfileComponent implements OnInit {
   /**
    * Get user favorites heroes
    */
-  favorites () {
+  favorites() {
     this._UserHero.allHerosFav(this.idParams).subscribe(res => {
       this.heroesFav = res
-      console.log(this.heroesFav)
     }),
       error => {
         console.log(error)
@@ -109,11 +111,10 @@ export class PublicProfileComponent implements OnInit {
   /**
    * Get user followed by the user
    */
-  followUser () {
+  followUser() {
     var ids = { idUsu: this.identity.id, idUsuFollow: this.idParams }
     this._UserService.followUser(ids).subscribe(
       res => {
-        console.log(res)
         this.checkFollow()
         this.getFollowersUsers()
       },
@@ -126,10 +127,9 @@ export class PublicProfileComponent implements OnInit {
   /**
    * Unfollow the user
    */
-  unFollowUser () {
+  unFollowUser() {
     this._UserService.unFollowUser(this.identity.id, this.idParams).subscribe(
       res => {
-        console.log(res)
         this.checkFollow()
         this.getFollowersUsers()
       },
@@ -142,10 +142,9 @@ export class PublicProfileComponent implements OnInit {
   /**
    * Check if you follow the user
    */
-  checkFollow () {
+  checkFollow() {
     this._UserService.checkFollow(this.identity.id, this.idParams).subscribe(
       res => {
-        console.log(res)
         this.followActive = res
       },
       err => {
@@ -157,10 +156,9 @@ export class PublicProfileComponent implements OnInit {
   /**
    * Get user followed by the user
    */
-  getFollowedUsers () {
+  getFollowedUsers() {
     this._UserService.getFollowUsers(this.idParams).subscribe(
       res => {
-        console.log(res)
         this.FollowedUsers = res
       },
       error => {
@@ -172,10 +170,9 @@ export class PublicProfileComponent implements OnInit {
   /**
    * Get user followers
    */
-  getFollowersUsers () {
+  getFollowersUsers() {
     this._UserService.getFollowersUsers(this.idParams).subscribe(
       res => {
-        console.log(res)
         this.FollowersUsers = res
       },
       error => {

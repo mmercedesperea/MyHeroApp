@@ -1,9 +1,142 @@
+<div class="color1">
+  <div class="cardHero">
+    <div class="TitleF">
+      <h1>PUBLIC PROFILE</h1>
+      <button
+        *ngIf="!followActive && identity.id != idParams"
+        type="button"
+        class="followF"
+        mat-raised-button
+        (click)="followUser()"
+      >
+        <span>FOLLOW USER</span>
+      </button>
+      <button
+        *ngIf="followActive && identity.id != idParams"
+        type="button"
+        class="followUN"
+        mat-raised-button
+        (click)="unFollowUser()"
+      >
+        <span>UNFOLLOW USER</span>
+      </button>
+    </div>
+    <div class="UserInfo">
+      <div class="imgUserInfo">
+        <img [src]="user.photo" [alt]="user.alias" class="" />
+        <br />
+      </div>
 
-{{idParams}}
-{{user.alias}}
-<button  *ngIf ="!followActive"  type="button" mat-raised-button (click)="followUser()">Follow User</button>
+      <div class="infoCard3">
+        <p><span>ALIAS:</span> {{ user.alias }}</p>
+        <p><span>NAME:</span> {{ user.userName }}</p>
+        <p><span>DATE OF BIRTH: </span>{{ user.dateOfBirth | date }}</p>
+        <p><span>SURNAME:</span> {{ user.surname }}</p>
+      </div>
+      <div class="tableMat">
+        <mat-tab-group>
+          <mat-tab label="FOLLOW">
+            <div class="tablaContainer">
+              <table *ngIf="FollowedUsers" class="table">
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let user of FollowedUsers
+                        | slice
+                          : (page - 1) * pageSize
+                          : (page - 1) * pageSize + pageSize;
+                      index as i
+                    "
+                  >
+                    <td class="usu imgUser">
+                      <div class="userAvatar2 img">
+                        <img
+                          class="imgUser"
+                          *ngIf="user.photo"
+                          src="{{ user.photo }}"
+                          alt="Photo a book"
+                        />
+                      </div>
+                    </td>
+                    <td
+                      class="textName"
+                      [routerLink]="['/publicProfile', user.idUsu]"
+                    >
+                      <p>
+                        {{
+                          user.alias.length > 20
+                            ? (user.alias | slice: 0:20) + "..."
+                            : user.alias
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="FollowedUsers" class="pag">
+              <ngb-pagination
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="FollowedUsers.length"
+              >
+              </ngb-pagination>
+            </div>
+          </mat-tab>
 
-<button   *ngIf ="followActive" type="button" mat-raised-button (click)="unFollowUser()">Unfollow User</button>
-
-<app-team [idUsu]="idParams"></app-team>
-
+          <mat-tab label="FOLLOWERS">
+            <div class="tablaContainer">
+              <table *ngIf="FollowersUsers" class="table">
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let user of FollowersUsers
+                        | slice
+                          : (page2 - 1) * pageSize
+                          : (page2 - 1) * pageSize + pageSize;
+                      index as i
+                    "
+                  >
+                    <td class="usu imgUser">
+                      <div class="userAvatar2 img">
+                        <img
+                          class="imgUser"
+                          *ngIf="user.photo"
+                          src="{{ user.photo }}"
+                          alt="Photo a book"
+                        />
+                      </div>
+                    </td>
+                    <td
+                      class="textName"
+                      [routerLink]="['/publicProfile', user.idUsu]"
+                    >
+                      <p>
+                        {{
+                          user.alias.length > 20
+                            ? (user.alias | slice: 0:20) + "..."
+                            : user.alias
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="FollowersUsers" class="pag">
+              <ngb-pagination
+                [(page)]="page2"
+                [pageSize]="pageSize"
+                [collectionSize]="FollowersUsers.length"
+              >
+              </ngb-pagination>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="color1">
+  <app-team [idUsu]="idParams" [showName]="showName"></app-team>
+</div>

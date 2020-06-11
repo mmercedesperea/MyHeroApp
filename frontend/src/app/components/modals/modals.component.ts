@@ -12,12 +12,12 @@ import { Component, OnInit } from '@angular/core';
 export class ModalsComponent implements OnInit {
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
   constructor() { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
   ngOnInit() {
   }

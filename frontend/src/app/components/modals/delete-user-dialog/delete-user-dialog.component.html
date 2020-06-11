@@ -1,29 +1,35 @@
-<p>{{ data.alias }} Are you sure about deleting your account?</p>
-
-<div id="form">
-  <h1>You have to send your password</h1>
-  <form [formGroup]="passForm" (ngSubmit)="submit(passForm)">
-    <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input
-        matInput
-        type="password"
-        formControlName="password"
-        placeholder="Password"
-      />
-      <mat-error *ngIf="!passForm.controls['password'].valid">
-        {{ getErrorMessage("password") }}</mat-error
-      >
-    </mat-form-field>
-
-    <div *ngIf="!correctdata">
-        <p class="mensajeError">{{  this.message }}</p>
+<div id="containerModal">
+  <h5>{{ data.alias }} Are you sure about deleting your account?</h5>
+  <div id="form">
+    <h1>You have to send your password</h1>
+    <form [formGroup]="passForm" (ngSubmit)="submit(passForm)">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+        />
+        <mat-error *ngIf="!passForm.controls['password'].valid">
+          {{ getErrorMessage("password") }}</mat-error
+        >
+      </mat-form-field>
+      <div *ngIf="!correctdata">
+        <p class="mensajeError">{{ this.message }}</p>
       </div>
-
-    <mat-dialog-actions>
-    <button type="submit" class="LoginButton i" [disabled]="!passForm.valid">
-      Change password
-    </button>
-</mat-dialog-actions>
-  </form>
+      <div class="buttContainer">
+        <button class="cancel" mat-button [mat-dialog-close]="">
+          No Thanks
+        </button>
+        <button
+          type="submit"
+          class="LoginButton i"
+          [disabled]="!passForm.valid"
+        >
+          Delete account
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

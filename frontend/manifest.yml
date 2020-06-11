@@ -1,0 +1,10 @@
+applications :
+    - name: "frontend"
+      path : "dist/frontend"
+      memory: 125M
+      buildpack :
+      - "https://github.com/cloudfoundry/staticfile-buildpack.git"
+      command: "$HOME/boot.sh"
+      routes:
+        - route: https://fightMyHero.eu-gb.mybluemix.net/
+    

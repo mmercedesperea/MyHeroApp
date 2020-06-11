@@ -1,56 +1,59 @@
-<div *ngIf="data.status === 'new' || data.status === 'edit'" id="form">
-  <div id="form">
-    <h1 *ngIf="data.status === 'new'">Add comment</h1>
-    <h1 *ngIf="data.status === 'edit'">Modify commet</h1>
-    <form [formGroup]="commentForm" (ngSubmit)="submit(commentForm)">
-      <mat-form-field appearance="outline">
-        <mat-label>comment</mat-label>
-        <input
-          *ngIf="!data.comment"
-          matInput
-          type="text"
-          formControlName="comment"
-          placeholder="comment"
-        />
-        <input
-          *ngIf="data.comment"
-          matInput
-          type="text"
-          formControlName="comment"
-          placeholder="comment"
-          placeholder="{{ data.comment }}"
-        />
-
-        <mat-error *ngIf="!commentForm.controls['comment'].valid">{{
-          getErrorMessage("comment")
-        }}</mat-error>
-      </mat-form-field>
-
-      <div *ngIf="!correctdata">
-        <p class="mensajeError">{{ this.message }}</p>
-      </div>
-
-      <button
-        type="submit"
-        class="LoginButton i"
-        [disabled]="!commentForm.valid"
-      >
-        Send comment
+<div id="containerModal">
+  <div *ngIf="data.status === 'new' || data.status === 'edit'" id="form">
+    <div id="form">
+      <h1 *ngIf="data.status === 'new'">Add comment</h1>
+      <h1 *ngIf="data.status === 'edit'">Modify commet</h1>
+      <form [formGroup]="commentForm" (ngSubmit)="submit(commentForm)">
+        <mat-form-field appearance="outline">
+          <mat-label>comment</mat-label>
+          <input
+            *ngIf="!data.comment"
+            matInput
+            type="text"
+            formControlName="comment"
+            placeholder="comment"
+          />
+          <input
+            *ngIf="data.comment"
+            matInput
+            type="text"
+            formControlName="comment"
+            placeholder="comment"
+            placeholder="{{ data.comment }}"
+          />
+          <mat-error *ngIf="!commentForm.controls['comment'].valid">{{
+            getErrorMessage("comment")
+          }}</mat-error>
+        </mat-form-field>
+        <div *ngIf="!correctdata">
+          <p class="mensajeError">{{ this.message }}</p>
+        </div>
+        <div class="buttContainer">
+          <button
+            type="submit"
+            class="LoginButton i"
+            [disabled]="!commentForm.valid"
+          >
+            Send comment
+          </button>
+          <button class="cancel" mat-button [mat-dialog-close]="">
+            No Thanks
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="data.status === 'delete'">
+    <h1>Delete Comment</h1>
+    <h4>Are you sure about deleting your comment</h4>
+    <div *ngIf="!correctdata">
+      <p class="mensajeError">{{ this.message }}</p>
+    </div>
+    <div class="buttContainer">
+      <button class="cancel" mat-button [mat-dialog-close]="">No Thanks</button>
+      <button type="button" mat-raised-button (click)="deleteComment()">
+        Delete comment
       </button>
-    </form>
-
-   
+    </div>
   </div>
-</div>
-
-<div *ngIf="data.status === 'delete'">
-  <h1>Delete Comment</h1>
-  <h4>Are you sure about deleting your comment</h4>
-
-  <div *ngIf="!correctdata">
-    <p class="mensajeError">{{ this.message }}</p>
-  </div>
-  <button type="button" mat-raised-button (click)="deleteComment()">
-    Delete comment
-  </button>
 </div>

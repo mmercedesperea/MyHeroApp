@@ -7,7 +7,7 @@ class ApiHeroController {
    *
    * @param {class} ApiHeroService insert our api service in our class
    */
-  constructor ({ ApiHeroService }) {
+  constructor({ ApiHeroService }) {
     _apiHeroService = ApiHeroService
   }
 
@@ -17,7 +17,7 @@ class ApiHeroController {
    * @param {Object} res - Express response object
    * @returns {array}  heroes
    */
-  async get (req, res) {
+  async get(req, res) {
     const { name } = req.params
     const hero = await _apiHeroService.get(name)
     return res.json(hero)
@@ -29,7 +29,7 @@ class ApiHeroController {
    * @param {Object} res - Express response object
    * @returns {object}  hero
    */
-  async getHeroByid (req, res) {
+  async getHeroByid(req, res) {
     const { id } = req.params
     const hero = await _apiHeroService.getHeroByid(id)
     return res.json(hero)
@@ -40,7 +40,7 @@ class ApiHeroController {
    * @param {Object} res - Express response object
    * @returns {array}  heroes
    */
-  async searchAllHeroes (req, res) {
+  async searchAllHeroes(req, res) {
     const hero = await _apiHeroService.searchAllHeroes()
     return res.json(hero)
   }

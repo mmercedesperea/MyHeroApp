@@ -4,8 +4,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HeroService } from 'src/app/services/hero.service';
 import { MatDialog } from '@angular/material';
 import { selectHeroComponent } from 'src/app/components/modals/select-hero-dialog/select-hero-dialog.component';
+import { MatSnackBar } from '@angular/material';
 /**
- * Component for edit a hero
+ * Component to edit a hero
  */
 @Component({
   selector: 'app-edit-hero',
@@ -14,38 +15,39 @@ import { selectHeroComponent } from 'src/app/components/modals/select-hero-dialo
 })
 
 export class EditHeroComponent implements OnInit {
-/**
- * variable for store hero to edit
- */
+  /**
+   * variable to store the hero to edit
+   */
   public hero: Hero;
   /**
-   * to add fromGoup
-   */  
+   * to add FormGroup
+   */
   public editHeroForm: FormGroup
   /**
    * variable for id Hero
    */
-  public idHero:number=0
+  public idHero: number = 0
   /**
-   * variable to save message info 
-   */   
+   * variable to save message info
+   */
   public message: string
   /**
    * variable to check if the function was ok
-   */      
+   */
   public correctData: boolean
-  
+
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
   constructor(
     private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private _HeroService: HeroService,
   ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
   ngOnInit() {
     this.hero = new Hero(0, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', null)
@@ -147,13 +149,12 @@ export class EditHeroComponent implements OnInit {
     })
   }
 
-/**
- * Get the info about the hero
- * @param {number}idHero 
- */
+  /**
+   * Get the info about the hero
+   * @param {number}idHero
+   */
   getInfoHero(idHero) {
     this._HeroService.getHeroById(idHero).subscribe(res => {
-      console.log(res)
       this.hero = res
     }, err => {
       console.log(err)
@@ -167,11 +168,14 @@ export class EditHeroComponent implements OnInit {
   submit() {
     this._HeroService.modifyHero(this.idHero, this.hero).subscribe(
       res => {
-        console.log(res)
         this.message = 'Create correctly';
         this.correctData = true;
+        this.openSnackBar('MODIFY CORRECTLY', 'Close')
       },
-      err => {console.error(err);         this.message = 'create hero failed';}
+      err => {
+         console.error(err);
+          this.message = 'create hero failed'; 
+          this.openSnackBar('MODIFY HERO FAILED', 'Close')}
     )
 
   }
@@ -202,7 +206,7 @@ export class EditHeroComponent implements OnInit {
   }
 
   /**
-   * Open modal for search hero
+   * Open modal to search hero
    */
   SearchHeroDialog(): void {
     const dialogRef = this.dialog.open(selectHeroComponent, {
@@ -212,11 +216,24 @@ export class EditHeroComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
-      if(result){
-        this.idHero=result;
+      if (result) {
+        this.idHero = result;
         this.getInfoHero(result)
       }
     });
+  }
+
+  
+  /**
+   * function to open snackBars
+   *  @param {string} message
+   *  @param {string} action
+   */
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 8000,
+      panelClass: ['blue-snackbar']
+    })
   }
 
 }

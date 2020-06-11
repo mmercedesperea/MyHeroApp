@@ -1,0 +1,246 @@
+.cardHero {
+  // border-radius: 2%;
+  border: 2.5px solid #00a23d;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+  padding: 2em;
+  background-color: #272727;
+  color: white;
+}
+.cardHero h1 {
+  text-align: center;
+  padding-bottom: 1vw;
+  color: #cc4224;
+  font-family: "Bangers", cursive;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #00a23d; /* Safari */
+  text-decoration-color: #00a23d;
+}
+.UserInfo {
+  display: flex;
+  font-family: "B612";
+
+  flex-direction: column;
+  justify-content: space-around;
+  //   padding-bottom: 2em;
+  //  // justify-content: center;
+  //   align-items: center;
+  // height: 20%;
+}
+
+.imgUserInfo img {
+  border-radius: 2%;
+  width: 17em;
+  height: 87%;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+}
+.imgUserInfo {
+  height: 25em;
+}
+.infoCard3 {
+  padding-top: 1em;
+}
+
+.infoCard3 span {
+  color: #00a23d;
+}
+
+// button
+$bg: #272727;
+$fg: #f3d403;
+$border-width: 0.2rem;
+$corner-size: 3rem;
+$dur: 0.3s;
+
+.followB,
+.followB2 {
+  margin: 1vw 0.5vw 0 0.5vw;
+  outline: none;
+
+  font-family: "B612";
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+  background: transparent;
+  border: $border-width solid currentColor;
+  padding: 0.1rem 0.5rem;
+  font-size: 1rem;
+  color: $fg;
+  position: relative;
+  transition: color $dur;
+
+  &:hover {
+    color: #cc4224;
+    &::before {
+      width: 0;
+    }
+    &::after {
+      height: 0;
+    }
+  }
+  &:active {
+    border-width: $border-width / 2;
+  }
+
+  //bit lame about the extra span.
+  //it's to get the text to appear on top of the psewudo elements. is there a dom-less way to do it?
+  span {
+    position: relative;
+    z-index: 2;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: $bg;
+    z-index: 1;
+    transition: all $dur;
+  }
+  //the 101% is because of a pixel rounding issue in firefox
+  &::before {
+    width: calc(100% - #{$corner-size});
+    height: calc(101% + #{$border-width * 2});
+    top: -$border-width;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    height: calc(100% - #{$corner-size});
+    width: calc(101% + #{$border-width * 2});
+    left: -$border-width;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.followB2 {
+  color: #2a75b3;
+}
+//form
+#form {
+  display: flex;
+  flex-direction: column;
+  font-family: "B612";
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  //   width: 30%;
+  margin: 0 1em 0em 1em;
+  padding: 0em 0em 2em 0em;
+  // height: 40%;
+}
+
+.pad {
+  margin-top: 2%;
+}
+
+::ng-deep.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  color: #00a23d !important;
+}
+
+.userAvatar2 {
+  height: 4em;
+  width: 4em;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: 100% auto;
+  overflow: hidden;
+  border: #00a23d 2px solid;
+  height: auto;
+  width: 4.1em;
+  height: 4.1em;
+}
+.imgUser {
+  height: auto;
+  width: 4.1em;
+  height: 4.1em;
+}
+.table tr {
+  color: #00a23d;
+}
+.table td {
+  color: rgb(223, 221, 221);
+}
+
+.imgUser img {
+  width: 4.1em !important;
+  height: 5.1em !important;
+}
+
+.textName {
+  font-family: "B612";
+  padding-top: 30px !important;
+  cursor: pointer;
+}
+.textName:hover p {
+  color: #cc4224;
+}
+::ng-deep.mat-tab-label .mat-tab-label-content {
+  font-family: "B612" !important;
+  color: #00a23d !important;
+}
+
+#form
+  ::ng-deep.mat-form-field-appearance-legacy
+  .mat-form-field-suffix
+  .mat-datepicker-toggle-default-icon {
+  width: 6em !important;
+  color: white;
+}
+.pag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 0 1em 0;
+}
+//pagination
+
+ngb-pagination ::ng-deep a {
+  color: black !important;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  color: white !important;
+  border-color: black !important;
+  background-color: #00a23d;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link:focus,
+.page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem black;
+}
+ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem black;
+}
+
+.tableMat {
+  height: 100%;
+}
+
+#form ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: #709e82;
+}
+
+@media (min-width: 992px) {
+  .imgUserInfo {
+    height: 31em;
+  }
+
+  .imgUserInfo img {
+    width: 20em;
+    height: 83%;
+  }
+
+  .UserInfo {
+    flex-direction: row;
+  }
+  #form {
+    margin: 0 26% 0em 26%;
+    padding: 2em 0em 2em 0em;
+  }
+
+  ::ng-deep.mat-form-field-infix {
+    width: 25em;
+  }
+
+  .UnfollowB {
+    padding: 0.5rem 10.5rem;
+  }
+}

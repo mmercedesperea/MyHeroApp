@@ -11,7 +11,7 @@ class AuthService {
    * @param {class} UserService
    * @param {class} User
    */
-  constructor ({ UserService, User }) {
+  constructor({ UserService, User }) {
     _userService = UserService
     _userOBJ = User
   }
@@ -21,7 +21,7 @@ class AuthService {
    * @param {Object} user
    * @returns {string}  message
    */
-  async signUp (user) {
+  async signUp(user) {
     const { email } = user
     const userExist = await _userService.getUserByemail(email)
     if (userExist) {
@@ -41,7 +41,7 @@ class AuthService {
    * @param {Object} user
    * @returns {object}  token
    */
-  async signIn (user) {
+  async signIn(user) {
     const { email, password } = user
     const userExist = await _userService.getUserByemail(email)
     if (!userExist) {
@@ -69,7 +69,6 @@ class AuthService {
       admin: userExist[0].admin,
       photo: userExist[0].photo
     }
-    console.log(usertToEncode)
     // create the token
     const token = generateToken(usertToEncode)
 

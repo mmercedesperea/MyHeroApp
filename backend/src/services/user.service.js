@@ -10,7 +10,7 @@ class UserService extends BaseService {
    *
    * @param {class} User insert our user class
    */
-  constructor ({ User }) {
+  constructor({ User }) {
     super(User)
     _userOBJ = User
   }
@@ -20,7 +20,7 @@ class UserService extends BaseService {
    * @param {string} email
    * @returns {object}
    */
-  async getUserByemail (email) {
+  async getUserByemail(email) {
     if (!email) {
       const error = new Error()
       error.status = 400
@@ -36,7 +36,7 @@ class UserService extends BaseService {
    * @param {object} entity body of the element that brings the path
    * @returns {string}  message
    */
-  async updatePass (id, entity) {
+  async updatePass(id, entity) {
     if (!id) {
       screen
       const error = new Error()
@@ -44,7 +44,7 @@ class UserService extends BaseService {
       error.message = 'id must be sent'
       throw error
     }
-    // comprobamos que el usuario existe
+    // check user exists
     const userExist = await this.getUserByemail(entity.email)
 
     if (!userExist) {
@@ -53,10 +53,10 @@ class UserService extends BaseService {
       error.message = 'User does not exists'
       throw error
     }
-    // guardamos la contraseña del usuario perteneciente a ese emal
+    // store the users password for given email
     const UserPas = userExist[0].password
 
-    //comporbamos las contraseñas
+    // check passwords
     const validPassword = await _userOBJ.comparePasswords(
       UserPas,
       entity.password
@@ -69,7 +69,7 @@ class UserService extends BaseService {
       throw error
     }
 
-    // ciframos la nueva contraseña
+    // encrypt new password
     entity.newPassword = await _userOBJ.hasPass(entity.newPassword)
 
     return await _userOBJ.updatePass(id, entity)
@@ -81,7 +81,7 @@ class UserService extends BaseService {
    * @param {object} entity body of the element that brings the path
    * @returns {string}  message
    */
-  async deleteUser (id, entity) {
+  async deleteUser(id, entity) {
     if (!id) {
       const error = new Error()
       error.status = 400
@@ -96,10 +96,10 @@ class UserService extends BaseService {
       error.message = 'User does not exists'
       throw error
     }
-    // guardamos la contraseña del usuario perteneciente a ese emal
+    // store the users password for given email
     const UserPas = userExist[0].password
 
-    //comporbamos las contraseñas
+    // check passwords
     const validPassword = await _userOBJ.comparePasswords(
       UserPas,
       entity.password
@@ -120,7 +120,7 @@ class UserService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async followUser (body) {
+  async followUser(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -144,7 +144,7 @@ class UserService extends BaseService {
     * @param {number} idUnfollow
    * @returns {string}  message
    */
-  async unFollowUser (idUsu, idUnfollow) {
+  async unFollowUser(idUsu, idUnfollow) {
     if (!idUsu) {
       const error = new Error()
       error.status = 400
@@ -167,7 +167,7 @@ class UserService extends BaseService {
    *  @param {string} userName
    * @returns {(Array | null)}  user or null
    */
-  async getUserByName (userName) {
+  async getUserByName(userName) {
     if (!userName) {
       const error = new Error()
       error.status = 400
@@ -188,7 +188,7 @@ class UserService extends BaseService {
    *  @param {number} idUnfollow
    * @returns {(object | null)}  user or null
    */
-  async checkFollow (idUsu, idUnfollow) {
+  async checkFollow(idUsu, idUnfollow) {
     if (!idUsu) {
       const error = new Error()
       error.status = 400
@@ -215,7 +215,7 @@ class UserService extends BaseService {
    *  @param {number} idUsu
    * @returns {(Array | null)}  user or null
    */
-  async getFollowUsers (idUsu) {
+  async getFollowUsers(idUsu) {
     if (!idUsu) {
       const error = new Error()
       error.status = 400
@@ -236,7 +236,7 @@ class UserService extends BaseService {
    *  @param {number} idUsu
    * @returns {(Array | null)}  user or null
    */
-  async getFollowersUsers (idUsu) {
+  async getFollowersUsers(idUsu) {
     if (!idUsu) {
       const error = new Error()
       error.status = 400
@@ -255,7 +255,7 @@ class UserService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async newImg (body) {
+  async newImg(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400

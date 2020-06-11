@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material'
 import { TeamService } from 'src/app/services/team.service'
 
 /**
- * Component for create or modify a team
+ * Component to create or modify a team
  */
 @Component({
   selector: 'app-create-team-dialog',
@@ -17,33 +17,33 @@ import { TeamService } from 'src/app/services/team.service'
 
 export class TeamDialogComponent implements OnInit {
   /**
-   * to add fromGoup
+   * to add FormGroup
    */
   public teamForm: FormGroup
   /**
    * variable to save message info
-   */  
-  public message: string
-   /**
-   * variable to check if the function was ok
    */
+  public message: string
+  /**
+  * variable to check if the function was ok
+  */
   public correctdata: boolean
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
-  constructor (
+  constructor(
     public dialogRef: MatDialogRef<TeamDialogComponent>,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private _TeamService: TeamService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.teamForm = this.formBuilder.group({
       teamName: [
         '',
@@ -61,7 +61,7 @@ export class TeamDialogComponent implements OnInit {
    * @param {string} dato
    * @returns message
    */
-  getErrorMessage (dato) {
+  getErrorMessage(dato) {
     var result: string
     if (this.teamForm.controls[dato].hasError('required')) {
       return (result = 'This information is required')
@@ -78,16 +78,16 @@ export class TeamDialogComponent implements OnInit {
    * function to submit form
    * @param {any} teamForm
    */
-  submit (teamForm) {
+  submit(teamForm) {
     if (this.data.status === 'new') {
       var data = { idUsu: this.data.idUsu, teamName: teamForm.value.teamName }
-      console.log(data)
+      
       this._TeamService.createTeam(data).subscribe(
         res => {
-          console.log(res)
           this.openSnackBar('YOUR TEAM HAS BEEN CREATE', 'Close')
           this.correctdata = true
           this.dialogRef.close('Close modal!')
+          window.location.reload();
         },
         err => {
           this.correctdata = false
@@ -101,10 +101,10 @@ export class TeamDialogComponent implements OnInit {
       console.log(this.data.teamInfo.idTeam)
       this._TeamService.changeName(this.data.teamInfo.idTeam, team).subscribe(
         res => {
-          console.log(res)
           this.openSnackBar('YOUR TEAM HAS BEEN UPDATE', 'Close')
           this.correctdata = true
           this.dialogRef.close('Close modal!')
+          window.location.reload();
         },
         err => {
           this.correctdata = false
@@ -119,13 +119,13 @@ export class TeamDialogComponent implements OnInit {
   /**
    * To delete a team
    */
-  deleteTeam () {
+  deleteTeam() {
     this._TeamService.delete(this.data.teamInfo.idTeam).subscribe(
       res => {
-        console.log(res)
         this.openSnackBar('YOUR TEAM HAS BEEN DELETE', 'Close')
         this.correctdata = true
         this.dialogRef.close('Close modal!')
+        window.location.reload();
       },
       err => {
         this.correctdata = false
@@ -137,11 +137,11 @@ export class TeamDialogComponent implements OnInit {
   }
 
   /**
-   * function for open snackBars
+   * function to open snackBars
    *  @param {string} message
    *  @param {string} action
    */
-  openSnackBar (message: string, action: string) {
+  openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 8000,
       panelClass: ['blue-snackbar']

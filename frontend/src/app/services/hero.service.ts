@@ -33,7 +33,6 @@ export class HeroService {
     );
   }
 
-
   /**
    * Get a hero by id
    * @param {any} id
@@ -80,7 +79,7 @@ export class HeroService {
   }
 
   /**
-   * Get the stronger hero
+   * Get the strongest hero
    * @returns Hero
    */
   public mostStrength(): Observable<Hero> {
@@ -96,7 +95,7 @@ export class HeroService {
   }
 
   /**
-   * Get more resistant hero
+   * Get the more resistant hero
    * @returns Hero
    */
   public mostDurability(): Observable<Hero> {
@@ -104,7 +103,7 @@ export class HeroService {
   }
 
   /**
-   * Get more power hero
+   * Get the more powerful hero
    * @returns Hero
    */
   public mostPower(): Observable<Hero> {
@@ -112,7 +111,7 @@ export class HeroService {
   }
 
   /**
-   * Get the hero with more combat
+   * Get the hero with more combat stats
    * @returns Hero
    */
   public mostCombat(): Observable<Hero> {
@@ -127,7 +126,6 @@ export class HeroService {
     return this.http.get<Hero[]>(`${this.baseUrl}/hero/new/heros`);
   }
 
-
   /**
    * Get hero images for profile
    * @returns Array of heroes img
@@ -141,7 +139,6 @@ export class HeroService {
    * @param {Hero} hero
    */
   public newHero(hero) {
-    console.log('llego al servicio');
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     const tokenAuth = localStorage.getItem('token');
     headers = headers.set('Authorization', `${tokenAuth}`);
@@ -149,7 +146,6 @@ export class HeroService {
       headers
     });
   }
-
 
   /**
    * Modify hero

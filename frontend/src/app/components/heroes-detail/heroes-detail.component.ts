@@ -19,23 +19,35 @@ import { UserHero } from 'src/app/models/userHero'
 
 export class HeroesDetailComponent implements OnInit {
   /**
+   * variable to store hero rating
+   */
+  rate: number = 0;
+  /**
+   * variable to page pagination
+   */
+  page = 1;
+  /**
+   * variable for pagination size
+   */
+  pageSize = 4;
+  /**
    * variable to store hero info
    */
   public hero: Hero
   /**
-   * variable to store the relathionship user hero
+   * variable to store the relationships in user hero
    */
   public heroUsu: UserHero
   /**
-   * variable tu store user identity
+   * variable to store user identity
    */
   public identity
   /**
-   * variable to check if hero is favorite by the user
+   * variable to check if hero is favorited by the user
    */
   public favoriteHero: boolean = false
   /**
-   * variable to check is the hero is followed by the user
+   * variable to check if the hero is followed by the user
    */
   public followtHero: boolean = false
   /**
@@ -47,11 +59,11 @@ export class HeroesDetailComponent implements OnInit {
    */
   public readonly: any
   /**
-   * variable store star ranking points
+   * variable to store star ranking points
    */
   public score: number = 0
   /**
-   * variable for store the user comment about the hero
+   * variable to store the user comment about the hero
    */
   public comment: string = ''
   /**
@@ -59,14 +71,14 @@ export class HeroesDetailComponent implements OnInit {
    */
   public idParams: number = 0
   /**
-   * variable for store all comments about the hero
+   * variable to store all comments about the hero
    */
   public allComments: [] = []
 
   /**
-   * Constructor in which we inject hero service , formBuilder and rouser service
+   * Constructor in which we inject hero service, formBuilder and router service
    */
-  constructor (
+  constructor(
     private _heroService: HeroService,
     private _UserHeroService: UserHeroService,
     private _UserService: UserService,
@@ -78,9 +90,9 @@ export class HeroesDetailComponent implements OnInit {
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       this.idParams = params['id']
       this.getHero(this.idParams)
@@ -92,7 +104,7 @@ export class HeroesDetailComponent implements OnInit {
   /**
    * Get user identity
    */
-  getIdentity () {
+  getIdentity() {
     this.identity = this._UserService.getIdentity()
     if (this.identity) {
       this.getHeroUsu()
@@ -104,14 +116,21 @@ export class HeroesDetailComponent implements OnInit {
    *  @param {number} id
    *
    */
-  getHero (id) {
+  getHero(id) {
+    window.scrollTo(0, 0);
     this._heroService.getHeroById(id).subscribe(
       res => {
         this.hero = res
-        console.log(JSON.stringify(this.hero, null, 2))
       },
       error => {
         console.log(error)
+      }
+    )
+    this._UserHeroService.getHeroRateScore(id).subscribe(
+      res => {
+        this.rate = res[0].rate;
+      }, err => {
+        console.log(err)
       }
     )
   }
@@ -119,12 +138,11 @@ export class HeroesDetailComponent implements OnInit {
   /**
    * Follow hero
    */
-  followHero () {
+  followHero() {
     var ids = { idUsu: this.identity.id, idHero: this.hero.idHero }
     this._UserHeroService.followHero(ids).subscribe(
       res => {
         this.getHeroUsu()
-        console.log(res)
       },
       error => {
         console.log(error)
@@ -135,11 +153,10 @@ export class HeroesDetailComponent implements OnInit {
   /**
    * Unfollow hero
    */
-  unfollowHero () {
+  unfollowHero() {
     var ids = { idUsu: this.identity.id, idHero: this.hero.idHero }
     this._UserHeroService.unfollowHero(ids).subscribe(
       res => {
-        console.log(res)
         this.getHeroUsu()
       },
       error => {
@@ -151,12 +168,11 @@ export class HeroesDetailComponent implements OnInit {
   /**
    * Add to favorite
    */
-  favorite () {
+  favorite() {
     var ids = { idUsu: this.identity.id, idHero: this.hero.idHero }
     this._UserHeroService.favorite(ids).subscribe(
       res => {
         this.getHeroUsu()
-        console.log(res)
       },
       error => {
         console.log(error)
@@ -167,12 +183,11 @@ export class HeroesDetailComponent implements OnInit {
   /**
    * Unfavorite hero
    */
-  unfavorite () {
+  unfavorite() {
     var ids = { idUsu: this.identity.id, idHero: this.hero.idHero }
     this._UserHeroService.unfavorite(ids).subscribe(
       res => {
         this.getHeroUsu()
-        console.log(res)
       },
       error => {
         console.log(error)
@@ -184,7 +199,7 @@ export class HeroesDetailComponent implements OnInit {
    * vote a hero
    *  @param {number} hovered
    */
-  voteHero (hovered) {
+  voteHero(hovered) {
     var ids = {
       score: hovered,
       idUsu: this.identity.id,
@@ -192,7 +207,6 @@ export class HeroesDetailComponent implements OnInit {
     }
     this._UserHeroService.voteHero(ids).subscribe(
       res => {
-        console.log(res)
       },
       error => {
         console.log(error)
@@ -203,21 +217,18 @@ export class HeroesDetailComponent implements OnInit {
   /**
    * Check if the user follow the hero
    */
-  getHeroUsu () {
+  getHeroUsu() {
     this._UserHeroService.getHeroUsu(this.identity.id, this.idParams).subscribe(
       res => {
         if (res) {
-          console.log(res)
           this.heroUsu = res
           if (this.heroUsu.follow['data'][0] === 1) {
             this.followtHero = true
-            console.log(this.followHero)
           } else {
             this.followtHero = false
           }
           if (this.heroUsu.favorite['data'][0] === 1) {
             this.favoriteHero = true
-            console.log(this.favoriteHero)
           } else {
             this.favoriteHero = false
           }
@@ -232,11 +243,10 @@ export class HeroesDetailComponent implements OnInit {
   /**
    * Get Hero comments
    */
-  getHeroComment () {
+  getHeroComment() {
     this._UserHeroService.getHeroComments(this.idParams).subscribe(
       res => {
         this.allComments = res
-        console.log(this.allComments)
       },
       error => {
         console.log(error)
@@ -245,10 +255,10 @@ export class HeroesDetailComponent implements OnInit {
   }
 
   /**
-   * Open modal for comment hero
+   * Open modal to comment hero
    * @param {string} status
    */
-  commentHeroDialog (status): void {
+  commentHeroDialog(status): void {
     const dialogRef = this.dialog.open(ComentHeroDialogComponent, {
       data: {
         idUsu: this.identity.id,

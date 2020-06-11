@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user.service'
 import { Router } from '@angular/router'
 
 /**
- * Component for register users
+ * Component to register users
  */
 @Component({
   selector: 'app-register',
@@ -16,9 +16,9 @@ import { Router } from '@angular/router'
 })
 
 export class RegisterComponent implements OnInit {
-   /**
-   * to add fromGoup
-   */
+  /**
+  * to add FormGroup
+  */
   public registerForm: FormGroup
   /**
    * variable to save user in it
@@ -33,10 +33,12 @@ export class RegisterComponent implements OnInit {
    */
   public datosCorrectos: boolean
 
+  public hide = true;
+
   /**
-   * Constructor in which we inject hero service , formBuilder and rouser service
+   * Constructor in which we inject hero service, formBuilder and router service
    */
-  constructor (
+  constructor(
     private formBuilder: FormBuilder,
     private _userService: UserService,
     private router: Router
@@ -45,9 +47,9 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.datosCorrectos = true
     this.registerForm = this.formBuilder.group({
       alias: [
@@ -76,7 +78,7 @@ export class RegisterComponent implements OnInit {
    * @param {string} dato
    * @returns message
    */
-  getErrorMessage (dato): string {
+  getErrorMessage(dato): string {
     var result: string
     if (this.registerForm.controls[dato].hasError('required')) {
       return (result = 'This information is required')
@@ -105,7 +107,7 @@ export class RegisterComponent implements OnInit {
    * @param {any} control
    * @returns true or null
    */
-  passwordsShouldMatch (control: AbstractControl): any {
+  passwordsShouldMatch(control: AbstractControl): any {
     if (control && (control.value !== null || control.value !== undefined)) {
       const password2Value = control.value
       const passControl = control.root.get('password')
@@ -124,10 +126,9 @@ export class RegisterComponent implements OnInit {
   /**
    * SignUp function
    */
-  signUp () {
+  signUp() {
     this._userService.RegisterUser(this.user).subscribe(
       response => {
-        console.log(this.user)
         console.log('Register correctly')
         this.message = 'Register correctly'
         // Clean the user
@@ -138,6 +139,11 @@ export class RegisterComponent implements OnInit {
       },
       error => {
         this.datosCorrectos = false
+
+        var element = document.getElementById('ErroInfo');
+        element.classList.remove('d-none');
+        setTimeout('document.getElementById("ErroInfo").classList.add("d-none")', 3500);
+
         if (error.status === 400) {
           this.message = 'User already exists'
           console.log(error.status)

@@ -12,8 +12,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 export class AdminDeleteUserDialogComponent implements OnInit {
 
-   /**
-   * Constructor in which we inject our services and diferents elements
+  /**
+   * Constructor in which we inject our services and different elements
    */
   constructor(
     public dialogRef: MatDialogRef<AdminDeleteUserDialogComponent>,
@@ -23,12 +23,12 @@ export class AdminDeleteUserDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
-    /**
-   * Start when de component init
+  /**
+   * Start when the component inits
    */
   ngOnInit() {
   }
-  
+
   /**
    * To close modal
    */

@@ -1,0 +1,29 @@
+.containerSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.searchFor{
+    text-align: center;
+    font-family: "B612";
+    color: #00a23eb6;
+    padding-bottom: 2vw;
+    font-size: 1.5rem;
+}
+.searchFor span {
+    color: #cc4224;
+}
+.NotFound{
+    text-align: center;
+    font-family: "B612";
+    color: #cc4224;
+}
+
+@media (min-width: 992px) {
+ 
+  .containerSearch {
+    flex-direction: row;
+  }
+}

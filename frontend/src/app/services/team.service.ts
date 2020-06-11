@@ -28,6 +28,8 @@ export class TeamService {
    */
   public createTeam(team) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let tokenAuth = (localStorage.getItem('token'));
+    headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.post(`${this.baseUrl}/team/createTeam`, team,
       { headers: headers });
   }
@@ -60,7 +62,6 @@ export class TeamService {
    * @param {any} data
    */
   public addMember(idTeam: number, data) {
-    console.log(data)
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let tokenAuth = (localStorage.getItem('token'));
     headers = headers.set("Authorization", `${tokenAuth}`);
@@ -89,7 +90,6 @@ export class TeamService {
     headers = headers.set("Authorization", `${tokenAuth}`);
     return this.http.delete(`${this.baseUrl}/team/${idTeam}`, { headers: headers });
   }
-
 
   /**
   * Get user Team

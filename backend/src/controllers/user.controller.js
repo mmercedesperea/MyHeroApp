@@ -8,7 +8,7 @@ class UserController {
    *
    * @param {class} UserService insert our user service in our class
    */
-  constructor ({ UserService }) {
+  constructor({ UserService }) {
     _userService = UserService
   }
 
@@ -18,13 +18,11 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {object}  user
    */
-  async get (req, res) {
+  async get(req, res) {
     const { idUsu } = req.params
 
     const user = await _userService.get(idUsu)
-    console.log(user.password)
     user[0].password = '0'
-    console.log(user[0])
     return res.json(user[0])
   }
 
@@ -34,11 +32,10 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async update (req, res) {
+  async update(req, res) {
     const { idUsu } = req.params
     const { body } = req
     const updateUser = await _userService.update(idUsu, body)
-    console.log(updateUser)
     return res.status(201).send({ message: updateUser })
   }
 
@@ -48,11 +45,10 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async updatePass (req, res) {
+  async updatePass(req, res) {
     const { idUsu } = req.params
     const { body } = req
     const updatePass = await _userService.updatePass(idUsu, body)
-    console.log(updatePass)
     return res.status(201).send({ message: updatePass })
   }
 
@@ -62,11 +58,11 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async delete (req, res) {
+  async delete(req, res) {
     const { idUsu } = req.params
     const { body } = req
     const deleteUser = await _userService.deleteUser(idUsu, body)
-    console.log(deleteUser)
+   
     return res.status(201).send({ message: deleteUser })
   }
 
@@ -76,10 +72,10 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async followUser (req, res) {
+  async followUser(req, res) {
     const { body } = req
     const followUser = await _userService.followUser(body)
-    console.log(followUser)
+   
     return res.status(201).send({ message: followUser })
   }
 
@@ -89,7 +85,7 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async unFollowUser (req, res) {
+  async unFollowUser(req, res) {
     const { idUsu } = req.params
     const { idUnfollow } = req.params
     const unFollowUser = await _userService.unFollowUser(idUsu, idUnfollow)
@@ -102,19 +98,19 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {(Array | null)}  user or null
    */
-  async getUserByName (req, res) {
+  async getUserByName(req, res) {
     const { userName } = req.params
     const user = await _userService.getUserByName(userName)
     return res.json(user)
   }
 
   /**
-   * check users relathionship
+   * check users relationship
    * @param {Object} req - Express request object
    * @param {Object} res - Express response object
     * @returns {(object | null)}  user or null
    */
-  async checkFollow (req, res) {
+  async checkFollow(req, res) {
     const { idUsu } = req.params
     const { idUnfollow } = req.params
     const checkFollow = await _userService.checkFollow(idUsu, idUnfollow)
@@ -127,7 +123,7 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {(Array | null)}  user or null
    */
-  async getFollowUsers (req, res) {
+  async getFollowUsers(req, res) {
     const { idUsu } = req.params
     const FollowUsers = await _userService.getFollowUsers(idUsu)
     return res.json(FollowUsers)
@@ -139,7 +135,7 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {Array}  users followers
    */
-  async getFollowersUsers (req, res) {
+  async getFollowersUsers(req, res) {
     const { idUsu } = req.params
     const FollowUsers = await _userService.getFollowersUsers(idUsu)
     return res.json(FollowUsers)
@@ -151,7 +147,7 @@ class UserController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async newImg (req, res) {
+  async newImg(req, res) {
     const { body } = req
     const updateImg = await _userService.newImg(body)
     return res.status(201).send({ message: updateImg })

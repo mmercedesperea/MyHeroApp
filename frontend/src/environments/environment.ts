@@ -6,7 +6,8 @@
  */
 export const environment = {
   production: false,
-  BASE_API_URL: "http://localhost:5000/api"
+  // BASE_API_URL: "http://localhost:3000/api"
+  BASE_API_URL: "https://backendmyhero.eu-gb.mybluemix.net/api"
 };
 
 /*

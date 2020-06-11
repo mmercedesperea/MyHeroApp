@@ -1,0 +1,39 @@
+#containerModal {
+  font-family: "B612";
+}
+
+#containerModal h1 {
+  color: #00a23d;
+  font-size: 1.5rem;
+}
+
+#containerModal button {
+  background-color: #f3d403;
+  border: none;
+  border-radius: 10px;
+  border: 2.5px solid #00a23d;
+  padding: 1.5vw;
+  font-size: 0.8rem;
+}
+.buttContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#containerModal button:hover {
+  background-color: #cc4224;
+}
+
+#containerModal button .cancel {
+  background-color: #2a75b3;
+}
+@media (min-width: 992px) {
+  #containerModal h1 {
+    font-size: 2.5rem;
+  }
+
+  #containerModal button {
+    font-size: 1rem;
+    padding: 0.5vw;
+  }
+}

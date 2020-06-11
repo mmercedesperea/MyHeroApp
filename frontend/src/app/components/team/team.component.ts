@@ -13,7 +13,7 @@ import { Hero } from 'src/app/models/hero'
 import { GlobalVariableService } from 'src/app/services/global-variable.service'
 
 /**
- * Component that bring team info and details to export
+ * Component that brings team info and details to export
  */
 @Component({
   selector: 'app-team',
@@ -30,42 +30,44 @@ export class TeamComponent implements OnInit {
    * variable to save the team members
    */
   public TeamHeroes: Hero[] = []
- /**
-  * Variable to count team members
-  */
+  /**
+   * Variable to count team members
+   */
   public countM: boolean = false
-  //Decorator that will receive the id, with the input we define that aucnaod calls this component an id must be sent to it
+
+  public i: number = 0;
+  // Decorator that will receive the id, with the input we define when this component is called, and an id must be sent to it
   @Input() idUsu: number = 0
   @Input() newM
   @Input() type
+  @Input() showName
 
   /**
    * Constructor in which we inject team service, hero service and our Global variables
    */
-  constructor (
+  constructor(
     private _TeamService: TeamService,
     private _heroService: HeroService,
     private GlobalV: GlobalVariableService
-  ) {}
+  ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.getTeamUsu()
   }
   /**
    * Activates when it detects any change
    */
-  ngOnChanges () {
-    console.log('ngonchange')
+  ngOnChanges() {
     this.getTeamUsu()
   }
 
   /**
    * Get the team information
    */
-  getTeamUsu (): void {
+  getTeamUsu(): void {
     this._TeamService.getTeamInfo(this.idUsu).subscribe(
       res => {
         this.myTeamInfo = res
@@ -94,7 +96,7 @@ export class TeamComponent implements OnInit {
    * @param {string} member
    * @param {number} position
    */
-  teamUsugetHeroes (member, position): void {
+  teamUsugetHeroes(member, position): void {
     this._heroService.getHeroById(member).subscribe(res => {
       this.TeamHeroes[position] = res
     })
@@ -104,7 +106,7 @@ export class TeamComponent implements OnInit {
    * Delete a team member
    * @param {number} number
    */
-  deleteMember (number): void {
+  deleteMember(number): void {
     var memberSelect = `member_${number}`
     var data = { member: memberSelect }
     this._TeamService.deleteMember(this.myTeamInfo.idTeam, data).subscribe(
@@ -119,13 +121,12 @@ export class TeamComponent implements OnInit {
   }
 
   /**
-   * We count the members in the club
+   * Count the members in the club
    */
-  countMembers (): void {
+  countMembers(): void {
     for (var i = 1; i < 6; i++) {
       if (this.myTeamInfo[`member_${i}`] != null) {
         this.GlobalV.countTeamMembers++
-        console.log(this.GlobalV.countTeamMembers)
       }
     }
   }
@@ -134,7 +135,7 @@ export class TeamComponent implements OnInit {
    * Get the member that is null
    *  @returns member
    */
-  getMemberNull (): any {
+  getMemberNull(): any {
     // we check the member slot that is empty and store it
     for (var i = 1; i < 6; i++) {
       if (this.myTeamInfo[`member_${i}`] == null) {

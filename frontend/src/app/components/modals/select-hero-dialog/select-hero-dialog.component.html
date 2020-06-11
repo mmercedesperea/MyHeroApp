@@ -1,32 +1,63 @@
-<h1>Search Hero by name</h1>
-<form>
-  <mat-form-field appearance="outline">
-    <mat-label>heroName</mat-label>
-    <input
-      matInput
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-      #searchQuery
-      (keyup)="getHeroByName(searchQuery.value)"
-    />
-   
-  </mat-form-field>
-
-  <button type="submit" (click)="getHeroByName(searchQuery.value)">
-    Search Hero
-  </button>
-</form>
-
-<div *ngFor="let hero of heroes">
-  <!-- <h1>{{ hero.idHero }}</h1> -->
-  <h3>{{ hero.heroName }}</h3>
-  <img  class="imgc"  *ngIf="data.action==='edit'"  (click)="selectHero(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" />
-
-  <img *ngIf="data.action==='fight'"  (click)="saveHeroStorage(hero.idHero)" [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
+<div id="containerModal">
+  <h1>Search Hero by name</h1>
+  <p>Chose the hero and click select</p>
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-label>heroName</mat-label>
+      <input
+        matInput
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        #searchQuery
+        (keyup)="getHeroByName(searchQuery.value)"
+      />
+    </mat-form-field>
+  </form>
+  <div mat-dialog-content>
+    <div class="HeroContainer">
+      <div
+        class="heroByName"
+        *ngFor="let hero of heroes; index as i"
+        [ngClass]="{ red: activeState == hero.idHero }"
+      >
+        <p>{{ hero.heroName }}</p>
+        <img
+          class="imgc"
+          *ngIf="data.action === 'edit'"
+          (click)="selectHero(hero.idHero)"
+          [src]="hero.image"
+          [alt]="hero.heroName"
+          onError="this.src='../../../assets/img/nogender_2.jpg'"
+        />
+        <img
+          class="imgc"
+          *ngIf="data.action === 'fight'"
+          (click)="selectHero(hero.idHero)"
+          [src]="hero.image"
+          [alt]="hero.heroName"
+          onError="this.src='../../../assets/img/nogender_2.jpg'"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="buttContainer">
+    <button
+      *ngIf="data.action === 'edit'"
+      mat-button
+      [mat-dialog-close]="HeroSelectId"
+      cdkFocusInitial
+    >
+      Select Hero
+    </button>
+    <button class="cancel" mat-button [mat-dialog-close]="">No Thanks</button>
+    <button
+      *ngIf="data.action === 'fight'"
+      type="button"
+      mat-raised-button
+      (click)="saveHeroStorage()"
+    >
+      Select hero
+    </button>
+  </div>
 </div>
-
-<button mat-button (click)="onNoClick()">cancel</button>
-
-<button  *ngIf="data.action==='edit'" mat-button [mat-dialog-close]="HeroSelectId" cdkFocusInitial>Select Hero</button>
-

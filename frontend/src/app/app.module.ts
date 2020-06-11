@@ -21,7 +21,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 /**
   * New modules
   */
-import {AdminModule} from './admin/admin.module'
+import { AdminModule } from './admin/admin.module'
 import { TeamDialogComponent } from './components/modals/team-dialog/team-dialog.component';
 import { TeamComponent } from './components/team/team.component';
 import { AvatarDialogComponent } from './components/modals/avatar-dialog/avatar-dialog.component';
@@ -31,17 +31,14 @@ import { FightHeroComponent } from './components/fight/fight-hero/fight-hero.com
 import { SelectTeamDialogComponent } from './components/modals/select-team-dialog/select-team-dialog.component';
 import { selectHeroComponent } from './components/modals/select-hero-dialog/select-hero-dialog.component';
 
-
-
-//new imports
+// new imports
 import { HttpClientModule } from "@angular/common/http";
-
 
 /**
   * Angular material module
-  */
+  */import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatNativeDateModule } from '@angular/material';
+import { MatInputModule, MatNativeDateModule, MatTooltipModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -49,8 +46,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './shared/footer/footer.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +74,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminDeleteUserDialogComponent,
     FightTeamComponent,
     FightHeroComponent,
-    SelectTeamDialogComponent
+    SelectTeamDialogComponent,
+    FooterComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -92,9 +93,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSnackBarModule,
     MatDialogModule,
     NgbRatingModule,
-    AdminModule
+    AdminModule,
+    NgbModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatTabsModule
   ],
-  entryComponents: [SelectTeamDialogComponent,AdminDeleteUserDialogComponent,selectHeroComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
+  entryComponents: [SelectTeamDialogComponent, AdminDeleteUserDialogComponent, selectHeroComponent, AvatarDialogComponent, TeamDialogComponent, ChangePassDialogComponent, DeleteUserDialogComponent, ComentHeroDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

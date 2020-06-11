@@ -3,20 +3,20 @@ let _db = null
 const mysql = require('mysql')
 
 /**
- * DB conexion
+ * DB connection
  */
 class DBConexion {
   /**
    * @constructor
    */
-  constructor () {}
+  constructor() { }
 
   /**
-   * Function to try the DB conexion
+   * Function to try the DB connection
    */
-  async conexion () {
+  async conexion() {
     /**
-     *  we specify our DB conexion data
+     *  we specify our DB connection data
      */
     const mysqlConnection = mysql.createConnection({
       host: 'bn1pbv6odxmjfnoccu27-mysql.services.clever-cloud.com',
@@ -52,7 +52,7 @@ class DBConexion {
    * @param {String} sql  the sql query to the db
    * @return {Promise} if the query is successful it will return one or more elements from the DB, if not a reject will be returned indicating that there has been a failure
    */
-  async consulta (sql) {
+  async consulta(sql) {
     return new Promise((resolve, reject) => {
       _db.query(sql, (err, rows, fields) => {
         // console.log(sql)
@@ -74,7 +74,7 @@ class DBConexion {
    * @return {Promise} if the query has been successful, a resolve will be returned indicating that it could be created, otherwise a reject will be returned indicating the opposite
    */
 
-  async create (sql) {
+  async create(sql) {
     return new Promise((resolve, reject) => {
       _db.query(sql, err => {
         if (err) {
@@ -93,7 +93,7 @@ class DBConexion {
    * @param {*} entity  Entity that contains the information you want to send in the query
    * @return {Promise} if the query has been successful, a resolve will be returned indicating that it could be created, otherwise a reject will be returned indicating the opposite
    */
-  async createNewHero (sql, entity) {
+  async createNewHero(sql, entity) {
     return new Promise((resolve, reject) => {
       console.log(sql)
       _db.query(
@@ -139,7 +139,7 @@ class DBConexion {
    * @return {Promise} if the query has been successful, a resolve will be returned indicating that it could be update, otherwise a reject will be returned indicating the opposite
    */
 
-  async update (sql) {
+  async update(sql) {
     return new Promise((resolve, reject) => {
       console.log(sql)
       _db.query(sql, err => {
@@ -158,7 +158,7 @@ class DBConexion {
    * @param {String} sql  the sql query to the db
    * @return {Promise} if the query has been successful, a resolve will be returned indicating that it could be delete, otherwise a reject will be returned indicating the opposite
    */
-  async delete (sql) {
+  async delete(sql) {
     return new Promise((resolve, reject) => {
       _db.query(sql, err => {
         if (err) {

@@ -3,7 +3,7 @@ import { CanActivate, Router } from '@angular/router'
 import { UserService } from './user.service'
 
 /**
- * Admin guard ,controls whether the user is an administrator or not
+ * Admin guard, controls whether the user is an administrator or not
  */
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,12 @@ export class AdminGuard implements CanActivate {
    */
   constructor(
     /**
-     * variable for save user service
+     * variable to save user service
      */
     private _UserService: UserService,
-    
+
     /**
-     * variable for save router service
+     * variable to save router service
      */
     private _router: Router
   ) { }

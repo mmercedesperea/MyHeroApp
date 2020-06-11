@@ -5,7 +5,7 @@
 const { Router } = require('express')
 
 /**
- * to manage the routes that affect Api
+ * to manage the routes that affects Api
  * @param {class} ApiHeroController we introduce our class where the auth controller are
  */
 module.exports = function ({ ApiHeroController }) {

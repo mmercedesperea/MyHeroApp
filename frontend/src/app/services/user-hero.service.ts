@@ -60,7 +60,6 @@ export class UserHeroService {
     return this.http.put(`${this.baseUrl}/userHero/unfavorite`, params, { headers: headers });
   }
 
-
   /**
     * vote a hero
     * @param {any} data
@@ -131,6 +130,14 @@ export class UserHeroService {
     return this.http.get<Hero>(`${this.baseUrl}/userHero/bestMarverHero`);
   }
 
+   /**
+  * Get top rated other hero
+  * @returns hero
+  */
+ public bestOTHero(): Observable<Hero> {
+  return this.http.get<Hero>(`${this.baseUrl}/userHero/bestOTHero`);
+}
+
   /**
    * Get top rated DC hero
    * @returns hero
@@ -147,9 +154,8 @@ export class UserHeroService {
     return this.http.get<Hero[]>(`${this.baseUrl}/userHero/mostFollowHeros`);
   }
 
-
   /**
-    * Get all the comments of a hero
+    * Get all the comments on a hero
     * @param {number} id
     * @returns any
     */
@@ -157,9 +163,8 @@ export class UserHeroService {
     return this.http.get<any>(`${this.baseUrl}/userHero/getHeroComments/${id}`);
   }
 
-
   /**
-   * Get the mean of a hero's scores
+   * Get the hero's average score
    * @param {number} id
    * @returns any
    */

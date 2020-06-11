@@ -1,0 +1,363 @@
+#MarvelVsDC,
+#mostF,
+#TheBest {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#mostF,
+#TheBest {
+  flex-wrap: wrap;
+}
+
+.card1 {
+  padding: 0.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+  width: 7em;
+  height: 10em;
+  background-color: #272727;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2%;
+}
+
+.card1 .imgCircle {
+  cursor: pointer;
+  margin-bottom: 2em;
+  border-radius: 50%;
+  margin-top: 0.5em;
+  overflow: hidden;
+}
+
+.semiCircle {
+  width: 122%;
+  height: 73%;
+  bottom: -40%;
+  z-index: 0;
+  position: absolute;
+  background: #00a23d;
+  border-radius: 201px 201px 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 7em;
+  width: 3.5em;
+  height: 4em;
+  padding-top: 5em;
+}
+
+.dots2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 3.5em;
+  height: 4em;
+  padding-top: 5em;
+}
+
+.dots div,
+.dots2 div {
+  border-radius: 50%;
+  width: 0.3em;
+  margin: 0.4em;
+  height: 0.3em;
+  background-color: #272727;
+}
+.infoHero {
+  font-family: "B612";
+  height: 40%;
+  width: 81%;
+  z-index: 2;
+  bottom: -17%;
+  color: rgb(223, 221, 221);
+  position: absolute;
+}
+.infoHero h2,
+h4 {
+  font-size: 0.5rem;
+}
+
+.card1:hover img {
+  transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+.card1:hover .semiCircle {
+  background: #cc4224;
+}
+
+.points {
+  right: 0em;
+  top: 0em;
+  position: absolute;
+}
+.points svg {
+  height: 2.5em;
+}
+
+.points p {
+  position: absolute;
+  font-family: "B612";
+  font-size: 12px;
+  right: 1.3em;
+  top: 1em;
+}
+.points .ten {
+  right: 0.9em;
+}
+.picsum-img-wrapper img {
+  width: 100%;
+}
+
+.title {
+  font-size: 1rem;
+  color: #00a23d;
+  font-family: "B612";
+  padding-bottom: 1em;
+}
+
+.card2 {
+  position: relative;
+  width: 42%;
+  padding-bottom: 1.5em;
+}
+
+.card2 .img2 {
+  cursor: pointer;
+  border-radius: 2%;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+  height: 60vw;
+  width: 100%;
+}
+.overImg {
+  height: 25%;
+  background-color: #00a23eb6;
+  width: 100%;
+  bottom: 10%;
+  padding-top: 7%;
+  position: absolute;
+  text-align: center;
+  color: rgb(223, 221, 221);
+}
+
+.card2:hover .overImg {
+  background: #cc4224;
+}
+.overImg h4 {
+  font-size: 1rem;
+}
+
+.card2:hover .img2 {
+  transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+#bestT {
+  color: rgb(223, 221, 221);
+}
+#bestT h4 {
+  text-align: right;
+}
+
+.iconoUser {
+  z-index: 3;
+  top: 2%;
+  right: 2%;
+  position: absolute;
+}
+.iconoUser p,
+.iconM p {
+  color: #cc4224;
+  font-size: 4vw;
+  right: 9vw;
+  font-family: "B612";
+  position: absolute;
+  text-shadow: -1px -1px 0 rgb(223, 221, 221), 1px -1px 0 rgb(223, 221, 221),
+    -1px 1px 0 rgb(223, 221, 221), 1px 1px 0 rgb(223, 221, 221);
+}
+.Tred {
+  color: #cc4224;
+  font-family: "B612";
+}
+a {
+  text-decoration: none;
+}
+
+.iconM {
+  z-index: 3;
+  top: 2%;
+  right: 2%;
+  position: absolute;
+}
+.iconM img {
+  width: 12vw;
+  height: 12vw;
+}
+#bestT h4 {
+  font-size: 1rem;
+}
+.carousel-caption {
+  display: none;
+}
+
+::ng-deep .carousel-indicators {
+  display: none !important;
+}
+@media (min-width: 992px) {
+  .title {
+    font-size: 1.75rem;
+  }
+  ::ng-deep .carousel-indicators {
+    display: flex !important;
+  }
+
+  .carousel-caption {
+    display: inline;
+    background-color: rgba(3, 0, 0, 0.288);
+  }
+  .carousel-caption h3,
+  .carousel-caption p {
+    color: #00a23d;
+    font-family: "Bangers", cursive;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+      1px 1px 0 #fff;
+    letter-spacing: 3px;
+  }
+  .iconM img {
+    width: 4vw;
+    height: 4vw;
+  }
+  .points {
+    right: 1em;
+    top: 2em;
+  }
+
+  .points svg {
+    height: 4.2em;
+  }
+  .points p {
+    font-size: 16px;
+    right: 1.8em;
+    top: 1.6em;
+  }
+  .points .ten {
+    right: 1.5em;
+  }
+  .card1 {
+    padding: 1.5em;
+    font-family: "B612";
+    width: 22em;
+    height: 26em;
+  }
+
+  .card1 .imgCircle {
+    margin-bottom: 5em;
+    margin-top: 0em;
+  }
+  .card2 {
+    width: 15%;
+    font-family: "B612";
+  }
+
+  .card2 .img2 {
+    height: 16vw;
+  }
+  .card2 h4 {
+    font-size: 1.4vw;
+  }
+
+  #MarvelVsDC,
+  #mostF,
+  #TheBest {
+    flex-direction: row;
+  }
+
+  .iconoUser p,
+  .iconM p {
+    right: 2vw;
+    font-size: 1vw;
+  }
+
+  .infoHero h2 {
+    font-size: 2rem;
+  }
+
+  .infoHero h4 {
+    font-size: 1.5rem;
+  }
+
+  #bestT h4 {
+    font-size: 1.5rem;
+  }
+
+  .overImg h4 {
+    font-size: 1.5vw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .title {
+    font-size: 1.75rem;
+  }
+  #bestT h4 {
+    font-size: 1.5rem;
+  }
+
+  .points {
+    right: 1em;
+    top: 2em;
+  }
+
+  .points svg {
+    height: 4.2em;
+  }
+  .points p {
+    font-size: 16px;
+    right: 1.8em;
+    top: 1.6em;
+  }
+  .points .ten {
+    right: 1.5em;
+  }
+  .card1 {
+    padding: 1.5em;
+    font-family: "B612";
+    width: 15em;
+    height: 19em;
+  }
+
+  .card1 .imgCircle {
+    margin-bottom: 5em;
+    margin-top: 0em;
+  }
+
+  .semiCircle {
+    width: 105%;
+    height: 73%;
+    bottom: -29%;
+  }
+
+  .infoHero h2,
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  .overImg h4 {
+    font-size: 4vw;
+  }
+}

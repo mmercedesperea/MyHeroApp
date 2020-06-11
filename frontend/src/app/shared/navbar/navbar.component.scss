@@ -1,16 +1,98 @@
-.mr-4, .mx-4 {
-    margin-right: 5.5rem!important;
+.mr-4,
+.mx-4 {
+  margin-right: 5.5rem;
 }
 
-// .imgRedonda {
-//     height: 4em;
-//     width: 4em;
-//     margin-right: 0.5em;
-//     background-repeat: no-repeat;
-//     background-position: 50%;
-//     border-radius: 50%;
-//     background-size: 100% auto;
-//     overflow: hidden;
-//     border: 2.5px solid #a30023;
-    
-// }
+.bg-light {
+  background-color: #272727 !important;
+}
+
+.nav-link {
+  font-family: "B612";
+  color: rgb(223, 221, 221) !important;
+  font-weight: 900;
+  font-size: 15px;
+}
+.nav-link:hover {
+  color: #cc4224 !important;
+}
+
+.active {
+  color: #00a23d !important;
+
+  font-weight: 500;
+}
+mat-form-field {
+  margin-right: 0.2em;
+}
+
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-infix {
+  padding: 0.15em 0 0.15em 0 !important;
+}
+
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex {
+  // background: rgba(0, 255, 255, .5);
+  background: rgb(223, 221, 221);
+  width: 8em !important;
+  border-radius: 10px 10px 10px 10px !important;
+  padding: 0.35em 0.35em 0 0.35em !important;
+}
+.fromG {
+  margin-top: 1em;
+}
+
+.fixed-top {
+  z-index: 20 !important;
+}
+
+#search-button {
+  position: absolute;
+  background: transparent;
+  border: none !important;
+}
+
+#search-button svg {
+  height: 34px;
+}
+
+.name {
+  color: rgb(223, 221, 221);
+  font-family: "B612";
+}
+a {
+  font-family: "B612";
+}
+
+.navbar-toggler {
+  background-color: #8d2529;
+  border: 2px solid;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: #00a23d;
+}
+
+#svg8 {
+  margin-right: 2em;
+  cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    height: 2em;
+  }
+
+  mat-form-field {
+    margin-right: 1em;
+  }
+
+  ::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex {
+    width: 10em !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .mr-4,
+  .mx-4 {
+    margin-right: 1.5rem !important;
+  }
+}

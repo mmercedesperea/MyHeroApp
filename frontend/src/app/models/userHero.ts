@@ -7,9 +7,9 @@ export class UserHero {
      * Constructor
      */
     constructor(
-         /**
-         * User's identifier
-         */
+        /**
+        * User's identifier
+        */
         public idUsu: number,
         /**
          * Character's identifier
@@ -24,11 +24,11 @@ export class UserHero {
          */
         public comment: string,
         /**
-         * If it is 1 the hero is favorite if it is 0 it is not 
+         * If it is 1 the hero is favorite if it is 0 it is not
          */
         public favorite: boolean,
         /**
-         * If it is 1 the hero is follow if it is 0 it is not 
+         * If it is 1 the hero is follow if it is 0 it is not
          */
         public follow: boolean,
     ) { }

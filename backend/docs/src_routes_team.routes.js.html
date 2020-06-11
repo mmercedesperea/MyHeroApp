@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/routes/team.routes.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/routes/team.routes.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * express module
+ * @const
+ */
+const { Router } = require('express')
+
+/**
+ * to ensure that the user is authenticated to access certain routes
+ * @const
+ */
+const { AuthMiddleware, AdminAuth } = require('../middlewares')
+
+/**
+ * to manage the routes that affect Team
+ * @param {class} TeamController we introduce our class where the Tean controller are
+ */
+module.exports = function ({ TeamController }) {
+  /**
+   * way to our routes
+   * @const
+   */
+  const router = Router()
+
+  /**
+   * Create team
+   * @param {function}  TeamController.createTeam  introduce our class where the Team controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.post('/createTeam', [AuthMiddleware], TeamController.createTeam)
+
+  /**
+   * Change team name
+   * @param {function}  TeamController.chageName introduce our class where the Team controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.put('/chageName/:idTeam', [AuthMiddleware], TeamController.chageName)
+
+  /**
+   * add new member
+   * @param {function}  TeamController.addMember introduce our class where the Team controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.put('/addMember/:idTeam', [AuthMiddleware], TeamController.addMember)
+
+  /**
+   * Delete member
+   * @param {function}  TeamController.deleteMember introduce our class where the Team controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.put(
+    '/deleteMember/:idTeam',
+    [AuthMiddleware],
+    TeamController.deleteMember
+  )
+
+  // check the numbers of menbers
+  // router.get('/checkTeam/:idTeam', TeamController.checkTeam);
+
+  // get team by id
+  // router.get('/getTeam/:idTeam', TeamController.getTeam);
+
+  // get users team
+  // router.get('/getTeam/usu/:idUsu', TeamController.getTeamUsu);
+
+  /**
+   * Delete team
+   * @param {function}  TeamController.delete introduce our class where the Team controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.delete('/:idTeam', [AuthMiddleware], TeamController.delete)
+
+  /**
+   * Get team with most stats
+   * @param {function}  TeamController.bestTeam introduce our class where the Team controller are and indicate its specific function
+   */
+  router.get('/bestTeam', TeamController.bestTeam)
+
+  /**
+   * Get team info
+   * @param {function}  TeamController.getTeamInfo introduce our class where the Team controller are and indicate its specific function
+   */
+  router.get('/getTeamInfo/:idUsu', TeamController.getTeamInfo)
+
+  /**
+   * Get winner team
+   * @param {function} TeamController.getTeamWinner introduce our class where the Team controller are and indicate its specific function
+   */
+  router.get('/getTeamWinner/:idTeam1/:idTeam2', TeamController.getTeamWinner)
+
+  /**
+   * Get team by name
+   * @param {function} TeamController.searchTeam introduce our class where the Team controller are and indicate its specific function
+   * @param {function} AuthMiddleware
+   */
+  router.get('/searchTeam/:TeamName', TeamController.searchTeam)
+
+  return router
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminController.html">AdminController</a></li><li><a href="AdminService.html">AdminService</a></li><li><a href="ApiHeroController.html">ApiHeroController</a></li><li><a href="ApiHeroService.html">ApiHeroService</a></li><li><a href="AuthController.html">AuthController</a></li><li><a href="AuthService.html">AuthService</a></li><li><a href="BaseService.html">BaseService</a></li><li><a href="DBConexion.html">DBConexion</a></li><li><a href="Hero.html">Hero</a></li><li><a href="HeroController.html">HeroController</a></li><li><a href="HeroService.html">HeroService</a></li><li><a href="Server.html">Server</a></li><li><a href="Team.html">Team</a></li><li><a href="TeamController.html">TeamController</a></li><li><a href="TeamService.html">TeamService</a></li><li><a href="User.html">User</a></li><li><a href="UserController.html">UserController</a></li><li><a href="UserHero.html">UserHero</a></li><li><a href="UserHeroController.html">UserHeroController</a></li><li><a href="UserHeroService.html">UserHeroService</a></li><li><a href="UserService.html">UserService</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_config">_config</a></li><li><a href="global.html#conexion">conexion</a></li><li><a href="global.html#config">config</a></li><li><a href="global.html#container">container</a></li><li><a href="global.html#cors">cors</a></li><li><a href="global.html#DB">DB</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#isAdmin">isAdmin</a></li><li><a href="global.html#swaggerUi">swaggerUi</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Tue Jun 09 2020 08:31:47 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

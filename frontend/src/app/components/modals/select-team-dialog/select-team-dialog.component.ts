@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { Team } from 'src/app/models/team'
 
 /**
- * Component for select a team
+ * Component to select a team
  */
 @Component({
   selector: 'app-select-team-dialog',
@@ -13,6 +13,7 @@ import { Team } from 'src/app/models/team'
 })
 
 export class SelectTeamDialogComponent implements OnInit {
+  activeState: number;
   /**
    * variable to store teams
    */
@@ -27,9 +28,9 @@ export class SelectTeamDialogComponent implements OnInit {
   public TeamSelectId: number = 0
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
-  constructor (
+  constructor(
     private _TeamService: TeamService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<SelectTeamDialogComponent>
@@ -38,20 +39,19 @@ export class SelectTeamDialogComponent implements OnInit {
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {}
+  ngOnInit() { }
 
   /**
    * function get a team by name
    * @param {string} teamName
    */
-  getTeamByName (teamName) {
+  getTeamByName(teamName) {
     this._TeamService.searchTeam(teamName).subscribe(
       res => {
         // console.log(res.idHero)
         this.teams = res
-        console.log(JSON.stringify(this.teams, null, 2))
         // console.log(this.hero);
       },
       error => {
@@ -61,29 +61,28 @@ export class SelectTeamDialogComponent implements OnInit {
   }
 
   /**
-   * function save idteam
+   * function to save idteam
    * @param {number} idTeam
    */
-  selectTeam (idTeam) {
+  selectTeam(idTeam) {
     this.TeamSelectId = idTeam
+    this.activeState = idTeam
   }
 
   /**
-   * function save team in the storage
+   * function to save team in the storage
    * @param {number} idUsu
    */
-  async saveTeamStorage (idUsu) {
-    this._TeamService.getTeamInfo(idUsu).subscribe(
+  async saveTeamStorage() {
+    this._TeamService.getTeamInfo(this.TeamSelectId).subscribe(
       res => {
         this.sessonTeam = res
-        console.log(res)
         if (this.data.position === 1) {
-          console.log(this.sessonTeam)
           sessionStorage.setItem('Team1', JSON.stringify(this.sessonTeam))
-          console.log(JSON.parse(sessionStorage.getItem('Team1')))
         } else {
           sessionStorage.setItem('Team2', JSON.stringify(this.sessonTeam))
         }
+        this.dialogRef.close();
       },
       error => {
         console.log(error)
@@ -94,7 +93,7 @@ export class SelectTeamDialogComponent implements OnInit {
   /**
    * To close modal
    */
-  onNoClick (): void {
+  onNoClick(): void {
     this.dialogRef.close()
   }
 }

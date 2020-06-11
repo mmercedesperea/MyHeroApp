@@ -13,25 +13,30 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 
 export class NavbarComponent implements OnInit, DoCheck {
- /**
-  * to save the tittle
-  */
+  /**
+   * to save the title
+   */
   public title: string;
   /**
-   * to save the user identity
+   * to save the users identity
    */
   public identity;
   /**
-   * to add fromGoup
+   * to add FormGroup
    */
   public searchForm: FormGroup;
   /**
-   * to save the select value in the form
+   * to save the selected value in the form
    */
   public selectedValue2: string = 'HeroName'
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * to save the photo from storage
+   */
+  public photo: string = ''
+
+  /**
+   * Constructor in which we inject our services and different elements
    */
   constructor(private formBuilder: FormBuilder, private _userService: UserService, private _router: Router) {
     this.searchForm = this.formBuilder.group({
@@ -45,10 +50,12 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
+    this.photo = localStorage.getItem('UserPhoto')
+
   }
 
   /**
@@ -66,6 +73,7 @@ export class NavbarComponent implements OnInit, DoCheck {
    */
   ngDoCheck(): void {
     this.identity = this._userService.getIdentity();
+    this.photo = localStorage.getItem('UserPhoto')
   }
 
   /**
@@ -83,9 +91,11 @@ export class NavbarComponent implements OnInit, DoCheck {
   searchHP() {
     if (this.searchForm.value.search) {
       this._router.navigate([`/heroesSearch/${this.searchForm.value.selectedValue}/${this.searchForm.value.search}`]);
+
     } else {
       this._router.navigate([`/heroesSearch/${this.searchForm.value.selectedValue}/publisher`]);
     }
+    this.searchForm.reset()
   }
 
 }

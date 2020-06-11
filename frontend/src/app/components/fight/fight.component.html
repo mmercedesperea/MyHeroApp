@@ -1,4 +1,28 @@
-<button type="button" mat-raised-button [routerLink]="['fightTeam']">Fight team</button>
-<button type="button" mat-raised-button [routerLink]="['fightHero']">Fight Hero</button>
-
+<div class="banner">
+  <div id="barra"></div>
+  <div class="shadow"></div>
+  <img src="./../../../assets/img/fight3.svg" class="imgcabeza" />
+  <img
+    src="./../../../assets/img/fightBannerResponsive.png"
+    class="imgcabeza2"
+  />
+</div>
+<div class="selectF">
+  <a
+    class="buttonStyle"
+    mat-raised-button
+    [routerLink]="['fightHero']"
+    routerLinkActive="active"
+  >
+    <span>FIGHT HERO</span>
+  </a>
+  <a
+    class="buttonStyle"
+    mat-raised-button
+    [routerLink]="['fightTeam']"
+    routerLinkActive="active"
+  >
+    <span>FIGHT TEAM</span>
+  </a>
+</div>
 <router-outlet></router-outlet>

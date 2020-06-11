@@ -1,0 +1,50 @@
+.adminDetail {
+  border: 2.5px solid #00a23d;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: #272727;
+  color: white;
+  margin-bottom: 3em;
+}
+
+#form .mat-form-field {
+  margin-left: 12px;
+}
+
+#form ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: #709e82;
+}
+
+.modifyHero {
+  outline: none;
+  background-color: #f3d403;
+  border: none;
+  border-radius: 10px;
+  border: 2.5px solid #00a23d;
+  padding: 9px;
+  font-size: 0.8rem;
+  color: black;
+}
+
+.modifyHero:hover {
+  background-color: #cc4224;
+  color: rgb(223, 221, 221);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .title {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .adminDetail {
+    margin: 3em;
+    padding: 2em;
+  }
+}

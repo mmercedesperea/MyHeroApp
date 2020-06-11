@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material'
 import { SelectTeamDialogComponent } from '../../modals/select-team-dialog/select-team-dialog.component'
 
 /**
- * Component for fight team
+ * Component for Fight team
  */
 @Component({
   selector: 'app-fight-team',
@@ -15,29 +15,39 @@ import { SelectTeamDialogComponent } from '../../modals/select-team-dialog/selec
 
 export class FightTeamComponent implements OnInit {
   /**
-   * variable for store the team winner
+   * variable to show heroes in team
    */
-  public team: Team
+  public showName: boolean = true;
+
   /**
-   * variable for store the team for local storage
+   * variable to store team position
+   */
+  public TeamHeroes: number[] = [1, 2, 3, 4, 5];
+  /**
+   * variable to store the winner team
+   */
+  public team: any;
+  /**
+   * variable to store the team in local storage
    */
   public sessonTeam1: Team
   /**
-   * variable for store the team for local storage
-   */  
+   * variable to store the team in local storage
+   */
   public sessonTeam2: Team
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
-  constructor (private _TeamService: TeamService, public dialog: MatDialog) {}
+  constructor(private _TeamService: TeamService, public dialog: MatDialog) { }
+
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.clearHerosSession()
-    this.team = new Team(0, 0, '', '', '', '', '', '')
+    this.team = [];
     this.sessonTeam1 = new Team(0, 0, '', '', '', '', '', '')
     this.sessonTeam2 = new Team(0, 0, '', '', '', '', '', '')
     console.log(this.sessonTeam2)
@@ -46,27 +56,36 @@ export class FightTeamComponent implements OnInit {
   /**
    * clear local storage
    */
-  clearHerosSession () {
+  clearHerosSession() {
     sessionStorage.clear()
+  }
+
+  /**
+   * Play audio
+   */
+  playAudio() {
+    let audio = <HTMLAudioElement>document.getElementById("myAudio");
+    audio.play();
   }
 
   /**
    * Get teams in session storage
    */
-  getSessionTeams () {
+  getSessionTeams() {
     this.sessonTeam1 = JSON.parse(sessionStorage.getItem('Team1'))
     this.sessonTeam2 = JSON.parse(sessionStorage.getItem('Team2'))
   }
 
   /**
-   * Get team winner
+   * Get winner team
    */
-  getTeamWinner () {
+  getTeamWinner() {
     this._TeamService
       .getteamWinner(this.sessonTeam1.idTeam, this.sessonTeam2.idTeam)
       .subscribe(
         res => {
           this.team = res
+         
         },
         error => {
           console.log(error)
@@ -75,17 +94,16 @@ export class FightTeamComponent implements OnInit {
   }
 
   /**
-   * Open modal for comment hero
+   * Open modal to choose team
    * @param {number} position
    */
-  selectTeamDialog (position) {
+  selectTeamDialog(position) {
     const dialogRef = this.dialog.open(SelectTeamDialogComponent, {
       data: {
         position: position
       }
     })
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed')
       this.getSessionTeams()
     })
   }

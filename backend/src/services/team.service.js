@@ -9,17 +9,17 @@ class TeamService extends BaseService {
    *
    * @param {class} Team insert our Team class
    */
-  constructor ({ Team }) {
+  constructor({ Team }) {
     super(Team)
     _teamObj = Team
   }
 
   /**
-   * check the number os members
+   * check the number of members
    * @param {number} idTeam
    * @returns {boolean}
    */
-  async checkTeam (idTeam) {
+  async checkTeam(idTeam) {
     if (!idTeam) {
       const error = new Error()
       error.status = 400
@@ -39,7 +39,7 @@ class TeamService extends BaseService {
    * @param {object} entity body of the element that brings the path
    * @returns {string}  message
    */
-  async addMember (idTeam, entity) {
+  async addMember(idTeam, entity) {
     if (!idTeam) {
       const error = new Error()
       error.status = 400
@@ -61,7 +61,7 @@ class TeamService extends BaseService {
    * @param {object} entity body of the element that brings the path
    * @returns {string}  message
    */
-  async deleteMember (idTeam, entity) {
+  async deleteMember(idTeam, entity) {
     if (!idTeam) {
       const error = new Error()
       error.status = 400
@@ -81,7 +81,7 @@ class TeamService extends BaseService {
    * Best team
    * @returns {array}  teams
    */
-  async bestTeam () {
+  async bestTeam() {
     const currentEntity = await _teamObj.bestTeam()
 
     if (!currentEntity) {
@@ -94,11 +94,11 @@ class TeamService extends BaseService {
   }
 
   /**
-   * Get team user
+   * Get user's team
    *  @param {number} idUsu
    * @returns {(Array | null)}  team or null
    */
-  async getTeamUsu (id) {
+  async getTeamUsu(id) {
     if (!id) {
       const error = new Error()
       error.status = 400
@@ -114,11 +114,11 @@ class TeamService extends BaseService {
   }
 
   /**
-   * Get team info user
+   * Get user's team info
    *  @param {number} idUsu
    * @returns {(object | null)}  team or null
    */
-  async getTeamInfo (idUsu) {
+  async getTeamInfo(idUsu) {
     if (!idUsu) {
       const error = new Error()
       error.status = 400
@@ -134,12 +134,12 @@ class TeamService extends BaseService {
   }
 
   /**
-   * Get team winner
+   * Get winner team
    *  @param {number} idTeam1
    *  @param {number} idTeam2
    * @returns {object }  team
    */
-  async getTeamWinner (idTeam1, idTeam2) {
+  async getTeamWinner(idTeam1, idTeam2) {
     if (!idTeam1) {
       const error = new Error()
       error.status = 400
@@ -157,11 +157,11 @@ class TeamService extends BaseService {
   }
 
   /**
-   * Get team  by name
+   * Get team by name
    *  @param {string} teamName
    * @returns {(array | null)}  team or null
    */
-  async searchTeam (teamName) {
+  async searchTeam(teamName) {
     if (!teamName) {
       const error = new Error()
       error.status = 400

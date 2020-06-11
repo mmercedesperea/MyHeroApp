@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service'
 import { UserHeroService } from 'src/app/services/user-hero.service'
 
 /**
- * Component for comment a hero
+ * Component to comment a hero
  */
 @Component({
   selector: 'app-coment-hero-dialog',
@@ -17,34 +17,34 @@ import { UserHeroService } from 'src/app/services/user-hero.service'
 })
 
 export class ComentHeroDialogComponent implements OnInit {
-   /**
-   * to add fromGoup
-   */
+  /**
+  * to add FormGroup
+  */
   public commentForm: FormGroup
   /**
-   * variable to save message info 
-   */  
+   * variable to save message info
+   */
   public message: string
   /**
    * variable to check if the function was ok
-   */  
+   */
   public correctdata: boolean
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
-  constructor (
+  constructor(
     public dialogRef: MatDialogRef<ComentHeroDialogComponent>,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private _UserHeroService: UserHeroService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.commentForm = this.formBuilder.group({
       comment: [
         '',
@@ -55,7 +55,6 @@ export class ComentHeroDialogComponent implements OnInit {
         ]
       ]
     })
-    console.log(this.data)
   }
 
   /**
@@ -63,7 +62,7 @@ export class ComentHeroDialogComponent implements OnInit {
    * @param {string} dato
    * @returns message
    */
-  getErrorMessage (dato) {
+  getErrorMessage(dato) {
     var result: string
     if (this.commentForm.controls[dato].hasError('required')) {
       return (result = 'This information is required')
@@ -80,7 +79,7 @@ export class ComentHeroDialogComponent implements OnInit {
    * function to submit form
    * @param {any} commentForm
    */
-  submit (commentForm) {
+  submit(commentForm) {
     if (this.data.status === 'new') {
       var commentObj = {
         comment: commentForm.value.comment,
@@ -88,10 +87,8 @@ export class ComentHeroDialogComponent implements OnInit {
         idHero: this.data.idHero
       }
 
-      console.log(commentObj)
       this._UserHeroService.commentHero(commentObj).subscribe(
         res => {
-          console.log(res)
           this.openSnackBar('YOUR COMMENT HAS BEEN SAVE', 'Close')
           this.correctdata = true
           this.dialogRef.close('Close modal!')
@@ -113,7 +110,6 @@ export class ComentHeroDialogComponent implements OnInit {
       console.log(commentObj)
       this._UserHeroService.commentHero(commentObj).subscribe(
         res => {
-          console.log(res)
           this.openSnackBar('YOUR COMMENT HAS BEEN MODIFY', 'Close')
           this.correctdata = true
           this.dialogRef.close('Close modal!')
@@ -131,7 +127,7 @@ export class ComentHeroDialogComponent implements OnInit {
   /**
    * Delete comment
    */
-  deleteComment () {
+  deleteComment() {
     var commentObj = { idUsu: this.data.idUsu, idHero: this.data.idHero }
 
     this._UserHeroService.deleteCHero(commentObj).subscribe(
@@ -151,14 +147,15 @@ export class ComentHeroDialogComponent implements OnInit {
   }
 
   /**
-   * function for open snackBars
+   * function to open snackBars
    *  @param {string} message
    *  @param {string} action
    */
-  openSnackBar (message: string, action: string) {
+  openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 8000,
       panelClass: ['blue-snackbar']
     })
   }
+
 }

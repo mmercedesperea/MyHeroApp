@@ -1,10 +1,9 @@
-<p>{{ data.alias }} Are you sure about changin your password?</p>
-
-<div id="form">
-  <h1>Change information</h1>
-  <form [formGroup]="passForm" (ngSubmit)="submit(passForm)">
-
-    <mat-form-field appearance="outline">
+<div id="containerModal">
+  <h5>{{ data.alias }}, are you sure you want to change your password?</h5>
+  <div id="form">
+    <h1>Change information</h1>
+    <form [formGroup]="passForm" (ngSubmit)="submit(passForm)">
+      <mat-form-field appearance="outline">
         <mat-label> Old Password</mat-label>
         <input
           matInput
@@ -16,46 +15,55 @@
           {{ getErrorMessage("oldPassword") }}</mat-error
         >
       </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>New Password</mat-label>
-      <input
-        matInput
-        type="password"
-        formControlName="password"
-        placeholder="Password"
-      />
-      <mat-error *ngIf="!passForm.controls['password'].valid">
-        {{ getErrorMessage("password") }}</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Confirm new Password</mat-label>
-      <input
-        matInput
-        type="password"
-        formControlName="confirmPass"
-        placeholder="Password"
-      />
-      <mat-error
-        *ngIf="
-          passForm.get('confirmPass').invalid &&
-          passForm.get('confirmPass').touched &&
-          passForm.get('password').touched
-        "
-      >
-        {{ getErrorMessage("confirmPass") }}</mat-error
-      >
-    </mat-form-field>
-
-    <div *ngIf="!correctdata">
-        <p class="mensajeError">{{  this.message }}</p>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>New Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+        />
+        <mat-error *ngIf="!passForm.controls['password'].valid">
+          {{ getErrorMessage("password") }}</mat-error
+        >
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm new Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="confirmPass"
+          placeholder="Password"
+        />
+        <mat-error
+          *ngIf="
+            passForm.get('confirmPass').invalid &&
+            passForm.get('confirmPass').touched &&
+            passForm.get('password').touched
+          "
+        >
+          {{ getErrorMessage("confirmPass") }}</mat-error
+        >
+      </mat-form-field>
+      <br />
+      <div *ngIf="!correctdata">
+        <p class="mensajeError">{{ this.message }}</p>
       </div>
-    <mat-dialog-actions>
-    <button type="submit" class="LoginButton i" [disabled]="!passForm.valid">
-      Change password
-    </button>
-</mat-dialog-actions>
-  </form>
+      <br />
+      <div class="buttContainer">
+        <button class="cancel" mat-button [mat-dialog-close]="">
+          No Thanks
+        </button>
+        <button
+          type="submit"
+          class="LoginButton i"
+          [disabled]="!passForm.valid"
+        >
+          Change password
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

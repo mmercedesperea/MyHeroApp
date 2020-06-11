@@ -56,10 +56,10 @@ module.exports = function ({ TeamController }) {
   // check the numbers of menbers
   // router.get('/checkTeam/:idTeam', TeamController.checkTeam);
 
-  // obtener equipo por id
+  // get team by id
   // router.get('/getTeam/:idTeam', TeamController.getTeam);
 
-  // obtener equipo de usuario
+  // get users team
   // router.get('/getTeam/usu/:idUsu', TeamController.getTeamUsu);
 
   /**
@@ -72,21 +72,18 @@ module.exports = function ({ TeamController }) {
   /**
    * Get team with most stats
    * @param {function}  TeamController.bestTeam introduce our class where the Team controller are and indicate its specific function
-   * @param {function} AuthMiddleware
    */
   router.get('/bestTeam', TeamController.bestTeam)
 
   /**
    * Get team info
    * @param {function}  TeamController.getTeamInfo introduce our class where the Team controller are and indicate its specific function
-   * @param {function} AuthMiddleware
    */
   router.get('/getTeamInfo/:idUsu', TeamController.getTeamInfo)
 
   /**
    * Get winner team
    * @param {function} TeamController.getTeamWinner introduce our class where the Team controller are and indicate its specific function
-   * @param {function} AuthMiddleware
    */
   router.get('/getTeamWinner/:idTeam1/:idTeam2', TeamController.getTeamWinner)
 

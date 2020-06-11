@@ -1,27 +1,142 @@
-<button type="button" mat-raised-button (click)="selectFightDialog(1)">Select first Hero</button>
-<button type="button" mat-raised-button (click)="selectFightDialog(2)">Select second Hero</button>
-
-<div *ngIf="sessonHero">
-    <!-- <h1>{{sessonHero.idHero }}</h1> -->
-<h3>{{ sessonHero.heroName }}</h3>
-<img [src]="sessonHero.image" [alt]="sessonHero.heroName" class="img-fluid" />
-<!-- <p>{{ sessonHero.totalPoints }}</p> -->
+<div class="color2 padCom">
+  <div class="titleFi">
+    <h2>FIGHT HERO: ONE VS ONE</h2>
+    <h5>
+      Select the first hero by clicking on the
+      <span> Select first hero</span> button and searching among the many heroes
+      we have below; then select a second hero whth the
+      <span>Select second hero</span> button and then <span>click</span> on the
+      fight button! We will see <span> WHO IS THE BEST!!!</span>.
+    </h5>
+    <p>The winner of the battle is calculated based on its stats.</p>
+  </div>
+  <div class="selectTeam">
+    <div class="firstTEAM">
+      <button
+        type="button"
+        class="UnfollowB"
+        mat-raised-button
+        (click)="selectFightDialog(1)"
+      >
+        <span>Select first Hero</span>
+      </button>
+      <div *ngIf="!sessonHero || sessonHero.idHero == 0">
+        <h3 class="teamName">
+          NO HERO SELECTED
+        </h3>
+        <div id="TeamContainer">
+          <div class="card2">
+            <img
+              src="./../../../../assets/img/nomember.jpg  "
+              alt="nohero"
+              class="img-fluid img2"
+            />
+            <div class="overImg rela">
+              <h4></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="sessonHero && sessonHero.idHero > 0" class="sessooonHero">
+        <div class="card2">
+          <img
+            *ngIf="sessonHero.image"
+            [src]="sessonHero.image"
+            [routerLink]="['/heroesDetail', sessonHero.idHero]"
+            [alt]="sessonHero.heroName"
+            onError="this.src='../../../assets/img/nogender_2.jpg'"
+            class="img-fluid img2"
+          />
+          <div class="overImg rela">
+            <h4>{{ sessonHero.heroName }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fightB">
+      <audio id="myAudio">
+        <source
+          src="./../../../../assets/sound/276254__dynajinn__fight-voiceover-fight.wav"
+          type="audio/wav"
+        />
+        Your browser does not support the audio element.
+      </audio>
+      <div class="BF">
+        <img
+          class="iconBuuton"
+          (click)="getHeroWinner(); playAudio()"
+          src="./../../../../assets/img/sword.svg"
+          alt=""
+        />
+        <p class="text">
+          FIGHT!!!!
+        </p>
+      </div>
+    </div>
+    <div class="firstTEAM">
+      <button
+        type="button"
+        class="UnfollowB"
+        mat-raised-button
+        (click)="selectFightDialog(2)"
+      >
+        <span>Select second hero</span>
+      </button>
+      <div *ngIf="!sessonHero2 || sessonHero2.idHero == 0">
+        <h3 class="teamName">
+          NO HERO SELECTED
+        </h3>
+        <div id="TeamContainer">
+          <div class="card2">
+            <img
+              src="./../../../../assets/img/nomember.jpg  "
+              alt="nohero"
+              class="img-fluid img2"
+            />
+            <div class="overImg rela">
+              <h4></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="sessonHero2 && sessonHero2.idHero > 0" class="sessooonHero">
+        <div class="card2">
+          <img
+            *ngIf="sessonHero2.image"
+            [src]="sessonHero2.image"
+            [routerLink]="['/heroesDetail', sessonHero2.idHero]"
+            [alt]="sessonHero2.heroName"
+            onError="this.src='../../../assets/img/nogender_2.jpg'"
+            class="img-fluid img2"
+          />
+          <div class="overImg rela">
+            <h4>{{ sessonHero2.heroName }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div *ngIf="sessonHero2">
-    <!-- <h1>{{sessonHero2.idHero }}</h1> -->
-<h3>{{ sessonHero2.heroName }}</h3>
-<img [src]="sessonHero2.image" [alt]="sessonHero2.heroName" class="img-fluid" />
-<!-- <p>{{ sessonHero.totalPoints }}</p> -->
+<div *ngIf="hero.idHero" class="teamwinner">
+  <div class="contwinner">
+    <h1 class="h1Teamwin">
+      THE WINNER IS: <span>{{ hero.heroName }}</span>
+    </h1>
+    <div class="cardWin">
+      <div class="card2">
+        <img class="imgIconW" src="./../../../../assets/img/crown.svg" />
+        <img
+          *ngIf="hero.image"
+          [src]="hero.image"
+          [routerLink]="['/heroesDetail', hero.idHero]"
+          [alt]="hero.heroName"
+          onError="this.src='../../../assets/img/nogender_2.jpg'"
+          class="img-fluid img2"
+        />
+        <div class="overImg rela">
+          <h4>{{ hero.heroName }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<button type="button" mat-raised-button (click)="getHeroWinner()">
-  FIGHT
-</button>
-
-<h1>{{ hero.idHero }}</h1>
-<h3>{{ hero.heroName }}</h3>
-<img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
-<p>{{ hero.totalPoints }}</p>
-

@@ -28,13 +28,13 @@ module.exports = function ({ UserHeroController }) {
   router.put('/unfollowHero', UserHeroController.unfollowHero)
 
   /**
-   * favorite a hero  with put
+   * favorite a hero with put
    * @param {function}  UserHeroController.favorite introduce our class where the UserHero controller are and indicate its specific function
    */
   router.put('/favorite', UserHeroController.favorite)
 
   /**
-   *  Unfavorite a hero  with put
+   *  Unfavorite a hero with put
    * @param {function}  UserHeroController.unfavorite introduce our class where the UserHero controller are and indicate its specific function
    */
   router.put('/unfavorite', UserHeroController.unfavorite)
@@ -109,7 +109,7 @@ module.exports = function ({ UserHeroController }) {
   router.get('/getHeroComments/:idHero', UserHeroController.getHeroComments)
 
   /**
-   * Get the mean of a hero's scores A PASA A SWAAAAAAGEEERR
+   * Get the hero's average score
    * @param {function}  UserHeroController.getHeroRateScore introduce our class where the UserHero controller are and indicate its specific function
    */
 
@@ -117,6 +117,14 @@ module.exports = function ({ UserHeroController }) {
 
   // // modifyCHerocomment
   // router.put('/modifyCHero', UserHeroController.modifyCHero);
+
+  /**
+   * Get top rated DC hero
+   * @param {function}  UserHeroController.bestOTHero introduce our class where the UserHero controller are and indicate its specific function
+   */
+
+  router.get('/bestOTHero', UserHeroController.bestOTHero)
+
 
   return router
 }

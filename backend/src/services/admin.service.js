@@ -10,7 +10,7 @@ class AdminService extends BaseService {
    * @param {class} Hero insert our Hero class
    * @param {class} User insert our User class
    */
-  constructor ({ User, Hero }) {
+  constructor({ User, Hero }) {
     super(User, Hero)
     _UserObj = User
     _HeroObj = Hero
@@ -21,7 +21,7 @@ class AdminService extends BaseService {
    * @param {object} entity
    * @returns {string}  message
    */
-  async newHero (entity) {
+  async newHero(entity) {
     if (!entity) {
       const error = new Error()
       error.status = 400
@@ -37,7 +37,7 @@ class AdminService extends BaseService {
    * @param {object} entity
    * @returns {string}  message
    */
-  async modifyHero (idHero, entity) {
+  async modifyHero(idHero, entity) {
     if (!idHero) {
       const error = new Error()
       error.status = 400
@@ -58,7 +58,7 @@ class AdminService extends BaseService {
    * @param {number} idUsu
    * @returns {string}  message
    */
-  async deleteUser (idUsu) {
+  async deleteUser(idUsu) {
     if (!idUsu) {
       const error = new Error()
       error.status = 400
@@ -72,7 +72,7 @@ class AdminService extends BaseService {
    * Get all users from db
    * @returns {Array}  users
    */
-  async allUsers () {
+  async allUsers() {
     const currentEntity = await _UserObj.allUsers()
     if (!currentEntity) {
       const error = new Error()
@@ -82,6 +82,52 @@ class AdminService extends BaseService {
     }
     return currentEntity
   }
+
+  /**
+  * Get users count from db
+  * @returns {Array}  users
+  */
+  async countAllUsers() {
+    const currentEntity = await _UserObj.countAllUsers()
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'Entity must be sent'
+      throw error
+    }
+    return currentEntity
+  }
+
+  /**
+* Get teams count from db
+* @returns {Array}  users
+*/
+  async countAllTeams() {
+    const currentEntity = await _UserObj.countAllTeams()
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'Entity must be sent'
+      throw error
+    }
+    return currentEntity
+  }
+
+  /**
+* Get heroes count from db
+* @returns {Array}  users
+*/
+  async countAllHeroes() {
+    const currentEntity = await _UserObj.countAllHeroes()
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'Entity must be sent'
+      throw error
+    }
+    return currentEntity
+  }
+
 }
 
 module.exports = AdminService

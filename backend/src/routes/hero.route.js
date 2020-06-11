@@ -18,7 +18,7 @@ module.exports = function ({ HeroController }) {
   router.get('/getByid/:idHero', HeroController.get)
 
   /**
-   * Get Hero winner
+   * Get winner hero
    * @param {class} HeroController.getWinner we introduce our class where the Hero controller are
    */
   router.get('/getWinner/:idHero/:idHero2', HeroController.getWinner)
@@ -30,37 +30,37 @@ module.exports = function ({ HeroController }) {
   router.get('/stats/mostIntelligence', HeroController.mostIntelligence)
 
   /**
-   * Get most stenght
+   * Get strongest hero
    * @param {class} HeroController.mostStrength we introduce our class where the Hero controller are
    */
   router.get('/stats/mostStrength', HeroController.mostStrength)
 
   /**
-   * Get most speed hero
+   * Get fastest hero
    * @param {class} HeroController.mostSpeed we introduce our class where the Hero controller are
    */
   router.get('/stats/mostSpeed', HeroController.mostSpeed)
 
   /**
-   * Get most durability hero
+   * Get hero with most durability
    * @param {class} HeroController.mostDurability we introduce our class where the Hero controller are
    */
   router.get('/stats/mostDurability', HeroController.mostDurability)
 
   /**
-   * Get most power hero
+   * Get most powerful hero
    * @param {class} HeroController.mostPower we introduce our class where the Hero controller are
    */
   router.get('/stats/mostPower', HeroController.mostPower)
 
   /**
-   * Get most combat hero
+   * Get hero with highest combat stats
    * @param {class} HeroController.mostCombat we introduce our class where the Hero controller are
    */
   router.get('/stats/mostCombat', HeroController.mostCombat)
 
   /**
-   * Get new heros in db
+   * Get new heroes in db
    * @param {class} HeroController.newHeros we introduce our class where the Hero controller are
    */
   router.get('/new/heros', HeroController.newHeros)
@@ -78,7 +78,7 @@ module.exports = function ({ HeroController }) {
   router.get('/all/DCHeroes', HeroController.allDCHeroes)
 
   /**
-   * Get heros img for profile
+   * Get heroes img for profile
    * @param {class} HeroController.profileImgHeroes we introduce our class where the Hero controller are
    */
   router.get('/img/profileImgHeroes', HeroController.profileImgHeroes)

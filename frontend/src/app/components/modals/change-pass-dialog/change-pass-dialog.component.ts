@@ -16,35 +16,35 @@ import { UserService } from 'src/app/services/user.service'
 })
 
 export class ChangePassDialogComponent implements OnInit {
-   /**
-   * to add fromGoup
-   */
+  /**
+  * to add FormGroup
+  */
   public passForm: FormGroup
   /**
-   * variable to save message info 
-   */   
+   * variable to save message info
+   */
   public message: string
   /**
    * variable to check if the function was ok
-   */    
+   */
   public correctdata: boolean
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
-  constructor (
+  constructor(
     public dialogRef: MatDialogRef<ChangePassDialogComponent>,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private _UserService: UserService,
 
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.passForm = this.formBuilder.group({
       oldPassword: [
         '',
@@ -63,7 +63,7 @@ export class ChangePassDialogComponent implements OnInit {
    * @param {string} dato
    * @returns message
    */
-  getErrorMessage (dato) {
+  getErrorMessage(dato) {
     var result: string
     if (this.passForm.controls[dato].hasError('required')) {
       return (result = 'This information is required')
@@ -82,7 +82,7 @@ export class ChangePassDialogComponent implements OnInit {
    * Validation to verify that the passwords match
    * @param {any} control
    */
-  passwordsShouldMatch (control: AbstractControl) {
+  passwordsShouldMatch(control: AbstractControl) {
     if (control && (control.value !== null || control.value !== undefined)) {
       const password2Value = control.value
       const passControl = control.root.get('password')
@@ -102,17 +102,14 @@ export class ChangePassDialogComponent implements OnInit {
    * function to submit form
    * @param {any} passForm
    */
-  submit (passForm) {
-    console.log(this.data.email)
+  submit(passForm) {
     var passObj = {
       email: this.data.email,
       password: passForm.value.oldPassword,
       newPassword: passForm.value.password
     }
-    console.log(passObj)
     this._UserService.updatePass(this.data.userId, passObj).subscribe(
       res => {
-        console.log(res)
         this.openSnackBar('YOUR PASSWORD HAS BEEN UPDATED', 'Close')
         this.correctdata = true
         this.dialogRef.close('Close modal!')
@@ -133,11 +130,11 @@ export class ChangePassDialogComponent implements OnInit {
   }
 
   /**
-   * function for open snackBars
+   * function to open snackBars
    *  @param {string} message
    *  @param {string} action
    */
-  openSnackBar (message: string, action: string) {
+  openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 8000,
       panelClass: ['blue-snackbar']

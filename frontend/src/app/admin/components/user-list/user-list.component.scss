@@ -1,0 +1,122 @@
+.adminDetail {
+  border: 2.5px solid #00a23d;
+  box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: #272727;
+  color: white;
+  margin-bottom: 3em;
+}
+
+.modifyHero {
+  outline: none;
+  background-color: #f3d403;
+  border: none;
+  border-radius: 10px;
+  border: 2.5px solid #00a23d;
+  padding: 9px;
+  font-size: 0.8rem;
+  color: black;
+}
+
+.modifyHero:hover {
+  background-color: #cc4224;
+  color: rgb(223, 221, 221);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
+///table
+.tablaContainer {
+  // width: ;
+  color: #00a23d;
+}
+.userAvatar2 {
+  height: 4em;
+  width: 4em;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: 100% auto;
+  overflow: hidden;
+  border: #00a23d 2px solid;
+  height: auto;
+  width: 4.1em;
+  height: 4.1em;
+}
+
+.imgUser {
+  height: auto;
+  width: 4.1em;
+  height: 4.1em;
+}
+.table tr {
+  color: #00a23d;
+}
+.table td {
+  color: rgb(223, 221, 221);
+}
+
+.star2 {
+  // margin-top: -1.2em;
+  font-size: 15px;
+  color: #cc4224;
+  outline: none;
+}
+
+.pag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 0 1em 0;
+}
+.textName {
+  padding-top: 30px !important;
+  cursor: pointer;
+}
+.textName:hover p {
+  color: #cc4224;
+}
+
+//pagination
+ngb-pagination ::ng-deep a {
+  color: black !important;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  color: white !important;
+  border-color: black !important;
+  background-color: #00a23d;
+}
+ngb-pagination ::ng-deep .page-item.active .page-link:focus,
+.page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem black;
+}
+ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem black;
+}
+
+.nodisplay {
+  display: none;
+}
+
+.iconBuuton {
+  cursor: pointer;
+  height: 3em;
+}
+
+@media (min-width: 992px) {
+  .title {
+    display: flex;
+    flex-direction: row;
+  }
+  .nodisplay {
+    display: table-cell;
+  }
+  .adminDetail {
+    margin: 3em;
+    padding: 2em;
+  }
+}

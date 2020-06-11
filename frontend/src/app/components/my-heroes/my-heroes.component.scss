@@ -1,0 +1,123 @@
+.containerSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.title {
+  color: #00a23d;
+  font-family: "B612";
+  padding-bottom: 1em;
+}
+
+h3 {
+  color: #00a23d;
+  font-family: "B612";
+}
+
+.iconBuuton {
+  cursor: pointer;
+  height: 8vw;
+}
+.myTeam {
+  display: flex;
+  flex-direction: row;
+}
+
+.iconBuuton2 {
+  cursor: pointer;
+  height: 5.5vw;
+  z-index: 4;
+  right: 2vw;
+  top: 9.5vw;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+h5 {
+  color: rgb(223, 221, 221);
+}
+h5 span {
+  color: #00a23d;
+}
+
+// button
+$bg: #1a1a1a;
+$fg: #f3d403;
+$border-width: 0.2rem;
+$corner-size: 3rem;
+$dur: 0.3s;
+
+.followB,
+.UnfollowB {
+  margin: 0 0.5vw 0 0.5vw;
+  outline: none;
+
+  font-family: "B612";
+  letter-spacing: 0.02rem;
+  cursor: pointer;
+  background: transparent;
+  border: $border-width solid currentColor;
+  padding: 0.1rem 0.5rem;
+  font-size: 1rem;
+  color: $fg;
+  position: relative;
+  transition: color $dur;
+
+  &:hover {
+    color: #cc4224;
+    &::before {
+      width: 0;
+    }
+    &::after {
+      height: 0;
+    }
+  }
+  &:active {
+    border-width: $border-width / 2;
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: $bg;
+    z-index: 1;
+    transition: all $dur;
+  }
+  &::before {
+    width: calc(100% - #{$corner-size});
+    height: calc(101% + #{$border-width * 2});
+    top: -$border-width;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    height: calc(100% - #{$corner-size});
+    width: calc(101% + #{$border-width * 2});
+    left: -$border-width;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media (min-width: 992px) {
+  .containerSearch {
+    flex-direction: row;
+  }
+
+  .iconBuuton2 {
+    height: 1.5vw;
+    right: 0.5vw;
+    top: 2.5vw;
+  }
+  .iconBuuton {
+    cursor: pointer;
+    height: 2vw;
+  }
+}

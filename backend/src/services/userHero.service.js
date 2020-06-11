@@ -9,17 +9,17 @@ class UserHeroService extends BaseService {
    *
    * @param {class}  UserHero  insert our UserHero class
    */
-  constructor ({ UserHero }) {
+  constructor({ UserHero }) {
     super(UserHero)
     _userHeroOBJ = UserHero
   }
 
   /**
-   * Check if the user have relathion with the hero
+   * Check if the user has a relationship with the hero
    * @param {object} body
    * @returns {object}
    */
-  async match (body) {
+  async match(body) {
     return await _userHeroOBJ.match(body)
   }
   /**
@@ -27,7 +27,7 @@ class UserHeroService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async followHero (body) {
+  async followHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -44,7 +44,7 @@ class UserHeroService extends BaseService {
     const matchUserHero = await this.match(body)
 
     if (!matchUserHero) {
-      // insert relation
+      // insert relationship
       const insertUserHero = await _userHeroOBJ.InsertUH(body)
 
       if (insertUserHero) {
@@ -53,7 +53,7 @@ class UserHeroService extends BaseService {
     }
 
     if (matchUserHero) {
-      // update the fild to true
+      // update the field to true
       return await _userHeroOBJ.followUH(body)
     }
   }
@@ -63,7 +63,7 @@ class UserHeroService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async unfollowHero (body) {
+  async unfollowHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -85,7 +85,7 @@ class UserHeroService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async favorite (body) {
+  async favorite(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -100,7 +100,7 @@ class UserHeroService extends BaseService {
       throw error
     }
 
-    // comprobamos si ya existe una relacion entre el usuario y el hero
+    // Check if the user has a relationship with the hero
     const matchUserHero = await this.match(body)
 
     if (!matchUserHero) {
@@ -120,7 +120,7 @@ class UserHeroService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async unfavorite (body) {
+  async unfavorite(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -144,7 +144,7 @@ class UserHeroService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async voteHero (body) {
+  async voteHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -179,7 +179,7 @@ class UserHeroService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async commentHero (body) {
+  async commentHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -214,7 +214,7 @@ class UserHeroService extends BaseService {
    * @param {object} body body of the element that brings the path
    * @returns {string}  message
    */
-  async deleteCHero (body) {
+  async deleteCHero(body) {
     if (!body.idUsu) {
       const error = new Error()
       error.status = 400
@@ -236,7 +236,7 @@ class UserHeroService extends BaseService {
    * @param {number} id
    * @returns {(Array | null)}  Heroes or null
    */
-  async getFav (id) {
+  async getFav(id) {
     if (!id) {
       const error = new Error()
       error.status = 400
@@ -252,12 +252,12 @@ class UserHeroService extends BaseService {
   }
 
   /**
-   * Get comment hero
+   * Get heros comment
    * @param {number} idUser
    *  @param {number} idHero
    * @returns {(object | null)}  Hero or null
    */
-  async getCommentHero (idUser, idHero) {
+  async getCommentHero(idUser, idHero) {
     if (!idUser) {
       const error = new Error()
       error.status = 400
@@ -279,12 +279,12 @@ class UserHeroService extends BaseService {
   }
 
   /**
-   * Get vote hero
+   * Get heros vote
  * @param {number} idUser
    *  @param {number} idHero
    * @returns {(object | null)}  Hero or null
    */
-  async getVoteHero (idUser, idHero) {
+  async getVoteHero(idUser, idHero) {
     if (!idUser) {
       const error = new Error()
       error.status = 400
@@ -310,7 +310,7 @@ class UserHeroService extends BaseService {
    * Get best marvel heroes
    * @returns {(Array)}  Hero
    */
-  async bestMarverHero () {
+  async bestMarverHero() {
     const currentEntity = await _userHeroOBJ.bestMarverHero()
     if (!currentEntity) {
       const error = new Error()
@@ -322,10 +322,24 @@ class UserHeroService extends BaseService {
   }
 
   /**
+     * Get best other heroes
+     * @returns {(Array)}  Hero
+     */
+  async bestOTHero() {
+    const currentEntity = await _userHeroOBJ.bestOTHero()
+    if (!currentEntity) {
+      const error = new Error()
+      error.status = 400
+      error.message = 'There is no hero '
+      throw error
+    }
+    return currentEntity
+  }
+  /**
    * Get best DC heroes
    * @returns {(Array)}  Hero
    */
-  async bestDCHero () {
+  async bestDCHero() {
     const currentEntity = await _userHeroOBJ.bestDCHero()
 
     if (!currentEntity) {
@@ -338,10 +352,10 @@ class UserHeroService extends BaseService {
   }
 
   /**
-   * Get most follow heroes
+   * Get most followed heroes
    * @returns {(Array)}  Hero
    */
-  async mostFollowHeros () {
+  async mostFollowHeros() {
     const currentEntity = await _userHeroOBJ.mostFollowHeros()
 
     if (!currentEntity) {
@@ -359,7 +373,7 @@ class UserHeroService extends BaseService {
    *  @param {number} idHero
    * @returns {(object | null)}  Hero or null
    */
-  async getHeroUsu (idUser, idHero) {
+  async getHeroUsu(idUser, idHero) {
     if (!idUser) {
       const error = new Error()
       error.status = 400
@@ -381,11 +395,11 @@ class UserHeroService extends BaseService {
   }
 
   /**
-   * Get hero comments
+   * Get heros comments
    * @param {number} idHero
    * @returns {(Array | null)}  Hero or null
    */
-  async getHeroComments (idHero) {
+  async getHeroComments(idHero) {
     if (!idHero) {
       const error = new Error()
       error.status = 400
@@ -402,11 +416,11 @@ class UserHeroService extends BaseService {
   }
 
   /**
-   * Get hero rate score
+   * Get heros rating score
    * @param {number} idHero
    * @returns {(Array | null)}  Hero or null
    */
-  async getHeroRateScore (idHero) {
+  async getHeroRateScore(idHero) {
     if (!idHero) {
       const error = new Error()
       error.status = 400

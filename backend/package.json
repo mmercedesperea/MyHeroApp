@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "backendMyHero",
   "version": "1.0.0",
   "description": "Backend for my DAW final project",
   "main": "index.js",
@@ -24,7 +24,8 @@
     "mysql": "^2.18.1",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
-    "swagger-ui-express": "^4.1.4"
+    "swagger-ui-express": "^4.1.4",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

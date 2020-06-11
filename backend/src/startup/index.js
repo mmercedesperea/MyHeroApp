@@ -10,7 +10,7 @@ let _config = null
  * server boot
  */
 class Server {
-  constructor ({ config, router }) {
+  constructor({ config, router }) {
     /**
      * to store the server conf
      */
@@ -25,7 +25,7 @@ class Server {
    * function to start the server
    * @returns promise
    */
-  start () {
+  start() {
     return new Promise(resolve => {
       _express.listen(_config.PORT, () => {
         console.log(

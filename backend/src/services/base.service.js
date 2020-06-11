@@ -3,7 +3,7 @@
  * Class that contains a set of useful methods for the rest of the project's classes
  */
 class BaseService {
-  constructor (obj) {
+  constructor(obj) {
     this.obj = obj
   }
 
@@ -12,7 +12,7 @@ class BaseService {
    * @param {number} id
    * @returns {(Array | null)}
    */
-  async get (id) {
+  async get(id) {
     if (!id) {
       const error = new Error()
       error.status = 400
@@ -30,26 +30,26 @@ class BaseService {
    * Get all
    * @returns {Array}
    */
-  async getAll () {
+  async getAll() {
     return await this.obj.getAll()
   }
 
   /**
-   * Create a element
+   * Create an element
    * @param {object} entity body of the element that brings the path
    * @returns {string}  message
    */
-  async create (entity) {
+  async create(entity) {
     return await this.obj.create(entity)
   }
 
   /**
-   * update a element
+   * update an element
    * @param {number} id
    * @param {object} entity of the element that brings the path
    * @returns {string}  message
    */
-  async update (id, entity) {
+  async update(id, entity) {
     if (!id) {
       const error = new Error()
       error.status = 400
@@ -64,7 +64,7 @@ class BaseService {
    * @param {number} id
    * @returns {string}  message
    */
-  async delete (id) {
+  async delete(id) {
     if (!id) {
       const error = new Error()
       error.status = 400

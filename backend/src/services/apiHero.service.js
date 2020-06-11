@@ -7,7 +7,7 @@ class ApiHeroService {
   /**
    * @param {class} Hero insert our Hero class
    */
-  constructor ({ Hero }) {
+  constructor({ Hero }) {
     _HeroObj = Hero
   }
 
@@ -16,7 +16,7 @@ class ApiHeroService {
    * @param {string} name
    * @returns {array}  heroes
    */
-  async get (name) {
+  async get(name) {
     if (!name) {
       const error = new Error()
       error.status = 400
@@ -31,7 +31,7 @@ class ApiHeroService {
    * @param {number} id
    * @returns {object}  heroe
    */
-  async getHeroByid (id) {
+  async getHeroByid(id) {
     if (!id) {
       const error = new Error()
       error.status = 400
@@ -45,7 +45,7 @@ class ApiHeroService {
    * Get all heros from api
    * @returns {array}  heroes
    */
-  async searchAllHeroes () {
+  async searchAllHeroes() {
     return await _HeroObj.searchAllHeroes()
   }
 }

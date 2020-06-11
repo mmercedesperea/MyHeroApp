@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "./../node_modules/bootstrap";
+
+
+
 html,
 body {
   height: 100%;
@@ -7,7 +12,10 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'B612', sans-serif;
 }
+
+
 
 .userAvatar{
     height: 4em;
@@ -18,10 +26,99 @@ body {
     border-radius: 50%;
     background-size: 100% auto;
     overflow: hidden;
-    border: 2.5px solid #a30023;
+    border: 2.5px solid #00a23d;
     
 }
 
-// @import "node_modules/bootstrap/scss/bootstrap";
 
-@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  outline: none;
+}
+
+
+
+
+
+.color1{
+  background-color: #1a1a1a;
+  padding:  2em 0.5em 0.5em 0.5em;
+}
+
+.color2{
+  background-color: #272727;
+  padding:  2em 0.5em 2em 0.5em;
+}
+
+
+
+.card2 {
+  font-family: "B612";
+position: relative;
+width: 42%;
+padding-bottom: 1.5em;
+}
+
+.card2 .img2 {
+cursor: pointer;
+border-radius: 2%;
+box-shadow: 0 0 21px 9px rgba(8, 17, 10, 0.63);
+height: 60vw;
+width: 100%;
+}
+.overImg {
+height: 25%;
+background-color: #00a23eb6;
+width: 100%;
+bottom: 10%;
+padding-top: 7%;
+position: absolute;
+text-align: center;
+color: rgb(223, 221, 221);
+}
+
+.card2:hover .overImg {
+background: #cc4224;
+}
+.overImg h4 {
+font-size: 1rem;
+}
+
+.card2:hover .img2 {
+transform: scale(1.1);
+-ms-transform: scale(1.1);
+-moz-transform: scale(1.1);
+-webkit-transform: scale(1.1);
+-o-transform: scale(1.1);
+}
+
+
+
+@media (min-width: 992px) {
+  .paddingC{
+    padding : 0 10em 0 10em
+  }
+
+  .color1{
+    background-color: #1a1a1a;
+    padding:  2em 10% 2em 10%;
+  }
+  
+  .color2{
+    background-color: #272727;
+    padding:  2em 10% 2em 10%;
+  }
+
+  .card2 {
+    width: 15%;
+  }
+
+  .card2 .img2 {
+    height: 16vw;
+  }
+  .card2 h4 {
+    font-size: 1.4vw;
+  }
+
+
+}

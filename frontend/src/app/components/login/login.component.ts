@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
    */
   public LoginForm: FormGroup
   /**
-   * Variable for save user in it
+   * Variable to save user in it
    */
   public user: User
   /**
@@ -29,22 +29,25 @@ export class LoginComponent implements OnInit {
    */
   public message: string
   /**
-   * variable for show or hide message if there is a error in login
+   * variable to show or hide message if there is an error in login
    */
   public datosCorrectos: boolean
   /**
-   * userLov variable
+   * userLog variable
    */
   public UserLog
   /**
-   * For save the token
+   * to save the token
    */
   public token
 
+
+  public hide = true;
+
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
-  constructor (
+  constructor(
     private formBuilder: FormBuilder,
     private _userService: UserService,
     private router: Router
@@ -53,9 +56,9 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.datosCorrectos = true
     this.LoginForm = this.formBuilder.group({
       email: [
@@ -79,7 +82,7 @@ export class LoginComponent implements OnInit {
    * @param {string} dato
    * @returns message
    */
-  getErrorMessage (dato) {
+  getErrorMessage(dato) {
     var result: string
     if (this.LoginForm.controls[dato].hasError('required')) {
       return (result = 'This information is required')
@@ -100,11 +103,15 @@ export class LoginComponent implements OnInit {
   /**
    * SignIn function
    */
-  signIn () {
+  signIn() {
     this._userService.LoginUser(this.user).subscribe(
       res => {
         this.UserLog = res['user']
         localStorage.setItem('User', JSON.stringify(this.UserLog))
+
+        // save the user photo
+        localStorage.setItem('UserPhoto', this.UserLog.photo)
+
         console.log('Successfully logged')
         this.router.navigate(['/'])
         this.token = res['token']
@@ -113,6 +120,12 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.datosCorrectos = false
+
+        var element = document.getElementById('ErroInfo');
+        element.classList.remove('d-none');
+        setTimeout('document.getElementById("ErroInfo").classList.add("d-none")', 3500);
+
+
         if (error.status === 400) {
           this.message = 'The password is not correct'
           console.log(error.status)

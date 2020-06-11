@@ -1,16 +1,71 @@
 .imgRedonda {
-    height: 6em;
-    width: 6em;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    border-radius: 50%;
-    background-size: 100% auto;
-    overflow: hidden;
-    border: 2.5px solid #a30023;
-    
+  height: 6em;
+  width: 6em;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: 100% auto;
+  overflow: hidden;
+  border: 2.5px solid #a30023;
+  margin: 0.1em;
 }
-.imgContainer{
-    display: flex;
-    // justify-content: space-between;
-    flex-direction: row;
+.imgContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+#containerModal {
+  font-family: "B612";
+}
+
+#containerModal h1 {
+  color: #00a23d;
+  font-size: 1.5rem;
+}
+
+#containerModal button {
+  outline: none;
+  background-color: #f3d403;
+  border: none;
+  border-radius: 10px;
+  border: 2.5px solid #00a23d;
+  padding: 1.5vw;
+  font-size: 0.8rem;
+}
+.buttContainer {
+  padding-top: 2vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+#containerModal button:hover {
+  background-color: #cc4224;
+}
+
+.cancel {
+  background-color: #2a75b3 !important;
+}
+
+.red {
+  border: 3px solid #00a23d;
+}
+.mat-dialog-content {
+  max-height: 39vh !important;
+  width: 40vh !important;
+}
+@media (min-width: 992px) {
+  .mat-dialog-content {
+    max-height: 39vh !important;
+    width: 90vh !important;
+  }
+  #containerModal h1 {
+    font-size: 2.5rem;
+  }
+
+  #containerModal button {
+    font-size: 1rem;
+    padding: 0.5vw;
+  }
 }

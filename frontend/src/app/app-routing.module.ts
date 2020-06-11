@@ -16,6 +16,7 @@ import { AuthGuard } from './services/auth.guard'
 import { PublicProfileComponent } from './components/public-profile/public-profile.component'
 import { FightTeamComponent } from './components/fight/fight-team/fight-team.component'
 import { FightHeroComponent } from './components/fight/fight-hero/fight-hero.component'
+import { AboutUsComponent } from './components/about-us/about-us.component'
 
 /**
  * App Routes
@@ -77,11 +78,15 @@ const routes: Routes = [
     path: 'publicProfile/:user',
     component: PublicProfileComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'aboutUs',
+    component: AboutUsComponent
+  },
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

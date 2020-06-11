@@ -38,7 +38,7 @@ module.exports = function ({
     const apiRoutes = express.Router()
 
     /**
-     * we inject diferent elements in our route
+     * we inject different elements in our route
      */
     apiRoutes
         //to pass the requests to json

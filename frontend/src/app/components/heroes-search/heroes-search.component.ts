@@ -33,18 +33,18 @@ export class HeroesSearchComponent implements OnInit {
   public term: string = ''
 
   /**
-   * Constructor in which we inject hero service , formBuilder and rouser service
+   * Constructor in which we inject hero service, formBuilder and router service
    */
-  constructor (
+  constructor(
     private _heroService: HeroService,
     private _activatedRoute: ActivatedRoute,
     private _userService: UserService
-  ) {}
+  ) { }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       this.data = params['data']
       this.term = params['term']
@@ -55,13 +55,12 @@ export class HeroesSearchComponent implements OnInit {
   /**
    * Function to get results of the search
    */
-  getInfo () {
+  getInfo() {
     if (this.data === 'DC') {
       this._heroService.allDCHeroes().subscribe(
         res => {
           this.user = null
           this.hero = res
-          console.log(JSON.stringify(this.hero, null, 2))
         },
         error => {
           console.log(error)
@@ -70,10 +69,8 @@ export class HeroesSearchComponent implements OnInit {
     } else if (this.data === 'Marvel') {
       this._heroService.allMarvelHeroes().subscribe(
         res => {
-          console.log('marvel')
           this.user = null
           this.hero = res
-          console.log(JSON.stringify(this.hero, null, 2))
         },
         error => {
           console.log(error)
@@ -82,12 +79,8 @@ export class HeroesSearchComponent implements OnInit {
     } else if (this.data === 'User') {
       this._userService.getUserByName(this.term).subscribe(
         res => {
-          console.log('user')
           this.hero = null
-          console.log('buscando un usuario')
-          console.log(res)
           this.user = res
-          console.log(this.user)
         },
         error => {
           console.log(error)
@@ -98,8 +91,6 @@ export class HeroesSearchComponent implements OnInit {
         res => {
           this.user = null
           this.hero = res
-          console.log(res)
-          console.log(JSON.stringify(this.hero, null, 2))
         },
         error => {
           console.log(error)

@@ -25,3 +25,29 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+// colors
+grenn
+9fcf58
+027b3a
+13a132
+
+RED
+cc4224
+#ec1d24
+
+yellow 
+f3d403
+
+BLUE
+2a75b3
+
+
+backgroundcolor
+1a1a1a
+
+373737
+
+
+#272727;

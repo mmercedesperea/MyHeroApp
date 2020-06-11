@@ -8,7 +8,7 @@ class TeamController {
    *
    * @param {class} TeamService insert our team service in our class
    */
-  constructor ({ TeamService }) {
+  constructor({ TeamService }) {
     _teamService = TeamService
   }
 
@@ -18,7 +18,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async createTeam (req, res) {
+  async createTeam(req, res) {
     const { body } = req
     const createTeam = await _teamService.create(body)
     return res.status(201).send({ message: createTeam })
@@ -30,7 +30,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {boolean}
    */
-  async checkTeam (req, res) {
+  async checkTeam(req, res) {
     const { idTeam } = req.params
     const team = await _teamService.checkTeam(idTeam)
     return res.json(team)
@@ -42,7 +42,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {Array}  team
    */
-  async getTeam (req, res) {
+  async getTeam(req, res) {
     const { idTeam } = req.params
     const team = await _teamService.get(idTeam)
     //    JSON.stringify(team)
@@ -55,7 +55,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {Array}  team
    */
-  async getTeamUsu (req, res) {
+  async getTeamUsu(req, res) {
     const { idUsu } = req.params
     const team = await _teamService.getTeamUsu(idUsu)
     //    JSON.stringify(team)
@@ -63,12 +63,12 @@ class TeamController {
   }
 
   /**
-   * Change name team
+   * Change team name
    * @param {Object} req - Express request object
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async chageName (req, res) {
+  async chageName(req, res) {
     const { idTeam } = req.params
     const { body } = req
     const chageName = await _teamService.update(idTeam, body)
@@ -81,7 +81,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async addMember (req, res) {
+  async addMember(req, res) {
     const { idTeam } = req.params
     const { body } = req
     const addMember = await _teamService.addMember(idTeam, body)
@@ -94,7 +94,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async deleteMember (req, res) {
+  async deleteMember(req, res) {
     const { idTeam } = req.params
     const { body } = req
     const deleteMember = await _teamService.deleteMember(idTeam, body)
@@ -107,7 +107,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async delete (req, res) {
+  async delete(req, res) {
     const { idTeam } = req.params
     const deleteTeam = await _teamService.delete(idTeam)
     // console.log(deleteTeam)
@@ -120,7 +120,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {Array}  teams
    */
-  async bestTeam (req, res) {
+  async bestTeam(req, res) {
     const team = await _teamService.bestTeam()
     return res.json(team)
   }
@@ -131,7 +131,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {object}  team
    */
-  async getTeamInfo (req, res) {
+  async getTeamInfo(req, res) {
     const { idUsu } = req.params
     // console.log(idUsu)
     const team = await _teamService.getTeamInfo(idUsu)
@@ -140,12 +140,12 @@ class TeamController {
   }
 
   /**
-   * Get team winner
+   * Get winner team
    * @param {Object} req - Express request object
    * @param {Object} res - Express response object
    * @returns {object}  team
    */
-  async getTeamWinner (req, res) {
+  async getTeamWinner(req, res) {
     const { idTeam1 } = req.params
     const { idTeam2 } = req.params
     const heroWin = await _teamService.getTeamWinner(idTeam1, idTeam2)
@@ -158,7 +158,7 @@ class TeamController {
    * @param {Object} res - Express response object
    * @returns {Array}  teams
    */
-  async searchTeam (req, res) {
+  async searchTeam(req, res) {
     const { TeamName } = req.params
     const team = await _teamService.searchTeam(TeamName)
     return res.json(team)

@@ -74,5 +74,41 @@ module.exports = function ({ AdminController }) {
     AdminController.allUsers
   )
 
+  /**
+   * Get count users
+   * @param {class} AdminController.countAllUsers we introduce our class where the Admin controller are
+   * @param {function} AuthMiddleware
+   * @param {function} AdminAuth.isAdmin
+   */
+  router.get(
+    '/countAllUsers',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.countAllUsers
+  )
+
+  /**
+  * Get count teams
+  * @param {class} AdminController.countAllTeams introduce our class where the Admin controller are
+  * @param {function} AuthMiddleware
+  * @param {function} AdminAuth.isAdmin
+  */
+  router.get(
+    '/countAllTeams',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.countAllTeams
+  )
+
+  /**
+  * Get count heroes
+  * @param {class} AdminController.countAllHeroes we introduce our class where the Admin controller are
+  * @param {function} AuthMiddleware
+  * @param {function} AdminAuth.isAdmin
+  */
+  router.get(
+    '/countAllHeroes',
+    [AuthMiddleware, AdminAuth.isAdmin],
+    AdminController.countAllHeroes
+  )
+
   return router
 }

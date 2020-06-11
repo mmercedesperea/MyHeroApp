@@ -1,19 +1,103 @@
-<button type="button" mat-raised-button (click)="selectTeamDialog(1)">Select first Team</button>
-<button type="button" mat-raised-button (click)="selectTeamDialog(2)">Select second Team</button>
-
-<div *ngIf="sessonTeam1">
-    <!-- <h1>{{sessonTeam1.idTeam}}</h1> -->
-<app-team [idUsu]="sessonTeam1.idUsu"></app-team>
+<div class="color2 padCom">
+  <div class="titleFi">
+    <h2>FIGHT TEAM: TEAM VS TEAM</h2>
+    <h5>
+      You can face <span>your team</span> against <span>other players</span> or
+      face other teams against each other. Select the first team by clicking on
+      <span> Select first team</span> button and searching among the many Teams
+      we have below select a second team in <span>Select second team</span> and
+      then <span>click</span> the fight button! We will see
+      <span> WHO IS THE BEST!!!</span>.
+    </h5>
+    <p>The winner of the battle is calculated based on its stats.</p>
+  </div>
+  <div class="selectTeam">
+    <div class="firstTEAM">
+      <button
+        type="button"
+        class="UnfollowB"
+        mat-raised-button
+        (click)="selectTeamDialog(1)"
+      >
+        <span>Select first Team</span>
+      </button>
+      <div *ngIf="!sessonTeam1 || sessonTeam1.idTeam == 0">
+        <h3 class="teamName">
+          NO SELECT TEAM
+        </h3>
+        <div id="TeamContainer2">
+          <div class="card5" *ngFor="let hero of TeamHeroes; index as i">
+            <img class="img" src="./../../../../assets/img/nomember.jpg" />
+            <div class="infoHero"></div>
+            <div class="semiCircle"></div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="sessonTeam1" class="sessooonTeam">
+        <app-team [idUsu]="sessonTeam1.idUsu" [showName]="showName"></app-team>
+      </div>
+    </div>
+    <div class="fightB">
+      <audio id="myAudio">
+        <source
+          src="./../../../../assets/sound/276254__dynajinn__fight-voiceover-fight.wav"
+          type="audio/wav"
+        />
+        Your browser does not support the audio element.
+      </audio>
+      <div class="BF">
+        <img
+          class="iconBuuton"
+          (click)="getTeamWinner(); playAudio()"
+          src="./../../../../assets/img/sword.svg"
+          alt=""
+        />
+        <p class="text">
+          FIGHT!!!!
+        </p>
+      </div>
+    </div>
+    <div class="firstTEAM">
+      <button
+        type="button"
+        class="UnfollowB"
+        mat-raised-button
+        (click)="selectTeamDialog(2)"
+      >
+        <span>Select second Team</span>
+      </button>
+      <div *ngIf="!sessonTeam2 || sessonTeam2.idTeam == 0">
+        <h3 class="teamName">
+          NO SELECT TEAM
+        </h3>
+        <div id="TeamContainer2">
+          <div class="card5" *ngFor="let hero of TeamHeroes; index as i">
+            <img class="img" src="./../../../../assets/img/nomember.jpg" />
+            <div class="infoHero"></div>
+            <div class="semiCircle"></div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="sessonTeam2" class="sessooonTeam">
+        <app-team [idUsu]="sessonTeam2.idUsu" [showName]="showName"></app-team>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div *ngIf="sessonTeam2">
-    <!-- <h1>{{sessonHero2.idHero }}</h1> -->
-    <app-team [idUsu]="sessonTeam2.idUsu"></app-team>
+<div *ngIf="team.idUsu" class="color1 teamwinner">
+  <div class="contwinner">
+    <div class="winnerT">
+      <h1 class="h1Teamwin">
+        THE WINNER IS: <span>{{ team.teamName }}</span>
+      </h1>
+      <img class="imgIconW" src="./../../../../assets/img/crown.svg" />
+    </div>
+    <app-team [idUsu]="team.idUsu"></app-team>
+    <h4>
+      By:
+      <a [routerLink]="['/publicProfile', team.idUsu]"
+        ><span class="Tred">{{ team.alias }} </span></a
+      >
+    </h4>
+  </div>
 </div>
-
-<button type="button" mat-raised-button (click)="getTeamWinner()">
-  FIGHT
-</button>
-
-<h1>THE WINNER ISSSSS...</h1>
-<app-team [idUsu]="team.idUsu"></app-team>

@@ -1,64 +1,351 @@
-<p>heroes-detail works!</p>
-<h1>{{ hero.idHero}}</h1>
-<h3>{{ hero.heroName}}</h3>
-<img [src]="hero.image" [alt]="hero.heroName" class="img-fluid" />
-<p>{{ hero.intelligence}}</p>
-<p>{{ hero.strength}}</p>
-<p>{{ hero.speed}}</p>
-<p>{{ hero.durability}}</p>
-<p>{{ hero.power}}</p>
-<p>{{ hero.combat}}</p>
-<p>{{ hero.fullName}}</p>
-<p>{{ hero.placeOfBirth}}</p>
-<p>{{ hero.publisher}}</p>
-<p>{{ hero.firstApperance}}</p>
-<p>{{ hero.gender}}</p>
-<p>{{ hero.race}}</p>
-<p>{{ hero.height}}</p>
-<p>{{ hero.weight}}</p>
-<p>{{ hero.eyeColor}}</p>
-<p>{{ hero.hairColor}}</p>
-<p>{{ hero.work}}</p>
-<p>{{ hero.biography}}</p>
-<p>{{ hero.createDate}}</p>
+<div id="HeroContainer" class="color1">
+  <div class="cardHero">
+    <div class="points">
+      <p *ngIf="rate == 10" class="tenP">{{ rate }}</p>
+      <p *ngIf="rate != 10" class="noTenP">{{ rate }}</p>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
+        <g transform="translate(0 -1026.362)">
+          <circle cx="13" cy="1039.362" r="13" fill="#ffa40b" />
+          <path
+            style="
+              line-height: normal;
+              text-indent: 0;
+              text-align: start;
+              text-decoration-line: none;
+              text-decoration-style: solid;
+              text-decoration-color: #000;
+              text-transform: none;
+              block-progression: tb;
+              isolation: auto;
+              mix-blend-mode: normal;
+              marker: none;
+            "
+            fill="#ff7712"
+            d="M 15.042969 25.830078 A 12.999989 12.999989 0 0 0 15.208984 25.810547 A 12.999989 12.999989 0 0 0 16.476562 25.525391 A 12.999989 12.999989 0 0 0 17.710938 25.117188 A 12.999989 12.999989 0 0 0 18.896484 24.585938 A 12.999989 12.999989 0 0 0 20.023438 23.939453 A 12.999989 12.999989 0 0 0 21.080078 23.183594 A 12.999989 12.999989 0 0 0 22.056641 22.326172 A 12.999989 12.999989 0 0 0 22.943359 21.375 A 12.999989 12.999989 0 0 0 23.728516 20.339844 A 12.999989 12.999989 0 0 0 24.408203 19.232422 A 12.999989 12.999989 0 0 0 24.974609 18.0625 A 12.999989 12.999989 0 0 0 25.367188 16.988281 L 19.876953 11.498047 C 19.791823 11.468047 19.719505 11.43825 19.589844 11.40625 C 19.198092 11.31025 18.649317 11.223531 18.085938 11.144531 C 17.940691 11.124422 17.811627 11.105224 17.666016 11.085938 L 13.041016 6.4609375 C 12.985506 6.5319375 12.933771 6.5919781 12.863281 6.7050781 C 12.6503 7.0468781 12.398993 7.5406814 12.150391 8.0507812 C 11.901789 8.5610813 11.654375 9.0879375 11.429688 9.5234375 C 11.317341 9.7411375 11.209894 9.936363 11.105469 10.101562 C 11.001037 10.266763 10.926636 10.399556 10.736328 10.535156 C 10.546021 10.670756 10.39367 10.699141 10.203125 10.744141 C 10.012575 10.788141 9.7937758 10.826128 9.5507812 10.861328 C 9.0648016 10.932328 8.4844945 10.995453 7.9199219 11.064453 C 7.3553526 11.133453 6.8053715 11.210781 6.4121094 11.300781 C 6.2819398 11.330781 6.2086649 11.359672 6.1230469 11.388672 C 6.1738819 11.463672 6.214683 11.531014 6.3007812 11.632812 C 6.460687 11.821914 6.6710494 12.042091 6.9042969 12.275391 L 9.0761719 14.447266 C 9.1643767 14.5559 9.2425951 14.662689 9.296875 14.833984 C 9.367349 15.056384 9.3480504 15.207744 9.3320312 15.402344 C 9.3160122 15.596944 9.2835605 15.815141 9.2421875 16.056641 C 9.1594455 16.539341 9.0382963 17.109216 8.9296875 17.666016 C 8.8210756 18.222816 8.7250801 18.769122 8.6894531 19.169922 C 8.6777031 19.302522 8.6822037 19.380703 8.6835938 19.470703 L 15.042969 25.830078 z "
+            color="#000"
+            font-family="sans-serif"
+            font-weight="400"
+            transform="translate(0 1026.362)"
+            white-space="normal"
+          />
+          <path
+            style="
+              line-height: normal;
+              text-indent: 0;
+              text-align: start;
+              text-decoration-line: none;
+              text-decoration-style: solid;
+              text-decoration-color: #000;
+              text-transform: none;
+              block-progression: tb;
+              isolation: auto;
+              mix-blend-mode: normal;
+              marker: none;
+            "
+            fill="#fff"
+            d="m 78.795036,1015.7352 c 0.05089,0.074 0.09807,0.137 0.162364,0.2547 0.194225,0.3554 0.422345,0.868 0.647368,1.3973 0.225027,0.5294 0.448538,1.0769 0.652305,1.529 0.101881,0.2261 0.198259,0.4279 0.293528,0.5997 0.09527,0.1718 0.164167,0.3104 0.340288,0.4531 0.176121,0.1427 0.317242,0.1742 0.494961,0.2237 0.177718,0.049 0.382008,0.091 0.608971,0.1316 0.453931,0.081 0.99674,0.1544 1.524276,0.2348 0.527532,0.081 1.041342,0.1691 1.408167,0.2684 0.121411,0.033 0.189886,0.064 0.269603,0.095 -0.04872,0.076 -0.08843,0.1446 -0.170561,0.248 -0.248202,0.3124 -0.622257,0.7087 -1.011833,1.107 -0.389576,0.3983 -0.795384,0.8006 -1.124511,1.1528 -0.164561,0.1761 -0.309833,0.339 -0.429377,0.4914 -0.119544,0.1525 -0.218491,0.2671 -0.28784,0.4949 -0.06935,0.2278 -0.05304,0.3847 -0.04099,0.5853 0.01205,0.2007 0.03887,0.4266 0.07395,0.6758 0.07015,0.4984 0.174181,1.0874 0.267428,1.6624 0.09325,0.575 0.175153,1.1383 0.202435,1.5515 0.009,0.1368 0.0032,0.2178 5.01e-4,0.3107 -0.081,-0.027 -0.152719,-0.048 -0.267766,-0.1013 -0.347621,-0.1623 -0.806939,-0.43 -1.272738,-0.7132 -0.465794,-0.2833 -0.940089,-0.5821 -1.347268,-0.8165 -0.203587,-0.1172 -0.389717,-0.2184 -0.558866,-0.296 -0.169152,-0.077 -0.299232,-0.1453 -0.518212,-0.1473 -0.218984,0 -0.350036,0.064 -0.520307,0.1382 -0.17027,0.075 -0.357929,0.1724 -0.563217,0.286 -0.41057,0.2272 -0.889162,0.5176 -1.359063,0.7925 -0.469902,0.275 -0.933062,0.5345 -1.283025,0.6906 -0.115822,0.052 -0.187886,0.071 -0.26927,0.097 -0.0013,-0.093 -0.0059,-0.1739 0.0051,-0.3105 0.03336,-0.4127 0.12357,-0.9745 0.225271,-1.5478 0.101698,-0.5733 0.214295,-1.1603 0.291772,-1.6574 0.03874,-0.2486 0.0689,-0.474 0.0839,-0.6744 0.015,-0.2004 0.0337,-0.3569 -0.03229,-0.5859 l 0,-10e-5 c -0.06599,-0.229 -0.163362,-0.3454 -0.280649,-0.4999 -0.117282,-0.1546 -0.260065,-0.32 -0.422014,-0.499 -0.323902,-0.358 -0.723697,-0.7675 -1.107363,-1.1726 -0.383661,-0.4051 -0.751865,-0.808 -0.995437,-1.1247 -0.08062,-0.1048 -0.119364,-0.1741 -0.166964,-0.251 0.08017,-0.03 0.149138,-0.06 0.271025,-0.091 0.368239,-0.093 0.883286,-0.1723 1.411932,-0.2434 0.528649,-0.071 1.072478,-0.135 1.527535,-0.2078 0.227533,-0.036 0.432392,-0.075 0.610817,-0.1209 0.178421,-0.046 0.320022,-0.075 0.49822,-0.2148 0.178198,-0.1396 0.24911,-0.277 0.346897,-0.4471 0.09778,-0.1701 0.197115,-0.3702 0.302312,-0.5944 0.210392,-0.4484 0.441938,-0.9919 0.674722,-1.5173 0.232783,-0.5253 0.468432,-1.0337 0.667861,-1.3857 0.06601,-0.1164 0.114074,-0.1783 0.166047,-0.2517 z"
+            color="#000"
+            font-family="sans-serif"
+            font-weight="400"
+            overflow="visible"
+            transform="matrix(1.06795 0 0 .97117 -71.11 46.368)"
+            white-space="normal"
+          />
+        </g>
+      </svg>
+    </div>
+    <div class="nameAndFollow">
+      <h1>{{ hero.heroName }}</h1>
 
-<div *ngIf="identity">
-    <button *ngIf="!followtHero " type="button" mat-raised-button (click)="followHero()">Follow</button>
-    <button *ngIf="followtHero " type="button" mat-raised-button (click)="unfollowHero()">Unfollow</button>
-    <button *ngIf=" followtHero && !favoriteHero" type="button" mat-raised-button (click)="favorite()">favorite</button>
-    <button *ngIf=" followtHero &&favoriteHero" type="button" mat-raised-button
-        (click)="unfavorite()">unfavorite</button>
-</div>
+      <div class="HButton" *ngIf="identity">
+        <button
+          *ngIf="!followtHero"
+          type="button"
+          class="followB"
+          mat-raised-button
+          (click)="followHero()"
+        >
+          <span>FOLLOW</span>
+        </button>
+        <button
+          *ngIf="followtHero"
+          type="button"
+          class="UnfollowB"
+          mat-raised-button
+          (click)="unfollowHero()"
+        >
+          <span>UNFOLLOW</span>
+        </button>
+        <button
+          *ngIf="followtHero && !favoriteHero"
+          type="button"
+          class="followB"
+          mat-raised-button
+          (click)="favorite()"
+        >
+          <span>FAVORITE</span>
+        </button>
+        <button
+          *ngIf="followtHero && favoriteHero"
+          type="button"
+          class="UnfollowB"
+          mat-raised-button
+          (click)="unfavorite()"
+        >
+          <span>UNFAVORITE</span>
+        </button>
+      </div>
+    </div>
+    <div id="HeroDetail">
+      <img
+        [src]="hero.image"
+        [alt]="hero.heroName"
+        class="imgH"
+        onError="this.src='../../../assets/img/nogender_2.jpg'"
+      />
+      <div class="HeroInfo">
+        <div class="stats">
+          <div class="statsC">
+            <img
+              class="icon"
+              src="../../../assets/img/intelligence.svg"
+              alt=""
+            />
+            <div>
+              <p class="statName">INTELLIGENCE</p>
+              <p class="progresB I">
+                <ngb-progressbar
+                  type="warning"
+                  [value]="hero.intelligence"
+                  [striped]="true"
+                  >{{ hero.intelligence }}
+                </ngb-progressbar>
+              </p>
+            </div>
+          </div>
+          <div class="statsC">
+            <img class="icon" src="../../../assets/img/combat.svg" alt="" />
+            <div>
+              <p class="statName">COMBAT</p>
+              <p class="progresB C">
+                <ngb-progressbar
+                  type="warning"
+                  [value]="hero.combat"
+                  [striped]="true"
+                  >{{ hero.combat }}
+                </ngb-progressbar>
+              </p>
+            </div>
+          </div>
+          <div class="statsC">
+            <img class="icon" src="../../../assets/img/durability.svg" alt="" />
+            <div>
+              <p class="statName">DURABILITY</p>
+              <p class="progresB D">
+                <ngb-progressbar
+                  type="warning"
+                  [value]="hero.durability"
+                  [striped]="true"
+                  >{{ hero.durability }}
+                </ngb-progressbar>
+              </p>
+            </div>
+          </div>
+          <div class="statsC">
+            <img class="icon" src="../../../assets/img/power.svg" alt="" />
+            <div>
+              <p class="statName">POWER</p>
+              <p class="progresB P">
+                <ngb-progressbar
+                  type="warning"
+                  [value]="hero.power"
+                  [striped]="true"
+                  >{{ hero.power }}</ngb-progressbar
+                >
+              </p>
+            </div>
+          </div>
+          <div class="statsC">
+            <img class="icon" src="../../../assets/img/speed.svg" alt="" />
+            <div>
+              <p class="statName">SPEED</p>
+              <p class="progresB S">
+                <ngb-progressbar
+                  type="warning"
+                  [value]="hero.speed"
+                  [striped]="true"
+                  >{{ hero.speed }}</ngb-progressbar
+                >
+              </p>
+            </div>
+          </div>
 
-
-<!-- <ngb-rating class="star" [(rate)]="followtHero.puntuacion" (hover)="hovered=$event" (leave)="hovered=0"
-                            [readonly]="readonly" (click)="puntuarClub(hovered, club.codClub)" max="10">
-                        </ngb-rating> -->
-<div *ngIf="identity">
-    <ng-template #t let-fill="fill">
-        <span class="star" [class.full]="fill === 100">
-            <span class="half" [style.width.%]="fill">&#10029;</span>&#10029;
-        </span>
-    </ng-template>
-
-    <ngb-rating [(rate)]="heroUsu.score" [starTemplate]="t" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
-        [max]="10" (click)="voteHero(hovered)"></ngb-rating>
-
-    <button *ngIf="!heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog('new')">Comment</button>
-
-    <h1>{{ heroUsu.comment}}</h1>
-    <button *ngIf="heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog('edit')">Edit comment</button>
-    <button *ngIf="heroUsu.comment " type="button" mat-raised-button (click)="commentHeroDialog('delete')">Delete comment</button>
-
-</div>
-
-
-<h4>ALL COMMENTS</h4>
-<div *ngFor="let comment of allComments">
-    <!-- <h1>{{ hero.idHero }}</h1> -->
-    <h3>{{ comment.comment }}</h3>
-    <p >{{ comment.alias}}</p>
-    <p >{{ comment.idUsu}}</p>
-    <p>{{ comment.photo}}</p>
-   
+          <div class="statsC">
+            <img class="icon" src="../../../assets/img/strenght.svg" alt="" />
+            <div>
+              <p class="statName">STRENGTH</p>
+              <p class="progresB ST">
+                <ngb-progressbar
+                  type="warning"
+                  [value]="hero.strength"
+                  [striped]="true"
+                  >{{ hero.strength }}
+                </ngb-progressbar>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="cardHero2">
+    <div class="cardHero3">
+      <div class="infoCard3">
+        <p><span>NAME:</span> {{ hero.fullName }}</p>
+        <p><span>PLACE OF BIRTH:</span> {{ hero.placeOfBirth }}</p>
+        <p><span>PUBLISHER:</span> {{ hero.publisher }}</p>
+        <p><span>ALIGNMENT:</span> {{ hero.alignment }}</p>
+        <p><span>FIRST APPEARANCE: </span>{{ hero.firstAppearance }}</p>
+        <p><span>RACE:</span> {{ hero.race }}</p>
+        <p><span>WORK:</span> {{ hero.work }}</p>
+      </div>
+      <div class="silueteI">
+        <img
+          *ngIf="hero.gender === 'Male'"
+          src="./../../../assets/img/man.png"
+          alt=""
+        />
+        <img
+          *ngIf="hero.gender != 'Male' && hero.gender != 'Female'"
+          src="./../../../assets/img/noGenderF.png"
+          alt=""
+        />
+        <img
+          *ngIf="hero.gender === 'Female'"
+          src="./../../../assets/img/woman.png"
+          alt=""
+        />
+
+        <p class="gender">{{ hero.gender }}</p>
+        <p class="height">{{ hero.height }}</p>
+        <p class="weight">{{ hero.weight }}</p>
+        <p class="eyes">{{ hero.eyeColor }} eyes</p>
+        <p class="hair">{{ hero.hairColor }} hair</p>
+      </div>
+    </div>
+    <div *ngIf="hero.biography" class="Bio">
+      <h5>BIOGRAPHY</h5>
+      <p>{{ hero.biography }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="identity">
+    <div class="YScore">
+      <h5>YOUR SCORE</h5>
+      <ngb-rating
+        class="star"
+        [(rate)]="heroUsu.score"
+        (hover)="hovered = $event"
+        (leave)="hovered = 0"
+        [readonly]="readonly"
+        [max]="10"
+        (click)="voteHero(hovered)"
+      ></ngb-rating>
+    </div>
+    <div class="Ycomment">
+      <h5>YOUR COMMENT</h5>
+      <img
+        *ngIf="!heroUsu.comment"
+        class="iconBuuton"
+        (click)="commentHeroDialog('new')"
+        src="../../../assets/img/message.svg"
+        alt=""
+      />
+      <img
+        *ngIf="heroUsu.comment"
+        class="iconBuuton"
+        (click)="commentHeroDialog('edit')"
+        src="../../../assets/img/job.svg"
+        alt=""
+      />
+      <img
+        *ngIf="heroUsu.comment"
+        class="iconBuuton"
+        (click)="commentHeroDialog('delete')"
+        src="../../../assets/img/trash.svg"
+        alt=""
+      />
+    </div>
+    <p class="comP">{{ heroUsu.comment }}</p>
+  </div>
+  <div class="comments">
+    <h4>ALL COMMENTS</h4>
+    <div class="tablaContainer">
+      <table *ngIf="allComments" class="table">
+        <thead>
+          <tr>
+            <th class="imgUser" scope="col"></th>
+            <th scope="col">USER</th>
+            <th scope="col">COMMENT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let comment of allComments
+                | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
+              index as i
+            "
+          >
+            <td class="usu imgUser">
+              <div class="userAvatar2 img">
+                <img
+                  class="imgUser"
+                  *ngIf="comment.photo"
+                  src="{{ comment.photo }}"
+                  alt="Photo a book"
+                />
+              </div>
+            </td>
+            <td
+              class="textName"
+              [routerLink]="['/publicProfile', comment.idUsu]"
+            >
+              <p>
+                {{
+                  comment.alias.length > 20
+                    ? (comment.alias | slice: 0:20) + "..."
+                    : comment.alias
+                }}
+              </p>
+            </td>
+            <td class="comS">
+              <ngb-rating
+                class="star2"
+                [(rate)]="comment.score"
+                [readonly]="true"
+                max="10"
+              >
+              </ngb-rating>
+              <br />
+              {{ comment.comment }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!allComments">
+      <div class="noInfo">
+        <p>There is not comments</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="allComments" class="pag">
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="allComments.length"
+    >
+    </ngb-pagination>
+  </div>
+</div>

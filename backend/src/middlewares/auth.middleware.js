@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../config')
 
 /**
- * Function to check is the user has a Token valid
+ * Function to check if the user has a valid token
  * @param {object} req Element with the header info
  * @return {any} res if the user has a valid token or not
  */
@@ -17,7 +17,7 @@ module.exports = function (req, res, next) {
         })
     }
 
-    //we decrypt our token with the same password (JWT_SECRET) that we have put in the env
+    // we decrypt our token with the same password (JWT_SECRET) that we have put in the env
     // we take our token and our secret we decode it and return the decoded user
     jwt.verify(token, JWT_SECRET, function (err, decodedToken) {
         if (err) {

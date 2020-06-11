@@ -24,25 +24,35 @@ export class HomeComponent implements OnInit {
    */
   public bestD: any = ''
   /**
-   * variable to store most follow heroes
+   * variable to store best other hero
+   */
+  public bestOther: any = ''
+  /**
+   * variable to store most followed heroes
    */
   public mostF: Hero[]
   /**
    * variable to store best team
    */
-  public bestT: Team
+  public bestT: any;
   /** variable to store best team heroes
-   * 
+   *
    */
   public bestTeamHeroes: Hero[] = []
   /**
-   * variable to store mheroes with more stats
+   * variable to store heroes with best stats
    */
   public mostStatsHero: Hero[] = []
   /**
    * variable to store new heros in bd
    */
   public newHeros: Hero[] = []
+
+  /**
+   * variable to store heroes with more votes
+   */
+  public moststarts: Hero[] = []
+
   /**
    * variable to store hero stats
    */
@@ -56,36 +66,59 @@ export class HomeComponent implements OnInit {
   ]
 
   /**
-   * Constructor in which we inject hero service , formBuilder and rouser service
+   * variable to save the id from params
    */
-  constructor (
+  public idParams: number = 0
+
+  /**
+   * Constructor in which we inject hero service, formBuilder and rouser service
+   */
+  constructor(
     private _hero: HeroService,
     private _UserHero: UserHeroService,
     private _Team: TeamService
   ) {
-    this.bestT = new Team(0, 0, '', '', '', '', '', '')
+    this.bestT = new Object
   }
 
   /**
-   * Start when de component init
+   * Start when the component inits
    */
-  ngOnInit () {
+  ngOnInit() {
     this.bestMarvel()
     this.bestDc()
     this.mostFollwed()
     this.bestTeam()
+    this.bestOTHero()
     this.herosMost()
     this.newHeroesAdd()
   }
 
+  images = ['photo_10.jpg', 'photo_9.jpg', 'photo_7.jpg'].map((n) => `../../../assets/img/${n}`);
   /**
    * Bring the best marvel hero
    */
-  bestMarvel (): void {
+  bestMarvel(): void {
+    window.scrollTo(0, 0);
     this._UserHero.bestMarverHero().subscribe(
       res => {
         this.bestM = res[0]
-        console.log(this.bestM)
+        this.moststarts.push(this.bestM)
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
+  /**
+  * Bring the best other hero
+  */
+  bestOTHero(): void {
+    this._UserHero.bestOTHero().subscribe(
+      res => {
+        this.bestOther = res[0]
+        this.moststarts.push(this.bestOther)
       },
       error => {
         console.log(error)
@@ -96,11 +129,11 @@ export class HomeComponent implements OnInit {
   /**
    * Bring the best Dc hero
    */
-  bestDc (): void {
+  bestDc(): void {
     this._UserHero.bestDCHero().subscribe(
       res => {
         this.bestD = res[0]
-        console.log(this.bestD)
+        this.moststarts.push(this.bestD)
       },
       error => {
         console.log(error)
@@ -109,13 +142,12 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * Bring the most followe hero
+   * Bring the most followed hero
    */
-  mostFollwed (): void {
+  mostFollwed(): void {
     this._UserHero.mostFollowHeros().subscribe(
       res => {
         this.mostF = res
-        console.log(this.mostF)
       },
       error => {
         console.log(error)
@@ -124,18 +156,13 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * Bring the team with higtest stats
+   * Bring the team with highest stats
    */
-  bestTeam (): void {
+  bestTeam(): void {
     this._Team.bestTeam().subscribe(
       res => {
         this.bestT = res[0]
-        for (var i = 1; i < 6; i++) {
-          this._hero.getHeroById(this.bestT[`member_${i}`]).subscribe(res => {
-            console.log(res)
-            this.bestTeamHeroes.push(res)
-          })
-        }
+        this.idParams = this.bestT.idUsu
       },
       error => {
         console.log(error)
@@ -146,12 +173,11 @@ export class HomeComponent implements OnInit {
   /**
    * Bring the heroes with the highest stats
    */
-  herosMost (): void {
+  herosMost(): void {
     this.stats.forEach(stats => {
       this._hero[stats]().subscribe(
         res => {
           this.mostStatsHero.push(res)
-          console.log(res)
         },
         error => {
           console.log(error)
@@ -161,13 +187,12 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * Bring the heroes new in the db
+   * Bring the newest heroes in the db
    */
-  newHeroesAdd (): void {
+  newHeroesAdd(): void {
     this._hero.newHeros().subscribe(
       res => {
         this.newHeros = res
-        console.log(this.newHeros)
       },
       error => {
         console.log(error)

@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 /**
- * Component for delete a user
+ * Component to delete a user
  */
 @Component({
   selector: 'app-delete-user-dialog',
@@ -17,13 +17,13 @@ import { Router } from '@angular/router';
 })
 
 export class DeleteUserDialogComponent implements OnInit {
-   /**
-   * to add fromGoup
+  /**
+   * to add FormGroup
    */
   public passForm: FormGroup;
   /**
-   * variable to save message info 
-   */  
+   * variable to save message info
+   */
   public message: string;
   /**
    * variable to check if the function was ok
@@ -31,7 +31,7 @@ export class DeleteUserDialogComponent implements OnInit {
   public correctdata: boolean;
 
   /**
-   * Constructor in which we inject our services and diferents elements
+   * Constructor in which we inject our services and different elements
    */
   constructor(
     public dialogRef: MatDialogRef<DeleteUserDialogComponent>,
@@ -42,8 +42,8 @@ export class DeleteUserDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
-   /**
-   * Start when de component init
+  /**
+   * Start when the component inits
    */
   ngOnInit() {
     this.passForm = this.formBuilder.group({
@@ -54,11 +54,11 @@ export class DeleteUserDialogComponent implements OnInit {
     });
   }
 
-   /**
-   * function to control error messages
-   * @param {string} dato
-   * @returns message
-   */
+  /**
+  * function to control error messages
+  * @param {string} dato
+  * @returns message
+  */
   getErrorMessage(dato) {
     var result: string;
     if (this.passForm.controls[dato].hasError('required')) {
@@ -72,21 +72,20 @@ export class DeleteUserDialogComponent implements OnInit {
     }
   }
 
-   /**
-   * function to submit form
-   * @param {any} passForm
-   */
+  /**
+  * function to submit form
+  * @param {any} passForm
+  */
   submit(passForm) {
     var deleteObj = { email: this.data.email, password: passForm.value.password };
-   
+
     this._UserService.deleteUser(this.data.userId, deleteObj).subscribe(
       res => {
-        console.log(res)
         this.openSnackBar('YOUR ACOUNT HAD BEEN DELETED', 'Close')
         this.correctdata = true;
         this.dialogRef.close("Close modal!");
         localStorage.clear();
-    this._router.navigate(['/']);
+        this._router.navigate(['/']);
       },
       err => {
         this.correctdata = false;
@@ -105,7 +104,7 @@ export class DeleteUserDialogComponent implements OnInit {
   }
 
   /**
-   * function for open snackBars
+   * function to open snackBars
    *  @param {string} message
    *  @param {string} action
    */

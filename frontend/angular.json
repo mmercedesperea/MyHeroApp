@@ -24,11 +24,24 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "assets",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "Staticfile",
+                "input": "",
+                "output": "/"
+              }
             ],
             "styles": [
-              "src/styles.scss",
+              "./src/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [

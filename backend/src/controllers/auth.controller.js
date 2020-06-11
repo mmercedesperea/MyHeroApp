@@ -7,7 +7,7 @@ class AuthController {
    *
    * @param {class} AuthService insert our auth service in our class
    */
-  constructor ({ AuthService }) {
+  constructor({ AuthService }) {
     _authService = AuthService
   }
 
@@ -17,10 +17,10 @@ class AuthController {
    * @param {Object} res - Express response object
    * @returns {string}  message
    */
-  async signUp (req, res) {
+  async signUp(req, res) {
     const { body } = req
     const createUser = await _authService.signUp(body)
-    console.log(createUser)
+  
     return res.status(201).send({ message: createUser })
   }
 
@@ -30,7 +30,7 @@ class AuthController {
    * @param {Object} res - Express response object
    * @returns {object}  token
    */
-  async signIn (req, res) {
+  async signIn(req, res) {
     const { body } = req
     const creds = await _authService.signIn(body)
     return res.json(creds)
