@@ -2,6 +2,13 @@
 
 # Descripción general:
 
+
+LINK al video de presentación: https://www.youtube.com/watch?v=6aWE1H7HDMc&feature=youtu.be
+
+LINK a la aplicacion desplegada: https://fightmyhero.eu-gb.mybluemix.net/#/home
+
+LINK al swagger : https://backendmyhero.eu-gb.mybluemix.net/api/api-docs/
+
 ## Perspectiva del producto
 La aplicación web desarrollada pretende ser un medio en el que los amantes de los personajes de ficción puedan realizar búsquedas sobre ellos y realizar diferentes acciones sobre ellos, creando también un entorno donde poder interactuar con otros usuarios con las mismas aficiones.
 
@@ -70,13 +77,6 @@ Se pueden definir dos tipos de usuarios principales: Los no registrados y los re
 
 
 
-
-
-
-
-LINK a la aplicacion desplegada: https://fightmyhero.eu-gb.mybluemix.net/#/home
-
-LINK al swagger : https://backendmyhero.eu-gb.mybluemix.net/api/api-docs/
 
 Datos de acceso:
  -  Administrador: 

@@ -35,13 +35,14 @@ export class AboutUsComponent implements OnInit {
     
     video.setAttribute(
       "src",
-      "http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv"
+      "./../../../assets/img/fightMyHeroVideo.mp4"
     );
+    
     video.play();
     (function loop() {
       if (!video.paused && !video.ended) {
         //We drow the video img
-        ctx.drawImage(video, 15, 10);
+        ctx.drawImage(video, 0, 0);
         // time to draw the frame of the video
         setTimeout(loop, 1000 / 30); // drawing at 30fps
       }
