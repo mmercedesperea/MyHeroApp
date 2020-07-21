@@ -75,14 +75,4 @@ Se pueden definir dos tipos de usuarios principales: Los no registrados y los re
 
     - Usuarios Administradores: pueden acceder además al apartado de administración de la web y realizar diferentes acciones consideradas sensibles para el correcto funcionamiento de la aplicación.
 
-
-
-
-Datos de acceso:
- -  Administrador: 
-        email: admin@admin.com   
-        pass: admin1234567admin
-
- -  UsuarioRegistrado:
-        email: registerU@admin.com
-        Pass: register        
+       
